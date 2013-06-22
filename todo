@@ -1,0 +1,37 @@
+replace minetest.env: with minetest. (some time in the future)
+
+update readme
+
+default
+	hand
+		do not throw nodes where they can not be placed
+	alternative
+		do only pick up nodes you can dig
+		default for tools
+	mapgen
+		generate plants on higher altitudes too
+fire
+	save fire_count
+doors
+	also do sound when hand is used
+	also do sound when door is dug
+wcc
+	make sure it is always spawned
+screwdriver
+	16x16 textures
+
+add some bed
+add garden
+	new cotton textures
+	new bread texture
+	add sugar beet
+	add sugar
+	add candy
+(add circularsaw
+	is there a working version?)
+more uses for copper
+make more use of sounds
+	environmental sounds
+(add simple mobs
+	only on generate
+	only in certain areas (e.g. dungeons))
