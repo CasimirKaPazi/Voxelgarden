@@ -5,9 +5,9 @@ update readme
 default
 	hand
 		do not throw nodes where they can not be placed
-	alternative
-		do only pick up nodes you can dig
-		default for tools
+		alternative
+			do only pick up nodes you can dig
+			default for tools
 	mapgen
 		generate plants on higher altitudes too
 fire
@@ -21,12 +21,7 @@ screwdriver
 	16x16 textures
 
 add some bed
-add garden
-	new cotton textures
-	new bread texture
-	add sugar beet
-	add sugar
-	add candy
+add garden/farming
 (add circularsaw
 	is there a working version?)
 more uses for copper
