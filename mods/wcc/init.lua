@@ -1,5 +1,5 @@
 --[[
- weighted companion cube for minetest
+  weighted companion cube for minetest
 	by Melkor
 	
 	Weighted Companion Cube for Celeron55' MineTest

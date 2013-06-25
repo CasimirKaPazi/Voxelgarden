@@ -53,6 +53,8 @@ Cisoun's WTFPL texture pack:
   default_tree.png
   default_tree_top.png
   default_water.png
+  default_wood.png
+  default_ladder.png
 
 Originating from G4JC's Almost MC Texture Pack:
   default_torch.png
@@ -95,6 +97,9 @@ Splizard (CC BY-SA 3.0):
 
 Zeg9 (CC BY-SA 3.0):
   default_coal_block.png
+
+kaeza (WTFPL):
+  bubble.png
   
 Casimir (CC BY-SA 3.0)
   default_junglesapling.png
@@ -125,11 +130,6 @@ Casimir (CC BY-SA 3.0)
 
 erlehmann (GPL/CC BY-SA)
   heart.png
-  
-Cisoun
-  default_wood.png
-  default_ladder.png
-  
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png

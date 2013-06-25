@@ -24,7 +24,7 @@ Everything not listed in here:
 Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
 
 Casimir (CC BY-SA)
-bucket.png
-bucket_lava.png
-bucket_water.png
+  bucket.png
+  bucket_lava.png
+  bucket_water.png
 

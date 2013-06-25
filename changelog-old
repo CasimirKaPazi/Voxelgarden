@@ -1,6 +1,8 @@
+This is now replaced by the git-history. No more changes here.
+
 mods
 	bucket
-		remade textures
+		redone textures
 		check for on_rightclick (Zeg9)
 	creative
 	default
@@ -106,12 +108,12 @@ mods
 		make papyrus selectionbox bigger
 		make papyrus buildable_to
 		apple heals only 2
-		desert stone craftable with desert sand
 		add horizontal tree
 		add desertsandstone
 	doors
 		add place & use sound
 	dye
+		redone textures
 	fire
 		remove Rarely ignite things from far
 		make fire spreading slower
@@ -146,5 +148,7 @@ menu
 minetest.conf
 	higher mountains
 	large scale terrain
+	no more cliffs
+	desert less frequent
 	color of selection box slightly brighter
 	made fast faster
