@@ -67,7 +67,7 @@ minetest.register_node("default:dirt_with_grass", {
 	groups = {crumbly=3,falling_node=1,soil=1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_grass_footstep", gain=0.4},
+		footstep = {name="default_grass_footstep", gain=0.1},
 	}),
 })
 
@@ -78,7 +78,7 @@ minetest.register_node("default:dirt_with_grass_footsteps", {
 	groups = {crumbly=3,not_in_creative_inventory=1,falling_node=1,soil=1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_grass_footstep", gain=0.4},
+		footstep = {name="default_grass_footstep", gain=0.1},
 	}),
 })
 
@@ -89,7 +89,7 @@ minetest.register_node("default:dirt_with_snow", {
 	groups = {crumbly=3},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_grass_footstep", gain=0.4},
+		footstep = {name="default_grass_footstep", gain=0.1},
 	}),
 })
 minetest.register_alias("dirt_with_snow", "default:dirt_with_snow")
@@ -99,7 +99,9 @@ minetest.register_node("default:dirt", {
 	tiles = {"default_dirt.png"},
 	is_ground_content = true,
 	groups = {crumbly=3,falling_node=1,soil=1},
-	sounds = default.node_sound_dirt_defaults(),
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name="default_grass_footstep", gain=0.1},
+	}),
 })
 
 minetest.register_node("default:sand", {
@@ -132,7 +134,7 @@ minetest.register_node("default:gravel", {
 	is_ground_content = true,
 	groups = {crumbly=2, falling_node=1},
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_gravel_footstep", gain=0.45},
+		footstep = {name="default_gravel_footstep", gain=0.3},
 	}),
 })
 
@@ -403,7 +405,7 @@ minetest.register_node("default:ladder", {
 		--wall_bottom = = <default>
 		--wall_side = = <default>
 	},
-	groups = {choppy=2,oddly_breakable_by_hand=3,flammable=2},
+	groups = {choppy=3,oddly_breakable_by_hand=3,flammable=2},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_wood_defaults(),
 })
