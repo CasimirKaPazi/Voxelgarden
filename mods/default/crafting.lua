@@ -457,6 +457,7 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:steel_ingot",
 	recipe = "default:iron_lump",
+	cooktime = 5,
 })
 
 minetest.register_craft({
