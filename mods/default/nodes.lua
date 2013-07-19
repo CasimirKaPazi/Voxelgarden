@@ -574,9 +574,9 @@ minetest.register_node("default:torch", {
 	light_source = LIGHT_MAX-1,
 	selection_box = {
 		type = "wallmounted",
-		wall_top = {-0.1, 0.5-0.6, -0.1, 0.1, 0.5, 0.1},
-		wall_bottom = {-0.1, -0.5, -0.1, 0.1, -0.5+0.6, 0.1},
-		wall_side = {-0.5, -0.3, -0.1, -0.5+0.3, 0.3, 0.1},
+		wall_top = {-0.125, -0.125, -0.125, 0.125, 0.5, 0.125},
+		wall_bottom = {-0.125, -0.5, -0.125, 0.125, 0.125, 0.125},
+		wall_side = {-0.5, -0.375, -0.1, -0.25, 0.25, 0.125},
 	},
 	groups = {choppy=2,dig_immediate=3,flammable=1,attached_node=1},
 	legacy_wallmounted = true,
