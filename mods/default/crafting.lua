@@ -112,6 +112,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:pick_copper',
+	recipe = {
+		{'default:copper_ingot', 'default:copper_ingot', 'default:copper_ingot'},
+		{'', 'default:stick', ''},
+		{'', 'default:stick', ''},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:pick_steel',
 	recipe = {
 		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
@@ -148,6 +157,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:shovel_copper',
+	recipe = {
+		{'default:copper_ingot'},
+		{'default:stick'},
+		{'default:stick'},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:shovel_steel',
 	recipe = {
 		{'default:steel_ingot'},
@@ -175,6 +193,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:axe_copper',
+	recipe = {
+		{'default:copper_ingot', 'default:copper_ingot'},
+		{'default:copper_ingot', 'default:stick'},
+		{'', 'default:stick'},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:axe_steel',
 	recipe = {
 		{'default:steel_ingot', 'default:steel_ingot'},
@@ -197,6 +224,15 @@ minetest.register_craft({
 	recipe = {
 		{'group:stone'},
 		{'group:stone'},
+		{'default:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_copper',
+	recipe = {
+		{'default:copper_ingot'},
+		{'default:copper_ingot'},
 		{'default:stick'},
 	}
 })

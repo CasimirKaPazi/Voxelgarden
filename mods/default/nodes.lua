@@ -46,7 +46,7 @@ minetest.register_node("default:stone_with_copper", {
 	description = "Copper Ore",
 	tiles = {"default_stone.png^default_mineral_copper.png"},
 	is_ground_content = true,
-	groups = {cracky=2},
+	groups = {cracky=3},
 	drop = 'default:copper_lump',
 	sounds = default.node_sound_stone_defaults(),
 })

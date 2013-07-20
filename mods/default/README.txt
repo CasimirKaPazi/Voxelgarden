@@ -124,6 +124,10 @@ Casimir (CC BY-SA 3.0)
   default_steel_block.png
   default_furnace*
   default_desertsandstone.png
+  default_tool_copperpick.png
+  default_tool_copperaxe.png
+  default_tool_coppershovel.png
+  default_tool_coppersword.png
 
 21Me21 (WTFPL)
   default_grass_footsteps.png
