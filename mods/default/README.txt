@@ -97,6 +97,8 @@ Splizard (CC BY-SA 3.0):
 
 Zeg9 (CC BY-SA 3.0):
   default_coal_block.png
+  default_cobble.png
+  default_mossycobble.png
 
 kaeza (WTFPL):
   bubble.png
