@@ -92,6 +92,11 @@ for _, row in ipairs(dyelocal.dyes) do
 		description = description,
 		groups = groups
 	})
+	minetest.register_craft({
+		type = "shapeless",
+		output = item_name.." 4",
+		recipe = {"group:flower,color_"..name},
+	})
 end
 
 -- Mix recipes
