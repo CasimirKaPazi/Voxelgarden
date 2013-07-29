@@ -3,7 +3,7 @@ Minetest 0.4 mod: flowers
 
 License of source code:
 -----------------------
-Copyright (C) 2012-2013 Ironzorg, VanessaE
+Copyright (C) 2012-2013 Ironzorg, VanessaE, Casimir
 
 This program is free software. It comes without any warranty, to
 the extent permitted by applicable law. You can redistribute it
