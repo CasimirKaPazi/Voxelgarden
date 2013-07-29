@@ -1,6 +1,6 @@
 Minetest mod "Inventory Tweak"
-=======================
-version: 1.1
+==============================
+version: 1.2.1
 
 License of source code: WTFPL
 -----------------------------
@@ -20,10 +20,11 @@ intweak_break_tool.ogg by EdgardEdition (CC BY 3.0), http://www.freesound.org/pe
 --USING the mod--
 ------------------
 
-This mod inplements to new functions to the players inventory. The first is the breaking sound of any tool,
+This mod implements two new functions to the players inventory. First is a breaking sound of any tool,
 that is played when a tool breakes after the specific number of uses.
 
 The second new function is Auto-refill. This function replaces broken tools or emptied stacks with others from your inventory.
 
 
+!!
 You can disable the auto-refill by changing first line of init.lua to "local auto_refill = false"

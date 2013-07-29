@@ -34,6 +34,7 @@ local tools = {}
 
 minetest.register_on_punchnode(function(pos, node, puncher)
 	if not puncher then return end
+	if minetest.setting_getbool("creative_mode") then return end
 	tools[puncher:get_player_name()] = puncher:get_wielded_item():get_name()
 	ttyp[puncher:get_player_name()] = minetest.registered_items[tools[puncher:get_player_name()]].type
 	local left = puncher:get_wielded_item():get_wear() + 65535/65--)
@@ -50,6 +51,7 @@ end)
 
 minetest.register_on_dignode(function(pos, oldnode, digger)
 		if not digger then return end
+		if minetest.setting_getbool("creative_mode") then return end
 		local num = digger:get_wielded_item():get_wear()
 		local index = digger:get_wield_index()
 		if num == 0 and ttyp[digger:get_player_name()] == "tool" then
