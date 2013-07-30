@@ -189,7 +189,7 @@ minetest.register_node("default:tree_horizontal", {
 minetest.register_node("default:jungletree", {
 	description = "Jungle Tree",
 	tiles = {"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1,wood=1},
+	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -204,7 +204,7 @@ minetest.register_node("default:jungletree_horizontal", {
 		"default_jungletree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1,wood=1},
+	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -302,9 +302,6 @@ minetest.register_node("default:cactus", {
 	description = "Cactus",
 	tiles = {"default_cactus_top.png", "default_cactus_top.png", "default_cactus_side.png"},
 	is_ground_content = true,
-	after_dig_node = function(pos, node, metadata, digger)
-		default.dig_up(pos, node, digger)
-	end,
 	groups = {snappy=1,choppy=3,flammable=2,dig_upwards=1},
 	sounds = default.node_sound_wood_defaults(),
 })

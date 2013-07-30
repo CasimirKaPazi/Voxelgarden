@@ -161,18 +161,8 @@ minetest.register_craft({
 minetest.register_craftitem("farming:bread", {
 	description = "Bread",
 	inventory_image = "farming_bread.png",
-	on_use = minetest.item_eat(10)
+	on_use = minetest.item_eat(6)
 })
-
-if not minetest.get_modpath("darkage") then
-	minetest.register_node(":darkage:straw", {
-		description = "Straw",
-		tiles = {"darkage_straw.png"},
-		is_ground_content = true,
-		groups = {snappy=3, flammable=2},
-		sounds = default.node_sound_leaves_defaults(),
-	})
-end
 
 minetest.register_craft({
 	output = "darkage:straw",
