@@ -99,6 +99,7 @@ Zeg9 (CC BY-SA 3.0):
   default_coal_block.png
   default_cobble.png
   default_mossycobble.png
+  default_gravel.png
 
 kaeza (WTFPL):
   bubble.png
@@ -130,12 +131,10 @@ Casimir (CC BY-SA 3.0)
   default_tool_copperaxe.png
   default_tool_coppershovel.png
   default_tool_coppersword.png
+  heart.png
 
 21Me21 (WTFPL)
   default_grass_footsteps.png
-
-erlehmann (GPL/CC BY-SA)
-  heart.png
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png
