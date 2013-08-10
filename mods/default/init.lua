@@ -13,7 +13,6 @@ default = {}
 
 -- Load other files
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/functions.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/hand.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/nodes.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/tools.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/craftitems.lua")

@@ -139,9 +139,6 @@ if minetest.setting_getbool("creative_mode") then
 			},
 			damage_groups = {fleshy=1},
 		},
-		on_place = function(itemstack, placer, pointed_thing)
-			use_hand(itemstack, placer, pointed_thing)
-		end,
 	})
 	
 	minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack)
