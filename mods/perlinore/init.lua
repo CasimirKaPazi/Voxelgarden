@@ -14,7 +14,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local sidelen = maxp.x - minp.x + 1
 
 	local noise = minetest.get_perlin_map(
-			{offset=0, scale=1, spread={x=200, y=125, z=200}, seed=5, octaves=5, persist=0.6},
+			{offset=0, scale=1, spread={x=300, y=300, z=300}, seed=5, octaves=5, persist=0.6},
 			{x=sidelen, y=sidelen, z=sidelen}
 	)
 	local nvals = noise:get3dMap_flat({x=minp.x, y=minp.y, z=minp.z})
