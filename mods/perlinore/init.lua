@@ -1,4 +1,55 @@
-perlinore = {}
+minetest.register_on_generated(function(minp, maxp, seed)
+	local pr = PseudoRandom(seed)
+	local t1 = os.clock()
+	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
+	local a = VoxelArea:new{
+			MinEdge={x=emin.x, y=emin.y, z=emin.z},
+			MaxEdge={x=emax.x, y=emax.y, z=emax.z},
+	}
+
+	local data = vm:get_data()
+
+	local c_ore  = minetest.get_content_id("default:stone_with_coal")
+
+	local sidelen = maxp.x - minp.x + 1
+
+	local noise = minetest.get_perlin_map(
+			{offset=0, scale=1, spread={x=200, y=125, z=200}, seed=5, octaves=5, persist=0.6},
+			{x=sidelen, y=sidelen, z=sidelen}
+	)
+	local nvals = noise:get3dMap_flat({x=minp.x, y=minp.y, z=minp.z})
+
+	local ni = 1
+	for z = minp.z, maxp.z do
+	for y = minp.y, maxp.y do
+	for x = minp.x, maxp.x do
+			if nvals[ni] < 0.03 and nvals[ni] > -0.03 then
+				local pos={x=x,y=y,z=z}
+				if minetest.get_node(pos).name == "default:stone" then
+					if pr:next(1,5) == 1 then
+						local vi = a:index(x, y, z)
+						data[vi] = c_ore
+					end
+				end
+			end
+			ni = ni + 1
+	end
+	end
+	end
+
+	vm:set_data(data)
+      
+	vm:calc_lighting(
+			{x=minp.x-16, y=minp.y, z=minp.z-16},
+			{x=maxp.x+16, y=maxp.y, z=maxp.z+16}
+	)
+
+	vm:write_to_map(data)
+ 
+	print(string.format("elapsed time: %.2fms", (os.clock() - t1) * 1000))
+end)
+
+--[[perlinore = {}
 --
 -- Ore generation
 --
@@ -82,4 +133,4 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		-30000,  64,									-- hight
 		-0.05, 0.05										-- perlin values
 		)
-end)
+end)--]]
