@@ -27,7 +27,7 @@ default.leafdecay = function(p0, node, _, _)
 			--print("not groups.leafdecay")
 			return
 		end
-		local n0 = minetest.env:get_node(p0)
+		local n0 = minetest.get_node(p0)
 		if n0.param2 ~= 0 then
 			--print("param2 ~= 0")
 			return
@@ -37,7 +37,7 @@ default.leafdecay = function(p0, node, _, _)
 			p0_hash = minetest.hash_node_position(p0)
 			local trunkp = default.leafdecay_trunk_cache[p0_hash]
 			if trunkp then
-				local n = minetest.env:get_node(trunkp)
+				local n = minetest.get_node(trunkp)
 				local reg = minetest.registered_nodes[n.name]
 				-- Assume ignore is a trunk, to make the thing work at the border of the active area
 				if n.name == "ignore" or (reg and reg.groups.tree and reg.groups.tree ~= 0) then
@@ -55,7 +55,7 @@ default.leafdecay = function(p0, node, _, _)
 		default.leafdecay_trunk_find_allow_accumulator =
 				default.leafdecay_trunk_find_allow_accumulator - 1
 		-- Assume ignore is a trunk, to make the thing work at the border of the active area
-		local p1 = minetest.env:find_node_near(p0, d, {"ignore", "group:tree"})
+		local p1 = minetest.find_node_near(p0, d, {"ignore", "group:tree"})
 		if p1 then
 			do_preserve = true
 			if default.leafdecay_enable_cache then
@@ -78,7 +78,7 @@ default.leafdecay = function(p0, node, _, _)
 				end
 			end
 			-- Remove node
-			minetest.env:remove_node(p0)
+			minetest.remove_node(p0)
 			nodeupdate(p0)
 		end
 end
@@ -101,9 +101,9 @@ minetest.register_abm({
 	interval = 2,
 	chance = 3,
 	action = function(pos)
-		local n_under = minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z})
+		local n_under = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
 		if n_under.name == "default:dirt_with_grass" or n_under.name == "default:dirt" then
-			minetest.env:set_node(pos, {name="default:grass_"..math.random(1, 5)})
+			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
 		end
 	end,
 })
@@ -114,9 +114,9 @@ minetest.register_abm({
 	interval = 2,
 	chance = 3,
 	action = function(pos)
-		local n_under = minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z})
+		local n_under = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
 		if n_under.name == "default:dirt_with_grass" or n_under.name == "default:dirt" then
-			minetest.env:set_node(pos, {name="default:junglegrass"})
+			minetest.set_node(pos, {name="default:junglegrass"})
 		end
 	end,
 })

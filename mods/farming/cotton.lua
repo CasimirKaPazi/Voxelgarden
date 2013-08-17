@@ -3,8 +3,8 @@ minetest.register_craftitem("farming:cotton", {
 	inventory_image = "farming_cotton.png",
 	wield_image = "farming_cotton.png",
 	on_place = function(itemstack, placer, pointed_thing)
-		local under = minetest.env:get_node(pointed_thing.under)
-		local above = minetest.env:get_node(pointed_thing.above)
+		local under = minetest.get_node(pointed_thing.under)
+		local above = minetest.get_node(pointed_thing.above)
 		-- check for rightclick
 		local reg_node = minetest.registered_nodes[under.name]
 		if reg_node.on_rightclick then
@@ -15,7 +15,7 @@ minetest.register_craftitem("farming:cotton", {
 		for _,farming_soil in ipairs(farming_soil) do
 			if above.name == "air" and under.name == farming_soil then
 				above.name = "farming:cotton_1"
-				minetest.env:place_node(pointed_thing.above, above)
+				minetest.place_node(pointed_thing.above, above)
 				minetest.sound_play("default_place_node", {pos = np, gain = 0.5})
 				itemstack:take_item(1)
 				return itemstack
@@ -73,7 +73,7 @@ minetest.register_node("farming:cotton_3", {
 		}
 	},
 	after_dig_node = function(pos)
-		minetest.env:add_node(pos, {name="farming:cotton_2"})	
+		minetest.add_node(pos, {name="farming:cotton_2"})	
 	end,
 	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
 	selection_box = {
@@ -89,19 +89,19 @@ minetest.register_abm({
 	chance = 22,
 	action = function(pos, node)
 		pos.y = pos.y-1
-		if minetest.env:get_node(pos).name ~= "farming:soil_wet" and minetest.env:get_node(pos).name ~= "farming:soil_wet" then
+		if minetest.get_node(pos).name ~= "farming:soil_wet" and minetest.get_node(pos).name ~= "farming:soil_wet" then
 			return
 		end
 		pos.y = pos.y+1
-		if minetest.env:get_node_light(pos) < 8 then
+		if minetest.get_node_light(pos) < 8 then
 			return
 		end
 		if node.name == "farming:cotton_1" then
 			node.name = "farming:cotton_2"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 		elseif node.name == "farming:cotton_2" then
 			node.name = "farming:cotton_3"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 		end
 	end
 })

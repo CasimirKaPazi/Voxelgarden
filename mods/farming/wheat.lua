@@ -2,8 +2,8 @@ minetest.register_craftitem("farming:wheat", {
 	description = "Wheat",
 	inventory_image = "farming_wheat.png",
 	on_place = function(itemstack, placer, pointed_thing)
-		local under = minetest.env:get_node(pointed_thing.under)
-		local above = minetest.env:get_node(pointed_thing.above)
+		local under = minetest.get_node(pointed_thing.under)
+		local above = minetest.get_node(pointed_thing.above)
 		-- check for rightclick
 		local reg_node = minetest.registered_nodes[under.name]
 		if reg_node.on_rightclick then
@@ -14,7 +14,7 @@ minetest.register_craftitem("farming:wheat", {
 		for _,farming_soil in ipairs(farming_soil) do
 			if above.name == "air" and under.name == farming_soil then
 				above.name = "farming:wheat_1"
-				minetest.env:place_node(pointed_thing.above, above, placer)
+				minetest.place_node(pointed_thing.above, above, placer)
 				minetest.sound_play("default_place_node", {pos = np, gain = 0.5})
 				itemstack:take_item(1)
 				return itemstack
@@ -101,23 +101,23 @@ minetest.register_abm({
 	chance = 11, --11
 	action = function(pos, node)
 		pos.y = pos.y-1
-		local ground_name = minetest.env:get_node(pos).name
+		local ground_name = minetest.get_node(pos).name
 		if ground_name ~= "farming:soil_wet" and ground_name ~= "farming:soil_wet" then
 			return
 		end
 		pos.y = pos.y+1
-		if minetest.env:get_node_light(pos) < 8 then
+		if minetest.get_node_light(pos) < 8 then
 			return
 		end
 		if node.name == "farming:wheat_1" then
 			node.name = "farming:wheat_2"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 		elseif node.name == "farming:wheat_2" then
 			node.name = "farming:wheat_3"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 		elseif node.name == "farming:wheat_3" then
 			node.name = "farming:wheat_4"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 		end
 	end
 })
@@ -129,10 +129,10 @@ minetest.register_craftitem("farming:flour", {
 		if pointed_thing.type ~= "node" then
 			return
 		end
-		if minetest.env:get_node(pointed_thing.under).name ~= "default:water_source" and minetest.env:get_node(pointed_thing.under).name ~= "default:water_flowing" then
+		if minetest.get_node(pointed_thing.under).name ~= "default:water_source" and minetest.get_node(pointed_thing.under).name ~= "default:water_flowing" then
 			return
 		end
-		minetest.env:remove_node(pointed_thing.under)
+		minetest.remove_node(pointed_thing.under)
 		local count = user:get_wielded_item():get_count()
 		itemstack:replace("farming:dough "..count.."")
 		return itemstack

@@ -29,9 +29,9 @@ minetest.register_abm({
 	chance = 23,
 	action = function(pos, node)
 		pos.y = pos.y+1
-		if minetest.env:get_node(pos).name == "air" then
+		if minetest.get_node(pos).name == "air" then
 			node.name = "farming:weed"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 		end
 	end
 })

@@ -198,7 +198,7 @@ minetest.register_node("flowers:pot_dandelion_white", {
 --		local inv = clicker:get_inventory()
 --		if inv:room_for_item("flowers:pot") then
 			node.name = "flowers:dandelion_white"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 			minetest.sound_play("default_break_glass", {pos,gain = 1.0})
 --			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
 --			inv:add_item("main", "flowers:pot")
@@ -234,7 +234,7 @@ minetest.register_node("flowers:pot_dandelion_yellow", {
 --		local inv = clicker:get_inventory()
 --		if inv:room_for_item("flowers:pot") then
 			node.name = "flowers:dandelion_yellow"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 			minetest.sound_play("default_break_glass", {pos,gain = 1.0})
 --			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
 --			inv:add_item("main", "flowers:pot")
@@ -270,7 +270,7 @@ minetest.register_node("flowers:pot_geranium", {
 --		local inv = clicker:get_inventory()
 --		if inv:room_for_item("flowers:pot") then
 			node.name = "flowers:geranium"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 			minetest.sound_play("default_break_glass", {pos,gain = 1.0})
 --			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
 --			inv:add_item("main", "flowers:pot")
@@ -306,7 +306,7 @@ minetest.register_node("flowers:pot_rose", {
 --		local inv = clicker:get_inventory()
 --		if inv:room_for_item("flowers:pot") then
 			node.name = "flowers:rose"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 			minetest.sound_play("default_break_glass", {pos,gain = 1.0})
 --			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
 --			inv:add_item("main", "flowers:pot")
@@ -342,7 +342,7 @@ minetest.register_node("flowers:pot_tulip", {
 --		local inv = clicker:get_inventory()
 --		if inv:room_for_item("flowers:pot") then
 			node.name = "flowers:tulip"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 			minetest.sound_play("default_break_glass", {pos,gain = 1.0})
 --			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
 --			inv:add_item("main", "flowers:pot")
@@ -378,7 +378,7 @@ minetest.register_node("flowers:pot_viola", {
 --		local inv = clicker:get_inventory()
 --		if inv:room_for_item("flowers:pot") then
 			node.name = "flowers:viola"
-			minetest.env:set_node(pos, node)
+			minetest.set_node(pos, node)
 			minetest.sound_play("default_break_glass", {pos,gain = 1.0})
 --			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
 --			inv:add_item("main", "flowers:pot")

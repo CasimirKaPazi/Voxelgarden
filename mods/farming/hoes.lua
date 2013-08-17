@@ -2,9 +2,9 @@ local function create_soil(pos)
 	if pos == nil then
 		return false
 	end
-	local above = minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z})
+	local above = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
 	if above.name == "air" then
-		minetest.env:set_node(pos, {name = "farming:soil"})
+		minetest.set_node(pos, {name = "farming:soil"})
 		return true
 	end
 	return false
@@ -14,13 +14,13 @@ local function create_soil_mese(pos)
 	if pos == nil then
 		return false
 	end
-	local nn = minetest.env:get_node(pos).name
+	local nn = minetest.get_node(pos).name
 	if nn ~= "default:dirt" and nn ~= "default:dirt_with_grass" and nn ~= "default:dirt_with_grass_footsteps" then
 		return false
 	end
-	local above = minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z})
+	local above = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
 	if above.name == "air" then
-		minetest.env:set_node(pos, {name = "farming:soil"})
+		minetest.set_node(pos, {name = "farming:soil"})
 		return true
 	end
 	return false

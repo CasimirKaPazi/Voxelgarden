@@ -104,11 +104,11 @@ minetest.register_on_punchnode(on_punchnode)
 --
 
 default.cool_lava_source = function(pos)
-	minetest.env:set_node(pos, {name="default:cobble"})
+	minetest.set_node(pos, {name="default:cobble"})
 end
 
 default.cool_lava_flowing = function(pos)
-	minetest.env:set_node(pos, {name="default:stone"})
+	minetest.set_node(pos, {name="default:stone"})
 end
 
 minetest.register_abm({
@@ -142,17 +142,17 @@ minetest.register_abm({
 	chance = 30,
 	action = function(pos, node)
 		pos.y = pos.y-1
-		local name = minetest.env:get_node(pos).name
+		local name = minetest.get_node(pos).name
 		if minetest.get_item_group(name, "sand") ~= 0 then
 			pos.y = pos.y+1
 			local height = 0
-			while minetest.env:get_node(pos).name == "default:cactus" and height < 4 do
+			while minetest.get_node(pos).name == "default:cactus" and height < 4 do
 				height = height+1
 				pos.y = pos.y+1
 			end
 			if height < 4 then
-				if minetest.env:get_node(pos).name == "air" then
-					minetest.env:set_node(pos, {name="default:cactus"})
+				if minetest.get_node(pos).name == "air" then
+					minetest.set_node(pos, {name="default:cactus"})
 				end
 			end
 		end
@@ -166,20 +166,20 @@ minetest.register_abm({
 	chance = 30,
 	action = function(pos, node)
 		pos.y = pos.y-1
-		local name = minetest.env:get_node(pos).name
+		local name = minetest.get_node(pos).name
 		if name == "default:dirt" or name == "default:dirt_with_grass" or name == "default:papyrus_roots" then
-			if minetest.env:find_node_near(pos, 3, {"group:water"}) == nil then
+			if minetest.find_node_near(pos, 3, {"group:water"}) == nil then
 				return
 			end
 			pos.y = pos.y+1
 			local height = 0
-			while minetest.env:get_node(pos).name == "default:papyrus" and height < 4 do
+			while minetest.get_node(pos).name == "default:papyrus" and height < 4 do
 				height = height+1
 				pos.y = pos.y+1
 			end
 			if height < 4 then
-				if minetest.env:get_node(pos).name == "air" then
-					minetest.env:set_node(pos, {name="default:papyrus"})
+				if minetest.get_node(pos).name == "air" then
+					minetest.set_node(pos, {name="default:papyrus"})
 				end
 			end
 		end
@@ -193,8 +193,8 @@ minetest.register_abm({
 	chance = 30,
 	action = function(pos, node)
 		pos.y = pos.y+1
-		if minetest.env:get_node(pos).name == "air" then
-			minetest.env:set_node(pos, {name="default:papyrus"})
+		if minetest.get_node(pos).name == "air" then
+			minetest.set_node(pos, {name="default:papyrus"})
 		end
 	end,
 })
@@ -206,7 +206,7 @@ minetest.register_abm({
 function default.dig_up(pos, node, digger)
 	if digger == nil then return end
 	local np = {x = pos.x, y = pos.y + 1, z = pos.z}
-	local nn = minetest.env:get_node(np)
+	local nn = minetest.get_node(np)
 	if nn.name == node.name then
 		minetest.node_dig(np, nn, digger)
 	end
