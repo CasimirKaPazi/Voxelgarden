@@ -74,7 +74,7 @@ default.leafdecay = function(p0, node, _, _)
 						y = math.floor(p0.y + 0.5),
 						z = math.floor(p0.z + 0.5),
 					}
-					spawn_falling_node(p_drop, itemname)
+					spawn_falling_node(p_drop, {name=itemname})
 				end
 			end
 			-- Remove node
