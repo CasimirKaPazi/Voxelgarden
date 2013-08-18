@@ -28,7 +28,7 @@ if auto_refill == true then
 	end)
 end
 
-
+--[[
 local ttyp = {}
 local tools = {}
 
@@ -36,9 +36,9 @@ minetest.register_on_punchnode(function(pos, node, puncher)
 	if not puncher then return end
 	if minetest.setting_getbool("creative_mode") then return end
 	tools[puncher:get_player_name()] = puncher:get_wielded_item():get_name()
-	ttyp[puncher:get_player_name()] = minetest.registered_items[tools[puncher:get_player_name()]].type
+	ttyp[puncher:get_player_name()] = minetest.registered_items[tools[puncher:get_player_name()] ].type
 	local left = puncher:get_wielded_item():get_wear() + 65535/65--)
-	local tab = minetest.registered_tools[tools[puncher:get_player_name()]]
+	local tab = minetest.registered_tools[tools[puncher:get_player_name()] ]
 	if tab == nil then return end
 	local left = tonumber(dump(tab["uses"]))
 	if left == nil then return end
@@ -59,5 +59,5 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 			if auto_refill == true then minetest.after(0.01, refill, digger, tools[digger:get_player_name()], index) end
 		end
 end)
-
-print("[Mod] Inventory Tweak _loaded")
+--]]
+--print("[Mod] Inventory Tweak _loaded")
