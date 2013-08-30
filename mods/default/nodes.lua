@@ -317,7 +317,6 @@ minetest.register_node("default:papyrus", {
 	wield_image = "default_papyrus.png",
 	paramtype = "light",
 	walkable = false,
-	buildable_to = true,
 	is_ground_content = true,
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
