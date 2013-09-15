@@ -507,7 +507,7 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:steel_ingot",
 	recipe = "default:iron_lump",
-	cooktime = 5,
+	cooktime = 10,
 })
 
 minetest.register_craft({
@@ -607,19 +607,19 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:sign_wall",
-	burntime = 10,
+	burntime = 5,
 })
 
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:chest",
-	burntime = 30,
+	burntime = 20,
 })
 
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:chest_locked",
-	burntime = 30,
+	burntime = 20,
 })
 
 minetest.register_craft({
@@ -637,7 +637,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:sapling",
-	burntime = 10,
+	burntime = 5,
 })
 
 minetest.register_craft({
@@ -661,13 +661,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:junglesapling",
-	burntime = 10,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "default:grass_1",
-	burntime = 2,
+	burntime = 5,
 })
 
 minetest.register_craft({

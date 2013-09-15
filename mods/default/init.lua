@@ -11,15 +11,15 @@ LIGHT_MAX = 14
 -- Definitions made by this mod that other mods can use too
 default = {}
 
--- Load other files
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/functions.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/nodes.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/tools.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/craftitems.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/crafting.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/mapgen.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/leafdecay.lua")
-dofile(minetest.get_modpath(minetest.get_current_modname()).."/player.lua")
+-- Load files
+dofile(minetest.get_modpath("default").."/functions.lua")
+dofile(minetest.get_modpath("default").."/nodes.lua")
+dofile(minetest.get_modpath("default").."/tools.lua")
+dofile(minetest.get_modpath("default").."/craftitems.lua")
+dofile(minetest.get_modpath("default").."/crafting.lua")
+dofile(minetest.get_modpath("default").."/mapgen.lua")
+dofile(minetest.get_modpath("default").."/leafdecay.lua")
+dofile(minetest.get_modpath("default").."/player.lua")
 
 
 -- Support old code
