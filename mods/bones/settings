@@ -1,0 +1,6 @@
+# This is an example file.
+# Use the settings in your main minetest.conf file.
+# Uncomment settings by removing the preceding #.
+
+# Do not lose your inventory in the case of death.
+#disable_bones = false
