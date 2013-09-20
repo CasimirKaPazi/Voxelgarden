@@ -35,11 +35,13 @@ function perlinore.generate_ore(
 	for x = minp.x, maxp.x do
 			if nvals[ni] > noise_min and nvals[ni] < noise_max then
 				local pos={x=x,y=y,z=z}
-				if minetest.get_node(pos).name == wherein then
-					if pr:next(1,inverse_chance) == 1 then
-						local vi = a:index(x, y, z)
-						data[vi] = c_ore
-					end
+				local node_name = minetest.get_node(pos).name
+				if node_name == wherein and pr:next(1,inverse_chance) == 1 then
+					local vi = a:index(x, y, z)
+					data[vi] = c_ore
+				else
+					local vi = a:index(x, y, z)
+					data[vi] = minetest.get_content_id(node_name)
 				end
 			end
 			ni = ni + 1
@@ -48,14 +50,14 @@ function perlinore.generate_ore(
 	end
 
 	vm:set_data(data)
-      
+
 	vm:calc_lighting(
 			{x=minp.x-16, y=minp.y, z=minp.z-16},
 			{x=maxp.x+16, y=maxp.y, z=maxp.z+16}
 	)
 
 	vm:write_to_map(data)
- 
+
 	print(string.format("elapsed time: %.2fms", (os.clock() - t1) * 1000))
 end
 
@@ -67,4 +69,3 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		6, 200, -0.02, 0.02								-- inverse chance, scale, noise_min, noise_max
 	)
 end)
-
