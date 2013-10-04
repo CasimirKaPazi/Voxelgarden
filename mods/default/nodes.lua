@@ -459,7 +459,7 @@ minetest.register_node("default:water_flowing", {
 	liquid_viscosity = WATER_VISC,
 	freezemelt = "default:snow", 
 	post_effect_color = {a=128, r=50, g=120, b=200},
-	groups = {water=3, liquid=3, puts_out_fire=1, freezes=1, melt_around=1, not_in_creative_inventory=1},
+	groups = {water=3, liquid=3, puts_out_fire=1, freeze=-5, not_in_creative_inventory=1},
 })
 
 minetest.register_node("default:water_source", {
@@ -491,7 +491,7 @@ minetest.register_node("default:water_source", {
 	liquid_viscosity = WATER_VISC,
 	freezemelt = "default:ice",
 	post_effect_color = {a=128, r=50, g=120, b=200},
-	groups = {water=3, liquid=3, puts_out_fire=1, freezes=1},
+	groups = {water=3, liquid=3, puts_out_fire=1, freeze=-1},
 })
 
 minetest.register_node("default:lava_flowing", {
@@ -1242,7 +1242,8 @@ minetest.register_node("default:ice", {
 	is_ground_content = true,
 	paramtype = "light",
 	freezemelt = "default:water_source",
-	groups = {cracky=3, melts=1},
+	liquids_pointable = true,
+	groups = {cracky=3, melt=3},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -1263,7 +1264,7 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5,  0.5, -0.5+2/16, 0.5},
 		},
 	},
-	groups = {crumbly=3, melts=1, fload=1, falling_node=1},
+	groups = {crumbly=3, melt=1, fload=1, falling_node=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -1281,7 +1282,7 @@ minetest.register_node("default:snowblock", {
 	tiles = {"default_snow.png"},
 	is_ground_content = true,
 	freezemelt = "default:water_source", 
-	groups = {crumbly=3, melts=1},
+	groups = {crumbly=3, melt=2},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
