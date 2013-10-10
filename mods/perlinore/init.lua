@@ -61,11 +61,24 @@ function perlinore.generate_ore(
 	print(string.format("elapsed time: %.2fms", (os.clock() - t1) * 1000))
 end
 
-minetest.register_on_generated(function(minp, maxp, seed)
-	perlinore.generate_ore(
-		minp, maxp, seed,
-		"default:stone_with_coal", 	"default:stone",	-- name, wherein
-		-20000,  64,									-- height_min, height_max
-		6, 200, -0.02, 0.02								-- inverse chance, scale, noise_min, noise_max
-	)
-end)
+if minetest.setting_getbool("perlin_ore") then
+	minetest.register_on_generated(function(minp, maxp, seed)
+		perlinore.generate_ore(
+			minp, maxp, seed,
+			"default:stone_with_coal", 	"default:stone",	-- name, wherein
+			-20000,  64,									-- height_min, height_max
+			6, 200, -0.02, 0.02								-- inverse chance, scale, noise_min, noise_max
+		)
+	end)
+else
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "default:stone_with_coal",
+		wherein        = "default:stone",
+		clust_scarcity = 9*9*9,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		height_min     = -31000,
+		height_max     = 64,
+	})
+end
