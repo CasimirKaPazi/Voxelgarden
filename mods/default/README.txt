@@ -136,6 +136,9 @@ Casimir (CC BY-SA 3.0)
 21Me21 (WTFPL)
   default_grass_footsteps.png
 
+Gambit (WTFPL)
+  default_book.png
+
 Originating from work by pixel32 (CC0)
   default_clay_lump.png
 
