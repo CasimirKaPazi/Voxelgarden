@@ -55,6 +55,7 @@ Cisoun's WTFPL texture pack:
   default_water.png
   default_wood.png
   default_ladder.png
+  default_furnace_fire*
 
 Originating from G4JC's Almost MC Texture Pack:
   default_torch.png

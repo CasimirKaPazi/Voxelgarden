@@ -7,11 +7,6 @@ GPLv3
 
 License of media (textures):
 ----------------------------
-Created by PilzAdam (License: WTFPL):
-  farming_bread.png
-  farming_soil.png
-  farming_soil_wet.png
-  farming_soil_wet_side.png
 
 Created by VanessaE (License: WTFPL):
   farming_wheat.png
@@ -33,3 +28,9 @@ Created by Casimir (License: CC BY-SA):
   farming_flour.png
   farming_cotton.png
   farming_weed.png
+  farming_bread.png
+  
+Created by Casimir (License: WTFPL):
+  farming_soil.png
+  farming_soil_wet.png
+  farming_soil_wet_side.png
