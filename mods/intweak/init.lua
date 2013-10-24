@@ -28,36 +28,38 @@ if auto_refill == true then
 	end)
 end
 
---[[
+
 local ttyp = {}
 local tools = {}
 
 minetest.register_on_punchnode(function(pos, node, puncher)
 	if not puncher then return end
 	if minetest.setting_getbool("creative_mode") then return end
-	tools[puncher:get_player_name()] = puncher:get_wielded_item():get_name()
-	ttyp[puncher:get_player_name()] = minetest.registered_items[tools[puncher:get_player_name()] ].type
+	local pn = puncher:get_player_name()
+	tools[pn] = puncher:get_wielded_item():get_name()
+	ttyp[pn] = minetest.registered_items[tools[pn]].type
 	local left = puncher:get_wielded_item():get_wear() + 65535/65--)
-	local tab = minetest.registered_tools[tools[puncher:get_player_name()] ]
+	local tab = minetest.registered_tools[tools[pn]]
 	if tab == nil then return end
 	local left = tonumber(dump(tab["uses"]))
 	if left == nil then return end
 	left = puncher:get_wielded_item():get_wear() + 65535/left
-	if ttyp[puncher:get_player_name()] == "tool" and left >= 65535 then
-		minetest.sound_play("intweak_tool_break", {pos = puncher:getpos(), gain = 1.5, max_hear_distance = 5})
-		if auto_refill == true then minetest.after(0.01, refill, puncher, tools[puncher:get_player_name()], puncher:get_wield_index()) end
+	if ttyp[pn] == "tool" and left >= 65535 then
+		minetest.sound_play("intweak_tool_break", {pos = puncher:getpos(), gain = 1, max_hear_distance = 5})
+		if auto_refill == true then minetest.after(0.01, refill, puncher, tools[pn], puncher:get_wield_index()) end
 	end
 end)
 
 minetest.register_on_dignode(function(pos, oldnode, digger)
 		if not digger then return end
 		if minetest.setting_getbool("creative_mode") then return end
+		local pn = digger:get_player_name()
 		local num = digger:get_wielded_item():get_wear()
 		local index = digger:get_wield_index()
-		if num == 0 and ttyp[digger:get_player_name()] == "tool" then
-			minetest.sound_play("intweak_tool_break", {pos = digger:getpos(),gain = 1.5, max_hear_distance = 5})
-			if auto_refill == true then minetest.after(0.01, refill, digger, tools[digger:get_player_name()], index) end
+		if num == 0 and ttyp[pn] == "tool" and digger:get_wielded_item():get_name() == "" then
+			minetest.sound_play("intweak_tool_break", {pos = digger:getpos(),gain = 1, max_hear_distance = 5})
+			if auto_refill == true then minetest.after(0.01, refill, digger, tools[pn], index) end
 		end
 end)
---]]
---print("[Mod] Inventory Tweak _loaded")
+
+print("[Mod] Inventory Tweak _loaded")

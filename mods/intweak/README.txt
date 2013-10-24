@@ -1,6 +1,6 @@
 Minetest mod "Inventory Tweak"
 ==============================
-version: 1.2.1
+version: 1.2.2
 
 License of source code: WTFPL
 -----------------------------
