@@ -120,13 +120,14 @@ minetest.register_node("default:desert_sand", {
 	sounds = default.node_sound_sand_defaults(),
 })
 
-minetest.register_node("default:desertsandstone", {
+minetest.register_node("default:desert_sandstone", {
 	description = "Desert Sandstone",
-	tiles = {"default_desertsandstone.png"},
+	tiles = {"default_desert_sandstone.png"},
 	is_ground_content = true,
 	groups = {crumbly=2,cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 })
+minetest.register_alias("default:desertsandstone", "default:desert_sandstone")
 
 minetest.register_node("default:gravel", {
 	description = "Gravel",
