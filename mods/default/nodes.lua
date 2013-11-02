@@ -1065,7 +1065,7 @@ minetest.register_node("default:mese", {
 minetest.register_alias("default:mese_block", "default:mese")
 
 minetest.register_node("default:nyancat", {
-	description = "Nyan Cat",
+	description = "Nyan Rat",
 	tiles = {"default_nc_side.png", "default_nc_side.png", "default_nc_side.png",
 		"default_nc_side.png", "default_nc_back.png", "default_nc_front.png"},
 	paramtype2 = "facedir",
@@ -1075,7 +1075,7 @@ minetest.register_node("default:nyancat", {
 })
 
 minetest.register_node("default:nyancat_rainbow", {
-	description = "Nyan Cat Rainbow",
+	description = "Rainbow",
 	tiles = {"default_nc_rb.png^[transformR90", "default_nc_rb.png^[transformR90", "default_nc_rb.png", "default_nc_rb.png"},
 	paramtype2 = "facedir",
 	groups = {cracky=2},
