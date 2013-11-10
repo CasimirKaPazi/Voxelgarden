@@ -132,6 +132,7 @@ Casimir (CC BY-SA 3.0)
   default_nc_back.png
   default_nc_front.png
   default_nc_side.png
+  default_apple.png
 
 21Me21 (WTFPL)
   default_grass_footsteps.png
