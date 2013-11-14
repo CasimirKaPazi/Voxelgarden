@@ -20,6 +20,7 @@ dofile(minetest.get_modpath("default").."/crafting.lua")
 dofile(minetest.get_modpath("default").."/mapgen.lua")
 dofile(minetest.get_modpath("default").."/leafdecay.lua")
 dofile(minetest.get_modpath("default").."/player.lua")
+dofile(minetest.get_modpath("default").."/trees.lua")
 
 
 -- Support old code
