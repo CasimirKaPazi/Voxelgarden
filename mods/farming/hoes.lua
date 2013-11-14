@@ -70,8 +70,8 @@ minetest.register_craft({
 	output = "farming:hoe_wood",
 	recipe = {
 		{"group:wood", "group:wood"},
-		{"", "default:stick"},
-		{"", "default:stick"}
+		{"", "group:stick"},
+		{"", "group:stick"}
 	}
 })
 
@@ -79,8 +79,8 @@ minetest.register_craft({
 	output = "farming:hoe_wood",
 	recipe = {
 		{"default:wood", "default:wood"},
-		{"", "default:stick"},
-		{"", "default:stick"}
+		{"", "group:stick"},
+		{"", "group:stick"}
 	}
 })
 
@@ -100,8 +100,8 @@ minetest.register_craft({
 	output = "farming:hoe_stone",
 	recipe = {
 		{"group:stone", "group:stone"},
-		{"", "default:stick"},
-		{"", "default:stick"}
+		{"", "group:stick"},
+		{"", "group:stick"}
 	}
 })
 
@@ -109,8 +109,8 @@ minetest.register_craft({
 	output = "farming:hoe_stone",
 	recipe = {
 		{"default:cobble", "default:cobble"},
-		{"", "default:stick"},
-		{"", "default:stick"}
+		{"", "group:stick"},
+		{"", "group:stick"}
 	}
 })
 
@@ -130,8 +130,8 @@ minetest.register_craft({
 	output = "farming:hoe_steel",
 	recipe = {
 		{"default:steel_ingot", "default:steel_ingot"},
-		{"", "default:stick"},
-		{"", "default:stick"}
+		{"", "group:stick"},
+		{"", "group:stick"}
 	}
 })
 
@@ -151,7 +151,7 @@ minetest.register_craft({
 	output = "farming:hoe_mese",
 	recipe = {
 		{"default:mese_crystal", "default:mese_crystal"},
-		{"", "default:stick"},
-		{"", "default:stick"}
+		{"", "group:stick"},
+		{"", "group:stick"}
 	}
 })
