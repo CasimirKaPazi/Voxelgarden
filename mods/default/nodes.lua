@@ -120,15 +120,6 @@ minetest.register_node("default:desert_sand", {
 	sounds = default.node_sound_sand_defaults(),
 })
 
-minetest.register_node("default:desert_sandstone", {
-	description = "Desert Sandstone",
-	tiles = {"default_desert_sandstone.png"},
-	is_ground_content = true,
-	groups = {crumbly=2,cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_alias("default:desertsandstone", "default:desert_sandstone")
-
 minetest.register_node("default:gravel", {
 	description = "Gravel",
 	tiles = {"default_gravel.png"},
@@ -172,39 +163,9 @@ minetest.register_node("default:tree", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node("default:tree_horizontal", {
-	description = "Tree",
-	tiles = {
-		"default_tree.png", 
-		"default_tree.png",
-		"default_tree.png^[transformR90", 
-		"default_tree.png^[transformR90", 
-		"default_tree_top.png", 
-		"default_tree_top.png" 
-	},
-	paramtype2 = "facedir",
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
 minetest.register_node("default:jungletree", {
 	description = "Jungle Tree",
 	tiles = {"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node("default:jungletree_horizontal", {
-	description = "Jungle Tree",
-		tiles = {
-		"default_jungletree.png", 
-		"default_jungletree.png",
-		"default_jungletree.png^[transformR90", 
-		"default_jungletree.png^[transformR90", 
-		"default_jungletree_top.png", 
-		"default_jungletree_top.png" 
-	},
-	paramtype2 = "facedir",
 	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -327,20 +288,6 @@ minetest.register_node("default:papyrus", {
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}
 	},
 	groups = {snappy=3,flammable=2,dig_upwards=1},
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node("default:papyrus_roots", {
-	description = "Papyrus Roots",
-	tiles = {"default_papyrus_roots.png"},
-	paramtype = "light",
-	is_ground_content = true,
-	liquids_pointable = true,
-	after_dig_node = function(pos, node, metadata, digger)
-			node.name = "default:papyrus"
-			default.dig_up(pos, node, digger)
-		end,
-	groups = {snappy=3,flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
 })
 

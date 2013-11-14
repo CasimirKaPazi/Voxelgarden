@@ -7,60 +7,7 @@
 minetest.register_craft({
 	output = 'default:wood 4',
 	recipe = {
-		{'default:tree'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:wood 4',
-	recipe = {
-		{'default:tree_horizontal'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:tree_horizontal 2',
-	recipe = {
-		{'', 'default:tree'},
-		{'default:tree', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:tree 2',
-	recipe = {
-		{'', 'default:tree_horizontal'},
-		{'default:tree_horizontal', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:wood 4',
-	recipe = {
-		{'default:jungletree'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:wood 4',
-	recipe = {
-		{'default:jungletree_horizontal'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:jungletree_horizontal 2',
-	recipe = {
-		{'', 'default:jungletree'},
-		{'default:jungletree', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:jungletree 2',
-	recipe = {
-		{'', 'default:jungletree_horizontal'},
-		{'default:jungletree_horizontal', ''},
+		{'group:tree'},
 	}
 })
 
@@ -336,22 +283,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:papyrus_roots',
-	recipe = {
-		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
-		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
-		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:papyrus 9',
-	recipe = {
-		{'default:papyrus_roots'},
-	}
-})
-
-minetest.register_craft({
 	output = 'default:sandstone',
 	recipe = {
 		{'default:sand', 'default:sand'},
@@ -363,21 +294,6 @@ minetest.register_craft({
 	output = 'default:sand 4',
 	recipe = {
 		{'default:sandstone'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:desert_sandstone',
-	recipe = {
-		{'default:desert_sand', 'default:desert_sand'},
-		{'default:desert_sand', 'default:desert_sand'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:desert_sand 4',
-	recipe = {
-		{'default:desert_sandstone'},
 	}
 })
 
@@ -517,12 +433,6 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:coal_lump",
 	recipe = "group:tree",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:desert_stone",
-	recipe = "default:desert_sandstone",
 })
 
 --
