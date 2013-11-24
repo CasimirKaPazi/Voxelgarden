@@ -1,4 +1,3 @@
-use same version numbers as minetest
 support for mapgenv7
 
 perlinore
@@ -10,8 +9,6 @@ doors
 	also do sound when door is dug
 
 new/better textures
-	crack_anylength.png
-	default_desertsandstone.png
 	default_fence.png
 	default_snow*
 add some bed
