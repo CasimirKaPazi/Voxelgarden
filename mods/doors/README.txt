@@ -16,8 +16,13 @@ License of media (textures and sounds)
 Textures created by Fernando Zapata (CC BY-SA 3.0):
   door_wood.png
   door_wood_a.png
-  door_wood_a_r.png
   door_wood_b.png
-  door_wood_b_r.png
+  door_wood_brown.png
 
-All other textures (created by PilzAdam): WTFPL
+BlockMen (CC BY 3.0)
+  door_steel_a.png
+  door_steel_b.png
+
+Casimir (CC BY-SA 3.0)
+  door_steel.png
+  door_grey.png

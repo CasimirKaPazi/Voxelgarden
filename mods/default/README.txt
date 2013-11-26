@@ -48,14 +48,9 @@ Cisoun's WTFPL texture pack:
   default_tool_woodshovel.png
   default_tree.png
   default_tree_top.png
-  default_water.png
   default_wood.png
   default_ladder.png
   default_furnace_fire*
-
-RealBadAngel's animated water (WTFPL):
-  default_water_source_animated.png
-  default_water_flowing_animated.png
 
 VanessaE (WTFPL):
   default_nc_rb.png
@@ -133,6 +128,7 @@ Casimir (CC BY-SA 3.0)
   default_nc_front.png
   default_nc_side.png
   default_apple.png
+  default_fence.png
 
 21Me21 (WTFPL)
   default_grass_footsteps.png
@@ -142,6 +138,11 @@ Gambit (WTFPL)
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png
+
+BlockMen (CC BY 3.0)
+  default_water.png
+  default_water_source_animated.png
+  default_water_flowing_animated.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
