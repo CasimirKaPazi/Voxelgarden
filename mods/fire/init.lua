@@ -11,6 +11,7 @@ minetest.register_node("fire:basic_flame", {
 	}},
 	inventory_image = "fire_basic_flame.png",
 	light_source = 14,
+	waving = 1,
 	groups = {igniter=2,dig_immediate=3,hot=3},
 	drop = '',
 	walkable = false,
@@ -132,35 +133,6 @@ minetest.register_abm({
 		end
 	end,
 })
-
---[[
--- Rarely ignite things from far
-minetest.register_abm({
-	nodenames = {"group:igniter"},
-	neighbors = {"air"},
-	interval = 2,
-	chance = 10,
-	action = function(p0, node, _, _)
-		local reg = minetest.registered_nodes[node.name]
-		if not reg or not reg.groups.igniter or reg.groups.igniter < 2 then
-			return
-		end
-		local d = reg.groups.igniter
-		local p = minetest.find_node_near(p0, d, {"group:flammable"})
-		if p then
-			-- If there is water or stuff like that around flame, don't ignite
-			if fire.flame_should_extinguish(p) then
-				return
-			end
-			local p2 = fire.find_pos_for_flame_around(p)
-			if p2 then
-				minetest.set_node(p2, {name="fire:basic_flame"})
-				fire.on_flame_add_at(p2)
-			end
-		end
-	end,
-})
---]]
 
 -- Remove flammable nodes and flame
 minetest.register_abm({

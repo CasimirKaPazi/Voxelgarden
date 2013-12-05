@@ -176,6 +176,7 @@ minetest.register_node("default:jungleleaves", {
 	visual_scale = 1.3,
 	tiles = {"default_jungleleaves.png"},
 	paramtype = "light",
+	waving = 1,
 	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1},
 	drop = {
 		max_items = 1,
@@ -224,6 +225,7 @@ minetest.register_node("default:junglegrass", {
 	inventory_image = "default_junglegrass.png",
 	wield_image = "default_junglegrass.png",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
@@ -241,6 +243,7 @@ minetest.register_node("default:leaves", {
 	visual_scale = 1.3,
 	tiles = {"default_leaves.png"},
 	paramtype = "light",
+	waving = 1,
 	groups = {snappy=3, leafdecay=2, flammable=2, leaves=1},
 	drop = {
 		max_items = 1,
@@ -264,11 +267,11 @@ minetest.register_node("default:cactus", {
 	description = "Cactus",
 	tiles = {"default_cactus_top.png", "default_cactus_top.png", "default_cactus_side.png"},
 	is_ground_content = true,
+	groups = {snappy=1,choppy=3,flammable=2},
+	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
 	end,
-	groups = {snappy=1,choppy=3,flammable=2,dig_upwards=1},
-	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node("default:papyrus", {
@@ -280,15 +283,15 @@ minetest.register_node("default:papyrus", {
 	paramtype = "light",
 	walkable = false,
 	is_ground_content = true,
-	after_dig_node = function(pos, node, metadata, digger)
-		default.dig_up(pos, node, digger)
-	end,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}
 	},
-	groups = {snappy=3,flammable=2,dig_upwards=1},
+	groups = {snappy=3,flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
+	after_dig_node = function(pos, node, metadata, digger)
+		default.dig_up(pos, node, digger)
+	end,
 })
 
 minetest.register_node("default:bookshelf", {
@@ -1093,6 +1096,7 @@ minetest.register_node("default:grass_1", {
 	inventory_image = "default_grass_3.png",
 	wield_image = "default_grass_3.png",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy=3,flammable=3,attached_node=1},
@@ -1116,6 +1120,7 @@ minetest.register_node("default:grass_2", {
 	inventory_image = "default_grass_2.png",
 	wield_image = "default_grass_2.png",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
@@ -1134,6 +1139,7 @@ minetest.register_node("default:grass_3", {
 	inventory_image = "default_grass_3.png",
 	wield_image = "default_grass_3.png",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
@@ -1153,6 +1159,7 @@ minetest.register_node("default:grass_4", {
 	inventory_image = "default_grass_4.png",
 	wield_image = "default_grass_4.png",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
@@ -1172,6 +1179,7 @@ minetest.register_node("default:grass_5", {
 	inventory_image = "default_grass_5.png",
 	wield_image = "default_grass_5.png",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,

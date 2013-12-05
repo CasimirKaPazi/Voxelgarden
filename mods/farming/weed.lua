@@ -1,6 +1,7 @@
 minetest.register_node("farming:weed", {
 	description = "Weed",
 	paramtype = "light",
+	waving = 1,
 	walkable = false,
 	buildable_to = true,
 	drawtype = "plantlike",

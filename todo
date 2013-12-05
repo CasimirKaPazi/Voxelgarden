@@ -1,5 +1,4 @@
-support for mapgenv7
-better support for indev mapgen
+better support for mapgenv7
 
 perlinore
 	faster
@@ -20,8 +19,8 @@ drowning
 
 
 new/better textures
-	default_fence.png
 	default_snow*
+	default_ice.png
 	
 add some bed
 
