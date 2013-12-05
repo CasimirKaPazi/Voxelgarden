@@ -21,6 +21,9 @@ dofile(minetest.get_modpath("default").."/mapgen.lua")
 dofile(minetest.get_modpath("default").."/leafdecay.lua")
 dofile(minetest.get_modpath("default").."/player.lua")
 dofile(minetest.get_modpath("default").."/trees.lua")
+if minetest.setting_get("mg_name") == "v7" then
+	dofile(minetest.get_modpath("default").."/biomes.lua")
+end
 
 
 -- Support old code

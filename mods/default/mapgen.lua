@@ -327,6 +327,13 @@ function generate_nyancats(seed, minp, maxp)
 end
 
 minetest.register_on_generated(function(minp, maxp, seed)
+
+	-- Generate nyan rats
+	generate_nyancats(seed, minp, maxp)
+
+	-- For mapgen v7 see biomes.lua
+	if minetest.setting_get("mg_name") == "v7" then return end
+	
 	if maxp.y >= 2 and minp.y <= 0 then
 		-- Generate papyrus
 		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
@@ -497,8 +504,5 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		end
 		end
 	end
-
-	-- Generate nyan cats
-	generate_nyancats(seed, minp, maxp)
 end)
 
