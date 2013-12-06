@@ -81,6 +81,13 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'dye:white',
+	recipe = {
+		{'nodetest:bone'},
+	}
+})
+
 --
 -- Cooking recipes
 --

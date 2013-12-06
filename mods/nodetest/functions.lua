@@ -1,9 +1,9 @@
 --
--- Papyrus and cactus growing
+-- Papyrus growing
 --
 
 minetest.register_abm({
-	nodenames = {"default:papyrus_roots"},
+	nodenames = {"nodetest:papyrus_roots"},
 	neighbors = {"group:water"},
 	interval = 50,
 	chance = 50,
