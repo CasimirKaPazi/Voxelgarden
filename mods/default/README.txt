@@ -34,8 +34,6 @@ Cisoun's WTFPL texture pack:
   default_dirt.png
   default_grass.png
   default_grass_side.png
-  default_jungletree.png
-  default_jungletree_top.png
   default_lava.png
   default_sand.png
   default_sign_wall.png
@@ -143,6 +141,10 @@ BlockMen (CC BY 3.0)
   default_water.png
   default_water_source_animated.png
   default_water_flowing_animated.png
+
+WisdomFire (CC BY-SA 3.0)
+  default_jungletree.png
+  default_jungletree_top.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
