@@ -12,7 +12,7 @@ minetest.register_node("fire:basic_flame", {
 	inventory_image = "fire_basic_flame.png",
 	light_source = 14,
 	waving = 1,
-	groups = {igniter=2,dig_immediate=3,hot=3},
+	groups = {igniter=2, dig_immediate=3, hot=200, wield_light=13},
 	drop = '',
 	walkable = false,
 	buildable_to = true,

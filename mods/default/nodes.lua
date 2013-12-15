@@ -488,7 +488,7 @@ minetest.register_node("default:lava_flowing", {
 	liquid_renewable = false,
 	damage_per_second = 4*2,
 	post_effect_color = {a=192, r=255, g=64, b=0},
-	groups = {lava=3, liquid=2, hot=3, igniter=1, not_in_creative_inventory=1},
+	groups = {lava=3, liquid=2, hot=700, igniter=1, not_in_creative_inventory=1, wield_light=2},
 })
 
 minetest.register_node("default:lava_source", {
@@ -521,7 +521,7 @@ minetest.register_node("default:lava_source", {
 	liquid_renewable = false,
 	damage_per_second = 4*2,
 	post_effect_color = {a=192, r=255, g=64, b=0},
-	groups = {lava=3, liquid=2, hot=3, igniter=1},
+	groups = {lava=3, liquid=2, hot=1200, igniter=1, wield_light=5},
 })
 
 minetest.register_node("default:torch", {
@@ -546,7 +546,7 @@ minetest.register_node("default:torch", {
 		wall_bottom = {-0.125, -0.5, -0.125, 0.125, 0.125, 0.125},
 		wall_side = {-0.5, -0.375, -0.1, -0.25, 0.25, 0.125},
 	},
-	groups = {choppy=2,dig_immediate=3,flammable=1,hot=2,attached_node=1},
+	groups = {choppy=2, dig_immediate=3, flammable=1, hot=30, attached_node=1, wield_light=LIGHT_MAX-1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
 })
