@@ -1,210 +1,183 @@
-minetest.register_tool("screwdriver:screwdriver", {
-	description = "Screwdriver",
-	inventory_image = "screwdriver.png",
-	on_use = function(itemstack, user, pointed_thing)
-	screwdriver_handler(itemstack,user,pointed_thing)
-	return itemstack
-	end,
-})
+-- Minetest 0.4 mod: bucket
+-- See README.txt for licensing and other information.
 
-for i=1,4,1 do
-minetest.register_tool("screwdriver:screwdriver"..i, {
-	description = "Screwdriver in Mode "..i,
-	inventory_image = "screwdriver.png^tool_mode"..i..".png",
-	wield_image = "screwdriver.png",
-	groups = {not_in_creative_inventory=1},
-	on_use = function(itemstack, user, pointed_thing)
-	screwdriver_handler(itemstack,user,pointed_thing)
-	return itemstack
-	end,
-})
-end
-faces_table=
-{
---look dir  +X  +Y  +Z    -Z  -Y  -X
-			2 , 0 , 4 ,    5 , 1 , 3 ,  -- rotate around y+ 0 - 3
-			4 , 0 , 3 ,    2 , 1 , 5 ,
-			3 , 0 , 5 ,    4 , 1 , 2 ,
-			5 , 0 , 2 ,    3 , 1 , 4 ,
+local LIQUID_MAX = 8  --The number of water levels when liquid_finite is enabled
 
-			2 , 5 , 0 ,    1 , 4 , 3 ,  -- rotate around z+ 4 - 7
-			4 , 2 , 0 ,    1 , 3 , 5 ,
-			3 , 4 , 0 ,    1 , 5 , 2 ,
-			5 , 3 , 0 ,    1 , 2 , 4 ,
-
-			2 , 4 , 1 ,    0 , 5 , 3 ,  -- rotate around z- 8 - 11
-			4 , 3 , 1 ,    0 , 2 , 5 ,
-			3 , 5 , 1 ,    0 , 4 , 2 ,
-			5 , 2 , 1 ,    0 , 3 , 4 ,
-
-			0 , 3 , 4 ,    5 , 2 , 1 ,  -- rotate around x+ 12 - 15
-			0 , 5 , 3 ,    2 , 4 , 1 ,
-			0 , 2 , 5 ,    4 , 3 , 1 ,
-			0 , 4 , 2 ,    3 , 5 , 1 ,
-
-			1 , 2 , 4 ,    5 , 3 , 0 ,  -- rotate around x- 16 - 19  
-			1 , 4 , 3 ,    2 , 5 , 0 ,  
-			1 , 3 , 5 ,    4 , 2 , 0 ,  
-			1 , 5 , 2 ,    3 , 4 , 0 ,  
-
-			3 , 1 , 4 ,    5 , 0 , 2 ,  -- rotate around y- 20 - 23
-			5 , 1 , 3 ,    2 , 0 , 4 ,  
-			2 , 1 , 5 ,    4 , 0 , 3 ,  
-			4 , 1 , 2 ,    3 , 0 , 5  
-}
-
-function screwdriver_handler (itemstack,user,pointed_thing)
-	local keys=user:get_player_control()
-	local player_name=user:get_player_name()
-	local item=itemstack:to_table()
-	if item["metadata"]=="" or keys["sneak"]==true then return screwdriver_setmode(user,itemstack) end
-	local mode=tonumber((item["metadata"]))
-	if pointed_thing.type~="node" then return end
-	local pos=minetest.get_pointed_thing_position(pointed_thing,above)
-	local node=minetest.get_node(pos)
-	local node_name=node.name
-	if minetest.registered_nodes[node_name].paramtype2 == "facedir" then
-		if minetest.registered_nodes[node_name].drawtype == "nodebox" then
-			if minetest.registered_nodes[node_name].node_box["type"]~="fixed" then return end
-			end
-		if node.param2==nil  then return end
-		-- Get ready to set the param2
-			local n = node.param2
-			local axisdir=math.floor(n/4)
-			local rotation=n-axisdir*4
-			if mode==1 then 
-				rotation=rotation+1
-				if rotation>3 then rotation=0 end
-				n=axisdir*4+rotation
-			end
-
-			if mode==2 then 
-				local ppos=user:getpos()
-				local pvect=user:get_look_dir()
-				local face=get_node_face(pos,ppos,pvect)
-				if face == nil then return end
-				local index=convertFaceToIndex(face)
-				local face1=faces_table[n*6+index+1]
-				local found = 0
-				while found == 0 do
-					n=n+1
-					if n>23 then n=0 end
-					if faces_table[n*6+index+1]==face1 then found=1 end
-				end
-			end
-				
-			if mode==3 then 
-				axisdir=axisdir+1
-				if axisdir>5 then axisdir=0 end
-				n=axisdir*4
-			end
-
-			if mode==4 then 
-				local ppos=user:getpos()
-				local pvect=user:get_look_dir()
-				local face=get_node_face(pos,ppos,pvect)
-				if face == nil then return end
-				if axisdir == face then
-					rotation=rotation+1
-				if rotation>3 then rotation=0 end
-					n=axisdir*4+rotation
-				else
-					n=face*4
-				end
-			end
-			--print (dump(axisdir..", "..rotation))
-			local meta = minetest.get_meta(pos)
-			local meta0 = meta:to_table()
-			node.param2 = n
-			minetest.set_node(pos,node)
-			meta = minetest.get_meta(pos)
-			meta:from_table(meta0)
-			local item=itemstack:to_table()
-			local item_wear=tonumber((item["wear"]))
-			item_wear=item_wear+327 
-			if item_wear>65535 then itemstack:clear() return itemstack end
-			item["wear"]=tostring(item_wear)
-			itemstack:replace(item)
-			return itemstack
-	end
-end
-
-mode_text={
-{"Change rotation, Don't change axisdir."},
-{"Keep choosen face in front then rotate it."},
-{"Change axis dir, Reset rotation."},
-{"Bring top in front then rotate it."},
-}
-
-function screwdriver_setmode(user,itemstack)
-local player_name=user:get_player_name()
-local item=itemstack:to_table()
-local mode
-if item["metadata"]=="" then
-	minetest.chat_send_player(player_name,"Hold shift and use to change screwdriwer modes.")
-	mode=0
-else mode=tonumber((item["metadata"]))
-end
-mode=mode+1
-if mode==5 then mode=1 end
-minetest.chat_send_player(player_name, "Screwdriver mode : "..mode.." - "..mode_text[mode][1] )
-item["name"]="screwdriver:screwdriver"..mode
-item["metadata"]=tostring(mode)
-itemstack:replace(item)
-return itemstack
-end
+minetest.register_alias("bucket", "bucket:bucket_empty")
+minetest.register_alias("bucket_water", "bucket:bucket_water")
+minetest.register_alias("bucket_lava", "bucket:bucket_lava")
 
 minetest.register_craft({
-output = "screwdriver:screwdriver",
-recipe = {
-{"default:steel_ingot"},
-{"group:stick"}
-}
+	output = 'bucket:bucket_empty 1',
+	recipe = {
+		{'default:steel_ingot', '', 'default:steel_ingot'},
+		{'', 'default:steel_ingot', ''},
+	}
 })
 
-function get_node_face(pos,ppos,pvect)
-	ppos={x=ppos.x-pos.x,y=ppos.y-pos.y+1.5,z=ppos.z-pos.z}
-	if pvect.x>0 then
-		local t=(-0.5-ppos.x)/pvect.x
-		local y_int=ppos.y+t*pvect.y
-		local z_int=ppos.z+t*pvect.z
-		if y_int>-0.4 and y_int<0.4 and z_int>-0.4 and z_int<0.4 then return 4 end 
-	elseif pvect.x<0 then
-		local t=(0.5-ppos.x)/pvect.x
-		local y_int=ppos.y+t*pvect.y
-		local z_int=ppos.z+t*pvect.z
-		if y_int>-0.4 and y_int<0.4 and z_int>-0.4 and z_int<0.4 then return 3 end 
+bucket = {}
+bucket.liquids = {}
+
+local function check_protection(pos, name, text)
+	if minetest.is_protected(pos, name) then
+		minetest.log("action", (name ~= "" and name or "A mod")
+			.. " tried to " .. text
+			.. " at protected position "
+			.. minetest.pos_to_string(pos)
+			.. " with a bucket")
+		minetest.record_protection_violation(pos, name)
+		return true
 	end
-	if pvect.y>0 then
-		local t=(-0.5-ppos.y)/pvect.y
-		local x_int=ppos.x+t*pvect.x
-		local z_int=ppos.z+t*pvect.z
-		if x_int>-0.4 and x_int<0.4 and z_int>-0.4 and z_int<0.4 then return 5 end 
-	elseif pvect.y<0 then
-		local t=(0.5-ppos.y)/pvect.y
-		local x_int=ppos.x+t*pvect.x
-		local z_int=ppos.z+t*pvect.z
-		if x_int>-0.4 and x_int<0.4 and z_int>-0.4 and z_int<0.4 then return 0 end 
-	end
-	if pvect.z>0 then
-		local t=(-0.5-ppos.z)/pvect.z
-		local x_int=ppos.x+t*pvect.x
-		local y_int=ppos.y+t*pvect.y
-		if x_int>-0.4 and x_int<0.4 and y_int>-0.4 and y_int<0.4 then return 2 end 
-	elseif pvect.z<0 then
-		local t=(0.5-ppos.z)/pvect.z
-		local x_int=ppos.x+t*pvect.x
-		local y_int=ppos.y+t*pvect.y
-		if x_int>-0.4 and x_int<0.4 and y_int>-0.4 and y_int<0.4 then return 1 end 
+	return false
+end
+
+-- Register a new liquid
+--   source = name of the source node
+--   flowing = name of the flowing node
+--   itemname = name of the new bucket item (or nil if liquid is not takeable)
+--   inventory_image = texture of the new bucket item (ignored if itemname == nil)
+-- This function can be called from any mod (that depends on bucket).
+function bucket.register_liquid(source, flowing, itemname, inventory_image, name)
+	bucket.liquids[source] = {
+		source = source,
+		flowing = flowing,
+		itemname = itemname,
+	}
+	bucket.liquids[flowing] = bucket.liquids[source]
+
+	if itemname ~= nil then
+		minetest.register_craftitem(itemname, {
+			description = name,
+			inventory_image = inventory_image,
+			stack_max = 1,
+			liquids_pointable = true,
+			groups = {not_in_creative_inventory=1},
+			on_place = function(itemstack, user, pointed_thing)
+				-- Must be pointing to node
+				if pointed_thing.type ~= "node" then
+					return
+				end
+				
+				-- Call on_rightclick if the pointed node defines it
+				if user and not user:get_player_control().sneak then
+					local n = minetest.get_node(pointed_thing.under)
+					local nn = n.name
+					local ndef = minetest.registered_nodes[nn]
+					if ndef and ndef.on_rightclick then
+						return ndef.on_rightclick(
+							pointed_thing.under,
+							n, user,
+							itemstack) or itemstack
+					end
+				end
+
+				local place_liquid = function(pos, node, source, flowing, fullness)
+					if check_protection(pos,
+							user and user:get_player_name() or "",
+							"place "..source) then
+						return
+					end
+					if math.floor(fullness/128) == 1 or
+						not minetest.setting_getbool("liquid_finite") then
+						minetest.add_node(pos, {name=source,
+								param2=fullness})
+						return
+					elseif node.name == flowing then
+						fullness = fullness + node.param2
+					elseif node.name == source then
+						fullness = LIQUID_MAX
+					end
+
+					if fullness >= LIQUID_MAX then
+						minetest.add_node(pos, {name=source,
+								param2=LIQUID_MAX})
+					else
+						minetest.add_node(pos, {name=flowing,
+								param2=fullness})
+					end
+				end
+
+				-- Check if pointing to a buildable node
+				local node = minetest.get_node(pointed_thing.under)
+				local fullness = tonumber(itemstack:get_metadata())
+				if not fullness then fullness = LIQUID_MAX end
+
+				if minetest.registered_nodes[node.name].buildable_to then
+					-- buildable; replace the node
+					place_liquid(pointed_thing.under, node,
+							source, flowing, fullness)
+				else
+					-- not buildable to; place the liquid above
+					-- check if the node above can be replaced
+					local node = minetest.get_node(pointed_thing.above)
+					if minetest.registered_nodes[node.name].buildable_to then
+						place_liquid(pointed_thing.above,
+								node, source,
+								flowing, fullness)
+					else
+						-- do not remove the bucket with the liquid
+						return
+					end
+				end
+				return {name="bucket:bucket_empty"}
+			end
+		})
 	end
 end
 
-function convertFaceToIndex (face)
-if face==0 then return 1 end
-if face==1 then return 2 end
-if face==2 then return 3 end
-if face==3 then return 0 end
-if face==4 then return 5 end
-if face==5 then return 4 end
-end
+minetest.register_craftitem("bucket:bucket_empty", {
+	description = "Empty Bucket",
+	inventory_image = "bucket.png",
+	stack_max = 1,
+	liquids_pointable = true,
+	on_use = function(itemstack, user, pointed_thing)
+		-- Must be pointing to node
+		if pointed_thing.type ~= "node" then
+			return
+		end
+		-- Check if pointing to a liquid source
+		node = minetest.get_node(pointed_thing.under)
+		liquiddef = bucket.liquids[node.name]
+		if liquiddef ~= nil and liquiddef.itemname ~= nil and
+			(node.name == liquiddef.source or
+			(node.name == liquiddef.flowing and
+				minetest.setting_getbool("liquid_finite"))) then
+			if check_protection(pointed_thing.under,
+					user:get_player_name(),
+					"take ".. node.name) then
+				return
+			end
 
+			minetest.add_node(pointed_thing.under, {name="air"})
+
+			if node.name == liquiddef.source then
+				node.param2 = LIQUID_MAX
+			end
+			return ItemStack({name = liquiddef.itemname,
+					metadata = tostring(node.param2)})
+		end
+	end,
+})
+
+bucket.register_liquid(
+	"default:water_source",
+	"default:water_flowing",
+	"bucket:bucket_water",
+	"bucket_water.png",
+	"Water Bucket"
+)
+
+bucket.register_liquid(
+	"default:lava_source",
+	"default:lava_flowing",
+	"bucket:bucket_lava",
+	"bucket_lava.png",
+	"Lava Bucket"
+)
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "bucket:bucket_lava",
+	burntime = 60,
+	replacements = {{"bucket:bucket_lava", "bucket:bucket_empty"}},
+})
