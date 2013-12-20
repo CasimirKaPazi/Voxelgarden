@@ -49,19 +49,17 @@
 
 drowning = {}	-- Exported functions
 
-local holding_breath            = {}    -- How long have players been holding their breath?
-local scheduling_interval       = {}    -- Offset used for calculating the next schedule damage.
-local next_scheduled_damage     = {}    -- Next time when drowning is accounted for.
+local holding_breath			= {}	-- How long have players been holding their breath?
+local scheduling_interval		= {}	-- Offset used for calculating the next schedule damage.
+local next_scheduled_damage		= {}	-- Next time when drowning is accounted for.
+local player_bubbles			= {}	-- Number of half bubbles shown in hud.
 
-local START_DROWNING_SECONDS    = 32    -- Time that you can hold your breath unaffected.
-local FACTOR_DROWNING_SECONDS   = 0.5   -- Each scheduled damage offset is shortened by this.
-local MIN_DROWNING_SECONDS      = 1     -- Scheduled damage offsets won't be shorter than this.
-local DROWNING_DAMAGE           = 1     -- The drowning damage dealt per scheduled offset.
-local MIN_TIME_SLICE            = 0.5   -- Minimum number of seconds that must pass before
-                                        -- the system actually does some expensive calculations.
-
-local BREATH_TOOLNAME           = "drowning:breath_meter"
-local BREATH_TOOLDESC           = "Breath-O-Meter"
+local START_DROWNING_SECONDS	= 40	-- Time that you can hold your breath unaffected.
+local FACTOR_DROWNING_SECONDS	= 0.5	-- Each scheduled damage offset is shortened by this.
+local MIN_DROWNING_SECONDS		= 1		-- Scheduled damage offsets won't be shorter than this.
+local DROWNING_DAMAGE			= 1		-- The drowning damage dealt per scheduled offset.
+local MIN_TIME_SLICE			= 0.5	-- Minimum number of seconds that must pass before
+										-- the system actually does some expensive calculations.
 
 
 local timer = 0
@@ -70,7 +68,7 @@ if minetest.setting_getbool("enable_damage") == true then
 ------------------------------------------------------------------------
 -- no_drown privilege
 --
--- Players with this privilege don't drown in liquids
+-- Players with this privilege don't drown in liquids.
 --
 minetest.register_privilege("no_drown", {
 	description = "Player is not drowning",
@@ -133,7 +131,7 @@ end
 ------------------------------------------------------------------------
 -- init_drown_state
 --
--- Initialise the player's state variables, if necessary
+-- Initialize the player's state variables, if necessary
 --
 local function init_drown_state(name)
 	if holding_breath[name] == nil then
@@ -159,6 +157,10 @@ local function reset_drown_state(name)
 	holding_breath[name]        = 0
 	scheduling_interval[name]   = START_DROWNING_SECONDS
 	next_scheduled_damage[name] = START_DROWNING_SECONDS
+	-- Don't display breath in hud.
+	local player = minetest.get_player_by_name(name)
+	player:hud_remove(player_bubbles[name])
+	player_bubbles[name] = nil
 end
 
 
@@ -268,48 +270,9 @@ local function on_gasp(player)
 
 	reset_drown_state(name)
 	play_drown_sound(player, "drowning_gasp", 32)
-end
-
-
-
-------------------------------------------------------------------------
--- Find index of player's first "breath meter" tool in his/her main
--- inventory.
---
-local function find_first_breath_tool_index(player)
-	local inventory = player:get_inventory()
-
-	if inventory then
-		for i, iref in ipairs(inventory:get_list("main")) do
-			if iref:get_name() == BREATH_TOOLNAME then
-				return i
-			end
-		end
-	end
-	return nil
-end
-
-
-
-------------------------------------------------------------------------
--- Display the current drown status in the player's first "breath meter"
--- tool found in his/her main inventory.
---
-local function update_breath_meter(player)
-	local btool = find_first_breath_tool_index(player)
-
-	if btool then
-		local name   = player:get_player_name()
-        local breath = math.min(holding_breath[name], START_DROWNING_SECONDS)
-		local wear   = (breath / START_DROWNING_SECONDS) * 65535
-
-		if breath == 0 then
-			player:get_inventory():set_stack("main", btool, ItemStack(BREATH_TOOLNAME))
-		else
-			player:get_inventory():set_stack("main", btool,
-				ItemStack(BREATH_TOOLNAME.." 1 "..wear))
-		end
-	end
+	-- Don't display breath in hud.
+	player:hud_remove(player_bubbles[name])
+	player_bubbles[name] = nil
 end
 
 
@@ -351,11 +314,27 @@ minetest.register_globalstep(function(dtime)
 		if is_player_in_liquid(player) then
 			holding_breath[name] = holding_breath[name] + MIN_TIME_SLICE
 			on_drown(player)
+			-- Display the remaining breath in hud.
+--			print("holding breath = ".. holding_breath[name] ..", scheduling interval = ".. scheduling_interval[name] ..", next scheduled damage = ".. next_scheduled_damage[name] .."")
+			local bubbles = 0
+			if scheduling_interval[name] > 1 then
+				bubbles = math.ceil(20*((next_scheduled_damage[name] - holding_breath[name])/scheduling_interval[name]))
+			end
+			if player_bubbles[name] then
+				player:hud_change(player_bubbles[name], "number", bubbles)
+			else
+				player_bubbles[name] = player:hud_add({
+					hud_elem_type = "statbar",
+					text = "bubble.png",
+					number = 20,
+					direction = 1,
+					position = {x=0.5,y=0.9},
+					offset = {x=0, y=19},
+				})
+			end
 		elseif holding_breath[name] > 0 then
 			on_gasp(player)
 		end
-
-		update_breath_meter(player)
 
 		-- save drowningcounter
 		set_drowning(name, holding_breath[name])
@@ -367,13 +346,4 @@ minetest.register_on_respawnplayer(function(player)
 		reset_drown_state(name)
 	end)
 end
-
-
-minetest.register_tool(BREATH_TOOLNAME, {
-	description     = BREATH_TOOLDESC,
-	wield_image     = "wieldhand.png",
-	wield_scale     = {x=1,y=1,z=2.5},
-	inventory_image = "drowning_meter.png"
-})
-
 
