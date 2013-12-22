@@ -37,7 +37,7 @@ minetest.register_node("farming:cotton_1", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0, 0.375}
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, sickle=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, sickle=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -53,7 +53,7 @@ minetest.register_node("farming:cotton_2", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.25, 0.375}
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -75,7 +75,7 @@ minetest.register_node("farming:cotton_3", {
 	after_dig_node = function(pos)
 		minetest.add_node(pos, {name="farming:cotton_2"})	
 	end,
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}

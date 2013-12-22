@@ -36,7 +36,7 @@ minetest.register_node("farming:wheat_1", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, -0.25, 0.375}
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -53,7 +53,7 @@ minetest.register_node("farming:wheat_2", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0, 0.375}
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -70,7 +70,7 @@ minetest.register_node("farming:wheat_3", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.25, 0.375}
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -95,7 +95,7 @@ minetest.register_node("farming:wheat_4", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
