@@ -10,9 +10,6 @@ License of media (textures):
 
 Created by VanessaE (License: WTFPL):
   farming_wheat.png
-  farming_cotton_1.png
-  farming_cotton_2.png
-  farming_cotton_3.png
   
 Created by Casimir (License: CC BY-SA):
   farming_string.png
@@ -36,3 +33,8 @@ Created by Mito551 (License: CC BY-SA):
   farming_wheat_2.png
   farming_wheat_3.png
   farming_wheat_4.png
+
+Gambit (WTFPL):
+  farming_cotton_1.png
+  farming_cotton_2.png
+  farming_cotton_3.png

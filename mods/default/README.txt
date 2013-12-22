@@ -32,11 +32,8 @@ Cisoun's WTFPL texture pack:
   default_chest_side.png
   default_chest_top.png
   default_dirt.png
-  default_grass.png
-  default_grass_side.png
   default_lava.png
   default_sand.png
-  default_sign_wall.png
   default_tool_mesepick.png
   default_tool_steelpick.png
   default_tool_steelshovel.png
@@ -44,17 +41,13 @@ Cisoun's WTFPL texture pack:
   default_tool_stoneshovel.png
   default_tool_woodpick.png
   default_tool_woodshovel.png
-  default_tree.png
-  default_tree_top.png
   default_wood.png
   default_ladder.png
   default_furnace_fire*
 
 VanessaE (WTFPL):
   default_nc_rb.png
-  default_grass_*.png
   default_torch_animated.png
-  default_torch_on_ceiling_animated.png
   default_torch_on_floor_animated.png
   default_torch_on_floor.png
   default_torch.png
@@ -71,12 +64,7 @@ MirceaKitsune (WTFPL):
 Jordach (CC BY-SA 3.0):
   character.png
 
-PilzAdam (WTFPL):
-  default_snowball.png
-
 Splizard (CC BY-SA 3.0):
-  default_snow.png
-  default_snow_side.png
   default_ice.png
 
 Zeg9 (CC BY-SA 3.0):
@@ -127,12 +115,23 @@ Casimir (CC BY-SA 3.0)
   default_nc_side.png
   default_apple.png
   default_fence.png
-
-21Me21 (WTFPL)
+  default_grass.png
+  default_grass_side.png
+  default_torch_on_ceiling_animated.png
   default_grass_footsteps.png
 
 Gambit (WTFPL)
   default_book.png
+  default_cactus_side.png
+  default_cactus_top.png
+  default_grass_*
+  default_junglegrass.png
+  default_sign_wall.png
+  default_snow.png
+  default_snowball.png
+  default_snow_side.png
+  default_tree.png
+  default_tree_top.png
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png
