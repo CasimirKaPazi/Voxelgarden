@@ -7,7 +7,8 @@ function drop_attached_node(p)
 		y = math.floor(p.y + 0.5),
 		z = math.floor(p.z + 0.5),
 	}
-	if minetest.registered_nodes[nn].drop == nil then
+	local drops = minetest.registered_nodes[nn].drop
+	if drops == nil or minetest.registered_nodes[drops] ~= nil then
 		-- when there are no drops defined let the node fall down
 		spawn_falling_node(pos, node)
 	else
