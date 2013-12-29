@@ -47,9 +47,7 @@ function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
 	end
 	
 	-- Leaves
---	y = y+th-1 -- (x, y, z) is now last piece of trunk
-	print("[conifer] xyz = ".. x ..",".. y ..",".. z .."; th = ".. th .."")
-	local leaves_a = VoxelArea:new{MinEdge={x=-3, y=-3, z=-3}, MaxEdge={x=3, y=th+2, z=3}}
+	local leaves_a = VoxelArea:new{MinEdge={x=-4, y=0, z=-4}, MaxEdge={x=4, y=th+2, z=4}}
 	local leaves_buffer = {}
 
 	-- Add leaves on the top
@@ -63,11 +61,10 @@ function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
 	-- Add rings of leaves randomly
 	local d = 4
 	for yi = 5, th-1 do
-	d = pr:next(0,d+1)
+	d = pr:next(1,d+1)
 	for xi = -d, d do
 	for zi = -d, d do
 		if math.abs(xi) + math.abs(zi) <= d or math.abs(zi) + math.abs(xi) <= d then
---		print("[conifer] xiyizi = ".. xi ..",".. yi ..",".. zi .."; d = ".. d .."")
 		leaves_buffer[leaves_a:index(xi, yi, zi)] = true
 		end
 	end
