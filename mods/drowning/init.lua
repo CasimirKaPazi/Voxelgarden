@@ -327,7 +327,7 @@ minetest.register_globalstep(function(dtime)
 					hud_elem_type = "statbar",
 					text = "bubble.png",
 					number = 20,
-					direction = 1,
+					dir = 0,
 					position = {x=0.5,y=0.9},
 					offset = {x=0, y=19},
 				})
