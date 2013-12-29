@@ -94,29 +94,3 @@ minetest.register_abm({
 		default.leafdecay(p0, node, _, _)
 	end
 })
-
-minetest.register_abm({
-	nodenames = {"default:sapling"},
-	neighbors = {"default:sapling", "default:tree", "default:junglesapling", "default:jungletree"},
-	interval = 2,
-	chance = 3,
-	action = function(pos)
-		local n_under = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
-		if n_under.name == "default:dirt_with_grass" or n_under.name == "default:dirt" then
-			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
-		end
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"default:junglesapling"},
-	neighbors = {"default:sapling", "default:tree", "default:junglesapling", "default:jungletree"},
-	interval = 2,
-	chance = 3,
-	action = function(pos)
-		local n_under = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
-		if n_under.name == "default:dirt_with_grass" or n_under.name == "default:dirt" then
-			minetest.set_node(pos, {name="default:junglegrass"})
-		end
-	end,
-})
