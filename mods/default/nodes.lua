@@ -218,7 +218,7 @@ minetest.register_node("default:junglesapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 -- aliases for tree growing abm in content_abm.cpp
@@ -1053,7 +1053,7 @@ minetest.register_node("default:sapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
