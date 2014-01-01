@@ -41,7 +41,13 @@ function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
 	-- Trunk
 	for yy = y, y+th-1 do
 		local vi = a:index(x, yy, z)
-		if a:contains(x, yy, z) and (data[vi] == c_air or yy == y) then
+		if
+			a:contains(x, yy, z)
+			and (data[vi] == c_air
+			or data[vi] == c_coniferleaves_1
+			or data[vi] == c_coniferleaves_2
+			or yy == y)
+		then
 			data[vi] = c_conifertree
 		end
 	end
