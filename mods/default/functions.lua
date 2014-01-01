@@ -115,6 +115,8 @@ minetest.register_abm({
 			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
 			return
 		end
+		local above_name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
+		if above_name ~= "air" and above_name ~= "ignore" then return end
 		-- Otherwise grow a tree.
 		print("A sapling grows into a tree at "..minetest.pos_to_string(pos))
 		local vm = minetest.get_voxel_manip()
@@ -140,6 +142,8 @@ minetest.register_abm({
 			minetest.set_node(pos, {name="default:junglegrass"})
 			return
 		end
+		local above_name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
+		if above_name ~= "air" and above_name ~= "ignore" then return end
 		-- Otherwise grow a tree.
 		print("A jungle sapling grows into a tree at "..minetest.pos_to_string(pos))
 		local vm = minetest.get_voxel_manip()
