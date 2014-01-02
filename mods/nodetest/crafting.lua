@@ -37,13 +37,13 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'nodetest:conifertree_horizontal 2',
 	recipe = {
-		{'', 'default:conifertree'},
-		{'default:conifertree', ''},
+		{'', 'nodetest:conifertree'},
+		{'nodetest:conifertree', ''},
 	}
 })
 
 minetest.register_craft({
-	output = 'default:conifertree 2',
+	output = 'nodetest:conifertree 2',
 	recipe = {
 		{'', 'nodetest:conifertree_horizontal'},
 		{'nodetest:conifertree_horizontal', ''},
