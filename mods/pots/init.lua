@@ -349,19 +349,10 @@ minetest.register_craft( {
 minetest.register_craft( {
 	output = "pots:seedling",
 	recipe = {
-	        { "default:sapling" },
+	        { "group:sapling" },
 	        { "pots:pot" }
 	},
 })
-
-minetest.register_craft( {
-	output = "pots:seedling",
-	recipe = {
-	        { "default:junglesapling" },
-	        { "pots:pot" }
-	},
-})
-
 
 --
 -- ABM
