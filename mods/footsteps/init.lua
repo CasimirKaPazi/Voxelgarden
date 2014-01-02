@@ -12,9 +12,16 @@ minetest.register_on_leaveplayer(function(player)
 end)
 
 -- chance to change is odd of 100
-local odd = 20
+local odd = 30
+
+local timer = 0
 
 minetest.register_globalstep(function(dtime)
+	-- Don't check all the time.
+	timer = timer + 0.5
+	if timer < 5 then return end
+	timer = 0
+	
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local pos = player:getpos()
 		local player_name = player:get_player_name()
