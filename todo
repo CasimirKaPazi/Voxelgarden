@@ -9,17 +9,9 @@ fire
 doors
 	also do sound when hand is used
 	also do sound when door is dug
-	
-hunger
-	depend hunger on health left
-	
-drowning
-	combine with engine side drowning system
-
 
 
 new/better textures
-	default_snow*
 	default_ice.png
 	
 add some bed
