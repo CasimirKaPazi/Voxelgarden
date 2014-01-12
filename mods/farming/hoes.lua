@@ -105,15 +105,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = "farming:hoe_stone",
-	recipe = {
-		{"default:cobble", "default:cobble"},
-		{"", "group:stick"},
-		{"", "group:stick"}
-	}
-})
-
 minetest.register_tool("farming:hoe_steel", {
 	description = "Steel Hoe",
 	inventory_image = "farming_hoe_steel.png",

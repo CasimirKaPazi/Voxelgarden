@@ -46,15 +46,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:pick_wood',
-	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
-	}
-})
-
-minetest.register_craft({
 	output = 'default:pick_stone',
 	recipe = {
 		{'group:stone', 'group:stone', 'group:stone'},
@@ -123,15 +114,6 @@ minetest.register_craft({
 		{'default:steel_ingot'},
 		{'group:stick'},
 		{'group:stick'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:axe_wood',
-	recipe = {
-		{'group:wood', 'group:wood'},
-		{'group:wood', 'group:stick'},
-		{'', 'group:stick'},
 	}
 })
 

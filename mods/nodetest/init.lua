@@ -7,4 +7,5 @@ dofile(minetest.get_modpath("nodetest").."/nodes.lua")
 dofile(minetest.get_modpath("nodetest").."/craftitems.lua")
 dofile(minetest.get_modpath("nodetest").."/crafting.lua")
 dofile(minetest.get_modpath("nodetest").."/trees.lua")
+dofile(minetest.get_modpath("nodetest").."/mapgen.lua")
 

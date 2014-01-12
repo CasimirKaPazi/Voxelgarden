@@ -165,7 +165,7 @@ minetest.register_node("default:brick", {
 minetest.register_node("default:tree", {
 	description = "Tree",
 	tiles = {"default_tree_top.png", "default_tree_top.png", "default_tree.png"},
-	groups = {tree=1, choppy=2, oddly_breakable_by_hand=1, flammable=1, melt=750},
+	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -173,7 +173,7 @@ minetest.register_node("default:tree", {
 minetest.register_node("default:jungletree", {
 	description = "Jungle Tree",
 	tiles = {"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
-	groups = {tree=1, choppy=2, oddly_breakable_by_hand=1, flammable=1, melt=750},
+	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -979,7 +979,7 @@ minetest.register_node("default:cobble", {
 	tiles = {"default_cobble.png"},
 	is_ground_content = true,
 	melt = "default:lava_flowing",
-	groups = {cracky=3, stone=2, melt=2900},
+	groups = {cracky=3, melt=2900},
 	sounds = default.node_sound_stone_defaults(),
 })
 

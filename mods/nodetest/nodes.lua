@@ -15,6 +15,17 @@ minetest.register_node("nodetest:desert_sandstone", {
 minetest.register_alias("default:desertsandstone", "nodetest:desert_sandstone")
 minetest.register_alias("default:desert_sandstone", "nodetest:desert_sandstone")
 
+minetest.register_node("nodetest:rock", {
+	description = "Rock",
+	tiles = {"nodetest_rock.png"},
+	inventory_image = "nodetest_rock_item.png",
+	wield_image = "nodetest_rock_item.png",
+	is_ground_content = true,
+	melt = "default:lava_flowing",
+	groups = {cracky=3, stone=2, oddly_breakable_by_hand=1, melt=2900},
+	sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("nodetest:tree_horizontal", {
 	description = "Tree",
 	tiles = {
@@ -26,13 +37,13 @@ minetest.register_node("nodetest:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1, choppy=2, oddly_breakable_by_hand=1, flammable=1, melt=750},
+	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_alias("default:tree_horizontal", "nodetest:tree_horizontal")
 
-minetest.register_node(":default:jungletree_horizontal", {
+minetest.register_node("nodetest:jungletree_horizontal", {
 	description = "Jungle Tree",
 		tiles = {
 		"default_jungletree.png", 
@@ -43,7 +54,7 @@ minetest.register_node(":default:jungletree_horizontal", {
 		"default_jungletree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1, choppy=2, oddly_breakable_by_hand=1, flammable=1, melt=750},
+	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -88,7 +99,7 @@ minetest.register_alias("conifers:sapling", "nodetest:conifersapling")
 minetest.register_node("nodetest:conifertree", {
 	description = "Conifer Tree",
 	tiles = {"nodetest_conifertree_top.png", "nodetest_conifertree_top.png", "nodetest_conifertree.png"},
-	groups = {tree=1, choppy=2, oddly_breakable_by_hand=1, flammable=1, melt=750},
+	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -159,7 +170,7 @@ minetest.register_node("nodetest:conifertree_horizontal", {
 		"nodetest_conifertree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1, choppy=2, oddly_breakable_by_hand=1, flammable=1, melt=750},
+	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })

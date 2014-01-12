@@ -33,7 +33,7 @@ minetest.register_tool("default:pick_wood", {
 		full_punch_interval = 1.2,
 		max_drop_level=0,
 		groupcaps={
-			cracky = {times={[3]=1.60}, uses=5, maxlevel=1},
+--			cracky = {times={[3]=1.60}, uses=5, maxlevel=1},
 		},
 	},
 })
@@ -144,7 +144,7 @@ minetest.register_tool("default:axe_wood", {
 		full_punch_interval = 1.0,
 		max_drop_level=0,
 		groupcaps={
-			choppy = {times={[2]=2.50, [3]=2.00}, uses=5, maxlevel=1},
+--			choppy = {times={[2]=2.50, [3]=2.00}, uses=5, maxlevel=1},
 		},
 	},
 })
@@ -155,7 +155,7 @@ minetest.register_tool("default:axe_stone", {
 		full_punch_interval = 1.2,
 		max_drop_level=0,
 		groupcaps={
-			choppy={times={[1]=3.00, [2]=1.50, [3]=1.30}, uses=20, maxlevel=1},
+			choppy={times={[1]=3.00, [2]=1.80, [3]=1.50}, uses=20, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
 	},
