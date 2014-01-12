@@ -120,7 +120,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:axe_stone',
 	recipe = {
-		{'group:stone', 'group:stone'},
+		{'group:stone', 'group:stick'},
 		{'group:stone', 'group:stick'},
 		{'', 'group:stick'},
 	}
@@ -129,7 +129,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:axe_copper',
 	recipe = {
-		{'default:copper_ingot', 'default:copper_ingot'},
+		{'default:copper_ingot', 'group:stick'},
 		{'default:copper_ingot', 'group:stick'},
 		{'', 'group:stick'},
 	}
@@ -138,7 +138,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:axe_steel',
 	recipe = {
-		{'default:steel_ingot', 'default:steel_ingot'},
+		{'default:steel_ingot', 'group:stick'},
 		{'default:steel_ingot', 'group:stick'},
 		{'', 'group:stick'},
 	}
