@@ -1,3 +1,6 @@
+-- Export functions
+farming = {}
+
 -- ========= SOIL =========
 dofile(minetest.get_modpath("farming").."/soil.lua")
 

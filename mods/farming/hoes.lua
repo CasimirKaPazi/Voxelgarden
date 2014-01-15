@@ -1,58 +1,43 @@
-local function create_soil(pos)
+--
+-- Function
+--
+
+function farming.hoe_on_use(itemstack, placer, pos, uses)
 	if pos == nil then
-		return false
+		return
 	end
-	local above = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
-	if above.name == "air" then
-		minetest.set_node(pos, {name = "farming:soil"})
-		return true
+	local under = minetest.get_node(pos)
+	local pos_above = {x=pos.x, y=pos.y+1, z=pos.z}
+	local above = minetest.get_node(pos_above)
+	-- check for rightclick
+	local reg_node = minetest.registered_nodes[under.name]
+	if reg_node.on_rightclick then
+		reg_node.on_rightclick(pos, under, placer)
+		return
 	end
-	return false
+	if under.name ~= "default:dirt"
+	and under.name ~= "default:dirt_with_grass"
+	and under.name ~= "default:dirt_with_grass_footsteps"
+	then
+		return
+	end
+	if above.name ~= "air" then
+		return
+	end
+	
+	minetest.set_node(pos, {name = "farming:soil"})
+	
+	minetest.sound_play("default_dig_crumbly", {
+		pos = pos,
+		gain = 0.5,
+	})
+	itemstack:add_wear(65535/(uses-1))
+	return itemstack
 end
 
-local function create_soil_mese(pos)
-	if pos == nil then
-		return false
-	end
-	local nn = minetest.get_node(pos).name
-	if nn ~= "default:dirt" and nn ~= "default:dirt_with_grass" and nn ~= "default:dirt_with_grass_footsteps" then
-		return false
-	end
-	local above = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
-	if above.name == "air" then
-		minetest.set_node(pos, {name = "farming:soil"})
-		return true
-	end
-	return false
-end
-
-minetest.register_on_dignode(function(pos, oldnode, digger)
-	if not digger then return end
-	if oldnode.name == "default:dirt" or oldnode.name == "default:dirt_with_grass" or oldnode.name == "default:dirt_with_grass_footsteps" then
-		local wield_name = digger:get_wielded_item():get_name()
-		if wield_name == "farming:hoe_wood" or wield_name == "farming:hoe_stone" or wield_name == "farming:hoe_steel" then
-			if create_soil(pos) then
-				digger:get_inventory():remove_item("main", "default:dirt")
-			end
-		elseif wield_name == "farming:hoe_mese" then
-			if create_soil(pos) then
-				digger:get_inventory():remove_item("main", "default:dirt")
-				if create_soil_mese({x=pos.x+1, y=pos.y, z=pos.z}) then
-					digger:get_inventory():remove_item("main", "default:dirt")
-				end
-				if create_soil_mese({x=pos.x-1, y=pos.y, z=pos.z}) then
-					digger:get_inventory():remove_item("main", "default:dirt")
-				end
-				if create_soil_mese({x=pos.x, y=pos.y, z=pos.z+1}) then
-					digger:get_inventory():remove_item("main", "default:dirt")
-				end
-				if create_soil_mese({x=pos.x, y=pos.y, z=pos.z-1}) then
-					digger:get_inventory():remove_item("main", "default:dirt")
-				end
-			end
-		end
-	end
-end)
+--
+-- Hoes
+--
 
 minetest.register_tool("farming:hoe_wood", {
 	description = "Wood Hoe",
@@ -64,24 +49,9 @@ minetest.register_tool("farming:hoe_wood", {
 			crumbly = {times={[1]=3.20, [2]=0.90, [3]=0.70}, uses=10, maxlevel=1},
 		}
 	},
-})
-
-minetest.register_craft({
-	output = "farming:hoe_wood",
-	recipe = {
-		{"group:wood", "group:wood"},
-		{"", "group:stick"},
-		{"", "group:stick"}
-	}
-})
-
-minetest.register_craft({
-	output = "farming:hoe_wood",
-	recipe = {
-		{"default:wood", "default:wood"},
-		{"", "group:stick"},
-		{"", "group:stick"}
-	}
+	on_place = function(itemstack, placer, pointed_thing)
+		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 30)
+	end
 })
 
 minetest.register_tool("farming:hoe_stone", {
@@ -94,15 +64,9 @@ minetest.register_tool("farming:hoe_stone", {
 			crumbly = {times={[1]=1.70, [2]=0.80, [3]=0.60}, uses=20, maxlevel=1},
 		}
 	},
-})
-
-minetest.register_craft({
-	output = "farming:hoe_stone",
-	recipe = {
-		{"group:stone", "group:stone"},
-		{"", "group:stick"},
-		{"", "group:stick"}
-	}
+	on_place = function(itemstack, placer, pointed_thing)
+		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 60)
+	end
 })
 
 minetest.register_tool("farming:hoe_steel", {
@@ -115,15 +79,9 @@ minetest.register_tool("farming:hoe_steel", {
 			crumbly = {times={[1]=1.60, [2]=0.70, [3]=0.30}, uses=30, maxlevel=2},
 		}
 	},
-})
-
-minetest.register_craft({
-	output = "farming:hoe_steel",
-	recipe = {
-		{"default:steel_ingot", "default:steel_ingot"},
-		{"", "group:stick"},
-		{"", "group:stick"}
-	}
+	on_place = function(itemstack, placer, pointed_thing)
+		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 120)
+	end
 })
 
 minetest.register_tool("farming:hoe_mese", {
@@ -136,6 +94,46 @@ minetest.register_tool("farming:hoe_mese", {
 			crumbly = {times={[1]=1.50, [2]=0.60, [3]=0.10}, uses=50, maxlevel=2},
 		}
 	},
+	on_place = function(itemstack, placer, pointed_thing)
+		d = 1
+		for xi = -d, d do
+		for zi = -d, d do
+			pos = {x=pointed_thing.under.x+xi, y=pointed_thing.under.y, z=pointed_thing.under.z+zi}
+			farming.hoe_on_use(itemstack, placer, pos, 240)
+		end
+		end
+	end
+})
+
+--
+-- Crafts
+--
+
+minetest.register_craft({
+	output = "farming:hoe_wood",
+	recipe = {
+		{"group:wood", "group:wood"},
+		{"", "group:stick"},
+		{"", "group:stick"}
+	}
+})
+
+minetest.register_craft({
+	output = "farming:hoe_stone",
+	recipe = {
+		{"group:stone", "group:stone"},
+		{"", "group:stick"},
+		{"", "group:stick"}
+	}
+})
+
+minetest.register_craft({
+	output = "farming:hoe_steel",
+	recipe = {
+		{"default:steel_ingot", "default:steel_ingot"},
+		{"", "group:stick"},
+		{"", "group:stick"}
+	}
 })
 
 minetest.register_craft({
