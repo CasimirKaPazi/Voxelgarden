@@ -10,7 +10,7 @@ function drop_attached_node(p)
 	local drops = minetest.registered_nodes[nn].drop
 	if drops == nil or minetest.registered_nodes[drops] ~= nil then
 		-- when there are no drops defined let the node fall down
-		spawn_falling_node(pos, node)
+		minetest.after(0.1, spawn_falling_node, pos, node)
 	else
 		-- when there are, drop them
 		for _,item in ipairs(minetest.get_node_drops(nn, "")) do
