@@ -61,7 +61,10 @@ minetest.register_entity(":__builtin:falling_node", {
 					self.object:remove()
 					return
 				end
-			elseif minetest.registered_nodes[bcn.name].buildable_to and (minetest.get_node_group(self.node.name, "float") == 0 or minetest.registered_nodes[bcn.name].liquidtype == "none") then
+			elseif minetest.registered_nodes[bcn.name].buildable_to
+			and (minetest.get_node_group(self.node.name, "float") == 0
+			or minetest.registered_nodes[bcn.name].liquidtype == "none")
+			then
 				minetest.remove_node(bcp)
 				return
 			end
@@ -88,7 +91,11 @@ minetest.register_entity(":__builtin:falling_node", {
 				end
 			end
 			-- Create node and remove entity
-			minetest.place_node(np, self.node)
+			if minetest.registered_items[self.node.name].paramtype2 == "wallmounted" then
+				minetest.place_node(np, self.node)
+			else
+				minetest.add_node(np, self.node)
+			end
 			self.object:remove()
 			nodeupdate(np)
 		else
