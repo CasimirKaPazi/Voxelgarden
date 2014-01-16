@@ -15,13 +15,12 @@ function farming.hoe_on_use(itemstack, placer, pos, uses)
 		reg_node.on_rightclick(pos, under, placer)
 		return
 	end
-	if under.name ~= "default:dirt"
-	and under.name ~= "default:dirt_with_grass"
-	and under.name ~= "default:dirt_with_grass_footsteps"
-	then
+
+	if above.name ~= "air" then
 		return
 	end
-	if above.name ~= "air" then
+	
+	if minetest.get_item_group(under.name, "soil") ~= 1 then
 		return
 	end
 	
