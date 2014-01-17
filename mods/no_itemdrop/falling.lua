@@ -43,6 +43,8 @@ minetest.register_entity(":__builtin:falling_node", {
 	end,
 
 	on_step = function(self, dtime)
+		local remove_fast = 0
+		if dtime > 0.2 then remove_fast = 1 end
 		-- Set gravity
 		self.object:setacceleration({x=0, y=-10, z=0})
 		-- Turn to actual sand when collides to ground or just move
@@ -65,7 +67,7 @@ minetest.register_entity(":__builtin:falling_node", {
 			and (minetest.get_node_group(self.node.name, "float") == 0
 			or minetest.registered_nodes[bcn.name].liquidtype == "none")
 			then
-				minetest.remove_node(bcp)
+				minetest.remove_node(bcp, remove_fast)
 				return
 			end
 			local np = {x=bcp.x, y=bcp.y+1, z=bcp.z}
@@ -75,7 +77,7 @@ minetest.register_entity(":__builtin:falling_node", {
 			-- it's drops
 			if n2.name ~= "air" and (not minetest.registered_nodes[n2.name] or
 					minetest.registered_nodes[n2.name].liquidtype == "none") then
-				minetest.remove_node(np)
+				minetest.remove_node(np, remove_fast)
 				if minetest.registered_nodes[n2.name].buildable_to == false then
 					-- Add dropped items
 					local drops = minetest.get_node_drops(n2.name, "")
@@ -97,7 +99,7 @@ minetest.register_entity(":__builtin:falling_node", {
 				minetest.add_node(np, self.node)
 			end
 			self.object:remove()
-			nodeupdate(np)
+			nodeupdate(np, remove_fast)
 		else
 			-- Do nothing
 		end
