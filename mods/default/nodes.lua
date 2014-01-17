@@ -1069,6 +1069,7 @@ minetest.register_node("default:apple", {
 	inventory_image = "default_apple.png",
 	wield_image = "default_apple.png",
 	paramtype = "light",
+	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
