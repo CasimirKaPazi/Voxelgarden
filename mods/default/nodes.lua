@@ -185,7 +185,7 @@ minetest.register_node("default:jungleleaves", {
 	tiles = {"default_jungleleaves.png"},
 	paramtype = "light",
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1},
+	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -252,7 +252,7 @@ minetest.register_node("default:leaves", {
 	tiles = {"default_leaves.png"},
 	paramtype = "light",
 	waving = 1,
-	groups = {snappy=3, leafdecay=2, flammable=2, leaves=1},
+	groups = {snappy=3, leafdecay=2, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -1233,7 +1233,7 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5,  0.5, -0.5+2/16, 0.5},
 		},
 	},
-	groups = {crumbly=3, melt=1, fload=1, falling_node=1},
+	groups = {crumbly=3, melt=1, fload=1, falling_node=1, fall_damage_add_percent=COUSHION},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -1251,7 +1251,7 @@ minetest.register_node("default:snowblock", {
 	tiles = {"default_snow.png"},
 	is_ground_content = true,
 	melt = "default:water_source", 
-	groups = {crumbly=3, melt=2},
+	groups = {crumbly=3, melt=2, fall_damage_add_percent=COUSHION},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
