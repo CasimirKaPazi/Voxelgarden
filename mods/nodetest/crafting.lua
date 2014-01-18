@@ -113,6 +113,24 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'nodetest:spearwood',
+	recipe = {
+		{'', '', 'default:stick'},
+		{'', 'default:stick', ''},
+		{'default:stick', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'nodetest:spearstone',
+	recipe = {
+		{'', '', 'group:stone'},
+		{'', 'default:stick', ''},
+		{'default:stick', '', ''},
+	}
+})
+
 --
 -- Cooking recipes
 --
