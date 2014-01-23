@@ -336,7 +336,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	-- For mapgen v7 see biomes.lua
 	if minetest.setting_get("mg_name") == "v7" then return end
 	
-	if maxp.y >= 2 and minp.y <= 0 then
+	if maxp.y <= 128 and minp.y >= -32 then
 		-- Generate papyrus
 		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
 		-- Assume X and Z lengths are equal
@@ -388,7 +388,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				local z = pr:next(z0, z1)
 				-- Find ground level (0...15)
 				local ground_y = nil
-				for y=30,0,-1 do
+				for y=maxp.y,minp.y,-1 do
 					if minetest.get_node({x=x,y=y,z=z}).name ~= "air" then
 						ground_y = y
 						break
@@ -424,7 +424,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				local z = pr:next(z0, z1)
 				-- Find ground level (0...15)
 				local ground_y = nil
-				for y=30,0,-1 do
+				for y=maxp.y,minp.y,-1 do
 					if minetest.get_node({x=x,y=y,z=z}).name ~= "air"
 					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:leaves" 
 					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:jungleleaves" then
@@ -479,7 +479,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				local z = pr:next(z0, z1)
 				-- Find ground level (0...15)
 				local ground_y = nil
-				for y=30,0,-1 do
+				for y=maxp.y,minp.y,-1 do
 					if minetest.get_node({x=x,y=y,z=z}).name ~= "air"
 					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:leaves" 
 					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:jungleleaves" then

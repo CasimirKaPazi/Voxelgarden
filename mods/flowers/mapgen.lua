@@ -1,5 +1,5 @@
 minetest.register_on_generated(function(minp, maxp, seed)
-	if maxp.y >= 2 and minp.y <= 0 then
+	if maxp.y <= 128 and minp.y >= -32 then
 		-- Generate flowers
 		local perlin1 = minetest.get_perlin(436, 3, 0.6, 100)
 		-- Assume X and Z lengths are equal
@@ -18,9 +18,9 @@ minetest.register_on_generated(function(minp, maxp, seed)
 			for i=0,grass_amount do
 				local x = pr:next(x0, x1)
 				local z = pr:next(z0, z1)
-				-- Find ground level (0...15)
+				-- Find ground level
 				local ground_y = nil
-				for y=30,0,-1 do
+				for y=maxp.y,minp.y,-1 do
 					if minetest.get_node({x=x,y=y,z=z}).name ~= "air" then
 						ground_y = y
 						break
