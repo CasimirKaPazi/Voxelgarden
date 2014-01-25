@@ -202,11 +202,11 @@ minetest.register_abm({
 --
 
 default.cool_lava_source = function(pos)
-	minetest.set_node(pos, {name="default:cobble"})
+	minetest.set_node(pos, {name="default:stone"})
 end
 
 default.cool_lava_flowing = function(pos)
-	minetest.set_node(pos, {name="default:stone"})
+	minetest.set_node(pos, {name="default:cobble"})
 end
 
 minetest.register_abm({
