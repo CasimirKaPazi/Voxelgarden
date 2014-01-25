@@ -21,9 +21,13 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				-- Find ground level
 				local ground_y = nil
 				for y=maxp.y,minp.y,-1 do
-					if minetest.get_node({x=x,y=y,z=z}).name ~= "air" then
-						ground_y = y
-						break
+					local nn = minetest.get_node({x=x,y=y,z=z}).name
+					if nn ~= "air" and nn~= "ignore" then
+						local is_leaves = minetest.registered_nodes[nn].groups.leaves
+						if is_leaves == nil or is_leaves == 0 then
+							ground_y = y
+							break
+						end
 					end
 				end
 				

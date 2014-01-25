@@ -196,7 +196,7 @@ if minetest.setting_get("mg_name") == "indev" then
 		clust_num_ores = 8,
 		clust_size     = 3,
 		height_min     = -10000,
-		height_max     = -10,
+		height_max     = -100,
 	})
 
 	minetest.register_ore({
@@ -389,9 +389,13 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				-- Find ground level (0...15)
 				local ground_y = nil
 				for y=maxp.y,minp.y,-1 do
-					if minetest.get_node({x=x,y=y,z=z}).name ~= "air" then
-						ground_y = y
-						break
+					local nn = minetest.get_node({x=x,y=y,z=z}).name
+					if nn ~= "air" and nn~= "ignore" then
+						local is_leaves = minetest.registered_nodes[nn].groups.leaves
+						if is_leaves == nil or is_leaves == 0 then
+							ground_y = y
+							break
+						end
 					end
 				end
 				-- If desert sand, make cactus
@@ -425,11 +429,13 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				-- Find ground level (0...15)
 				local ground_y = nil
 				for y=maxp.y,minp.y,-1 do
-					if minetest.get_node({x=x,y=y,z=z}).name ~= "air"
-					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:leaves" 
-					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:jungleleaves" then
-						ground_y = y
-						break
+					local nn = minetest.get_node({x=x,y=y,z=z}).name
+					if nn ~= "air" and nn~= "ignore" then
+						local is_leaves = minetest.registered_nodes[nn].groups.leaves
+						if is_leaves == nil or is_leaves == 0 then
+							ground_y = y
+							break
+						end
 					end
 				end
 				
@@ -480,11 +486,13 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				-- Find ground level (0...15)
 				local ground_y = nil
 				for y=maxp.y,minp.y,-1 do
-					if minetest.get_node({x=x,y=y,z=z}).name ~= "air"
-					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:leaves" 
-					and minetest.get_node({x=x,y=y,z=z}).name ~= "default:jungleleaves" then
-						ground_y = y
-						break
+					local nn = minetest.get_node({x=x,y=y,z=z}).name
+					if nn ~= "air" and nn~= "ignore" then
+						local is_leaves = minetest.registered_nodes[nn].groups.leaves
+						if is_leaves == nil or is_leaves == 0 then
+							ground_y = y
+							break
+						end
 					end
 				end
 				
