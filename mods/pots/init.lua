@@ -1,8 +1,8 @@
 -- See README.txt for licensing and other information.
 
 -- Aliases for original flowers mod)
-minetest.register_alias("flowers:flower_pot",						"pots:pot")
-minetest.register_alias("flowers:flower_potted_dandelion_white",	"pots:dandelion_white")
+minetest.register_alias("flowers:flower_pot",					"pots:pot")
+minetest.register_alias("flowers:flower_potted_dandelion_white",		"pots:dandelion_white")
 minetest.register_alias("flowers:flower_potted_dandelion_yellow",	"pots:dandelion_yellow")
 minetest.register_alias("flowers:flower_potted_geranium",			"pots:geranium")
 minetest.register_alias("flowers:flower_potted_rose",				"pots:rose")
@@ -10,12 +10,12 @@ minetest.register_alias("flowers:flower_potted_tulip",				"pots:tulip")
 minetest.register_alias("flowers:flower_potted_viola",				"pots:viola")
 
 minetest.register_alias("flowers:pot",						"pots:pot")
-minetest.register_alias("flowers:pot_dandelion_white",		"pots:dandelion_white")
+minetest.register_alias("flowers:pot_dandelion_white",			"pots:dandelion_white")
 minetest.register_alias("flowers:pot_dandelion_yellow",		"pots:dandelion_yellow")
 minetest.register_alias("flowers:pot_geranium",				"pots:geranium")
 minetest.register_alias("flowers:pot_rose",					"pots:rose")
-minetest.register_alias("flowers:pot_tulip",				"pots:tulip")
-minetest.register_alias("flowers:pot_viola",				"pots:viola")
+minetest.register_alias("flowers:pot_tulip",					"pots:tulip")
+minetest.register_alias("flowers:pot_viola",					"pots:viola")
 minetest.register_alias("flowers:pot_cactus",				"pots:cactus")
 
 --
@@ -367,19 +367,19 @@ minetest.register_abm({
 		local name = minetest.get_node(above).name
 		local nodedef = minetest.registered_nodes[name]
 		if (minetest.get_node_light(above) or 0) >= 11 then
-			local flower_choice = math.random(1, 21)
+			local flower_choice = math.random(1, 6)
 			local flower
-			if flower_choice <= 1 then
+			if flower_choice == 1 then
 				flower = "pots:tulip"
-			elseif flower_choice <= 3 then
+			elseif flower_choice == 2 then
 				flower = "pots:rose"
-			elseif flower_choice <= 6 then
+			elseif flower_choice == 3 then
 				flower = "pots:viola"
-			elseif flower_choice <= 10 then
-				flower = "pots:flower_geranium"
-			elseif flower_choice <= 15 then
+			elseif flower_choice == 4 then
+				flower = "pots:geranium"
+			elseif flower_choice == 5 then
 				flower = "pots:dandelion_white"
-			elseif flower_choice <= 21 then
+			elseif flower_choice == 6 then
 				flower = "pots:dandelion_yellow"
 			end
 			minetest.set_node(pos, {name=flower})
