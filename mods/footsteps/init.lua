@@ -18,7 +18,7 @@ local timer = 0
 
 minetest.register_globalstep(function(dtime)
 	-- Don't check all the time.
-	timer = timer + 0.5
+	timer = timer + dtime
 	if timer < 5 then return end
 	timer = 0
 	
