@@ -27,12 +27,7 @@ Originating from work by kddekadenz/Dogers:
   default_dig_crumbly.{1,2}.ogg
 
 Cisoun's WTFPL texture pack:
-  default_chest_front.png
-  default_chest_lock.png
-  default_chest_side.png
-  default_chest_top.png
   default_dirt.png
-  default_lava.png
   default_sand.png
   default_tool_mesepick.png
   default_tool_steelpick.png
@@ -132,6 +127,13 @@ Gambit (WTFPL)
   default_snow_side.png
   default_tree.png
   default_tree_top.png
+  default_chest_front.png
+  default_chest_lock.png
+  default_chest_side.png
+  default_chest_top.png
+  default_lava.png
+  default_lava_flowing_animated.png
+  default_lava_source_animated.png
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png
