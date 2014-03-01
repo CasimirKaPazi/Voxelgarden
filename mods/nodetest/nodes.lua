@@ -91,7 +91,7 @@ minetest.register_node("nodetest:conifersapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 minetest.register_alias("conifers:sapling", "nodetest:conifersapling")

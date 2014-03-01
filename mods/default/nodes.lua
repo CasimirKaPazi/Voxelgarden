@@ -218,7 +218,7 @@ minetest.register_node("default:junglesapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 -- aliases for tree growing abm in content_abm.cpp
@@ -237,7 +237,7 @@ minetest.register_node("default:junglegrass", {
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
-	groups = {snappy=3,flammable=2,attached_node=1},
+	groups = {snappy=3, flammable=2, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -546,7 +546,7 @@ minetest.register_node("default:torch", {
 		wall_bottom = {-0.125, -0.5, -0.125, 0.125, 0.125, 0.125},
 		wall_side = {-0.5, -0.375, -0.1, -0.25, 0.25, 0.125},
 	},
-	groups = {choppy=2, dig_immediate=3, flammable=1, hot=30, attached_node=1, wield_light=LIGHT_MAX-1},
+	groups = {choppy=2, dig_immediate=3, flammable=1, hot=30, attached_node=1, wield_light=LIGHT_MAX-1, dissolve=1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
 })
@@ -973,7 +973,7 @@ minetest.register_node("default:sapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -993,7 +993,7 @@ minetest.register_node("default:apple", {
 		type = "fixed",
 		fixed = {-0.2, -0.5, -0.2, 0.2, 0, 0.2}
 	},
-	groups = {fleshy=3,dig_immediate=3,flammable=2,attached_node=1},
+	groups = {fleshy=3,dig_immediate=3,flammable=2,attached_node=1, dissolve=1},
 	on_use = minetest.item_eat(2),
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -1008,7 +1008,7 @@ minetest.register_node("default:dry_shrub", {
 	paramtype = "light",
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3,flammable=3,attached_node=1},
+	groups = {snappy=3,flammable=3,attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -1027,7 +1027,7 @@ minetest.register_node("default:grass_1", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3,flammable=3,attached_node=1},
+	groups = {snappy=3, flammable=3, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -1053,7 +1053,7 @@ minetest.register_node("default:grass_2", {
 	buildable_to = true,
 	is_ground_content = true,
 	drop = "default:grass_1",
-	groups = {snappy=3,flammable=3,attached_node=1,not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=3, attached_node=1, not_in_creative_inventory=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -1072,7 +1072,7 @@ minetest.register_node("default:grass_3", {
 	buildable_to = true,
 	is_ground_content = true,
 	drop = "default:grass_1",
-	groups = {snappy=3,flammable=3,attached_node=1,not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=3, attached_node=1, not_in_creative_inventory=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -1092,7 +1092,7 @@ minetest.register_node("default:grass_4", {
 	buildable_to = true,
 	is_ground_content = true,
 	drop = "default:grass_1",
-	groups = {snappy=3,flammable=3,attached_node=1,not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=3, attached_node=1, not_in_creative_inventory=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -1112,7 +1112,7 @@ minetest.register_node("default:grass_5", {
 	buildable_to = true,
 	is_ground_content = true,
 	drop = "default:grass_1",
-	groups = {snappy=3,flammable=3,attached_node=1,not_in_creative_inventory=1},
+	groups = {snappy=3, flammable=3, attached_node=1, not_in_creative_inventory=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
