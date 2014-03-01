@@ -117,9 +117,9 @@ minetest.register_node("nodetest:coniferleaves_1", {
 		max_items = 1,
 		items = {
 			{
-				-- player will get sapling with 1/20 chance
+				-- player will get sapling with 1/30 chance
 				items = {'nodetest:conifersapling'},
-				rarity = 20,
+				rarity = 30,
 			},
 			{
 				-- player will get leaves only if he get no saplings,
@@ -144,9 +144,9 @@ minetest.register_node("nodetest:coniferleaves_2", {
 		max_items = 1,
 		items = {
 			{
-				-- player will get sapling with 1/20 chance
+				-- player will get sapling with 1/30 chance
 				items = {'nodetest:conifersapling'},
-				rarity = 20,
+				rarity = 30,
 			},
 			{
 				-- player will get leaves only if he get no saplings,

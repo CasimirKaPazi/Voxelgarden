@@ -11,6 +11,7 @@ function default.grow_tree(data, a, pos, is_apple_tree, seed)
 		replaced yet
 	]]--
 	local pr = PseudoRandom(seed)
+	-- thunk hight
 	local th = pr:next(3, 6)
 	local x, y, z = pos.x, pos.y, pos.z
 	for yy = y, y+th-1 do
@@ -100,8 +101,11 @@ function default.grow_jungletree(data, a, pos, seed)
 		end
 	end
 	end
-        
+	
+	-- thunk hight
 	local th = pr:next(6, 12)
+	-- leaves start
+	local ls = math.random(math.floor(th/3), math.floor(th/2))
 	for yy = y, y+th-1 do
 		local vi = a:index(x, yy, z)
 		if
@@ -114,7 +118,7 @@ function default.grow_jungletree(data, a, pos, seed)
 		end
 	end
 	y = y+th-1 -- (x, y, z) is now last piece of trunk
-	local leaves_a = VoxelArea:new{MinEdge={x=-3, y=-th+3, z=-3}, MaxEdge={x=3, y=2, z=3}}
+	local leaves_a = VoxelArea:new{MinEdge={x=-3, y=-th+ls, z=-3}, MaxEdge={x=3, y=2, z=3}}
 	local leaves_buffer = {}
         
 	-- Force leaves near the trunk

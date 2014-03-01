@@ -190,9 +190,9 @@ minetest.register_node("default:jungleleaves", {
 		max_items = 1,
 		items = {
 			{
-				-- player will get sapling with 1/20 chance
+				-- player will get sapling with 1/25 chance
 				items = {'default:junglesapling'},
-				rarity = 20,
+				rarity = 25,
 			},
 			{
 				-- player will get leaves only if he get no saplings,
