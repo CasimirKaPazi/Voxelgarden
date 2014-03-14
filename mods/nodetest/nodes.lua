@@ -37,7 +37,7 @@ minetest.register_node("nodetest:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1, choppy=2, flammable=1, melt=750},
+	groups = {choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -54,7 +54,7 @@ minetest.register_node("nodetest:jungletree_horizontal", {
 		"default_jungletree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1, choppy=2, flammable=1, melt=750},
+	groups = {choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -112,7 +112,7 @@ minetest.register_node("nodetest:coniferleaves_1", {
 	tiles = {"nodetest_coniferleaves_1.png"},
 	paramtype = "light",
 	waving = 1,
-	groups = {snappy=3, leafdecay=4, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -139,7 +139,7 @@ minetest.register_node("nodetest:coniferleaves_2", {
 	tiles = {"nodetest_coniferleaves_2.png"},
 	paramtype = "light",
 	waving = 1,
-	groups = {snappy=3, leafdecay=4, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -170,7 +170,7 @@ minetest.register_node("nodetest:conifertree_horizontal", {
 		"nodetest_conifertree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree=1, choppy=2, flammable=1, melt=750},
+	groups = {choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
