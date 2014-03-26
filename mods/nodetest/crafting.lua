@@ -3,6 +3,13 @@
 --
 
 minetest.register_craft({
+	output = 'default:wood 2',
+	recipe = {
+		{'group:tree_horizontal'},
+	}
+})
+
+minetest.register_craft({
 	output = 'nodetest:tree_horizontal 2',
 	recipe = {
 		{'', 'default:tree'},
@@ -136,6 +143,22 @@ minetest.register_craft({
 	recipe = {
 		{'default:clay'},
 	}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:coal_lump",
+	recipe = "group:tree_horizontal",
+})
+
+--
+-- Fuels
+--
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "group:tree_horizontal",
+	burntime = 30,
 })
 
 --

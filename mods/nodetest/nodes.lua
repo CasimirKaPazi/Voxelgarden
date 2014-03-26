@@ -1,9 +1,5 @@
 -- mods/default/nodes.lua
 
---
--- Node definitions
---
-
 minetest.register_node("nodetest:desert_sandstone", {
 	description = "Desert Sandstone",
 	tiles = {"nodetest_desert_sandstone.png"},
@@ -26,6 +22,25 @@ minetest.register_node("nodetest:rock", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("nodetest:papyrus_roots", {
+	description = "Papyrus Roots",
+	tiles = {"nodetest_papyrus_roots.png"},
+	paramtype = "light",
+	is_ground_content = true,
+	liquids_pointable = true,
+	after_dig_node = function(pos, node, metadata, digger)
+			node.name = "default:papyrus"
+			default.dig_up(pos, node, digger)
+		end,
+	groups = {snappy=3, flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
+})
+minetest.register_alias("default:papyrus_roots", "nodetest:papyrus_roots")
+
+--
+-- Horizontal trees
+--
+
 minetest.register_node("nodetest:tree_horizontal", {
 	description = "Tree",
 	tiles = {
@@ -37,7 +52,7 @@ minetest.register_node("nodetest:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {choppy=2, flammable=1, melt=750},
+	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -54,28 +69,32 @@ minetest.register_node("nodetest:jungletree_horizontal", {
 		"default_jungletree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {choppy=2, flammable=1, melt=750},
+	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_alias("default:jungletree_horizontal", "nodetest:jungletree_horizontal")
 
-minetest.register_node("nodetest:papyrus_roots", {
-	description = "Papyrus Roots",
-	tiles = {"nodetest_papyrus_roots.png"},
-	paramtype = "light",
-	is_ground_content = true,
-	liquids_pointable = true,
-	after_dig_node = function(pos, node, metadata, digger)
-			node.name = "default:papyrus"
-			default.dig_up(pos, node, digger)
-		end,
-	groups = {snappy=3,flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+minetest.register_node("nodetest:conifertree_horizontal", {
+	description = "Conifer Tree",
+	tiles = {
+		"nodetest_conifertree.png", 
+		"nodetest_conifertree.png",
+		"nodetest_conifertree.png^[transformR90", 
+		"nodetest_conifertree.png^[transformR90", 
+		"nodetest_conifertree_top.png", 
+		"nodetest_conifertree_top.png" 
+	},
+	paramtype2 = "facedir",
+	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
+	melt = "default:coal_block",
+	sounds = default.node_sound_wood_defaults(),
 })
-minetest.register_alias("default:papyrus_roots", "nodetest:papyrus_roots")
+minetest.register_alias("conifers:trunk_reversed", "nodetest:conifertree_horizontal")
 
+--
 -- Conifers
+--
 
 minetest.register_node("nodetest:conifersapling", {
 	description = "Conifer Sapling",
@@ -158,20 +177,3 @@ minetest.register_node("nodetest:coniferleaves_2", {
 	sounds = default.node_sound_leaves_defaults(),
 })
 minetest.register_alias("conifers:leaves_special", "nodetest:coniferleaves_2")
-
-minetest.register_node("nodetest:conifertree_horizontal", {
-	description = "Conifer Tree",
-	tiles = {
-		"nodetest_conifertree.png", 
-		"nodetest_conifertree.png",
-		"nodetest_conifertree.png^[transformR90", 
-		"nodetest_conifertree.png^[transformR90", 
-		"nodetest_conifertree_top.png", 
-		"nodetest_conifertree_top.png" 
-	},
-	paramtype2 = "facedir",
-	groups = {choppy=2, flammable=1, melt=750},
-	melt = "default:coal_block",
-	sounds = default.node_sound_wood_defaults(),
-})
-minetest.register_alias("conifers:trunk_reversed", "nodetest:conifertree_horizontal")
