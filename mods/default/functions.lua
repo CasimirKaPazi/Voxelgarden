@@ -373,17 +373,17 @@ minetest.register_abm({
 	action = function(pos, node)
 		pos.y = pos.y-1
 		local name = minetest.get_node(pos).name
-		if minetest.get_item_group(name, "soil") or name == "nodetest:papyrus_roots" then
+		if minetest.get_item_group(name, "soil") > 0 or name == "nodetest:papyrus_roots" then
 			if minetest.find_node_near(pos, 3, {"group:water"}) == nil then
 				return
 			end
 			pos.y = pos.y+1
 			local height = 0
-			while minetest.get_node(pos).name == "default:papyrus" and height < 4 do
+			while minetest.get_node(pos).name == "default:papyrus" and height < 5 do
 				height = height+1
 				pos.y = pos.y+1
 			end
-			if height < 4 then
+			if height < math.random(0, 5) then
 				if minetest.get_node(pos).name == "air" then
 					minetest.set_node(pos, {name="default:papyrus"})
 				end
