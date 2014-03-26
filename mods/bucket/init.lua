@@ -128,7 +128,6 @@ end
 minetest.register_craftitem("bucket:bucket_empty", {
 	description = "Empty Bucket",
 	inventory_image = "bucket.png",
-	stack_max = 1,
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
 		-- Must be pointing to node
@@ -149,12 +148,28 @@ minetest.register_craftitem("bucket:bucket_empty", {
 			end
 
 			minetest.add_node(pointed_thing.under, {name="air"})
-
-			if node.name == liquiddef.source then
-				node.param2 = LIQUID_MAX
-			end
-			return ItemStack({name = liquiddef.itemname,
+			
+			local count = itemstack:get_count()
+			if count == 1 then
+				return ItemStack({name = liquiddef.itemname,
 					metadata = tostring(node.param2)})
+			end
+
+			local inv = user:get_inventory()
+			if inv:room_for_item("main", liquiddef.itemname) then
+				count = count - 1
+				itemstack:set_count(count)
+				if node.name == liquiddef.source then
+					node.param2 = LIQUID_MAX
+				end
+				bucket_liquid = ItemStack({name = liquiddef.itemname,
+					metadata = tostring(node.param2)})
+				inv:add_item("main", bucket_liquid)
+				return itemstack
+			else
+				minetest.chat_send_player(user:get_player_name(), "Your inventory is full.")
+			end
+
 		end
 	end,
 })
