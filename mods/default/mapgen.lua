@@ -337,37 +337,6 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	if minetest.setting_get("mg_name") == "v7" then return end
 	
 	if maxp.y <= 128 and minp.y >= -32 then
-		-- Generate papyrus
-		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
-		-- Assume X and Z lengths are equal
-		local divlen = 8
-		local divs = (maxp.x-minp.x)/divlen+1;
-		for divx=0,divs-1 do
-		for divz=0,divs-1 do
-			local x0 = minp.x + math.floor((divx+0)*divlen)
-			local z0 = minp.z + math.floor((divz+0)*divlen)
-			local x1 = minp.x + math.floor((divx+1)*divlen)
-			local z1 = minp.z + math.floor((divz+1)*divlen)
-			-- Determine papyrus amount from perlin noise
-			local papyrus_amount = math.floor(perlin1:get2d({x=x0, y=z0}) ^ 3 * 5 - 1)
-			-- Find random positions for papyrus based on this random
-			local pr = PseudoRandom(seed+1)
-			for i=0,papyrus_amount do
-				local x = pr:next(x0, x1)
-				local z = pr:next(z0, z1)
-				-- papyrus on grass
-				if minetest.get_node({x=x,y=1,z=z}).name == "default:dirt_with_grass" and
-						minetest.find_node_near({x=x,y=1,z=z}, 3, "default:water_source") then
-					default.make_papyrus({x=x,y=2,z=z}, pr:next(1, 4))
-				-- papyrus roots
-				elseif minetest.get_node({x=x,y=1,z=z}).name == "default:water_source" and
-						minetest.find_node_near({x=x,y=1,z=z}, 2, "default:dirt_with_grass") then
-					minetest.set_node({x=x,y=1,z=z}, {name="default:papyrus_roots"})
-					default.make_papyrus({x=x,y=2,z=z}, pr:next(1, 4))
-				end
-			end
-		end
-		end
 		-- Generate cactuses
 		local perlin1 = minetest.get_perlin(230, 3, 0.6, 100)
 		-- Assume X and Z lengths are equal
