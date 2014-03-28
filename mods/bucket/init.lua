@@ -146,17 +146,19 @@ minetest.register_craftitem("bucket:bucket_empty", {
 					"take ".. node.name) then
 				return
 			end
-
-			minetest.add_node(pointed_thing.under, {name="air"})
 			
+			-- only one bucket: replace
 			local count = itemstack:get_count()
 			if count == 1 then
+				minetest.add_node(pointed_thing.under, {name="air"})
 				return ItemStack({name = liquiddef.itemname,
 					metadata = tostring(node.param2)})
 			end
 
+			-- staked buckets: add a filled bucket, replace stack
 			local inv = user:get_inventory()
 			if inv:room_for_item("main", liquiddef.itemname) then
+				minetest.add_node(pointed_thing.under, {name="air"})
 				count = count - 1
 				itemstack:set_count(count)
 				if node.name == liquiddef.source then
