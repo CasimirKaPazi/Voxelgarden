@@ -57,7 +57,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "cobble", "
 		"cobble",
 		default.node_sound_stone_defaults()
 		)
-		
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "mossycobble", "default:mossycobble",
 		{cracky=3, not_in_creative_inventory=1},
 		{"default_mossycobble.png"},
@@ -96,7 +96,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "sandstone"
 		"sandstone",
 		default.node_sound_stone_defaults()
 		)
-		
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "steelblock", "default:steelblock",
 		{snappy=1,bendy=2,cracky=1,melty=2,level=2, not_in_creative_inventory=1},
 		{"default_steel_block.png"},
@@ -109,7 +109,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "steelblock
 		"steelblock",
 		default.node_sound_stone_defaults()
 		)
-		
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "desert_stone", "default:desert_stone",
 		{cracky=3, not_in_creative_inventory=1},
 		{"default_desert_stone.png"},
@@ -122,7 +122,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "desert_sto
 		"desert_stone",
 		default.node_sound_stone_defaults()
 		)
-		
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "glass", "default:glass",
 		{cracky=3,oddly_breakable_by_hand=3, not_in_creative_inventory=1},
 		{"default_glass.png"},
@@ -147,7 +147,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "tree", "de
 		"Tree Panel",
 		"Tree Microblock",
 		"tree")
-		
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "jungletree", "default:jungletree",
 		{tree=1,snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2, not_in_creative_inventory=1},
 		{"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
@@ -158,7 +158,6 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "jungletree
 		"Jungle Tree Panel",
 		"Jungle Tree Microblock",
 		"jungletree")
---]]
 
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "copperblock", "default:copperblock",
 		{cracky=1, not_in_creative_inventory=1},
@@ -185,3 +184,4 @@ stairsplus.register_wall("stairsplus", "bookshelf", "default:bookshelf",
 		"bookshelf",
 		default.node_sound_wood_defaults()
 		)
+--]]
