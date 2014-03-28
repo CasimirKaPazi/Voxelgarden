@@ -136,6 +136,19 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "glass", "d
 		default.node_sound_glass_defaults(),
 		true)
 
+stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "copperblock", "default:copperblock",
+		{cracky=1, not_in_creative_inventory=1},
+		{"default_copper_block.png"},
+		"Copper Stairs",
+		"Copper Corner",
+		"Copper Slab",
+		"Copper Wall",
+		"Copper Panel",
+		"Copper Microblock",
+		"copperblock",
+		default.node_sound_stone_defaults()
+		)
+
 --[[
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "tree", "default:tree",
 		{tree=1,snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2, not_in_creative_inventory=1},
@@ -158,19 +171,6 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "jungletree
 		"Jungle Tree Panel",
 		"Jungle Tree Microblock",
 		"jungletree")
-
-stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "copperblock", "default:copperblock",
-		{cracky=1, not_in_creative_inventory=1},
-		{"default_copper_block.png"},
-		"Copper Stairs",
-		"Copper Corner",
-		"Copper Slab",
-		"Copper Wall",
-		"Copper Panel",
-		"Copper Microblock",
-		"copperblock",
-		default.node_sound_stone_defaults()
-		)
 
 stairsplus.register_wall("stairsplus", "bookshelf", "default:bookshelf",
 		{choppy=3,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=1},
