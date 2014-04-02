@@ -134,6 +134,7 @@ Gambit (WTFPL)
   default_lava.png
   default_lava_flowing_animated.png
   default_lava_source_animated.png
+  default_stone_brick.png
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png

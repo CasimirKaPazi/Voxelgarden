@@ -368,6 +368,14 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:stonebrick',
+	recipe = {
+		{'default:stone', 'default:stone'},
+		{'default:stone', 'default:stone'},
+	}
+})
+
 --
 -- Crafting (tool repair)
 --

@@ -62,6 +62,14 @@ minetest.register_node("default:stone_with_mese", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("default:stonebrick", {
+	description = "Stone Brick",
+	tiles = {"default_stone_brick.png"},
+	groups = {cracky=2, stone=1, melt=3000},
+	melt = "default:lava_source",
+	sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("default:dirt_with_grass", {
 	description = "Dirt with Grass",
 	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
