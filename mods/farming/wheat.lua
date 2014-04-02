@@ -168,8 +168,17 @@ minetest.register_craftitem("farming:bread", {
 	on_use = minetest.item_eat(6)
 })
 
+minetest.register_node("farming:straw", {
+  description = "Straw",
+	tiles = {"farming_straw.png"},
+	drop = "farming:wheat 9",
+	groups = {snappy=3, flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
+})
+minetest.register_alias("darkage:straw", "farming:straw")
+
 minetest.register_craft({
-	output = "darkage:straw",
+	output = "farming:straw",
 	recipe = {
 		{"farming:wheat", "farming:wheat", "farming:wheat"},
 		{"farming:wheat", "farming:wheat", "farming:wheat"},
@@ -182,4 +191,10 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:wheat",
 	burntime = 1
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "farming:straw",
+	burntime = 10
 })

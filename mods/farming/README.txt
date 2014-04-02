@@ -38,3 +38,6 @@ Gambit (WTFPL):
   farming_cotton_1.png
   farming_cotton_2.png
   farming_cotton_3.png
+
+Master Gollum (WTFPL):
+  farming_straw.png
