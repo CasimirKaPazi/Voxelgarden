@@ -131,7 +131,7 @@ minetest.register_node("nodetest:coniferleaves_1", {
 	tiles = {"nodetest_coniferleaves_1.png"},
 	paramtype = "light",
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+	groups = {snappy=3, leafdecay=4, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -158,7 +158,7 @@ minetest.register_node("nodetest:coniferleaves_2", {
 	tiles = {"nodetest_coniferleaves_2.png"},
 	paramtype = "light",
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+	groups = {snappy=3, leafdecay=4, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
 		items = {

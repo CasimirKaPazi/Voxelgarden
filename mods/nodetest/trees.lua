@@ -5,13 +5,8 @@ local c_coniferleaves_1 = minetest.get_content_id("nodetest:coniferleaves_1")
 local c_coniferleaves_2 = minetest.get_content_id("nodetest:coniferleaves_2")
 
 function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
-	--[[
-		NOTE: Tree-placing code is currently duplicated in the engine
-		and in games that have saplings; both are deprecated but not
-		replaced yet
-	]]--
 	local pr = PseudoRandom(seed)
-	local th = pr:next(7, 25)
+	local th = pr:next(12, 24)
 	local x, y, z = pos.x, pos.y, pos.z
 	local coniferleaves = c_coniferleaves_1
 	if special_leaves then
@@ -53,7 +48,7 @@ function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
 	end
 	
 	-- Leaves
-	local leaves_a = VoxelArea:new{MinEdge={x=-4, y=0, z=-4}, MaxEdge={x=4, y=th+2, z=4}}
+	local leaves_a = VoxelArea:new{MinEdge={x=-4, y=0, z=-4}, MaxEdge={x=4, y=th+3, z=4}}
 	local leaves_buffer = {}
 
 	-- Add leaves on the top
@@ -65,9 +60,8 @@ function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
 	leaves_buffer[leaves_a:index(1,		th,		0)]		= true
 
 	-- Add rings of leaves randomly
-	local d = 4
-	for yi = 5, th-1 do
-	d = pr:next(1,d+1)
+	local d = 0
+	for yi = th+1, 5, -1 do
 	for xi = -d, d do
 	for zi = -d, d do
 		if math.abs(xi) + math.abs(zi) <= d or math.abs(zi) + math.abs(xi) <= d then
@@ -75,6 +69,8 @@ function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
 		end
 	end
 	end
+	d = d + 1
+	if d > math.random(2,4) then d = 1 end
 	end
 	
 	-- Add the leaves

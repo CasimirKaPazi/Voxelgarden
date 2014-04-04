@@ -29,7 +29,7 @@ minetest.register_abm({
 		local is_soil = minetest.registered_nodes[minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name].groups.soil
 		if is_soil == nil or is_soil == 0 then return end
 		-- When to close to other trees, turn to decoration.
-		r = math.random(1, 3)
+		r = math.random(1, 2)
 		if minetest.find_node_near(pos, r, {"group:tree", "group:sapling"}) then
 			minetest.set_node(pos, {name="nodetest:coniferleaves_"..math.random(1, 2)})
 			return
