@@ -39,7 +39,7 @@ minetest.register_abm({
 		-- Otherwise grow a tree.
 		print("A conifer sapling grows into a tree at "..minetest.pos_to_string(pos))
 		local vm = minetest.get_voxel_manip()
-		local minp, maxp = vm:read_from_map({x=pos.x-16, y=pos.y, z=pos.z-16}, {x=pos.x+16, y=pos.y+16, z=pos.z+16})
+		local minp, maxp = vm:read_from_map({x=pos.x-16, y=pos.y, z=pos.z-16}, {x=pos.x+16, y=pos.y+32, z=pos.z+16})
 		local a = VoxelArea:new{MinEdge=minp, MaxEdge=maxp}
 		local data = vm:get_data()
 		nodetest.grow_conifertree(data, a, pos, math.random(1, 4) == 1, math.random(1,100000))
