@@ -16,6 +16,9 @@ minetest.register_craftitem("farming:wheat", {
 				above.name = "farming:wheat_1"
 				minetest.place_node(pointed_thing.above, above, placer)
 				minetest.sound_play("default_place_node", {pos = pointed_thing.above, gain = 0.5})
+				if minetest.setting_getbool("creative_mode") then
+					return
+				end
 				itemstack:take_item(1)
 				return itemstack
 			end
