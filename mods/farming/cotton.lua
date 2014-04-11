@@ -16,7 +16,7 @@ minetest.register_craftitem("farming:cotton", {
 			if above.name == "air" and under.name == farming_soil then
 				above.name = "farming:cotton_1"
 				minetest.place_node(pointed_thing.above, above)
-				minetest.sound_play("default_place_node", {pos = np, gain = 0.5})
+				minetest.sound_play("default_place_node", {pos = pointed_thing.above, gain = 0.5})
 				itemstack:take_item(1)
 				return itemstack
 			end
