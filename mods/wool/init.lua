@@ -41,8 +41,8 @@ for _, row in ipairs(wool.dyes) do
 		-- Crafting from dye and white wool
 		minetest.register_craft({
 			type = "shapeless",
-			output = 'wool:'..name..' 16',
-			recipe = {'group:dye,'..craft_color_group, 'wool:white'},
+			output = 'wool:'..name..'',
+			recipe = {'group:dye,'..craft_color_group, 'group:wool'},
 		})
 	end
 end
