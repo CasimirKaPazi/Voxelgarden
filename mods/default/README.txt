@@ -29,13 +29,6 @@ Originating from work by kddekadenz/Dogers:
 Cisoun's WTFPL texture pack:
   default_dirt.png
   default_sand.png
-  default_tool_mesepick.png
-  default_tool_steelpick.png
-  default_tool_steelshovel.png
-  default_tool_stonepick.png
-  default_tool_stoneshovel.png
-  default_tool_woodpick.png
-  default_tool_woodshovel.png
   default_wood.png
   default_ladder.png
   default_furnace_fire*
@@ -143,6 +136,17 @@ BlockMen (CC BY 3.0)
   default_water.png
   default_water_source_animated.png
   default_water_flowing_animated.png
+  default_tool_mesepick.png
+  default_tool_steelaxe.png
+  default_tool_steelpick.png
+  default_tool_steelshovel.png
+  default_tool_stoneaxe.png
+  default_tool_stonepick.png
+  default_tool_stoneshovel.png
+  default_tool_woodaxe.png
+  default_tool_woodpick.png
+  default_tool_woodshovel.png
+  default_stick.png
 
 WisdomFire (CC BY-SA 3.0)
   default_jungletree.png
