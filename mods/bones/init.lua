@@ -56,7 +56,38 @@ minetest.register_node("bones:bones", {
 			meta:set_string("owner", "")
 		end
 	end,
-	
+
+	on_punch = function(pos, node, player)
+		local owner = minetest.get_meta(pos):get_string("owner")
+		local name = player:get_player_name()
+		if owner ~= name then
+			return
+		end
+		
+		local inv = minetest.get_meta(pos):get_inventory()
+		local player_inv = player:get_inventory()
+		local has_space = true
+		
+		for i=1,inv:get_size("main") do
+			local stk = inv:get_stack("main", i)
+			if player_inv:room_for_item("main", stk) then
+				inv:set_stack("main", i, nil)
+				player_inv:add_item("main", stk)
+			else
+				has_space = false
+				break
+			end
+		end
+		
+		-- remove bones if player emptied them
+		if has_space then
+			if player_inv:room_for_item("main", "bones:bones") then
+				player_inv:add_item("main", "bones:bones")
+				minetest.remove_node(pos)
+			end
+		end
+	end,
+
 	on_timer = function(pos, elapsed)
 		local meta = minetest.get_meta(pos)
 		local publish = 1200
@@ -87,12 +118,12 @@ minetest.register_on_dieplayer(function(player)
 	pos.y = math.floor(pos.y+0.5)
 	pos.z = math.floor(pos.z+0.5)
 	local param2 = minetest.dir_to_facedir(player:get_look_dir())
+	local player_name = player:get_player_name()
+	local player_inv = player:get_inventory()
 	
 	local nn = minetest.get_node(pos).name
 	if minetest.registered_nodes[nn].can_dig and
 		not minetest.registered_nodes[nn].can_dig(pos, player) then
-		local player_inv = player:get_inventory()
-
 		for i=1,player_inv:get_size("main") do
 			player_inv:set_stack("main", i, nil)
 		end
@@ -107,7 +138,6 @@ minetest.register_on_dieplayer(function(player)
 	
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
-	local player_inv = player:get_inventory()
 	inv:set_size("main", 8*4)
 	
 	local empty_list = inv:get_list("main")
@@ -122,8 +152,8 @@ minetest.register_on_dieplayer(function(player)
 	meta:set_string("formspec", "size[8,9;]"..
 			"list[current_name;main;0,0;8,4;]"..
 			"list[current_player;main;0,5;8,4;]")
-	meta:set_string("infotext", player:get_player_name().."'s fresh bones")
-	meta:set_string("owner", player:get_player_name())
+	meta:set_string("infotext", player_name.."'s fresh bones")
+	meta:set_string("owner", player_name)
 	meta:set_int("time", minetest.get_gametime)
 	
 	local timer  = minetest.get_node_timer(pos)
