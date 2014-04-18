@@ -32,11 +32,13 @@ if minetest.setting_getbool("enable_damage") == true then
 
 -- prevent players from starving while afk (<--joke)
 minetest.register_on_dignode(function(pos, oldnode, player)
+	if not player then return end
 	local name = player:get_player_name()
 	player_is_active[name] = true
 end)
 
 minetest.register_on_placenode(function(pos, node, player)
+	if not player then return end
 	local name = player:get_player_name()
 	player_is_active[name] = true
 end)

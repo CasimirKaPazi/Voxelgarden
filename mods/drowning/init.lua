@@ -281,7 +281,7 @@ end
 -- Main script
 
 minetest.register_on_joinplayer(function(player)
-	name = player:get_player_name()
+	local name = player:get_player_name()
 	if not get_drowning(name) then
 		set_drowning(name, 0)
 	end
@@ -315,7 +315,6 @@ minetest.register_globalstep(function(dtime)
 			holding_breath[name] = holding_breath[name] + MIN_TIME_SLICE
 			on_drown(player)
 			-- Display the remaining breath in hud.
---			print("holding breath = ".. holding_breath[name] ..", scheduling interval = ".. scheduling_interval[name] ..", next scheduled damage = ".. next_scheduled_damage[name] .."")
 			local bubbles = 0
 			if scheduling_interval[name] > 1 then
 				bubbles = math.ceil(20*((next_scheduled_damage[name] - holding_breath[name])/scheduling_interval[name]))
@@ -329,7 +328,7 @@ minetest.register_globalstep(function(dtime)
 					number = 20,
 					dir = 0,
 					position = {x=0.5,y=0.9},
-					offset = {x=0, y=19},
+					offset = {x=0, y=2},
 				})
 			end
 		elseif holding_breath[name] > 0 then
