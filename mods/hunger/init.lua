@@ -1,68 +1,122 @@
 hunger = {}
-players_hunger	= {}
-players_timer	= {}
+player_is_active = {}
+player_hunger = {}
+player_step = {}
+player_bar = {}
+local base_interval = 2
 
--- no_drown privilege
+-- no_hunger privilege
 minetest.register_privilege("no_hunger", {
 	description = "Player will feel no hunger",
 	give_to_singleplayer = false
 })
 
-if minetest.setting_getbool("enable_damage") == true then
-
-local timer = 0
-minetest.register_globalstep(function(dtime)
-	timer = timer + dtime;
-	if timer < 1 then return end
-	timer = 0
-	for _,player in ipairs(minetest.get_connected_players()) do
-		local name = player:get_player_name()
-		if players_hunger[name] == nil then
-			players_hunger[name] = 0
-		end
-		if players_timer[name] == nil then
-			players_timer[name] = 0
-		end
-		players_timer[name] = players_timer[name] + 1
-		local health = player:get_hp()
-		local timer = 180 * health / 20
-		if players_timer[name] >= timer then  --720 equals one day
-			players_hunger[name] = 1
-			players_timer[name] = 0
-		end
---		print("[hunger] hunger for "..name.."")
-	end
-end)
-
-hunger.check = function(player)
-	if not player then return end
+-- hunger bar
+function hunger.update_bar(player)
 	local name = player:get_player_name()
-	if minetest.get_player_privs(name)["no_hunger"] then
-		return
-	end
-	if players_hunger[name] == nil then
-		players_hunger[name] = 0
-	end
-	if players_hunger[name] > 0 then
-		count = players_hunger[name]
-		local inv = player:get_inventory()
-		-- deal damage, play sound
-		local new_hp = math.max(0, (player:get_hp() - 1))
-		player:set_hp(new_hp)
-		local pos_sound  = player:getpos()
-		minetest.sound_play("hunger_stomach",{pos = pos_sound, gain = 1.0, max_hear_distance = 16})
-		minetest.chat_send_player(name, "You are hungry.")
-		players_hunger[name] = 0
---		print("[hunger] "..name.." is hungry")
+	if player_bar[name] then
+		player:hud_change(player_bar[name], "number", player_hunger[name])
+	else
+		player_bar[name] = player:hud_add({
+			hud_elem_type = "statbar",
+			text = "hunger.png",
+			number = 20,
+			dir = 0,
+			position = {x=0.5,y=1.0},
+			offset = {x=0, y=-58},
+		})
 	end
 end
 
-minetest.register_on_dignode(function(pos, oldnode, digger)
-	minetest.after(10, hunger.check, digger)
+if minetest.setting_getbool("enable_damage") == true then
+
+-- prevent players from starving while afk (<--joke)
+minetest.register_on_dignode(function(pos, oldnode, player)
+	local name = player:get_player_name()
+	player_is_active[name] = true
 end)
 
-minetest.register_on_placenode(function(pos, node, placer)
-	minetest.after(10, hunger.check, placer)
+minetest.register_on_placenode(function(pos, node, player)
+	local name = player:get_player_name()
+	player_is_active[name] = true
+end)
+
+-- save and load hunger
+local function get_filename(player_name)
+	return minetest.get_worldpath() .. "/hunger_" .. player_name .. ".txt"
+end
+
+local function save_hunger(name, value)
+	local filename  = get_filename(name)
+	local output    = io.open(filename, "w")
+
+	if not output then
+		minetest.debug("[hunger]: Cannot write drown value "..value.." to file " ..
+			filename .. "; the file cannot be opened for writing!")
+	else
+		output:write(value)
+		io.close(output)
+	end
+end
+
+local function load_hunger(name)
+	local filename  = get_filename(name)
+	local input     = io.open(filename, "r")
+
+	if not input then return nil end
+
+	hunger = input:read("*n")
+	io.close(input)
+	return hunger
+end
+
+minetest.register_on_joinplayer(function(player)
+	local name = player:get_player_name()
+	player_hunger[name] = load_hunger(name)
+	hunger.update_bar(player)
+end)
+
+minetest.register_on_leaveplayer(function(player)
+	local name = player:get_player_name()
+	local value = player_hunger[name]
+	save_hunger(name. value)
+end)
+
+-- main function
+local timer = 0
+minetest.register_globalstep(function(dtime)
+	timer = timer + dtime;
+	if timer < base_interval then return end
+	timer = 0
+	for _,player in ipairs(minetest.get_connected_players()) do
+		local name = player:get_player_name()
+		local hp = player:get_hp()
+		if not player_is_active[name] then return end
+		if minetest.get_player_privs(name)["no_hunger"] then
+			return
+		end
+		-- the hunger interval for each player depends on the health
+		if not player_step[name] or player_step[name] >= 20 then
+			player_step[name] = 0
+		end
+		player_step[name] = player_step[name] + 1
+		if player_step[name] < hp then return end
+		player_step[name] = 0
+		if not player_hunger[name] then
+			player_hunger[name] = 20
+		end
+		player_hunger[name] = player_hunger[name] - 1
+		if player_hunger[name] <= 0 then
+			player:set_hp(hp - 1)
+			player_hunger[name] = 20
+			local pos_sound  = player:getpos()
+			minetest.sound_play("hunger_stomach",{pos = pos_sound, gain = 1.0,
+				max_hear_distance = 16})
+			minetest.chat_send_player(name, "You are hungry.")
+		end
+		player_is_active[name] = false
+		hunger.update_bar(player)
+	end
 end)
 
 end
