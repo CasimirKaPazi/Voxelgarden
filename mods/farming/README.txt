@@ -15,6 +15,7 @@ Created by Casimir (License: CC BY-SA):
   farming_string.png
   farming_hoe_wood.png
   farming_hoe_stone.png
+  farming_hoe_copper.png
   farming_hoe_steel.png
   farming_hoe_mese.png
   farming_dough.png
