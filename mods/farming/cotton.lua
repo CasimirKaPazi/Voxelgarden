@@ -75,8 +75,15 @@ minetest.register_node("farming:cotton_3", {
 			{ items = {'farming:cotton'}, rarity = 5 }
 		}
 	},
-	after_dig_node = function(pos)
-		minetest.add_node(pos, {name="farming:cotton_2"})	
+	on_rightclick = function(pos, node, clicker)
+		local inv = clicker:get_inventory()
+		if inv:room_for_item("main", "farming:cotton") then
+			minetest.add_node(pos, {name="farming:cotton_2"})	
+			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
+			inv:add_item("main", "farming:cotton")
+		else
+			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
+		end
 	end,
 	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
 	selection_box = {
@@ -124,9 +131,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "wool:white",
 	recipe = {
-			{"farming:cotton", "farming:cotton", "farming:cotton"},
-			{"farming:cotton", "farming:cotton", "farming:cotton"},
-			{"farming:cotton", "farming:cotton", "farming:cotton"}
+			{"farming:cotton", "farming:cotton"},
+			{"farming:cotton", "farming:cotton"}
 			}
 })
 
@@ -134,5 +140,11 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:string",
+	burntime = 1
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "farming:cotton",
 	burntime = 1
 })
