@@ -19,6 +19,21 @@ minetest.register_alias("flowers:pot_viola",					"pots:viola")
 minetest.register_alias("flowers:pot_cactus",				"pots:cactus")
 
 --
+-- Function called on right click. 
+--
+
+local function plant_pot(pos, node, clicker)
+	local inv = clicker:get_inventory()
+	if inv:room_for_item("main", "pots:pot") then
+		minetest.set_node(pos, node)
+		minetest.sound_play("default_dug_node", {pos,gain = 1.0})
+		inv:add_item("main", "pots:pot")
+	else
+		minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
+	end
+end
+
+--
 -- Nodes
 --
 
@@ -54,15 +69,8 @@ minetest.register_node("pots:cactus", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "default:cactus"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "default:cactus"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -82,16 +90,9 @@ minetest.register_node("pots:dandelion_white", {
 	walkable = false,
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "flowers:dandelion_white"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+	on_rightclick = function(pos, node, clicker, itemstack)
+		node.name = "flowers:dandelion_white"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -112,15 +113,8 @@ minetest.register_node("pots:dandelion_yellow", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "flowers:dandelion_yellow"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "flowers:dandelion_yellow"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -141,15 +135,8 @@ minetest.register_node("pots:geranium", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "flowers:geranium"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "flowers:geranium"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -170,15 +157,8 @@ minetest.register_node("pots:rose", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "flowers:rose"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "flowers:rose"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -199,15 +179,8 @@ minetest.register_node("pots:tulip", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "flowers:tulip"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "flowers:tulip"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -228,15 +201,8 @@ minetest.register_node("pots:viola", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "flowers:viola"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "flowers:viola"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -258,15 +224,8 @@ minetest.register_node("pots:seedling", {
 	buildable_to = false,
 	groups = {snappy=3,dig_immediate=3,attached_node=1},
 	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "pots:pot") then
-			node.name = "air"
-			minetest.set_node(pos, node)
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
-			inv:add_item("main", "pots:pot")
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
+		node.name = "air"
+		plant_pot(pos, node, clicker)
 	end,
 	sounds = default.node_sound_defaults(),
 	selection_box = {
