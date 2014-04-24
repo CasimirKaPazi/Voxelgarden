@@ -1,22 +1,6 @@
 -- See README.txt for licensing and other information.
-
--- Aliases for original flowers mod)
 minetest.register_alias("flowers:flower_pot",					"pots:pot")
-minetest.register_alias("flowers:flower_potted_dandelion_white",		"pots:dandelion_white")
-minetest.register_alias("flowers:flower_potted_dandelion_yellow",	"pots:dandelion_yellow")
-minetest.register_alias("flowers:flower_potted_geranium",			"pots:geranium")
-minetest.register_alias("flowers:flower_potted_rose",				"pots:rose")
-minetest.register_alias("flowers:flower_potted_tulip",				"pots:tulip")
-minetest.register_alias("flowers:flower_potted_viola",				"pots:viola")
-
 minetest.register_alias("flowers:pot",						"pots:pot")
-minetest.register_alias("flowers:pot_dandelion_white",			"pots:dandelion_white")
-minetest.register_alias("flowers:pot_dandelion_yellow",		"pots:dandelion_yellow")
-minetest.register_alias("flowers:pot_geranium",				"pots:geranium")
-minetest.register_alias("flowers:pot_rose",					"pots:rose")
-minetest.register_alias("flowers:pot_tulip",					"pots:tulip")
-minetest.register_alias("flowers:pot_viola",					"pots:viola")
-minetest.register_alias("flowers:pot_cactus",				"pots:cactus")
 
 --
 -- Function called on right click. 
@@ -34,12 +18,61 @@ local function plant_pot(pos, node, clicker)
 end
 
 --
--- Nodes
+-- Definitions
 --
+
+local definitions = {
+--	{name,					desc,				new_node,					craft_input},
+	{"cactus",				"Cactus",			"default:cactus",			"default:cactus"},
+	{"dandelion_white",		"White Dandelion",	"flowers:dandelion_white",	"flowers:dandelion_white"},
+	{"dandelion_yellow",	"Yellow Dandelion",	"flowers:dandelion_yellow",	"flowers:dandelion_yellow"},
+	{"geranium",			"Geranium",			"flowers:geranium",			"flowers:geranium"},
+	{"rose",				"Rose",				"flowers:rose",				"flowers:rose"},
+	{"tulip",				"Tulip",			"flowers:tulip",			"flowers:tulip"},
+	{"viola",				"Viola",			"flowers:viola",			"flowers:viola"},
+	{"seedling",			"Seedling",			"air",						"group:sapling"},
+}
+
+for _, row in ipairs(definitions) do
+	local name = row[1]
+	local desc = row[2]
+	local new_node = row[3]
+	local craft_input = row[4]
+	minetest.register_node("pots:"..name, {
+		description = desc,
+		drawtype = "plantlike",
+		tiles = {"pots_"..name..".png"},
+		inventory_image = "pots_"..name..".png",
+		wield_image = "pots_"..name..".png",
+		sunlight_propagates = true,
+		paramtype = "light",
+		walkable = false,
+		buildable_to = false,
+		groups = {snappy=3,dig_immediate=3,attached_node=1},
+		on_rightclick = function(pos, node, clicker)
+			node.name = new_node
+			plant_pot(pos, node, clicker)
+		end,
+		sounds = default.node_sound_defaults(),
+		selection_box = {
+			type = "fixed",
+			fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
+		},
+	})
+	minetest.register_craft( {
+		output = "pots:"..name,
+		recipe = {
+			    { craft_input },
+			    { "pots:pot" }
+		},
+	})
+	minetest.register_alias("flowers:flower_potted_"..name,		"pots:"..name)
+	minetest.register_alias("flowers:pot_"..name,			"pots:"..name)
+end
 
 -- Pot
 minetest.register_node("pots:pot", {
-	description = "Flowerpot",
+	description = "Flower Pot",
 	drawtype = "plantlike",
 	tiles = { "pots_pot.png" },
 	inventory_image = "pots_pot.png",
@@ -56,260 +89,11 @@ minetest.register_node("pots:pot", {
 	},
 })
 
--- Flowers in pot
-minetest.register_node("pots:cactus", {
-	description = "Cactus",
-	drawtype = "plantlike",
-	tiles = { "pots_cactus.png" },
-	inventory_image = "pots_cactus.png",
-	wield_image = "pots_cactus.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "default:cactus"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
-minetest.register_node("pots:dandelion_white", {
-	description = "White Dandelion",
-	drawtype = "plantlike",
-	tiles = { "pots_dandelion_white.png" },
-	inventory_image = "pots_dandelion_white.png",
-	wield_image = "pots_dandelion_white.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "flowers:dandelion_white"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
-minetest.register_node("pots:dandelion_yellow", {
-	description = "Yellow Dandelion",
-	drawtype = "plantlike",
-	tiles = { "pots_dandelion_yellow.png" },
-	inventory_image = "pots_dandelion_yellow.png",
-	wield_image = "pots_dandelion_yellow.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "flowers:dandelion_yellow"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
-minetest.register_node("pots:geranium", {
-	description = "Geranium",
-	drawtype = "plantlike",
-	tiles = { "pots_geranium.png" },
-	inventory_image = "pots_geranium.png",
-	wield_image = "pots_geranium.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "flowers:geranium"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
-minetest.register_node("pots:rose", {
-	description = "Rose",
-	drawtype = "plantlike",
-	tiles = { "pots_rose.png" },
-	inventory_image = "pots_rose.png",
-	wield_image = "pots_rose.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "flowers:rose"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
-minetest.register_node("pots:tulip", {
-	description = "Tulip",
-	drawtype = "plantlike",
-	tiles = { "pots_tulip.png" },
-	inventory_image = "pots_tulip.png",
-	wield_image = "pots_tulip.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "flowers:tulip"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
-minetest.register_node("pots:viola", {
-	description = "Viola",
-	drawtype = "plantlike",
-	tiles = { "pots_viola.png" },
-	inventory_image = "pots_viola.png",
-	wield_image = "pots_viola.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "flowers:viola"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
--- Seedling
-minetest.register_node("pots:seedling", {
-	description = "Seedling",
-	drawtype = "plantlike",
-	tiles = { "pots_seedling.png" },
-	inventory_image = "pots_seedling.png",
-	wield_image = "pots_seedling.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	walkable = false,
-	buildable_to = false,
-	groups = {snappy=3,dig_immediate=3,attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		node.name = "air"
-		plant_pot(pos, node, clicker)
-	end,
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.0, 0.25 },
-	},
-})
-
---
--- Craft
---
-
--- Pot
 minetest.register_craft( {
 	output = "pots:pot",
 	recipe = {
 	        { "default:clay_brick", "", "default:clay_brick" },
 	        { "", "default:clay_brick", "" }
-	},
-})
-
--- Flowers in pot
-minetest.register_craft( {
-	output = "pots:cactus",
-	recipe = {
-	        { "default:cactus" },
-	        { "pots:pot" }
-	},
-})
-
-minetest.register_craft( {
-	output = "pots:dandelion_white",
-	recipe = {
-	        { "flowers:dandelion_white" },
-	        { "pots:pot" }
-	},
-})
-
-minetest.register_craft( {
-	output = "pots:dandelion_yellow",
-	recipe = {
-	        { "flowers:dandelion_yellow" },
-	        { "pots:pot" }
-	},
-})
-
-minetest.register_craft( {
-	output = "pots:geranium",
-	recipe = {
-	        { "flowers:geranium" },
-	        { "pots:pot" }
-	},
-})
-
-minetest.register_craft( {
-	output = "pots:rose",
-	recipe = {
-	        { "flowers:rose" },
-	        { "pots:pot" }
-	},
-})
-
-minetest.register_craft( {
-	output = "pots:tulip",
-	recipe = {
-	        { "flowers:tulip" },
-	        { "pots:pot" }
-	},
-})
-
-minetest.register_craft( {
-	output = "pots:viola",
-	recipe = {
-	        { "flowers:viola" },
-	        { "pots:pot" }
-	},
-})
-
--- Seedling
-minetest.register_craft( {
-	output = "pots:seedling",
-	recipe = {
-	        { "group:sapling" },
-	        { "pots:pot" }
 	},
 })
 
