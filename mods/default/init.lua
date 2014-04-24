@@ -9,6 +9,14 @@ LAVA_VISC = 7
 LIGHT_MAX = 14
 COUSHION = -10 -- Falling damage gets reduced by 10 percent.
 
+-- Define default max stack
+local stack = minetest.setting_get("stack_max")
+if not stack then
+	stack = 81
+end
+minetest.nodedef_default.stack_max = stack
+minetest.craftitemdef_default.stack_max = stack
+
 -- Definitions made by this mod that other mods can use too
 default = {}
 
