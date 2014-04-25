@@ -2,7 +2,7 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "nodetest:rock",
 	wherein        = {"default:stone"},
-	clust_scarcity = 6*6*6,
+	clust_scarcity = 8*8*8,
 	clust_num_ores = 1,
 	clust_size     = 3,
 	height_min     = -64,
