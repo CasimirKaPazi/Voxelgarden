@@ -112,8 +112,6 @@ minetest.register_globalstep(function(dtime)
 			player:set_hp(hp - 1)
 			player_hunger[name] = 20
 			local pos_sound  = player:getpos()
-			minetest.sound_play("hunger_stomach",{pos = pos_sound, gain = 1.0,
-				max_hear_distance = 16})
 			minetest.chat_send_player(name, "You are hungry.")
 		end
 		player_is_active[name] = false

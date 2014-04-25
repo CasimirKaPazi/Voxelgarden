@@ -156,3 +156,7 @@ Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
   2: http://www.freesound.org/people/Tomlija/sounds/97669/
   3: http://www.freesound.org/people/lsprice/sounds/88808/
+
+n3b http://opengameart.org/users/n3b (CC BY)
+  player_damage.1.ogg
+  player_damage.2.ogg
