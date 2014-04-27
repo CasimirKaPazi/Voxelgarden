@@ -67,19 +67,12 @@ minetest.register_node("farming:cotton_3", {
 	walkable = false,
 	drawtype = "plantlike",
 	tiles = {"farming_cotton_3.png"},
-	drop = {
-		max_items = 6,
-		items = {
-			{ items = {'farming:cotton'} },
-			{ items = {'farming:cotton'}, rarity = 2 },
-			{ items = {'farming:cotton'}, rarity = 5 }
-		}
-	},
+	drop = "farming:cotton",
 	on_rightclick = function(pos, node, clicker)
 		local inv = clicker:get_inventory()
 		if inv:room_for_item("main", "farming:cotton") then
 			minetest.add_node(pos, {name="farming:cotton_2"})	
-			minetest.sound_play("default_dug_node", {pos,gain = 1.0})
+			minetest.sound_play("default_dig_crumbly", {pos,gain = 1.0})
 			inv:add_item("main", "farming:cotton")
 		else
 			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
