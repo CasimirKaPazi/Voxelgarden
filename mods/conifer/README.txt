@@ -1,5 +1,8 @@
-Nodetest
+Conifer
 ==========================
+
+Rewrite of Cisouns original mod "Conifers".
+https://forum.minetest.net/viewtopic.php?pid=17541
 
 License of source code:
 -----------------------
@@ -17,15 +20,10 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Authors of media files
 -----------------------
-Everything not listed in here:
-Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
-  
-Casimir (CC BY-SA 3.0)
-  nodetest_bone.png
-  nodetest_papyrus_roots.png
-  nodetest_rock.png
-  nodetest_rock_item.png
 
-Mossmanikin (WTFPL)
-  nodetest_spearstone.png
-  nodetest_spearwood.png
+Cisoun (WTFPL):
+  nodetest_coniferleaves_1.png
+  nodetest_coniferleaves_2.png
+  nodetest_conifersapling.png
+  nodetest_conifertree.png
+  nodetest_conifertree_top.png

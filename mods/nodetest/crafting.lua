@@ -42,22 +42,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'nodetest:conifertree_horizontal 2',
-	recipe = {
-		{'', 'nodetest:conifertree'},
-		{'nodetest:conifertree', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'nodetest:conifertree 2',
-	recipe = {
-		{'', 'nodetest:conifertree_horizontal'},
-		{'nodetest:conifertree_horizontal', ''},
-	}
-})
-
-minetest.register_craft({
 	output = 'nodetest:papyrus_roots',
 	recipe = {
 		{'default:papyrus', 'default:papyrus', 'default:papyrus'},

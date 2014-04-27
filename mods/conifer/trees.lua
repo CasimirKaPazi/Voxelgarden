@@ -1,10 +1,10 @@
 local c_air = minetest.get_content_id("air")
 local c_ignore = minetest.get_content_id("ignore")
-local c_conifertree = minetest.get_content_id("nodetest:conifertree")
-local c_coniferleaves_1 = minetest.get_content_id("nodetest:coniferleaves_1")
-local c_coniferleaves_2 = minetest.get_content_id("nodetest:coniferleaves_2")
+local c_conifertree = minetest.get_content_id("conifer:tree")
+local c_coniferleaves_1 = minetest.get_content_id("conifer:leaves_1")
+local c_coniferleaves_2 = minetest.get_content_id("conifer:leaves_2")
 
-function nodetest.grow_conifertree(data, a, pos, special_leaves, seed)
+function conifer.grow_conifertree(data, a, pos, special_leaves, seed)
 	local pr = PseudoRandom(seed)
 	local th = pr:next(12, 24)
 	local x, y, z = pos.x, pos.y, pos.z
