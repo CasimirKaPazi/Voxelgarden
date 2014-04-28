@@ -305,6 +305,9 @@ minetest.register_globalstep(function(dtime)
 		local name = player:get_player_name()
 		
 		if minetest.get_player_privs(name)["no_drown"] then
+			if player_bubbles[name] then
+				reset_drown_state(name)
+			end
 			return
 		end
 		

@@ -14,6 +14,10 @@ minetest.register_privilege("no_hunger", {
 -- hunger bar
 function hunger.update_bar(player)
 	local name = player:get_player_name()
+	if minetest.get_player_privs(name)["no_hunger"] then
+		player:hud_remove(player_bar[name])
+		return
+	end
 	if player_bar[name] then
 		player:hud_change(player_bar[name], "number", player_hunger[name])
 	else
@@ -109,10 +113,13 @@ minetest.register_globalstep(function(dtime)
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		local hp = player:get_hp()
-		if not player_is_active[name] then return end
 		if minetest.get_player_privs(name)["no_hunger"] then
+			if player_bar[name] then
+				player:hud_remove(player_bar[name])
+			end
 			return
 		end
+		if not player_is_active[name] then return end
 		-- the hunger interval for each player depends on the health
 		if not player_step[name] or player_step[name] >= 20 then
 			player_step[name] = 0
