@@ -84,6 +84,22 @@ minetest.register_on_leaveplayer(function(player)
 	save_hunger(name. value)
 end)
 
+minetest.register_on_respawnplayer(function(player)
+	local name = player:get_player_name()
+	player_hunger[name] = 20
+	hunger.update_bar(player)
+end)
+--[[
+minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
+	local name = player:get_player_name()
+	if player_hunger[name] + hp_change > 20 then
+		player_hunger[name] = 20
+	else
+		player_hunger[name] = player_hunger[name] + hp_change
+	end
+	hunger.update_bar(player)
+end)
+--]]
 -- main function
 local timer = 0
 minetest.register_globalstep(function(dtime)
