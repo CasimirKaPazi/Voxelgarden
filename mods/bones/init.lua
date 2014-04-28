@@ -59,8 +59,10 @@ minetest.register_node("bones:bones", {
 
 	on_punch = function(pos, node, player)
 		local owner = minetest.get_meta(pos):get_string("owner")
+		local infotext = minetest.get_meta(pos):get_string("infotext")
 		local name = player:get_player_name()
-		if owner ~= name then
+		if infotext == "" then return end
+		if owner ~= "" and owner ~= name  then
 			return
 		end
 		
@@ -154,7 +156,7 @@ minetest.register_on_dieplayer(function(player)
 			"list[current_player;main;0,5;8,4;]")
 	meta:set_string("infotext", player_name.."'s fresh bones")
 	meta:set_string("owner", player_name)
-	meta:set_int("time", minetest.get_gametime)
+	meta:set_int("time", minetest.get_gametime())
 	
 	local timer  = minetest.get_node_timer(pos)
 	timer:start(10)
