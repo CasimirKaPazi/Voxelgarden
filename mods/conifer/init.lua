@@ -1,5 +1,4 @@
 conifer = {}
-dofile(minetest.get_modpath("conifer").."/trees.lua")
 
 --
 -- Nodes
@@ -135,3 +134,5 @@ minetest.register_abm({
 		vm:update_map()
         end
 })
+
+dofile(minetest.get_modpath("conifer").."/trees.lua")
