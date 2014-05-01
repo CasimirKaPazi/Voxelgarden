@@ -33,6 +33,9 @@ local table_copy = function(table)
 end
 
 zcg.add_craft = function(input, output, groups)
+	if minetest.get_item_group(output, "not_in_craft_guide") > 0 then
+		return
+	end
 	if not groups then groups = {} end
 	local c = {}
 	c.width = input.width
@@ -103,12 +106,12 @@ zcg.formspec = function(pn)
 	local formspec = "size[8,7.5]"
 	.. "button[0,0;2,.5;main;Back]"
 	if zcg.users[pn].history.index > 1 then
-		formspec = formspec .. "image_button[0,1;1,1;zcg_previous.png;zcg_previous;]"
+		formspec = formspec .. "image_button[0,1;1,1;zcg_previous.png;zcg_previous;;false;false;zcg_previous_press.png]"
 	else
 		formspec = formspec .. "image[0,1;1,1;zcg_previous_inactive.png]"
 	end
 	if zcg.users[pn].history.index < #zcg.users[pn].history.list then
-		formspec = formspec .. "image_button[1,1;1,1;zcg_next.png;zcg_next;]"
+		formspec = formspec .. "image_button[1,1;1,1;zcg_next.png;zcg_next;;false;false;zcg_next_press.png]"
 	else
 		formspec = formspec .. "image[1,1;1,1;zcg_next_inactive.png]"
 	end
