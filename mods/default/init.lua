@@ -14,6 +14,7 @@ if not stack then
 end
 minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
+minetest.nodedef_default.liquid_range = 4
 
 -- Definitions made by this mod that other mods can use too
 default = {}
