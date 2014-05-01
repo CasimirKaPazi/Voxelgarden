@@ -52,9 +52,6 @@ MirceaKitsune (WTFPL):
 Jordach (CC BY-SA 3.0):
   character.png
 
-Splizard (CC BY-SA 3.0):
-  default_ice.png
-
 Zeg9 (CC BY-SA 3.0):
   default_coal_block.png
   default_cobble.png
@@ -151,6 +148,9 @@ BlockMen (CC BY 3.0)
 WisdomFire (CC BY-SA 3.0)
   default_jungletree.png
   default_jungletree_top.png
+
+PilzAdam (CC BY-SA 3.0)
+  default_ice.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
