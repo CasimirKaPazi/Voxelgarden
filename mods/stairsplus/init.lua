@@ -8,6 +8,7 @@ dofile(minetest.get_modpath(minetest.get_current_modname()).."/slab.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/quater_slab.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/wall.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/quater_wall.lua")
+dofile(minetest.get_modpath(minetest.get_current_modname()).."/panel.lua")
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/micro.lua")
 
 -- Nodes will be called <modname>:{stair,corner,slab,wall,panel,micro}_<subname>
@@ -16,6 +17,7 @@ function stairsplus.register_stair_and_slab_and_panel_and_micro(modname, subname
 	stairsplus.register_corner(modname, subname, recipeitem, groups, images, desc_corner, drop, sounds, sunlight)
 	stairsplus.register_slab(modname, subname, recipeitem, groups, images, desc_slab, drop, sounds, sunlight)
 	stairsplus.register_wall(modname, subname, recipeitem, groups, images, desc_slab, drop, sounds, sunlight)
+	stairsplus.register_panel(modname, subname, recipeitem, groups, images, desc_panel, drop, sounds, sunlight)
 	stairsplus.register_micro(modname, subname, recipeitem, groups, images, desc_micro, drop, sounds, sunlight)
 end
 
