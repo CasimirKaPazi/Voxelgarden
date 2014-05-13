@@ -46,6 +46,24 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:pick_wood',
+	recipe = {
+		{'group:tree', 'group:tree', 'group:tree'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:pick_wood',
+	recipe = {
+		{'group:tree_horizontal', 'group:tree_horizontal', 'group:tree_horizontal'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:pick_stone',
 	recipe = {
 		{'group:stone', 'group:stone', 'group:stone'},
@@ -84,7 +102,16 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:shovel_wood',
 	recipe = {
-		{'group:wood'},
+		{'group:tree'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:shovel_wood',
+	recipe = {
+		{'group:tree_horizontal'},
 		{'group:stick'},
 		{'group:stick'},
 	}
@@ -118,6 +145,24 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:axe_wood',
+	recipe = {
+		{'group:tree', 'group:stick'},
+		{'group:tree', 'group:stick'},
+		{'', 'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:axe_wood',
+	recipe = {
+		{'group:tree_horizontal', 'group:stick'},
+		{'group:tree_horizontal', 'group:stick'},
+		{'', 'group:stick'},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:axe_stone',
 	recipe = {
 		{'group:stone', 'group:stick'},
@@ -147,8 +192,17 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:sword_wood',
 	recipe = {
-		{'group:wood'},
-		{'group:wood'},
+		{'group:tree'},
+		{'group:tree'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_wood',
+	recipe = {
+		{'group:tree_horizontal'},
+		{'group:tree_horizontal'},
 		{'group:stick'},
 	}
 })
