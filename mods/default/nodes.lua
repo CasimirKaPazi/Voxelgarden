@@ -96,7 +96,7 @@ minetest.register_node("default:dirt_with_snow", {
 	description = "Dirt with Snow",
 	tiles = {"default_snow.png", "default_dirt.png", "default_dirt.png^default_snow_side.png"},
 	is_ground_content = true,
-	groups = {crumbly=3, melt=5},
+	groups = {crumbly=3, melt=5, falling_node=1, soil=1},
 	melt = "default:dirt_with_grass",
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
@@ -345,7 +345,7 @@ minetest.register_node("default:fence_wood", {
 	is_ground_content = false,
 	selection_box = {
 		type = "fixed",
-		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
+		fixed = {-1/8, -1/2, -1/8, 1/8, 1/2, 1/8},
 	},
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=2},
 	sounds = default.node_sound_wood_defaults(),
@@ -1125,13 +1125,14 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5,  0.5, -0.5+2/16, 0.5},
 		},
 	},
-	groups = {crumbly=3, melt=1, fload=1, falling_node=1, fall_damage_add_percent=COUSHION},
+	groups = {crumbly=3, melt=1, fload=1, falling_node=1, fall_damage_add_percent=COUSHION, dissolve=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 	on_construct = function(pos)
 		pos.y = pos.y - 1
-		if minetest.get_node(pos).name == "default:dirt_with_grass" then
+		if minetest.get_node(pos).name == "default:dirt_with_grass"
+			or minetest.get_node(pos).name == "default:dirt_with_grass_footsteps" then
 			minetest.set_node(pos, {name="default:dirt_with_snow"})
 		end
 	end,

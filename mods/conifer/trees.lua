@@ -3,8 +3,9 @@ local c_ignore = minetest.get_content_id("ignore")
 local c_conifertree = minetest.get_content_id("conifer:tree")
 local c_coniferleaves_1 = minetest.get_content_id("conifer:leaves_1")
 local c_coniferleaves_2 = minetest.get_content_id("conifer:leaves_2")
+local c_snow = minetest.get_content_id("default:snow")
 
-function conifer.grow_conifertree(data, a, pos, special_leaves, seed)
+function conifer.grow_conifertree(data, a, pos, special_leaves, snow, seed)
 	local pr = PseudoRandom(seed)
 	local th = pr:next(12, 24)
 	local x, y, z = pos.x, pos.y, pos.z
@@ -87,5 +88,22 @@ function conifer.grow_conifertree(data, a, pos, special_leaves, seed)
 		end
 	end
 	end
+	end
+	-- Add snow
+	if snow and not special_leaves then
+		for yi = leaves_a.MinEdge.y, leaves_a.MaxEdge.y do
+		for xi = leaves_a.MinEdge.x, leaves_a.MaxEdge.x do
+		for zi = leaves_a.MinEdge.z, leaves_a.MaxEdge.z do
+			if a:contains(x+xi, y+yi+1, z+zi) then
+				local vi = a:index(x+xi, y+yi+1, z+zi)
+				if data[vi] == c_air or data[vi] == c_ignore then
+					if leaves_buffer[leaves_a:index(xi, yi, zi)] then
+						data[vi] = c_snow
+					end
+				end
+			end
+		end
+		end
+		end
 	end
 end
