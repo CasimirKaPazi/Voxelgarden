@@ -10,7 +10,7 @@ COUSHION = -10 -- Falling damage gets reduced by 10 percent.
 -- Define default max stack
 local stack = minetest.setting_get("stack_max")
 if not stack then
-	stack = 81
+	stack = 90
 end
 minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack

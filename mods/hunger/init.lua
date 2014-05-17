@@ -3,7 +3,7 @@ player_is_active = {}
 player_hunger = {}
 player_step = {}
 player_bar = {}
-local base_interval = 2
+local base_interval = 1
 
 -- no_hunger privilege
 minetest.register_privilege("no_hunger", {

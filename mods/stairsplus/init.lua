@@ -35,7 +35,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "wood", "de
 		)
 
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "stone", "default:stone",
-		{cracky=3, not_in_creative_inventory=1},
+		{cracky=3, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_stone.png"},
 		"Stone Stairs",
 		"Stone Corner",
@@ -48,7 +48,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "stone", "d
 		)
 
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "cobble", "default:cobble",
-		{cracky=3, not_in_creative_inventory=1},
+		{cracky=3, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_cobble.png"},
 		"Cobblestone Stairs",
 		"Cobblestone Corner",
@@ -59,8 +59,9 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "cobble", "
 		"cobble",
 		default.node_sound_stone_defaults()
 		)
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "brick", "default:brick",
-		{cracky=3, not_in_creative_inventory=1},
+		{cracky=3, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_brick.png"},
 		"Brick Stairs",
 		"Brick Corner",
@@ -71,8 +72,9 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "brick", "d
 		"brick",
 		default.node_sound_stone_defaults()
 		)
+
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "steelblock", "default:steelblock",
-		{snappy=1,bendy=2,cracky=1,melty=2,level=2, not_in_creative_inventory=1},
+		{snappy=1,bendy=2,cracky=1,melty=2,level=2, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_steel_block.png"},
 		"Steel Block Stairs",
 		"Steel Block Corner",
@@ -85,7 +87,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "steelblock
 		)
 
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "desert_stone", "default:desert_stone",
-		{cracky=3, not_in_creative_inventory=1},
+		{cracky=3, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_desert_stone.png"},
 		"Desert Stone Stairs",
 		"Desert Stone Corner",
@@ -98,7 +100,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "desert_sto
 		)
 
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "glass", "default:glass",
-		{cracky=3,oddly_breakable_by_hand=3, not_in_creative_inventory=1},
+		{cracky=3,oddly_breakable_by_hand=3, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_glass.png"},
 		"Glass Stairs",
 		"Glass Corner",
