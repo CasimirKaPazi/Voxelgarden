@@ -921,7 +921,7 @@ minetest.register_node("default:cobble", {
 	tiles = {"default_cobble.png"},
 	is_ground_content = true,
 	melt = "default:lava_flowing",
-	groups = {cracky=3, melt=2900},
+	groups = {cracky=3, stone=1, melt=2900},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -930,7 +930,7 @@ minetest.register_node("default:mossycobble", {
 	tiles = {"default_mossycobble.png"},
 	is_ground_content = true,
 	melt = "default:cobble",
-	groups = {cracky=3, melt=500},
+	groups = {cracky=3, stone=1, melt=500},
 	sounds = default.node_sound_stone_defaults(),
 })
 

@@ -135,7 +135,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "farming:hoe_stone",
 	recipe = {
-		{"group:stone", "group:stone"},
+		{"group:stone_hard", "group:stone_hard"},
 		{"", "group:stick"},
 		{"", "group:stick"}
 	}

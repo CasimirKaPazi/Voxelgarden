@@ -18,7 +18,7 @@ minetest.register_node("nodetest:rock", {
 	wield_image = "nodetest_rock_item.png",
 	is_ground_content = true,
 	melt = "default:lava_flowing",
-	groups = {cracky=3, stone=2, oddly_breakable_by_hand=1, melt=2900},
+	groups = {cracky=3, stone=2, stone_hard=1, oddly_breakable_by_hand=1, melt=2900},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -52,7 +52,7 @@ minetest.register_node("nodetest:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
+	groups = {treeroc_horizontal=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
