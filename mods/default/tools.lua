@@ -56,7 +56,7 @@ minetest.register_tool("default:pick_copper", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			cracky = {times={[1]=5.00, [2]=1.80, [3]=1.00}, uses=15, maxlevel=2},
+			cracky = {times={[2]=1.80, [3]=1.00}, uses=15, maxlevel=2},
 		},
 		damage_groups = {fleshy=3},
 	},
