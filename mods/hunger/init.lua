@@ -70,7 +70,7 @@ local function load_hunger(name)
 	local filename  = get_filename(name)
 	local input     = io.open(filename, "r")
 
-	if not input then return nil end
+	if not input then return 20 end
 
 	hunger = input:read("*n")
 	io.close(input)
@@ -96,11 +96,13 @@ minetest.register_on_respawnplayer(function(player)
 end)
 
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
+	if not player then return end
+	if not hp_change then return end
 	local name = player:get_player_name()
-	if player_hunger[name] + hp_change > 20 then
+	if player_hunger[name] + 2 * hp_change > 20 then
 		player_hunger[name] = 20
 	else
-		player_hunger[name] = player_hunger[name] + hp_change
+		player_hunger[name] = player_hunger[name] + 2 * hp_change
 	end
 	hunger.update_bar(player)
 end)
