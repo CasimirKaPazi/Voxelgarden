@@ -23,11 +23,12 @@ function hunger.update_bar(player)
 	else
 		player_bar[name] = player:hud_add({
 			hud_elem_type = "statbar",
+			position = {x=0.5,y=1.0},
 			text = "hunger.png",
 			number = 20,
 			dir = 0,
-			position = {x=0.5,y=1.0},
-			offset = {x=0, y=-58},
+			offset = {x=25,y=-(48+24+10)},
+			size = { x=24, y=24 },
 		})
 	end
 end

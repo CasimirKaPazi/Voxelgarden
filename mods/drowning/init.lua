@@ -326,11 +326,12 @@ minetest.register_globalstep(function(dtime)
 			else
 				player_bubbles[name] = player:hud_add({
 					hud_elem_type = "statbar",
+					position = {x=0.5,y=1.0},
 					text = "bubble.png",
 					number = 20,
 					dir = 0,
-					position = {x=0.5,y=0.9},
-					offset = {x=0, y=2},
+					offset = {x=25,y=-(48+24+24+10)},
+					size = { x=24, y=24 },
 				})
 			end
 		elseif holding_breath[name] > 0 then
