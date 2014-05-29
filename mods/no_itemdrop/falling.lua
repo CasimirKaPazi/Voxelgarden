@@ -1,35 +1,20 @@
 -- use place node instead of add node and do not drop buildable_to nodes
 minetest.register_entity(":__builtin:falling_node", {
-	initial_properties = {
-		physical = true,
-		collide_with_objects = false,
-		collisionbox = {-0.5,-0.5,-0.5, 0.5,0.5,0.5},
-		visual = "wielditem",
-		textures = {},
-		visual_size = {x=0.667, y=0.667},
-	},
+	physical = true,
+	collide_with_objects = false,
+	collisionbox = {-0.5,-0.5,-0.5, 0.5,0.5,0.5},
+	visual = "wielditem",
+	textures = {},
+	visual_size = {x=0.667, y=0.667},
 
 	node = {},
 
 	set_node = function(self, node)
 		self.node = node
-		local stack = ItemStack(node.name)
-		local itemtable = stack:to_table()
-		local itemname = nil
-		if itemtable then
-			itemname = stack:to_table().name
-		end
-		local item_texture = nil
-		local item_type = ""
-		if minetest.registered_items[itemname] then
-			item_texture = minetest.registered_items[itemname].inventory_image
-			item_type = minetest.registered_items[itemname].type
-		end
-		prop = {
+		self.object:set_properties({
 			is_visible = true,
 			textures = {node.name},
-		}
-		self.object:set_properties(prop)
+		})
 	end,
 
 	get_staticdata = function(self)
@@ -38,7 +23,6 @@ minetest.register_entity(":__builtin:falling_node", {
 
 	on_activate = function(self, staticdata)
 		self.object:set_armor_groups({immortal=1})
-		--self.object:setacceleration({x=0, y=-10, z=0})
 		self:set_node({name=staticdata})
 	end,
 
@@ -47,7 +31,7 @@ minetest.register_entity(":__builtin:falling_node", {
 		if dtime > 0.2 then remove_fast = 1 end
 		-- Set gravity
 		self.object:setacceleration({x=0, y=-10, z=0})
-		-- Turn to actual sand when collides to ground or just move
+		-- Turn to actual node when it collides to ground or just move
 		local pos = self.object:getpos()
 		local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z} -- Position of bottom center point
 		local bcn = minetest.get_node(bcp)
@@ -100,8 +84,6 @@ minetest.register_entity(":__builtin:falling_node", {
 			end
 			self.object:remove()
 			nodeupdate(np, remove_fast)
-		else
-			-- Do nothing
 		end
 	end
 })
