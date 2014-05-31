@@ -8,9 +8,9 @@ minetest.register_node("conifer:sapling", {
 	description = "Conifer Sapling",
 	drawtype = "plantlike",
 	visual_scale = 1.0,
-	tiles = {"nodetest_conifersapling.png"},
-	inventory_image = "nodetest_conifersapling.png",
-	wield_image = "nodetest_conifersapling.png",
+	tiles = {"conifer_sapling.png"},
+	inventory_image = "conifer_sapling.png",
+	wield_image = "conifer_sapling.png",
 	paramtype = "light",
 	walkable = false,
 	buildable_to = true,
@@ -26,7 +26,7 @@ minetest.register_alias("nodetest:conifersapling", "conifer:sapling")
 
 minetest.register_node("conifer:tree", {
 	description = "Conifer Tree",
-	tiles = {"nodetest_conifertree_top.png", "nodetest_conifertree_top.png", "nodetest_conifertree.png"},
+	tiles = {"conifer_tree_top.png", "conifer_tree_top.png", "conifer_tree.png"},
 	groups = {tree=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
@@ -39,7 +39,7 @@ for i=1,2 do
 		description = "Conifer Leaves",
 		drawtype = "allfaces_optional",
 		visual_scale = 1.3,
-		tiles = {"nodetest_coniferleaves_"..i..".png"},
+		tiles = {"conifer_leaves_"..i..".png"},
 		paramtype = "light",
 		waving = 1,
 		groups = {snappy=3, leafdecay=4, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
@@ -68,12 +68,12 @@ minetest.register_alias("conifers:leaves_special", "conifer:leaves_2")
 minetest.register_node("conifer:tree_horizontal", {
 	description = "Conifer Tree",
 	tiles = {
-		"nodetest_conifertree.png", 
-		"nodetest_conifertree.png",
-		"nodetest_conifertree.png^[transformR90", 
-		"nodetest_conifertree.png^[transformR90", 
-		"nodetest_conifertree_top.png", 
-		"nodetest_conifertree_top.png" 
+		"conifer_tree.png", 
+		"conifer_tree.png",
+		"conifer_tree.png^[transformR90", 
+		"conifer_tree.png^[transformR90", 
+		"conifer_tree_top.png", 
+		"conifer_tree_top.png" 
 	},
 	paramtype2 = "facedir",
 	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
