@@ -7,10 +7,7 @@ GPLv3
 
 License of media (textures):
 ----------------------------
-
-Created by VanessaE (License: WTFPL):
-  farming_wheat.png
-  
+ 
 Created by Casimir (License: CC BY-SA):
   farming_string.png
   farming_hoe_wood.png
@@ -23,6 +20,7 @@ Created by Casimir (License: CC BY-SA):
   farming_cotton.png
   farming_weed.png
   farming_bread.png
+  farming_wheat.png
   
 Created by Casimir (License: WTFPL):
   farming_soil.png
