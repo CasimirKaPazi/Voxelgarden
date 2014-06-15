@@ -25,12 +25,13 @@ function hunger.update_bar(player)
 			hud_elem_type = "statbar",
 			position = {x=0.5,y=1.0},
 			text = "hunger.png",
-			number = 20,
+			number = player_hunger[name],
 			dir = 0,
 			offset = {x=25,y=-(48+24+10)},
 			size = { x=24, y=24 },
 		})
 	end
+	hunger.save_hunger(name, player_hunger[name])
 end
 
 if minetest.setting_getbool("enable_damage") == true then
@@ -53,7 +54,7 @@ local function get_filename(player_name)
 	return minetest.get_worldpath() .. "/hunger_" .. player_name .. ".txt"
 end
 
-local function save_hunger(name, value)
+function hunger.save_hunger(name, value)
 	local filename  = get_filename(name)
 	local output    = io.open(filename, "w")
 
@@ -72,21 +73,16 @@ local function load_hunger(name)
 
 	if not input then return 20 end
 
-	hunger = input:read("*n")
+	local load_hunger = input:read("*n")
 	io.close(input)
-	return hunger
+	print("[hunger] loaded hunger = "..load_hunger.."")
+	return load_hunger
 end
 
 minetest.register_on_joinplayer(function(player)
 	local name = player:get_player_name()
 	player_hunger[name] = load_hunger(name)
 	hunger.update_bar(player)
-end)
-
-minetest.register_on_leaveplayer(function(player)
-	local name = player:get_player_name()
-	local value = player_hunger[name]
-	save_hunger(name. value)
 end)
 
 minetest.register_on_respawnplayer(function(player)
