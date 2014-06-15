@@ -75,7 +75,6 @@ local function load_hunger(name)
 
 	local load_hunger = input:read("*n")
 	io.close(input)
-	print("[hunger] loaded hunger = "..load_hunger.."")
 	return load_hunger
 end
 

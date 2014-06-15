@@ -187,8 +187,7 @@ local function is_player_in_liquid(player)
 	-- Check if node is liquid (0=not 2=lava 3=water).
 	-- If it is, then the player is considered being in liquid.
 	-- This includes flowing water and flowing lava
-	if minetest.get_item_group(n_head, "liquid") ~= 0
-	or minetest.get_item_group(n_head, "falling_node") ~= 0 then
+	if minetest.get_item_group(n_head, "liquid") ~= 0 then
 		return true
 	end
 	return false
