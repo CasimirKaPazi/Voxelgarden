@@ -2,6 +2,7 @@ minetest.register_tool("nodetest:spearwood", {
 	description = "Wooden Spear",
 	inventory_image = "nodetest_spearwood.png",
 	wield_image = "nodetest_spearwood.png^[transformFX",
+	range = 5,
 	tool_capabilities = {
 		full_punch_interval = 1,
 		max_drop_level=0,
@@ -16,6 +17,7 @@ minetest.register_tool("nodetest:spearstone", {
 	description = "Stone Spear",
 	inventory_image = "nodetest_spearstone.png",
 	wield_image = "nodetest_spearstone.png^[transformFX",
+	range = 5,
 	tool_capabilities = {
 		full_punch_interval = 1.2,
 		max_drop_level=0,

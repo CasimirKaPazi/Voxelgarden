@@ -15,6 +15,7 @@ end
 minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 4
+minetest.tooldef_default.range = 4.0
 
 -- Set time to dawn on new game
 minetest.register_on_newplayer(function(player)
