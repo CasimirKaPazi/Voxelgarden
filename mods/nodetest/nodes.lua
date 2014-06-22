@@ -52,7 +52,7 @@ minetest.register_node("nodetest:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {treeroc_horizontal=1, choppy=2, flammable=1, melt=750},
+	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })

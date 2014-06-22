@@ -18,7 +18,7 @@ end
 function default.node_sound_stone_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name="default_hard_footstep", gain=0.2}
+			{name="default_hard_footstep", gain=0.3}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -36,7 +36,7 @@ end
 function default.node_sound_sand_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name="default_grass_footstep", gain=0.1}
+			{name="default_grass_footstep", gain=0.2}
 	--table.dug = table.dug or
 	--		{name="default_dirt_break", gain=0.25}
 	table.dug = table.dug or
@@ -48,7 +48,7 @@ end
 function default.node_sound_wood_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name="default_hard_footstep", gain=0.3}
+			{name="default_hard_footstep", gain=0.4}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -56,7 +56,7 @@ end
 function default.node_sound_leaves_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name="default_dig_crumbly", gain=0.1}
+			{name="default_dig_crumbly", gain=0.2}
 	table.dig = table.dig or
 			{name="default_dig_crumbly", gain=0.4}
 	table.dug = table.dug or
@@ -68,7 +68,7 @@ end
 function default.node_sound_glass_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name="default_hard_footstep", gain=0.2}
+			{name="default_hard_footstep", gain=0.3}
 	table.dug = table.dug or
 			{name="default_break_glass", gain=1.0}
 	default.node_sound_defaults(table)
@@ -422,3 +422,32 @@ function default.dig_up(pos, node, digger)
 		minetest.node_dig(np, nn, digger)
 	end
 end
+
+--
+-- Eating
+--
+--[[
+minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, user, pointed_thing)
+	local posplayer = user:getpos()
+	posplayer.y = posplayer.y + 1.6
+	local itemname = itemstack:get_name()
+	local itemimage = minetest.registered_items[itemname].wield_image
+	minetest.add_particlespawner{
+		amount = math.random(15, 20),
+		time = 0.2,
+		minpos = posplayer,
+		maxpos = posplayer,
+		minvel = {x=-1.5, y=-0.5, z=-1.5},
+		maxvel = {x=1.5, y=0.5, z=1.5},
+		minacc = {x=0, y=-9.81, z=0},
+		maxacc = {x=0, y=-9.81, z=0},
+		minexptime = 1,
+		maxexptime = 1,
+		minsize = 1,
+		maxsize = 1,
+		pos = posplayer,
+		size = 5,
+		texture = itemimage,
+	}
+end)
+--]]
