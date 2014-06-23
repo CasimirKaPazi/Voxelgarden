@@ -99,6 +99,11 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	else
 		player_hunger[name] = player_hunger[name] + 2 * hp_change
 	end
+
+	local headpos  = player:getpos()
+	headpos.y = headpos.y + 1
+	minetest.sound_play("hunger_eating", {pos = headpos, gain = 1.0, max_hear_distance = 32})
+
 	hunger.update_bar(player)
 end)
 
