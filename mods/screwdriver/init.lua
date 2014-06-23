@@ -117,6 +117,9 @@ local function screwdriver_handler(itemstack, user, pointed_thing)
 	--print (dump(axisdir..", "..rotation))
 	node.param2 = n
 	minetest.swap_node(pos, node)
+	if minetest.setting_getbool("creative_mode") then
+		return	
+	end
 	local item_wear = tonumber(itemstack:get_wear())
 	item_wear = item_wear + 327
 	if item_wear > 65535 then

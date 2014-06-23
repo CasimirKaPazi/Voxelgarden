@@ -1,3 +1,5 @@
+if not minetest.setting_getbool("creative_mode") then
+
 local default_dig = minetest.node_dig
 
 function minetest.node_dig(pos, node, digger)
@@ -30,3 +32,4 @@ function __builtin_item.on_punch(self, hitter)
 	end
 end
 
+end
