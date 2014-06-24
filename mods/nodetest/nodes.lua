@@ -4,8 +4,7 @@ minetest.register_node("nodetest:desert_sandstone", {
 	description = "Desert Sandstone",
 	tiles = {"nodetest_desert_sandstone.png"},
 	is_ground_content = true,
-	melt = "default:lava_source",
-	groups = {crumbly=2, cracky=2, melt=3000},
+	groups = {crumbly=2, cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_alias("default:desertsandstone", "nodetest:desert_sandstone")
@@ -17,8 +16,7 @@ minetest.register_node("nodetest:rock", {
 	inventory_image = "nodetest_rock_item.png",
 	wield_image = "nodetest_rock_item.png",
 	is_ground_content = true,
-	melt = "default:lava_flowing",
-	groups = {cracky=3, stone=2, stone_hard=1, oddly_breakable_by_hand=1, melt=2900},
+	groups = {cracky=3, stone=2, stone_hard=1, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -52,8 +50,7 @@ minetest.register_node("nodetest:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
-	melt = "default:coal_block",
+	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_alias("default:tree_horizontal", "nodetest:tree_horizontal")
@@ -69,8 +66,7 @@ minetest.register_node("nodetest:jungletree_horizontal", {
 		"default_jungletree_top.png" 
 	},
 	paramtype2 = "facedir",
-	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
-	melt = "default:coal_block",
+	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_alias("default:jungletree_horizontal", "nodetest:jungletree_horizontal")
