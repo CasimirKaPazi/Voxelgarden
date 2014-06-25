@@ -32,6 +32,16 @@ minetest.register_alias("mapgen_stair_sandstone", "stairsplus:stair_sandstone")
 --
 -- Ore generation
 --
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "default:stone_with_coal",
+	wherein        = "default:stone",
+	clust_scarcity = 11*11*11,
+	clust_num_ores = 8,
+	clust_size     = 3,
+	height_min     = -31000,
+	height_max     = 64,
+})
 
 minetest.register_ore({
 	ore_type       = "scatter",

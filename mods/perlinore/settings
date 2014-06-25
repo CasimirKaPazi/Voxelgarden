@@ -1,6 +1,0 @@
-# This is an example file.
-# Use the settings in your main minetest.conf file.
-# Uncomment settings by removing the preceding #.
-
-# Use perlin noise to generate coal.
-# perlin_ore = false
