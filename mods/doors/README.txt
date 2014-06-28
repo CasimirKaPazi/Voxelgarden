@@ -3,26 +3,19 @@ Minetest 0.4 mod: doors
 
 License of source code:
 -----------------------
-Copyright (C) 2012 PilzAdam
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
 
-This program is free software. It comes without any warranty, to
-the extent permitted by applicable law. You can redistribute it
-and/or modify it under the terms of the Do What The Fuck You Want
-To Public License, Version 2, as published by Sam Hocevar. See
-http://sam.zoy.org/wtfpl/COPYING for more details.
+http://www.gnu.org/licenses/lgpl-2.1.html
 
 License of media (textures and sounds)
 --------------------------------------
-Textures created by Fernando Zapata (CC BY-SA 3.0):
-  door_wood.png
+Casimir (CC BY-SA 3.0)
+  Based on the work of Gambit
+  door_brown.png
+  door_grey.png
+  door_steel_b.png
   door_wood_a.png
   door_wood_b.png
-  door_wood_brown.png
-
-BlockMen (CC BY 3.0)
-  door_steel_a.png
-  door_steel_b.png
-
-Casimir (CC BY-SA 3.0)
-  door_steel.png
-  door_grey.png
