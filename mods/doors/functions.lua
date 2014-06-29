@@ -48,51 +48,6 @@ function doors:register_door(name, def)
 		return meta:get_string("doors_owner") == pn
 	end
 
-	local function place(itemstack, placer, pointed_thing)
-		if not pointed_thing.type == "node" then
-			return itemstack
-		end
-		local ptu = pointed_thing.under
-		local pta = pointed_thing.above
-		local place_dir = {x = 0, z = 0}
-		place_dir.x = pta.x - ptu.x
-		place_dir.z = pta.z - ptu.z
-		local p2 = minetest.dir_to_facedir(placer:get_look_dir())
-		local nu = minetest.get_node(ptu)
-		if minetest.registered_nodes[nu.name].on_rightclick then
-			return minetest.registered_nodes[nu.name].on_rightclick(ptu, nu, placer, itemstack)
-		end
-
-		-- place joint on the surface the placer is pointing to
-		if p2 == 0 and ptu.x > pta.x then
-			minetest.set_node(pta, {name=name.."_2", param2=p2})
-		elseif p2 == 1 and ptu.z < pta.z then
-			minetest.set_node(pta, {name=name.."_2", param2=p2})
-		elseif p2 == 2 and ptu.x < pta.x then
-			minetest.set_node(pta, {name=name.."_2", param2=p2})
-		elseif p2 == 3 and ptu.z > pta.z then
-			minetest.set_node(pta, {name=name.."_2", param2=p2})
-		else
-			-- in every other case place normal
-			minetest.set_node(pta, {name=name.."_1", param2=p2})
-		end
-
-		if def.only_placer_can_open then
-			local pn = placer:get_player_name()
-			local meta = minetest.get_meta(pt)
-			meta:set_string("doors_owner", pn)
-			meta:set_string("infotext", "Owned by "..pn)
-			meta = minetest.get_meta(pt2)
-			meta:set_string("doors_owner", pn)
-			meta:set_string("infotext", "Owned by "..pn)
-		end
-
-		if not minetest.setting_getbool("creative_mode") then
-			itemstack:take_item()
-		end
-		minetest.sound_play("default_place_node", {ptu, gain = 0.5})
-	end
-
 	-- closed door
 	minetest.register_node(name.."_1", {
 		description = def.description,
@@ -122,7 +77,49 @@ function doors:register_door(name, def)
 			use(pos, name.."_2", {1,2,3,0})
 		end,
 		on_place = function(itemstack, placer, pointed_thing)
-			place(itemstack, placer, pointed_thing)
+			if not pointed_thing.type == "node" then
+				return itemstack
+			end
+			local ptu = pointed_thing.under
+			local pta = pointed_thing.above
+			local place_dir = {x = 0, z = 0}
+			place_dir.x = pta.x - ptu.x
+			place_dir.z = pta.z - ptu.z
+			local p2 = minetest.dir_to_facedir(placer:get_look_dir())
+			local nu = minetest.get_node(ptu)
+			if minetest.registered_nodes[nu.name].on_rightclick then
+				return minetest.registered_nodes[nu.name].on_rightclick(ptu, nu, placer, itemstack)
+			end
+
+			-- place joint on the surface the placer is pointing to
+			if p2 == 0 and ptu.x > pta.x then
+				minetest.set_node(pta, {name=name.."_2", param2=p2})
+			elseif p2 == 1 and ptu.z < pta.z then
+				minetest.set_node(pta, {name=name.."_2", param2=p2})
+			elseif p2 == 2 and ptu.x < pta.x then
+				minetest.set_node(pta, {name=name.."_2", param2=p2})
+			elseif p2 == 3 and ptu.z > pta.z then
+				minetest.set_node(pta, {name=name.."_2", param2=p2})
+			else
+				-- in every other case place normal
+				minetest.set_node(pta, {name=name.."_1", param2=p2})
+			end
+
+			if def.only_placer_can_open then
+				local pn = placer:get_player_name()
+				local meta = minetest.get_meta(pt)
+				meta:set_string("doors_owner", pn)
+				meta:set_string("infotext", "Owned by "..pn)
+				meta = minetest.get_meta(pt2)
+				meta:set_string("doors_owner", pn)
+				meta:set_string("infotext", "Owned by "..pn)
+			end
+
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			minetest.sound_play("default_place_node", {ptu, gain = 0.5})
+			return itemstack
 		end,
 	})
 
