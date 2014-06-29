@@ -1,8 +1,36 @@
-nodetest 0.4.9
+Nodetest 0.4.10
 Subgame for Minetest
 
-license:
-for every mod applies the original license
-for other code GPLv3
-for other textures CC BY-SA
-for other sounds CC BY-SA
+License:
+For every mod applies the original license,
+all other code is licensed under LGPLv3 or later,
+all other textures CC BY-SA,
+all other sounds CC BY-SA.
+
+
+Mod             License
+
+bones           WTFPL
+bucket          LGPL
+conifer         LGPL
+creative        WTFPL
+default         LGPL
+doors           LGPL
+drowning        WTFPL
+dye             WTFPL
+farming         LGPL
+fire            LGPL
+flowers         WTFPL
+footsteps       LGPL
+hunger          LGPL
+intweak         WTFPL
+inventory_plus  GPL
+legacy          LGPL
+nodetest	LGPL
+no_itemdrop     LGPL
+pots            WTFPL
+screwdriver     LGPL
+sethome         LGPL
+stairsplus      zlib/libpng
+wool            WTFPL
+zcg             WTFPL

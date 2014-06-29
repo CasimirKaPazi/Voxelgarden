@@ -1,5 +1,5 @@
-Nodetest
-==========================
+Hunger mod of nodetest
+=========================
 
 License of source code:
 -----------------------
@@ -19,13 +19,9 @@ Authors of media files
 -----------------------
 Everything not listed in here:
 Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
-  
-Casimir (CC BY-SA 3.0)
-  nodetest_bone.png
-  nodetest_papyrus_roots.png
-  nodetest_rock.png
-  nodetest_rock_item.png
 
-Mossmanikin (WTFPL)
-  nodetest_spearstone.png
-  nodetest_spearwood.png
+Gambit (WTFPL):
+  hunger.png
+
+Caroline Ford SoundBible.com (CC BY-SA)
+  hunger_eating.ogg
