@@ -135,6 +135,13 @@ minetest.register_craft({
 	recipe = "group:tree_horizontal",
 })
 
+minetest.register_craft({
+	output = 'nodetest:seedling 4',
+	recipe = {
+		{'group:sapling'},
+	}
+})
+
 --
 -- Fuels
 --

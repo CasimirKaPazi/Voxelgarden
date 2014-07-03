@@ -70,3 +70,22 @@ minetest.register_node("nodetest:jungletree_horizontal", {
 	sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_alias("default:jungletree_horizontal", "nodetest:jungletree_horizontal")
+
+minetest.register_node("nodetest:seedling", {
+	description = "Seedling",
+	drawtype = "torchlike",
+	tiles = {"nodetest_seedling.png"},
+	inventory_image = "nodetest_seedling.png",
+	wield_image = "nodetest_seedling.png",
+	paramtype = "light",
+	waving = 1,
+	walkable = false,
+	buildable_to = true,
+	is_ground_content = true,
+	groups = {snappy=3, dig_immediate=3, flammable=3, attached_node=1, dissolve=1},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 },
+	},
+})
