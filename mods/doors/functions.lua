@@ -107,10 +107,7 @@ function doors:register_door(name, def)
 
 			if def.only_placer_can_open then
 				local pn = placer:get_player_name()
-				local meta = minetest.get_meta(pt)
-				meta:set_string("doors_owner", pn)
-				meta:set_string("infotext", "Owned by "..pn)
-				meta = minetest.get_meta(pt2)
+				local meta = minetest.get_meta(pta)
 				meta:set_string("doors_owner", pn)
 				meta:set_string("infotext", "Owned by "..pn)
 			end
