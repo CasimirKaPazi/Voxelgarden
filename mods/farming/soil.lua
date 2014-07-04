@@ -1,7 +1,3 @@
-if farming_soil == nil then
-	farming_soil = {"farming:soil", "farming:soil_wet", "farming:soil", "farming:soil_wet"}
-end
-
 minetest.register_node("farming:soil", {
 	tiles = {"farming_soil.png", "default_dirt.png", "default_dirt.png", "default_dirt.png", "default_dirt.png", "default_dirt.png"},
 	drop = "default:dirt",
