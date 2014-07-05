@@ -1,12 +1,17 @@
 Nodetest 0.4.10
 Subgame for Minetest
 
-License:
-For every mod applies the original license,
-all other code is licensed under LGPLv3 or later,
-all other textures CC BY-SA,
-all other sounds CC BY-SA.
+License of source code:
+-----------------------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
 
+http://www.gnu.org/licenses/lgpl-2.1.html
+
+For every mod applies the original license. See list below.
+All other media is licenced under Creative Commons BY-SA license.
 
 Mod             License
 
