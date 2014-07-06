@@ -21,6 +21,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:stick 6',
+	recipe = {
+		{'default:dry_shrub'},
+		{'default:dry_shrub'},
+		{'default:dry_shrub'},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:fence_wood 2',
 	recipe = {
 		{'group:stick', 'group:stick', 'group:stick'},
@@ -630,5 +639,11 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:sword_wood",
+	burntime = 5,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:dry_shrub",
 	burntime = 5,
 })
