@@ -152,10 +152,21 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:clay",
 	wherein        = "default:sand",
-	clust_scarcity = 15*15*15,
-	clust_num_ores = 64,
-	clust_size     = 5,
+	clust_scarcity = 20*20*20,
+	clust_num_ores = 32,
+	clust_size     = 6,
 	height_max     = 0,
+	height_min     = -10,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "default:clay",
+	wherein        = "default:dirt",
+	clust_scarcity = 20*20*20,
+	clust_num_ores = 32,
+	clust_size     = 6,
+	height_max     = 16,
 	height_min     = -10,
 })
 
