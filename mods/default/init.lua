@@ -20,7 +20,13 @@ minetest.tooldef_default.range = 4.0
 -- Set time to dawn on new game
 minetest.register_on_newplayer(function(player)
 	if minetest.get_gametime() < 5 then
-		minetest.set_timeofday(0.2)
+		minetest.set_timeofday(0.22)
+	end
+end)
+
+minetest.register_on_respawnplayer(function(player)
+	if minetest.is_singleplayer() then
+		minetest.set_timeofday(0.22)
 	end
 end)
 
