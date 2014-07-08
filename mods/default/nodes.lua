@@ -277,9 +277,25 @@ minetest.register_node("default:leaves", {
 
 minetest.register_node("default:cactus", {
 	description = "Cactus",
+	drawtype = "nodebox",
+	paramtype = "light",
 	tiles = {"default_cactus_top.png", "default_cactus_top.png", "default_cactus_side.png"},
 	is_ground_content = true,
-	groups = {snappy=1,choppy=3,flammable=2},
+	groups = {snappy=1, choppy=3, flammable=2},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.5, -0.375, 0.5, 0.5},
+			{0.375, -0.5, -0.5, 0.375, 0.5, 0.5},
+			{-0.5, -0.5, 0.375, 0.5, 0.5, 0.375},
+			{-0.5, -0.5, -0.375, 0.5, 0.5, -0.375},
+			{-0.375, -0.5, -0.375, 0.375, 0.5, 0.375},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}
+	},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
