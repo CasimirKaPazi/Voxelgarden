@@ -150,19 +150,31 @@ local max_stage = 3
 local stages = {}
 local stages = farming.register_stages(max_stage, "farming:cotton")
 
-minetest.override_item("farming:cotton_"..max_stage.."", {
-		on_rightclick = function(pos, node, clicker)
-			local inv = clicker:get_inventory()
-			if inv:room_for_item("main", "farming:cotton") then
-				minetest.add_node(pos, {name="farming:cotton_2"})	
-				minetest.sound_play("default_dig_crumbly", {pos,gain = 1.0})
-				inv:add_item("main", "farming:cotton")
-			else
-				minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-			end
+minetest.register_node("farming:cotton_"..max_stage.."", {
+	tiles = {"farming_cotton_"..max_stage..".png"},
+	paramtype = "light",
+	waving = 1,
+	walkable = false,
+	drawtype = "plantlike",
+	drop = "",
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375},
+	},
+	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
+	on_rightclick = function(pos, node, clicker)
+		local inv = clicker:get_inventory()
+		if inv:room_for_item("main", "farming:cotton") then
+			minetest.add_node(pos, {name="farming:cotton_2"})	
+			minetest.sound_play("default_dig_crumbly", {pos,gain = 1.0})
+			inv:add_item("main", "farming:cotton")
+			return itemstack
+		else
+			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
 		end
-	}
-)
+	end,
+	sounds = default.node_sound_leaves_defaults(),
+})
 
 farming.register_growing(max_stage, stages, 57, 20, 10)
 

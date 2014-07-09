@@ -53,9 +53,7 @@ function farming.register_stages(max_stage, name, description)
 	for i = 1,max_stage do
 		local hight = 0.5 - 0.25 * (max_stage - i)
 		minetest.register_node(name.."_"..i, {
-			description = "Plant",
 			tiles = {tiles_name.."_"..i..".png"},
-			inventory_image = tiles_name.."_"..i..".png",
 			paramtype = "light",
 			waving = 1,
 			walkable = false,
