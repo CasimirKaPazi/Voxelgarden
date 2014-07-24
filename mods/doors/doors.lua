@@ -51,11 +51,13 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_alias("doors:door_wood", "doors:door_wood_1")
 minetest.register_alias("doors:door_wood_t_1", "doors:door_wood_window_1")
 minetest.register_alias("doors:door_wood_t_2", "doors:door_wood_window_2")
 minetest.register_alias("doors:door_wood_b_1", "doors:door_wood_1")
 minetest.register_alias("doors:door_wood_b_2", "doors:door_wood_2")
 
+minetest.register_alias("doors:door_steel", "doors:door_steel_1")
 minetest.register_alias("doors:door_steel_t_1", "doors:door_steel_1")
 minetest.register_alias("doors:door_steel_t_2", "doors:door_steel_2")
 minetest.register_alias("doors:door_steel_b_1", "doors:door_steel_1")
