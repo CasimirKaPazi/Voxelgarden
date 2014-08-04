@@ -20,7 +20,7 @@ local function screwdriver_setmode(user,itemstack)
 	local item = itemstack:to_table()
 	local mode = tonumber(itemstack:get_metadata())
 	if not mode then
-		minetest.chat_send_player(player_name, "Hold shift and use to change screwdriwer modes.")
+		minetest.chat_send_player(player_name, "Use while sneaking to change screwdriwer modes.")
 		mode = 0
 	end
 	mode = mode + 1
@@ -120,13 +120,7 @@ local function screwdriver_handler(itemstack, user, pointed_thing)
 	if minetest.setting_getbool("creative_mode") then
 		return	
 	end
-	local item_wear = tonumber(itemstack:get_wear())
-	item_wear = item_wear + 327
-	if item_wear > 65535 then
-		itemstack:clear()
-		return itemstack
-	end
-	itemstack:set_wear(item_wear)
+	itemstack:add_wear(327)
 	return itemstack
 end
 
