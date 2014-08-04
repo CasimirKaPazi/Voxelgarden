@@ -76,30 +76,6 @@ function default.node_sound_glass_defaults(table)
 end
 
 --
--- Global callbacks
---
-
--- Global environment step function
-function on_step(dtime)
-	-- print("on_step")
-end
-minetest.register_globalstep(on_step)
-
-function on_placenode(p, node)
-	--print("on_placenode")
-end
-minetest.register_on_placenode(on_placenode)
-
-function on_dignode(p, node)
-	--print("on_dignode")
-end
-minetest.register_on_dignode(on_dignode)
-
-function on_punchnode(p, node)
-end
-minetest.register_on_punchnode(on_punchnode)
-
---
 -- Furnace ABM
 --
 
@@ -116,10 +92,10 @@ end
 function default.abm_furnace(pos, node, active_object_count, active_object_count_wider)
 	local meta = minetest.get_meta(pos)
 	for i, name in ipairs({
-			"fuel_totaltime",
-			"fuel_time",
-			"src_totaltime",
-			"src_time"
+		"fuel_totaltime",
+		"fuel_time",
+		"src_totaltime",
+		"src_time"
 	}) do
 		if meta:get_string(name) == "" then
 			meta:set_float(name, 0.0)
@@ -215,8 +191,9 @@ minetest.register_abm({
 	interval = 13,
 	chance = 50,
 	action = function(pos, node)
-		local is_soil = minetest.registered_nodes[minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name].groups.soil
-		if is_soil == nil or is_soil == 0 then return end
+		local ground_name = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local is_soil = minetest.registered_nodes[ground_name].groups.soil
+		if not is_soil or is_soil == 0 then return end
 		-- When to close to other trees, turn to decoration.
 		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
 			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
@@ -225,9 +202,9 @@ minetest.register_abm({
 		local above_name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
 		if above_name ~= "air" and above_name ~= "ignore" then return end
 		-- Otherwise grow a tree.
-		print("A sapling grows into a tree at "..minetest.pos_to_string(pos))
+--		print("A sapling grows into a tree at "..minetest.pos_to_string(pos))
 		local vm = minetest.get_voxel_manip()
-		local minp, maxp = vm:read_from_map({x=pos.x-16, y=pos.y, z=pos.z-16}, {x=pos.x+16, y=pos.y+16, z=pos.z+16})
+		local minp, maxp = vm:read_from_map({x=pos.x-8, y=pos.y, z=pos.z-8}, {x=pos.x+8, y=pos.y+16, z=pos.z+8})
 		local a = VoxelArea:new{MinEdge=minp, MaxEdge=maxp}
 		local data = vm:get_data()
 		default.grow_tree(data, a, pos, math.random(1, 4) == 1, math.random(1,100000))
@@ -242,8 +219,9 @@ minetest.register_abm({
 	interval = 13,
 	chance = 50,
 	action = function(pos, node)
-		local is_soil = minetest.registered_nodes[minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name].groups.soil
-		if is_soil == nil or is_soil == 0 then return end
+		local ground_name = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local is_soil = minetest.registered_nodes[ground_name].groups.soil
+		if not is_soil or is_soil == 0 then return end
 		-- When to close to other trees, turn to decoration.
 		r = math.random(1, 2)
 		if minetest.find_node_near(pos, r, {"group:tree", "group:sapling"}) then
@@ -253,9 +231,9 @@ minetest.register_abm({
 		local above_name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
 		if above_name ~= "air" and above_name ~= "ignore" then return end
 		-- Otherwise grow a tree.
-		print("A jungle sapling grows into a tree at "..minetest.pos_to_string(pos))
+--		print("A jungle sapling grows into a tree at "..minetest.pos_to_string(pos))
 		local vm = minetest.get_voxel_manip()
-		local minp, maxp = vm:read_from_map({x=pos.x-16, y=pos.y-1, z=pos.z-16}, {x=pos.x+16, y=pos.y+16, z=pos.z+16})
+		local minp, maxp = vm:read_from_map({x=pos.x-8, y=pos.y, z=pos.z-8}, {x=pos.x+8, y=pos.y+16, z=pos.z+8})
 		local a = VoxelArea:new{MinEdge=minp, MaxEdge=maxp}
 		local data = vm:get_data()
 		default.grow_jungletree(data, a, pos, math.random(1,100000))
@@ -365,14 +343,14 @@ minetest.register_abm({
 	interval = 80,
 	chance = 30,
 	action = function(pos, node)
-		pos.y = pos.y-1
+		pos.y = pos.y - 1
 		local name = minetest.get_node(pos).name
 		if minetest.get_item_group(name, "sand") ~= 0 then
-			pos.y = pos.y+1
+			pos.y = pos.y + 1
 			local height = 0
 			while minetest.get_node(pos).name == "default:cactus" and height < 4 do
-				height = height+1
-				pos.y = pos.y+1
+				height = height + 1
+				pos.y = pos.y + 1
 			end
 			if height < 4 then
 				if minetest.get_node(pos).name == "air" then
@@ -389,17 +367,17 @@ minetest.register_abm({
 	interval = 47,
 	chance = 30,
 	action = function(pos, node)
-		pos.y = pos.y-1
+		pos.y = pos.y - 1
 		local name = minetest.get_node(pos).name
 		if minetest.get_item_group(name, "soil") > 0 or name == "nodetest:papyrus_roots" then
-			if minetest.find_node_near(pos, 3, {"group:water"}) == nil then
+			if not minetest.find_node_near(pos, 3, {"group:water"}) then
 				return
 			end
-			pos.y = pos.y+1
+			pos.y = pos.y + 1
 			local height = 0
 			while minetest.get_node(pos).name == "default:papyrus" and height < 5 do
-				height = height+1
-				pos.y = pos.y+1
+				height = height + 1
+				pos.y = pos.y + 1
 			end
 			if height < math.random(0, 5) then
 				if minetest.get_node(pos).name == "air" then
@@ -422,32 +400,3 @@ function default.dig_up(pos, node, digger)
 		minetest.node_dig(np, nn, digger)
 	end
 end
-
---
--- Eating
---
---[[
-minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, user, pointed_thing)
-	local posplayer = user:getpos()
-	posplayer.y = posplayer.y + 1.6
-	local itemname = itemstack:get_name()
-	local itemimage = minetest.registered_items[itemname].wield_image
-	minetest.add_particlespawner{
-		amount = math.random(15, 20),
-		time = 0.2,
-		minpos = posplayer,
-		maxpos = posplayer,
-		minvel = {x=-1.5, y=-0.5, z=-1.5},
-		maxvel = {x=1.5, y=0.5, z=1.5},
-		minacc = {x=0, y=-9.81, z=0},
-		maxacc = {x=0, y=-9.81, z=0},
-		minexptime = 1,
-		maxexptime = 1,
-		minsize = 1,
-		maxsize = 1,
-		pos = posplayer,
-		size = 5,
-		texture = itemimage,
-	}
-end)
---]]

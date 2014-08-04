@@ -114,7 +114,7 @@ minetest.register_abm({
 	action = function(pos, node)
 		local ground_name = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 		local is_soil = minetest.registered_nodes[ground_name].groups.soil
-		if is_soil == nil or is_soil == 0 then return end
+		if not is_soil or is_soil == 0 then return end
 		local snow = false
 		if ground_name == "default:dirt_with_snow" then
 			snow = true
@@ -128,9 +128,9 @@ minetest.register_abm({
 		local above_name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
 		if above_name ~= "air" and above_name ~= "ignore" then return end
 		-- Otherwise grow a tree.
-		print("A conifer sapling grows into a tree at "..minetest.pos_to_string(pos))
+--		print("A conifer sapling grows into a tree at "..minetest.pos_to_string(pos))
 		local vm = minetest.get_voxel_manip()
-		local minp, maxp = vm:read_from_map({x=pos.x-16, y=pos.y, z=pos.z-16}, {x=pos.x+16, y=pos.y+32, z=pos.z+16})
+		local minp, maxp = vm:read_from_map({x=pos.x-8, y=pos.y, z=pos.z-8}, {x=pos.x+8, y=pos.y+32, z=pos.z+8})
 		local a = VoxelArea:new{MinEdge=minp, MaxEdge=maxp}
 		local data = vm:get_data()
 		conifer.grow_conifertree(data, a, pos, math.random(1, 4) == 1, snow, math.random(1,100000))
