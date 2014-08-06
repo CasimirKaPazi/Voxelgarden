@@ -2,13 +2,13 @@ stairs = {}
 
 function stairs.register_stair(subname, recipeitem, groups, images, description, sounds)
 	stairsplus.register_stair(
-		"stairsplus", subname, recipeitem, groups, images, description, subname, sounds, false
+		"stairs", subname, recipeitem, groups, images, description, subname, sounds, false
 	)
 end
 
 function stairs.register_slab(subname, recipeitem, groups, images, description, sounds)
 	stairsplus.register_slab(
-		"stairsplus", subname, recipeitem, groups, images, description, subname, sounds, false
+		"stairs", subname, recipeitem, groups, images, description, subname, sounds, false
 	)
 end
 
