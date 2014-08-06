@@ -1,4 +1,3 @@
-
 local mode_text = {
 	{"Change rotation, Don't change axisdir."},
 	{"Keep choosen face in front then rotate it."},
@@ -20,7 +19,7 @@ local function screwdriver_setmode(user,itemstack)
 	local item = itemstack:to_table()
 	local mode = tonumber(itemstack:get_metadata())
 	if not mode then
-		minetest.chat_send_player(player_name, "Use while sneaking to change screwdriwer modes.")
+		minetest.chat_send_player(player_name, "Right click to change screwdriwer modes.")
 		mode = 0
 	end
 	mode = mode + 1
@@ -55,7 +54,7 @@ local function nextrange(x, max)
 	return x
 end
 
-local function screwdriver_handler(itemstack, user, pointed_thing)
+local function screwdriver_use(itemstack, user, pointed_thing)
 	if pointed_thing.type ~= "node" then
 		return
 	end
@@ -63,7 +62,7 @@ local function screwdriver_handler(itemstack, user, pointed_thing)
 	local keys = user:get_player_control()
 	local player_name = user:get_player_name()
 	local mode = tonumber(itemstack:get_metadata())
-	if not mode or keys["sneak"] == true then
+	if not mode then
 		return screwdriver_setmode(user, itemstack)
 	end
 	if minetest.is_protected(pos, user:get_player_name()) then
@@ -136,7 +135,11 @@ minetest.register_tool("screwdriver:screwdriver", {
 	description = "Screwdriver",
 	inventory_image = "screwdriver.png",
 	on_use = function(itemstack, user, pointed_thing)
-		screwdriver_handler(itemstack, user, pointed_thing)
+		screwdriver_use(itemstack, user, pointed_thing)
+		return itemstack
+	end,
+	on_place = function(itemstack, user, pointed_thing)
+		screwdriver_setmode(user, itemstack)
 		return itemstack
 	end,
 })
@@ -148,7 +151,11 @@ for i = 1, 4 do
 		wield_image = "screwdriver.png",
 		groups = {not_in_creative_inventory=1},
 		on_use = function(itemstack, user, pointed_thing)
-			screwdriver_handler(itemstack, user, pointed_thing)
+			screwdriver_use(itemstack, user, pointed_thing)
+			return itemstack
+		end,
+		on_place = function(itemstack, user, pointed_thing)
+			screwdriver_setmode(user, itemstack)
 			return itemstack
 		end,
 	})
