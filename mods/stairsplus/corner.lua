@@ -6,7 +6,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 -- nodes
 --
 	
-	minetest.register_node(modname .. ":corner_" .. subname, {
+	minetest.register_node(":".. modname .. ":corner_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -28,7 +28,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	
 	minetest.register_alias(modname .. ":stair_" .. subname .. "_wall", modname .. ":corner_" .. subname)
 	
-	minetest.register_node(modname .. ":corner_" .. subname .. "_half", {
+	minetest.register_node(":".. modname .. ":corner_" .. subname .. "_half", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -50,7 +50,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	
 	minetest.register_alias(modname .. ":stair_" .. subname .. "_wall_half", modname .. ":corner_" .. subname .. "_half")
 	
-	minetest.register_node(modname .. ":corner_" .. subname .. "_half_inverted", {
+	minetest.register_node(":".. modname .. ":corner_" .. subname .. "_half_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -72,7 +72,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	
 	minetest.register_alias(modname .. ":stair_" .. subname .. "_wall_half_inverted", modname .. ":corner_" .. subname .. "_half_inverted")
 	
-	minetest.register_node(modname .. ":corner_" .. subname .. "_inner", {
+	minetest.register_node(":".. modname .. ":corner_" .. subname .. "_inner", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -95,7 +95,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	
 	minetest.register_alias(modname .. ":stair_" .. subname .. "_inner", modname .. ":corner_" .. subname .. "_inner")
 	
-	minetest.register_node(modname .. ":corner_" .. subname .. "_outer", {
+	minetest.register_node(":".. modname .. ":corner_" .. subname .. "_outer", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -117,7 +117,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	
 	minetest.register_alias(modname .. ":stair_" .. subname .. "_outer", modname .. ":corner_" .. subname .. "_outer")
 	
-	minetest.register_node(modname .. ":corner_" .. subname .. "_inner_inverted", {
+	minetest.register_node(":".. modname .. ":corner_" .. subname .. "_inner_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -140,7 +140,7 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	
 	minetest.register_alias(modname .. ":stair_" .. subname .. "_inner_inverted", modname .. ":corner_" .. subname .. "_inner_inverted")
 	
-	minetest.register_node(modname .. ":corner_" .. subname .. "_outer_inverted", {
+	minetest.register_node(":".. modname .. ":corner_" .. subname .. "_outer_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,

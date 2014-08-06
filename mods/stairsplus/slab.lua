@@ -6,7 +6,7 @@ function stairsplus.register_slab(modname, subname, recipeitem, groups, images, 
 -- nodes
 --
 
-	minetest.register_node(modname .. ":slab_" .. subname, {
+	minetest.register_node(":".. modname .. ":slab_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -38,7 +38,7 @@ function stairsplus.register_slab(modname, subname, recipeitem, groups, images, 
 		sounds = sounds,
 	})
 
-	minetest.register_node(modname .. ":slab_" .. subname .. "_inverted", {
+	minetest.register_node(":".. modname .. ":slab_" .. subname .. "_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,

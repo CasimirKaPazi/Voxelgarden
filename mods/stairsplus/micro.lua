@@ -6,7 +6,7 @@ function stairsplus.register_micro(modname, subname, recipeitem, groups, images,
 -- nodes
 --
 
-	minetest.register_node(modname .. ":micro_" .. subname .. "_bottom", {
+	minetest.register_node(":".. modname .. ":micro_" .. subname .. "_bottom", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -23,7 +23,7 @@ function stairsplus.register_micro(modname, subname, recipeitem, groups, images,
 		sounds = sounds,
 	})
 	
-	minetest.register_node(modname .. ":micro_" .. subname .. "_top", {
+	minetest.register_node(":".. modname .. ":micro_" .. subname .. "_top", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,

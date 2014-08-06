@@ -6,7 +6,7 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 -- nodes
 --
 
-	minetest.register_node(modname .. ":stair_" .. subname, {
+	minetest.register_node(":".. modname .. ":stair_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -46,7 +46,7 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 		sounds = sounds,
 	})
 
-	minetest.register_node(modname .. ":stair_" .. subname .. "_inverted", {
+	minetest.register_node(":".. modname .. ":stair_" .. subname .. "_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -66,7 +66,7 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 		sounds = sounds,
 	})
 	
-	minetest.register_node(modname .. ":stair_" .. subname .. "_half", {
+	minetest.register_node(":".. modname .. ":stair_" .. subname .. "_half", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -86,7 +86,7 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 		sounds = sounds,
 	})
 	
-	minetest.register_node(modname .. ":stair_" .. subname .. "_half_inverted", {
+	minetest.register_node(":".. modname .. ":stair_" .. subname .. "_half_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -106,7 +106,7 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 		sounds = default.node_sound_stone_defaults(),
 	})
 	
-	minetest.register_node(modname .. ":stair_" .. subname .. "_right_half", {
+	minetest.register_node(":".. modname .. ":stair_" .. subname .. "_right_half", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -126,7 +126,7 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 		sounds = sounds,
 	})
 
-	minetest.register_node(modname .. ":stair_" .. subname .. "_right_half_inverted", {
+	minetest.register_node(":".. modname .. ":stair_" .. subname .. "_right_half_inverted", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,

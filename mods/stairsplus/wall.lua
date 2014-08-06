@@ -6,7 +6,7 @@ function stairsplus.register_wall(modname, subname, recipeitem, groups, images, 
 -- nodes
 --
 
-	minetest.register_node(modname .. ":wall_" .. subname, {
+	minetest.register_node(":".. modname .. ":wall_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,

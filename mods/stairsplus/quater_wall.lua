@@ -6,7 +6,7 @@ function stairsplus.register_quater_wall(modname, subname, recipeitem, groups, i
 -- nodes
 --
 
-	minetest.register_node(modname .. ":wall_" .. subname .. "_quarter", {
+	minetest.register_node(":".. modname .. ":wall_" .. subname .. "_quarter", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
@@ -25,7 +25,7 @@ function stairsplus.register_quater_wall(modname, subname, recipeitem, groups, i
 
 	minetest.register_alias(modname .. ":slab_" .. subname .. "_quarter_wall", modname .. ":wall_" .. subname .. "_quarter")
 
-	minetest.register_node(modname .. ":wall_" .. subname .. "_three_quarter", {
+	minetest.register_node(":".. modname .. ":wall_" .. subname .. "_three_quarter", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
