@@ -16,6 +16,18 @@ minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 4
 minetest.tooldef_default.range = 4.0
+-- Use tools right click to place nodes
+minetest.tooldef_default.on_place = function(itemstack, user, pointed_thing)
+	if not pointed_thing then return end
+	local above = minetest.env:get_node(pointed_thing.above)
+	local inv = user:get_inventory()
+	local wield = inv:get_stack("main", user:get_wield_index()+1)
+	local name = wield:get_name()
+	if not minetest.registered_nodes[name] then return end
+	if not above.buildable_to and above.name ~= "air" then return end
+	inv:remove_item("main", name)
+	minetest.place_node(pointed_thing.above, {name = name})
+end
 
 -- Set time to dawn on new game
 minetest.register_on_newplayer(function(player)
