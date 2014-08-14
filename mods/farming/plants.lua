@@ -20,8 +20,8 @@ minetest.register_node("farming:weed", {
 	drop = {
 		max_items = 1,
 		items = {
-			{ items = {'farming:wheat'}, rarity = 5 },
-			{ items = {'farming:cotton'}, rarity = 15 },
+			{ items = {'farming:wheat'}, rarity = 8 },
+			{ items = {'farming:cotton'}, rarity = 13 },
 		}
 	},
 	groups = {snappy=3, flammable=2, sickle=1, attached_node=1},
@@ -41,7 +41,6 @@ minetest.register_abm({
 	end
 })
 
--- ========= FUEL =========
 minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:weed",
@@ -67,10 +66,9 @@ minetest.override_item("farming:wheat_"..max_stage.."", {
 		drop = {
 			max_items = 4,
 			items = {
-				{ items = {'farming:wheat'} },
-				{ items = {'farming:wheat'}, rarity = 2 },
-				{ items = {'farming:wheat'}, rarity = 3},
-				{ items = {'farming:wheat'}, rarity = 5},
+				{ items = {"farming:wheat 2"} },
+				{ items = {"farming:wheat"}, rarity = 2},
+				{ items = {"farming:wheat"}, rarity = 4},
 			}
 		}
 	}
@@ -120,7 +118,6 @@ minetest.register_craft({
 	},
 })
 
--- ========= FUEL =========
 minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:wheat",
@@ -167,7 +164,7 @@ minetest.register_node("farming:cotton_"..max_stage.."", {
 		if inv:room_for_item("main", "farming:cotton") then
 			minetest.add_node(pos, {name="farming:cotton_2"})	
 			minetest.sound_play("default_dig_crumbly", {pos,gain = 1.0})
-			inv:add_item("main", "farming:cotton")
+			inv:add_item("main", "farming:cotton 2")
 			return itemstack
 		else
 			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
@@ -176,7 +173,7 @@ minetest.register_node("farming:cotton_"..max_stage.."", {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
-farming.register_growing(max_stage, stages, 57, 20, 10)
+farming.register_growing(max_stage, stages, 57, 15, 10)
 
 minetest.register_craftitem("farming:string", {
 	description = "String",
@@ -198,7 +195,6 @@ minetest.register_craft({
 	}
 })
 
--- ========= FUEL =========
 minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:string",

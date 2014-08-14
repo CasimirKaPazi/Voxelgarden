@@ -21,23 +21,25 @@ function farming.hoe_on_use(itemstack, placer, pos, uses)
 	return itemstack
 end
 
-function farming.place_seed(itemstack, placer, pointed_thing, plantname)
-	local under = minetest.get_node(pointed_thing.under)
-	local above = minetest.get_node(pointed_thing.above)
+function farming.place_seed(itemstack, placer, pointed, plantname)
+	local under = minetest.get_node(pointed.under)
+	local above = minetest.get_node(pointed.above)
+	local p_below = {x=pointed.above.x, y=pointed.above.y-1, z=pointed.above.z}
+	local below = minetest.get_node(p_below)
 	-- check for rightclick
 	local reg_node = minetest.registered_nodes[under.name]
 	if reg_node.on_rightclick then
-		reg_node.on_rightclick(pointed_thing.under, under, placer)
+		reg_node.on_rightclick(pointed.under, under, placer)
 		return
 	end
 	-- place plant
 	if above.name ~= "air" then return end
-	if under.name ~= "farming:soil" and under.name ~= "farming:soil_wet" then
+	if below.name ~= "farming:soil" and below.name ~= "farming:soil_wet" then
 		return
 	end
 	above.name = plantname
-	minetest.place_node(pointed_thing.above, above, placer)
-	minetest.sound_play("default_place_node", {pos = pointed_thing.above, gain = 0.5})
+	minetest.place_node(pointed.above, above, placer)
+	minetest.sound_play("default_place_node", {pos = pointed.above, gain = 0.5})
 	if minetest.setting_getbool("creative_mode") then
 		return
 	end
