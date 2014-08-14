@@ -111,3 +111,17 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "glass", "d
 		"glass",
 		default.node_sound_glass_defaults(),
 		true)
+
+minetest.register_craft({
+	output = "mesecons_pressureplates:pressure_plate_wood_off",
+	recipe = {
+		{"group:wood", "group:stick", "group:wood"},
+	},
+})
+
+minetest.register_craft({
+	output = "mesecons_pressureplates:pressure_plate_stone_off",
+	recipe = {
+		{"group:stone", "group:stick", "group:stone"},
+	},
+})
