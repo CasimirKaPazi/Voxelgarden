@@ -1,3 +1,4 @@
+--[[
 local auto_refill = false  -- set to "true" if you want get refilled your stack automatic
 
 function refill(player, stck_name, index)
@@ -72,9 +73,6 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 			return
 		end
 	end
-	--[[if not typ or typ ~= "tool" then
-		return
-	end]]
 
 	local old_name = wielded.name[name]
 	if tname == old_name and tname == "" then
@@ -101,3 +99,4 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 		end
 	end
 end)
+--]]
