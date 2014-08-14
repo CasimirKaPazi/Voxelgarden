@@ -52,6 +52,9 @@ minetest.register_node("nodetest:tree_horizontal", {
 	paramtype2 = "facedir",
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
 })
 minetest.register_alias("default:tree_horizontal", "nodetest:tree_horizontal")
 
@@ -68,6 +71,9 @@ minetest.register_node("nodetest:jungletree_horizontal", {
 	paramtype2 = "facedir",
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
 })
 minetest.register_alias("default:jungletree_horizontal", "nodetest:jungletree_horizontal")
 

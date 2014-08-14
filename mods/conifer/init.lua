@@ -79,6 +79,9 @@ minetest.register_node("conifer:tree_horizontal", {
 	groups = {tree_horizontal=1, choppy=2, flammable=1, melt=750},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
 })
 minetest.register_alias("conifers:trunk_reversed", "conifer:tree_horizontal")
 minetest.register_alias("nodetest:conifertree_horizontal", "conifer:tree_horizontal")

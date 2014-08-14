@@ -388,10 +388,7 @@ minetest.register_abm({
 	end,
 })
 
---
 -- Dig upwards
---
-
 function default.dig_up(pos, node, digger)
 	if digger == nil then return end
 	local np = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -399,4 +396,17 @@ function default.dig_up(pos, node, digger)
 	if nn.name == node.name then
 		minetest.node_dig(np, nn, digger)
 	end
+end
+
+-- Rotate symmetric nodes 
+function default.rotate_horizontal(pos)
+	local node = minetest.get_node(pos)
+	if node.param2 == 2 then
+		node.param2 = 0
+	elseif node.param2 == 3 then
+		node.param2 = 1
+	else
+		return
+	end
+	minetest.set_node(pos, node)
 end
