@@ -15,7 +15,11 @@ end
 minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 4
-minetest.tooldef_default.range = 4.0
+if minetest.setting_getbool("creative_mode") then
+	minetest.tooldef_default.range = 10
+else
+	minetest.tooldef_default.range = 4.0
+end
 -- Use tools right click to place nodes
 -- [[
 minetest.tooldef_default.on_place = function(itemstack, user, pointed_thing)
