@@ -1078,8 +1078,8 @@ minetest.register_node("default:snow", {
 	is_ground_content = true,
 	paramtype = "light",
 	buildable_to = true,
-	walkable = false,
 	leveled = 7,
+	leveled_full = "default:snowblock",
 	drawtype = "nodebox",
 	node_box = {
 		type = "leveled",
@@ -1087,14 +1087,15 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5,  0.5, -0.5+2/16, 0.5},
 		},
 	},
-	groups = {crumbly=3, falling_node=1, fall_damage_add_percent=COUSHION, dissolve=1},
+	groups = {crumbly=3, falling_node=1, fall_damage_add_percent=COUSHION, dissolve=1, float=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 	on_construct = function(pos)
 		pos.y = pos.y - 1
-		if minetest.get_node(pos).name == "default:dirt_with_grass"
-			or minetest.get_node(pos).name == "default:dirt_with_grass_footsteps" then
+		local bottom = minetest.get_node(pos) 
+		if bottom.name == "default:dirt_with_grass"
+			or bottom.name == "default:dirt_with_grass_footsteps" then
 			minetest.set_node(pos, {name="default:dirt_with_snow"})
 		end
 	end,

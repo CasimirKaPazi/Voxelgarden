@@ -1,5 +1,5 @@
 -- use place node instead of add node and do not drop buildable_to nodes
-minetest.register_entity(":__builtin:falling_node", {
+core.register_entity(":__builtin:falling_node", {
 	physical = true,
 	collide_with_objects = false,
 	collisionbox = {-0.5,-0.5,-0.5, 0.5,0.5,0.5},
@@ -27,63 +27,69 @@ minetest.register_entity(":__builtin:falling_node", {
 	end,
 
 	on_step = function(self, dtime)
-		local remove_fast = 0
 		if dtime > 0.2 then remove_fast = 1 end
 		-- Set gravity
 		self.object:setacceleration({x=0, y=-10, z=0})
 		-- Turn to actual node when it collides to ground or just move
 		local pos = self.object:getpos()
-		local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z} -- Position of bottom center point
-		local bcn = minetest.get_node(bcp)
+		local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z}  -- Position of bottom center point
+		local bcn = core.get_node(bcp)
+		local bcd = core.registered_nodes[bcn.name]
 		-- Note: walkable is in the node definition, not in item groups
-		if minetest.registered_nodes[bcn.name] and
-				minetest.registered_nodes[bcn.name].walkable or
-				(minetest.get_node_group(self.node.name, "float") ~= 0 and minetest.registered_nodes[bcn.name].liquidtype ~= "none")
-			then
-			if minetest.registered_nodes[bcn.name].leveled and bcn.name == self.node.name then
+		if not bcd or
+				(bcd.walkable or
+				(core.get_node_group(self.node.name, "float") ~= 0 and
+				core.registered_nodes[bcn.name].liquidtype ~= "none")) then
+			if bcd and bcd.leveled and bcn.name == self.node.name then
 				local addlevel = self.node.level
-				if addlevel == nil or addlevel <= 0 then addlevel = minetest.registered_nodes[bcn.name].leveled end
-				if minetest.env:add_node_level(bcp, addlevel) == 0 then
+				if addlevel == nil or addlevel <= 0 then
+					addlevel = bcd.leveled
+				end
+				local new_level = core.add_node_level(bcp, addlevel)
+				if new_level == 0 then
 					self.object:remove()
 					return
 				end
-			elseif minetest.registered_nodes[bcn.name].buildable_to
-			and (minetest.get_node_group(self.node.name, "float") == 0
-			or minetest.registered_nodes[bcn.name].liquidtype == "none")
-			then
-				minetest.remove_node(bcp, remove_fast)
+				-- Turn into a full block if defined
+				if new_level >= bcd.leveled and bcd.leveled_full then
+					core.add_node(bcp, {name=bcd.leveled_full})
+				end
+			elseif bcd.buildable_to and
+					(core.get_item_group(self.node.name, "float") == 0 or
+					bcd.liquidtype == "none") then
+				core.remove_node(bcp, remove_fast)
 				return
 			end
 			local np = {x=bcp.x, y=bcp.y+1, z=bcp.z}
 			-- Check what's here
-			local n2 = minetest.get_node(np)
+			local n2 = core.get_node(np)
 			-- If it's not air or liquid, remove node and replace it with
 			-- it's drops
-			if n2.name ~= "air" and (not minetest.registered_nodes[n2.name] or
-					minetest.registered_nodes[n2.name].liquidtype == "none") then
-				minetest.remove_node(np, remove_fast)
-				if minetest.registered_nodes[n2.name].buildable_to == false then
+			if n2.name ~= "air" and (not core.registered_nodes[n2.name] or
+					core.registered_nodes[n2.name].liquidtype == "none") then
+				core.remove_node(np, remove_fast)
+				if core.registered_nodes[n2.name].buildable_to == false then
 					-- Add dropped items
-					local drops = minetest.get_node_drops(n2.name, "")
+					local drops = core.get_node_drops(n2.name, "")
 					local _, dropped_item
 					for _, dropped_item in ipairs(drops) do
-						minetest.add_item(np, dropped_item)
+						core.add_item(np, dropped_item)
 					end
 				end
 				-- Run script hook
 				local _, callback
-				for _, callback in ipairs(minetest.registered_on_dignodes) do
+				for _, callback in ipairs(core.registered_on_dignodes) do
 					callback(np, n2, nil)
 				end
 			end
 			-- Create node and remove entity
-			if minetest.registered_items[self.node.name].paramtype2 == "wallmounted" then
-				minetest.place_node(np, self.node)
+			if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
+				core.place_node(np, self.node)
 			else
-				minetest.add_node(np, self.node)
+				core.add_node(np, self.node)
 			end
 			self.object:remove()
-			nodeupdate(np, remove_fast)
+			nodeupdate(np)
 		end
 	end
 })
