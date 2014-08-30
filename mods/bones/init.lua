@@ -81,7 +81,7 @@ minetest.register_node("bones:bones", {
 			end
 		end
 		
-		-- remove bones if player emptied them
+		-- Remove bones if player emptied them
 		if has_space then
 			if player_inv:room_for_item("main", "bones:bones") then
 				player_inv:add_item("main", "bones:bones")

@@ -11,9 +11,8 @@ minetest.register_on_leaveplayer(function(player)
 	player_pos_previous[player_name] = nil
 end)
 
--- chance to change is odd of 100
+-- Chance to change is odd of 100
 local odd = 30
-
 local timer = 0
 
 minetest.register_globalstep(function(dtime)
@@ -29,7 +28,7 @@ minetest.register_globalstep(function(dtime)
 		local p_ground = { x=math.floor(pos.x+0.5), y=math.floor(pos.y), z=math.floor(pos.z+0.5) }
 		local n_ground  = minetest.get_node(p_ground)
 		
-		-- checking if position is the previous position
+		-- Check if position is the previous position
 		if player_pos_previous[player_name] == nil then
 			return
 		end
@@ -45,7 +44,7 @@ minetest.register_globalstep(function(dtime)
 			return
 		end
 			
-		-- make footsteps
+		-- Make footsteps
 		if n_ground.name == "default:dirt_with_grass" then
 			if math.random(1, 100) <= odd then
 				minetest.add_node(p_ground,{type="node",name="default:dirt_with_grass_footsteps"})
@@ -76,22 +75,11 @@ minetest.register_globalstep(function(dtime)
 		end
 		end
 	
-		-- making position to previous position
+		-- Make position to previous position
 		player_pos_previous[player_name] =  player_pos[player_name]
 	end
 end)
---[[
-minetest.register_abm({
-	nodenames = {"default:dirt_with_grass_footsteps"},
-	interval = 20,
-	chance = 20,
-	action = function(pos, node)		
-		node.name = "default:dirt_with_grass"
-		minetest.add_node(pos, node)
-	end
-})
---]]
--- [[
+
 minetest.register_abm({
 	nodenames = {"default:dirt_with_grass_footsteps"},
 	interval = 5,
@@ -113,4 +101,3 @@ minetest.register_abm({
 		meta:set_int("decay", decay)
 	end
 })
---]]

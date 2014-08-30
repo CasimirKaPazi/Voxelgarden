@@ -156,19 +156,20 @@ minetest.register_abm({
 			fire.on_flame_remove_at(p0)
 			return
 		end
-		if math.random(1,4) == 1 then
-			-- remove a flammable node around flame
+		if math.random(1,8) == 1 then
+			-- Remove a flammable node around flame
 			local p = minetest.find_node_near(p0, 1, {"group:flammable"})
 			if p then
 				-- If there is water or stuff like that around flame, don't remove
 				if fire.flame_should_extinguish(p0) then
 					return
 				end
-				minetest.remove_node(p)
+				minetest.set_node(p, {name="fire:basic_flame"})
+				fire.on_flame_add_at(p)
 				nodeupdate(p)
 			end
 		else
-			-- remove flame
+			-- Remove flame
 			minetest.remove_node(p0)
 			fire.on_flame_remove_at(p0)
 		end

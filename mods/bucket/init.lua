@@ -1,7 +1,7 @@
 -- Minetest 0.4 mod: bucket
 -- See README.txt for licensing and other information.
 
-local LIQUID_MAX = 8  --The number of water levels when liquid_finite is enabled
+local LIQUID_MAX = 8  -- The number of water levels when liquid_finite is enabled
 
 minetest.register_alias("bucket", "bucket:bucket_empty")
 minetest.register_alias("bucket_water", "bucket:bucket_water")
@@ -101,19 +101,19 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 			if not fullness then fullness = LIQUID_MAX end
 
 			if ndef and ndef.buildable_to then
-				-- buildable; replace the node
+				-- Buildable; replace the node
 				place_liquid(pointed_thing.under, node,
 						source, flowing, fullness)
 			else
-				-- not buildable to; place the liquid above
-				-- check if the node above can be replaced
+				-- Not buildable to; place the liquid above
+				-- Check if the node above can be replaced
 				local node = minetest.get_node_or_nil(pointed_thing.above)
 				if node and minetest.registered_nodes[node.name].buildable_to then
 					place_liquid(pointed_thing.above,
 							node, source,
 							flowing, fullness)
 				else
-					-- do not remove the bucket with the liquid
+					-- Do not remove the bucket with the liquid
 					return
 				end
 			end
@@ -144,7 +144,7 @@ minetest.register_craftitem("bucket:bucket_empty", {
 				return
 			end
 			
-			-- only one bucket: replace
+			-- Only one bucket: replace
 			local count = itemstack:get_count()
 			if count == 1 then
 				minetest.add_node(pointed_thing.under, {name="air"})
@@ -152,7 +152,7 @@ minetest.register_craftitem("bucket:bucket_empty", {
 					metadata = tostring(node.param2)})
 			end
 
-			-- staked buckets: add a filled bucket, replace stack
+			-- Staked buckets: add a filled bucket, replace stack
 			local inv = user:get_inventory()
 			if inv:room_for_item("main", liquiddef.itemname) then
 				minetest.add_node(pointed_thing.under, {name="air"})

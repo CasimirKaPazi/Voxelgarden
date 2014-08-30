@@ -11,7 +11,7 @@ minetest.register_privilege("no_hunger", {
 	give_to_singleplayer = false
 })
 
--- hunger bar
+-- Hunger bar
 function hunger.update_bar(player)
 	local name = player:get_player_name()
 	if minetest.get_player_privs(name)["no_hunger"] then
@@ -36,7 +36,7 @@ end
 
 if minetest.setting_getbool("enable_damage") == true then
 
--- prevent players from starving while afk (<--joke)
+-- Prevent players from starving while afk (<--joke)
 minetest.register_on_dignode(function(pos, oldnode, player)
 	if not player then return end
 	local name = player:get_player_name()
@@ -49,7 +49,7 @@ minetest.register_on_placenode(function(pos, node, player)
 	player_is_active[name] = true
 end)
 
--- save and load hunger
+-- Save and load hunger
 local function get_filename(player_name)
 	return minetest.get_worldpath() .. "/hunger_" .. player_name .. ".txt"
 end
@@ -107,7 +107,7 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	hunger.update_bar(player)
 end)
 
--- main function
+-- Main function
 local timer = 0
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
@@ -123,7 +123,7 @@ minetest.register_globalstep(function(dtime)
 			return
 		end
 		if not player_is_active[name] then return end
-		-- the hunger interval for each player depends on the health
+		-- The hunger interval for each player depends on the health
 		if not player_step[name] or player_step[name] >= 20 then
 			player_step[name] = 0
 		end

@@ -1,4 +1,4 @@
--- use place node instead of add node and do not drop buildable_to nodes
+-- Use place node instead of add node and turn full leveled nodes into others.
 core.register_entity(":__builtin:falling_node", {
 	physical = true,
 	collide_with_objects = false,
@@ -94,3 +94,29 @@ core.register_entity(":__builtin:falling_node", {
 		end
 	end
 })
+
+function drop_attached_node(p)
+	local node = core.get_node(p)
+	local nn = node.name
+	core.remove_node(p)
+	local pos = {
+		x = math.floor(p.x + 0.5),
+		y = math.floor(p.y + 0.5),
+		z = math.floor(p.z + 0.5),
+	}
+	local drops = minetest.registered_nodes[nn].drop
+	if drops == nil or minetest.registered_nodes[drops] ~= nil then
+		-- when there are no drops defined let the node fall down
+		core.after(0.1, spawn_falling_node, pos, node)
+	else
+		-- when there are, drop them
+		for _,item in ipairs(core.get_node_drops(nn, "")) do
+			local pos_drop = {
+				x = p.x + math.random()/2 - 0.25,
+				y = p.y + math.random()/2 - 0.25,
+				z = p.z + math.random()/2 - 0.25,
+			}
+			core.add_item(pos_drop, item)
+		end
+	end
+end
