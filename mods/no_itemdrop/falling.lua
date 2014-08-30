@@ -36,11 +36,11 @@ core.register_entity(":__builtin:falling_node", {
 		local bcn = core.get_node(bcp)
 		local bcd = core.registered_nodes[bcn.name]
 		-- Note: walkable is in the node definition, not in item groups
-		if not bcd or
-				(bcd.walkable or
-				(core.get_node_group(self.node.name, "float") ~= 0 and
-				core.registered_nodes[bcn.name].liquidtype ~= "none")) then
-			if bcd and bcd.leveled and bcn.name == self.node.name then
+		if not bcd then return end
+		if bcd.walkable or (core.get_node_group(self.node.name, "float") ~= 0 and
+				core.registered_nodes[bcn.name].liquidtype ~= "none") then
+			-- Increse level of bottom node
+			if bcd.leveled and bcn.name == self.node.name then
 				local addlevel = self.node.level
 				if addlevel == nil or addlevel <= 0 then
 					addlevel = bcd.leveled
@@ -54,6 +54,7 @@ core.register_entity(":__builtin:falling_node", {
 				if new_level >= bcd.leveled and bcd.leveled_full then
 					core.add_node(bcp, {name=bcd.leveled_full})
 				end
+			-- Remove bottom node
 			elseif bcd.buildable_to and
 					(core.get_item_group(self.node.name, "float") == 0 or
 					bcd.liquidtype == "none") then
