@@ -42,7 +42,8 @@ for i=1,2 do
 		tiles = {"conifer_leaves_"..i..".png"},
 		paramtype = "light",
 		waving = 1,
-		groups = {snappy=3, leafdecay=4, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+		trunk = "conifer:tree",
+		groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 		drop = {
 			max_items = 1,
 			items = {

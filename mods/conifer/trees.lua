@@ -83,8 +83,8 @@ function conifer.grow_tree(pos, leaves_special, snow)
 
 	local vm = minetest.get_voxel_manip()
 	local minp, maxp = vm:read_from_map(
-			{x = pos.x - 4, y = pos.y, z = pos.z - 4},
-			{x = pos.x + 4, y = pos.y + height + 1, z = pos.z + 4}
+			{x = pos.x - 3, y = pos.y - 1, z = pos.z - 3},
+			{x = pos.x + 3, y = pos.y + height + 1, z = pos.z + 3}
 	)
 	local a = VoxelArea:new({MinEdge = minp, MaxEdge = maxp})
 	local data = vm:get_data()
