@@ -58,14 +58,16 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				end
 				if ground_y then
 					local p = {x=x,y=ground_y,z=z}
+					local n = minetest.get_node(p).name
 					local p_above = {x=x,y=ground_y+1,z=z}
+					local p_under = {x=x,y=ground_y-1,z=z}
 					-- papyrus on grass
-					if minetest.get_node(p).name == "default:dirt_with_grass" and
-							minetest.find_node_near(p, 3, "default:water_source") then
+					if n == "default:dirt_with_grass" and
+							minetest.find_node_near(p, 2, "default:water_source") then
 						default.make_papyrus(p_above, pr:next(1, 5))
 					-- papyrus roots
-					elseif minetest.get_node(p).name == "default:water_source" and
-							minetest.find_node_near(p, 2, "default:dirt_with_grass") then
+					elseif minetest.get_node(p_under).name == "default:dirt"
+							and n == "default:water_source" then
 						minetest.set_node(p, {name="default:papyrus_roots"})
 						default.make_papyrus(p_above, pr:next(1, 5))
 					end

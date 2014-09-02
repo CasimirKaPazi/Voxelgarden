@@ -309,7 +309,7 @@ minetest.register_abm({
 		pos.y = pos.y - 1
 		local name = minetest.get_node(pos).name
 		if minetest.get_item_group(name, "soil") > 0 or name == "nodetest:papyrus_roots" then
-			if not minetest.find_node_near(pos, 3, {"group:water"}) then
+			if not minetest.find_node_near(pos, 2, {"group:water"}) then
 				return
 			end
 			pos.y = pos.y + 1

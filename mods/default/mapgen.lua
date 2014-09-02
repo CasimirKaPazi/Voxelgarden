@@ -443,10 +443,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 						-- If jungletree, add junglegrass
 						elseif nn == "default:jungletree" then
 							minetest.set_node(p, {name="default:junglegrass"})
-							
-						-- If sand and jungletree nearby, add junglegrass
-						elseif nn == "default:default_sand" and
-						minetest.find_node_near({x=x,y=1,z=z}, 5, "default:jungletree") then
+						elseif nn == "default:cactus" then
 							minetest.set_node(p, {name="default:junglegrass"})
 						end
 					end
