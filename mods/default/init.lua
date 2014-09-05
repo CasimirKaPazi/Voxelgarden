@@ -15,13 +15,8 @@ end
 minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 4
-if minetest.setting_getbool("creative_mode") then
-	minetest.tooldef_default.range = 10
-else
-	minetest.tooldef_default.range = 4.0
-end
+
 -- Use tools right click to place nodes
--- [[
 minetest.tooldef_default.on_place = function(itemstack, user, pointed_thing)
 	if not pointed_thing then return end
 	local above = minetest.env:get_node(pointed_thing.above)
@@ -35,7 +30,6 @@ minetest.tooldef_default.on_place = function(itemstack, user, pointed_thing)
 		inv:set_stack("main", idx, stack)
 	end
 end
---]]
 
 -- Set time to dawn on new game
 minetest.register_on_newplayer(function(player)
