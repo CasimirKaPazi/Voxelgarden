@@ -17,15 +17,14 @@ minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 4
 
 -- Use tools right click to place nodes
-minetest.tooldef_default.on_place = function(itemstack, user, pointed_thing)
-	if not pointed_thing then return end
-	local above = minetest.env:get_node(pointed_thing.above)
+minetest.tooldef_default.on_place = function(itemstack, user, pointed)
+	if not pointed then return end
+	local above = minetest.env:get_node(pointed.above)
 	local inv = user:get_inventory()
 	local idx = user:get_wield_index()+1
 	local stack = inv:get_stack("main", idx)
-	if not above.buildable_to and above.name ~= "air" then return end
 	local success
-	stack, success = minetest.item_place(stack, user, pointed_thing)
+	stack, success = minetest.item_place(stack, user, pointed)
 	if success then --if item was placed, put modified stack back in inv
 		inv:set_stack("main", idx, stack)
 	end
