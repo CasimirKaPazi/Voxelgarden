@@ -22,13 +22,6 @@ local wall_dir = {
 }
 
 function doors:register_door(name, def)	
-	local box = {-0.5, -0.5, -0.5,   0.5, 0.5, -0.5+1/16}
-	if not def.node_box then
-		def.node_box = box
-	end
-	if not def.selection_box then
-		def.selection_box = box
-	end
 	local tiles = def.tiles
 
 	-- Change door status
@@ -109,7 +102,6 @@ function doors:register_door(name, def)
 			end
 
 			-- Place joint on the surface the placer is pointing to
-			print("facedir = "..p2.."")
 			local face = p2
 			if ptu.y < pta.y then
 				face = floor_dir[p2]
