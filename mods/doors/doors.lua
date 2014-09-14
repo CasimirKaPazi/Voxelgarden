@@ -1,12 +1,8 @@
---
--- Wooden and steel doors
---
-
 doors:register_door("doors:door_wood", {
 	description = "Wooden Door",
 	inventory_image = "door_wood_b.png",
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=2,door=1},
-	tiles = {"door_wood_b.png", "door_brown.png"},
+	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
+	tiles = {"door_wood_b.png"},
 })
 
 minetest.register_craft({
@@ -21,8 +17,8 @@ minetest.register_craft({
 doors:register_door("doors:door_wood_window", {
 	description = "Wooden Window",
 	inventory_image = "door_wood_a.png",
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=2,door=1},
-	tiles = {"door_wood_a.png", "door_brown.png"},
+	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
+	tiles = {"door_wood_a.png"},
 })
 
 minetest.register_craft({
@@ -37,8 +33,8 @@ minetest.register_craft({
 doors:register_door("doors:door_steel", {
 	description = "Steel Door",
 	inventory_image = "door_steel_b.png",
-	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2,door=1},
-	tiles = {"door_steel_b.png", "door_grey.png"},
+	groups = {snappy=1, cracky=1, door=1},
+	tiles = {"door_steel_b.png"},
 	only_placer_can_open = true,
 })
 

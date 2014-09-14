@@ -1,7 +1,28 @@
 doors = {}
 
+local floor_dir = {
+	[0] = 15,
+	[1] = 8,
+	[2] = 17,
+	[3] = 6,
+}
+
+local ceil_dir = {
+	[0] = 19,
+	[1] = 4,
+	[2] = 13,
+	[3] = 10,
+}
+
+local wall_dir = {
+	[0] = 20,
+	[1] = 23,
+	[2] = 22,
+	[3] = 21,
+}
+
 function doors:register_door(name, def)	
-	local box = {{-0.5, -0.5, -0.5,   0.5, 0.5, -0.5+1/16}}
+	local box = {-0.5, -0.5, -0.5,   0.5, 0.5, -0.5+1/16}
 	if not def.node_box then
 		def.node_box = box
 	end
@@ -10,16 +31,15 @@ function doors:register_door(name, def)
 	end
 	local tiles = def.tiles
 
-	-- change door status
-	local function use(pos, replace_dir, params)
+	-- Change door status
+	local function use(pos, replace_dir)
 		local node = minetest.get_node(pos)
 		local p2 = node.param2
-		p2 = params[p2+1]
 		minetest.sound_play("default_dig_choppy", {pos, gain = 1.0})
 		minetest.swap_node(pos, {name=replace_dir, param2=p2})
 	end
 
-	-- check for other doors
+	-- Check for other doors
 	local function update(pos, dir)
 		local node = minetest.get_node(pos)
 		local status = minetest.registered_nodes[node.name].status
@@ -32,9 +52,9 @@ function doors:register_door(name, def)
 			update(pos_next, dir)
 			local name = minetest.registered_nodes[node_next.name].base_name
 			if status == 1 then
-				use(pos_next, name.."_2", {1,2,3,0})
+				use(pos_next, name.."_2")
 			elseif status == 2 then
-				use(pos_next, name.."_1", {3,0,1,2})
+				use(pos_next, name.."_1")
 			end
 		end
 	end
@@ -48,22 +68,22 @@ function doors:register_door(name, def)
 		return meta:get_string("doors_owner") == pn
 	end
 
-	-- closed door
+	-- Closed door
 	minetest.register_node(name.."_1", {
 		description = def.description,
 		inventory_image = def.inventory_image,
-		tiles = {tiles[2], tiles[2], tiles[2], tiles[2], tiles[1], tiles[1].."^[transformfx"},
+		tiles = {tiles[1], tiles[1], tiles[1], tiles[1], tiles[1], tiles[1].."^[transformfx"},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = name.."_1",
 		drawtype = "nodebox",
 		node_box = {
 			type = "fixed",
-			fixed = def.node_box
+			fixed = {-0.5, -0.5, -0.5,   0.5, 0.5, -0.5+1/16}
 		},
 		selection_box = {
 			type = "fixed",
-			fixed = def.selection_box
+			fixed = {-0.5, -0.5, -0.5,   0.5, 0.5, -0.5+1/16}
 		},
 		groups = def.groups,
 		status = 1,
@@ -74,7 +94,7 @@ function doors:register_door(name, def)
 			end
 			update(pos, 1)
 			update(pos, -1)
-			use(pos, name.."_2", {1,2,3,0})
+			use(pos, name.."_2")
 		end,
 		on_place = function(itemstack, placer, pointed_thing)
 			if not pointed_thing.type == "node" then
@@ -82,28 +102,27 @@ function doors:register_door(name, def)
 			end
 			local ptu = pointed_thing.under
 			local pta = pointed_thing.above
-			local place_dir = {x = 0, z = 0}
-			place_dir.x = pta.x - ptu.x
-			place_dir.z = pta.z - ptu.z
 			local p2 = minetest.dir_to_facedir(placer:get_look_dir())
 			local nu = minetest.get_node(ptu)
 			if minetest.registered_nodes[nu.name].on_rightclick then
 				return minetest.registered_nodes[nu.name].on_rightclick(ptu, nu, placer, itemstack)
 			end
 
-			-- place joint on the surface the placer is pointing to
-			if p2 == 0 and ptu.x > pta.x then
-				minetest.set_node(pta, {name=name.."_2", param2=p2})
-			elseif p2 == 1 and ptu.z < pta.z then
-				minetest.set_node(pta, {name=name.."_2", param2=p2})
-			elseif p2 == 2 and ptu.x < pta.x then
-				minetest.set_node(pta, {name=name.."_2", param2=p2})
-			elseif p2 == 3 and ptu.z > pta.z then
-				minetest.set_node(pta, {name=name.."_2", param2=p2})
-			else
-				-- in every other case place normal
-				minetest.set_node(pta, {name=name.."_1", param2=p2})
+			-- Place joint on the surface the placer is pointing to
+			print("facedir = "..p2.."")
+			local face = p2
+			if ptu.y < pta.y then
+				face = floor_dir[p2]
+			elseif ptu.y > pta.y then
+				face = ceil_dir[p2]
+			elseif (p2 == 0 and ptu.x > pta.x) or
+					(p2 == 1 and ptu.z < pta.z) or
+					(p2 == 2 and ptu.x < pta.x) or
+					(p2 == 3 and ptu.z > pta.z) then
+				face = wall_dir[p2]
 			end
+			-- In every other case place normal
+			minetest.set_node(pta, {name=name.."_1", param2=face})
 
 			if def.only_placer_can_open then
 				local pn = placer:get_player_name()
@@ -120,20 +139,20 @@ function doors:register_door(name, def)
 		end,
 	})
 
-	-- open door
+	-- Open door
 	minetest.register_node(name.."_2", {
-		tiles = {tiles[2], tiles[2], tiles[2], tiles[2], tiles[1].."^[transformfx", tiles[1]},
+		tiles = {tiles[1], tiles[1], tiles[1].."^[transformfx", tiles[1], tiles[1].."^[transformfx", tiles[1].."^[transformfx"},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = name.."_1",
 		drawtype = "nodebox",
 		node_box = {
 			type = "fixed",
-			fixed = def.node_box
+			fixed = {-0.5, -0.5, -0.5,   -0.5+1/16, 0.5, 0.5}
 		},
 		selection_box = {
 			type = "fixed",
-			fixed = def.selection_box
+			fixed = {-0.5, -0.5, -0.5,   -0.5+1/16, 0.5, 0.5}
 		},
 		groups = def.groups,
 		status = 2,
@@ -144,7 +163,7 @@ function doors:register_door(name, def)
 			end
 			update(pos, 1)
 			update(pos, -1)
-			use(pos, name.."_1", {3,0,1,2})
+			use(pos, name.."_1")
 		end,
 	})	
 end
