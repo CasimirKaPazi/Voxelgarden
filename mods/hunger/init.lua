@@ -80,8 +80,15 @@ end
 
 minetest.register_on_joinplayer(function(player)
 	local name = player:get_player_name()
+	print("[hunger] name = "..name.."")
 	player_hunger[name] = load_hunger(name)
+	print("[hunger] hunger = "..player_hunger[name].."")
 	hunger.update_bar(player)
+end)
+
+minetest.register_on_leaveplayer(function(player)
+	local name = player:get_player_name()
+	player_bar[name] = nil
 end)
 
 minetest.register_on_respawnplayer(function(player)
