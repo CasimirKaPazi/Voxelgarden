@@ -329,7 +329,7 @@ end
 
 function generate_nyancats(seed, minp, maxp)
 	local height_min = -31000
-	local height_max = -32
+	local height_max = 31000
 	if maxp.y < height_min or minp.y > height_max then
 		return
 	end
