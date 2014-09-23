@@ -48,9 +48,9 @@ for i=1,2 do
 			max_items = 1,
 			items = {
 				{
-					-- player will get sapling with 1/30 chance
+					-- player will get sapling with 1/rarity chance
 					items = {'conifer:sapling'},
-					rarity = 30,
+					rarity = 40,
 				},
 				{
 					-- player will get leaves only if he get no saplings,

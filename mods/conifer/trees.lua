@@ -8,7 +8,7 @@ minetest.register_abm({
 		if not default.can_grow(pos) then
 			return
 		end
-		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
+		if minetest.find_node_near(pos, 3, {"group:tree", "group:sapling"}) then
 			minetest.set_node(pos, {name="conifer:leaves_"..math.random(1, 2)})
 			return
 		end
