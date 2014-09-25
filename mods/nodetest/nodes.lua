@@ -95,3 +95,26 @@ minetest.register_node("nodetest:seedling", {
 		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 },
 	},
 })
+
+minetest.register_node("nodetest:bonfire", {
+	description = "Bonfire",
+	drawtype = "plantlike",
+	visual_scale = 1.0,
+	tiles = {
+		{name="nodetest_bonfire_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}}
+	},
+	inventory_image = "nodetest_bonfire.png",
+	wield_image = "nodetest_bonfire.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	drop = "default:coal_lump",
+	damage_per_second = 1,
+	light_source = LIGHT_MAX-1,
+	groups = {snappy=3, attached_node=1},
+	sounds = default.node_sound_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.375, -0.5, -0.375, 0.375, 0, 0.375},
+	},
+})
