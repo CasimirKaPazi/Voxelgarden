@@ -75,9 +75,15 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'nodetest:rock',
 	recipe = {
-		{'default:cobble', 'default:cobble', 'default:cobble'},
-		{'default:cobble', 'default:cobble', 'default:cobble'},
-		{'default:cobble', 'default:cobble', 'default:cobble'},
+		{'default:cobble', 'default:cobble'},
+		{'default:cobble', 'default:cobble'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:cobble 4',
+	recipe = {
+		{'nodetest:rock'},
 	}
 })
 
