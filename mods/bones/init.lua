@@ -93,8 +93,8 @@ minetest.register_node("bones:bones", {
 	on_timer = function(pos, elapsed)
 		local meta = minetest.get_meta(pos)
 		local publish = 1200
-		if tonumber(minetest.setting_get("bones_share_time")) then
-			publish = tonumber(minetest.setting_get("bones_share_time"))
+		if tonumber(minetest.setting_get("share_bones_time")) then
+			publish = tonumber(minetest.setting_get("share_bones_time"))
 		end
 		if publish == 0 then
 			return
