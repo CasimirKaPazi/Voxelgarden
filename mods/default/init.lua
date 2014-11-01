@@ -54,6 +54,8 @@ dofile(minetest.get_modpath("default").."/craftitems.lua")
 dofile(minetest.get_modpath("default").."/crafting.lua")
 dofile(minetest.get_modpath("default").."/mapgen.lua")
 dofile(minetest.get_modpath("default").."/leafdecay.lua")
-dofile(minetest.get_modpath("default").."/player.lua")
+if not minetest.setting_getbool("disable_player_model") then
+	dofile(minetest.get_modpath("default").."/player.lua")
+end
 dofile(minetest.get_modpath("default").."/trees.lua")
 dofile(minetest.get_modpath("default").."/aliases.lua")
