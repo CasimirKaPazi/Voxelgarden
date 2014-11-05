@@ -19,14 +19,30 @@ minetest.register_globalstep(function(dtime)
 			math.floor(dtime * finds_per_second)
 end)
 
-default.leafdecay = function(p0, node, _, _)
-	--print("leafdecay ABM at "..p0.x..", "..p0.y..", "..p0.z..")")
-	local do_preserve = false
-	local d = minetest.registered_nodes[node.name].groups.leafdecay
-	if not d or d == 0 then
-		--print("not groups.leafdecay")
-		return
+local function leafupdate(p0)
+	for xi = -1, 1 do
+	for yi = -1, 1 do
+	for zi = -1, 1 do
+		if xi == 0 and yi == 0 and zi == 0 then return end
+		local p1 = {x=p0.x + xi, y=p0.y + yi, z=p0.z + zi}
+		local node = minetest.get_node(p1)
+		local range = minetest.registered_nodes[node.name].groups.leafdecay
+		if range then
+			minetest.after(math.random(1,8), default.leafdecay, p1)
+		end
 	end
+	end
+	end
+end
+
+default.leafdecay = function(p0)
+	--print("leafdecay ABM at "..p0.x..", "..p0.y..", "..p0.z..")")
+	local node = minetest.get_node(p0)
+	local do_preserve = false
+	local def = minetest.registered_nodes[node.name]
+	local range = def.groups.leafdecay
+	if not range or range == 0 then return end
+	local trunk = def.trunk or "group:tree"
 	local n0 = minetest.get_node(p0)
 	if n0.param2 ~= 0 then
 		--print("param2 ~= 0")
@@ -40,10 +56,9 @@ default.leafdecay = function(p0, node, _, _)
 			local n = minetest.get_node(trunkp)
 			local reg = minetest.registered_nodes[n.name]
 			-- Assume ignore is a trunk, to make the thing work at the border of the active area
-			if n.name == "ignore" or (reg and reg.groups.tree and reg.groups.tree ~= 0) then
-				--print("cached trunk still exists")
-				return
-			end
+			if n.name == "ignore" then return end
+			if n.name == trunk then return end
+			if trunk == "group:tree" and (reg and reg.groups.tree and reg.groups.tree ~= 0) then return end
 			--print("cached trunk is invalid")
 			-- Cache is invalid
 			table.remove(default.leafdecay_trunk_cache, p0_hash)
@@ -55,13 +70,13 @@ default.leafdecay = function(p0, node, _, _)
 	default.leafdecay_trunk_find_allow_accumulator =
 			default.leafdecay_trunk_find_allow_accumulator - 1
 	-- Assume ignore is a trunk, to make the thing work at the border of the active area
-	local p1 = minetest.find_node_near(p0, d, {"ignore", "group:tree"})
+	local p1 = minetest.find_node_near(p0, range, {"ignore", trunk})
 	if p1 then
 		do_preserve = true
 		if default.leafdecay_enable_cache then
 			--print("caching trunk")
 			-- Cache the trunk
-			default.leafdecay_trunk_cache[p0_hash] = p1
+			default.leafdecay_trunk_cache[p0_hash] = {p1, trunk}
 		end
 	end
 	if not do_preserve then
@@ -80,6 +95,7 @@ default.leafdecay = function(p0, node, _, _)
 		-- Remove node
 		minetest.remove_node(p0)
 		nodeupdate(p0)
+		leafupdate(p0)
 	end
 end
 
@@ -87,10 +103,10 @@ minetest.register_abm({
 	nodenames = {"group:leafdecay"},
 	neighbors = {"air", "group:liquid"},
 	-- A low interval and a high inverse chance spreads the load
-	interval = 2,
-	chance = 5,
+	interval = 5,
+	chance = 90,
 
 	action = function(p0, node, _, _)
-		default.leafdecay(p0, node, _, _)
+		default.leafdecay(p0)
 	end
 })
