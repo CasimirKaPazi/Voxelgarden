@@ -186,6 +186,7 @@ minetest.register_node("default:jungleleaves", {
 	paramtype = "light",
 	waving = 1,
 	is_ground_content = false,
+	trunk = "default:jungletree",
 	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
@@ -254,6 +255,7 @@ minetest.register_node("default:leaves", {
 	paramtype = "light",
 	waving = 1,
 	is_ground_content = false,
+	trunk = "default:tree",
 	groups = {snappy=3, leafdecay=2, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
 	drop = {
 		max_items = 1,
