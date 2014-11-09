@@ -54,8 +54,6 @@ Jordach (CC BY-SA 3.0):
 
 Zeg9 (CC BY-SA 3.0):
   default_coal_block.png
-  default_cobble.png
-  default_mossycobble.png
   default_gravel.png
 
 kaeza (WTFPL):
@@ -151,6 +149,10 @@ WisdomFire (CC BY-SA 3.0)
 
 PilzAdam (CC BY-SA 3.0)
   default_ice.png
+
+kilbith (CC BY-SA 3.0)
+  default_cobble.png
+  default_mossycobble.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
