@@ -239,7 +239,7 @@ minetest.register_node("default:junglegrass", {
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
-	groups = {snappy=3, flammable=2, attached_node=1, dissolve=1},
+	groups = {snappy=3, flammable=2, flora=1, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -508,7 +508,7 @@ minetest.register_node("default:lava_flowing", {
 	liquid_renewable = false,
 	damage_per_second = 4*2,
 	post_effect_color = {a=192, r=255, g=64, b=0},
-	groups = {lava=3, liquid=2, igniter=1, not_in_creative_inventory=1},
+	groups = {lava=3, liquid=2, hot=3, igniter=1, not_in_creative_inventory=1},
 })
 
 minetest.register_node("default:lava_source", {
@@ -542,7 +542,7 @@ minetest.register_node("default:lava_source", {
 	damage_per_second = 4*2,
 	post_effect_color = {a=192, r=255, g=64, b=0},
 	is_ground_content = false,
-	groups = {lava=3, liquid=2, igniter=1},
+	groups = {lava=3, liquid=2, hot=3, igniter=1},
 })
 
 minetest.register_node("default:torch", {
@@ -568,7 +568,7 @@ minetest.register_node("default:torch", {
 		wall_bottom = {-0.125, -0.5, -0.125, 0.125, 0.125, 0.125},
 		wall_side = {-0.5, -0.375, -0.1, -0.25, 0.25, 0.125},
 	},
-	groups = {choppy=2, dig_immediate=3, flammable=1, attached_node=1, dissolve=1},
+	groups = {choppy=2, dig_immediate=3, flammable=1, attached_node=1, hot=2, dissolve=1},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -814,7 +814,7 @@ minetest.register_node("default:furnace_active", {
 	light_source = 8,
 	drop = "default:furnace",
 	is_ground_content = false,
-	groups = {cracky=2, not_in_creative_inventory=1},
+	groups = {cracky=2, hot=1, not_in_creative_inventory=1},
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -1024,7 +1024,7 @@ minetest.register_node("default:grass_1", {
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
-	groups = {snappy=3, flammable=3, attached_node=1, dissolve=1},
+	groups = {snappy=3, flammable=3, flora=1, attached_node=1, dissolve=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -1051,7 +1051,7 @@ for i=2,5 do
 		buildable_to = true,
 		is_ground_content = true,
 		drop = "default:grass_1",
-		groups = {snappy=3, flammable=3, attached_node=1, not_in_creative_inventory=1, dissolve=1},
+		groups = {snappy=3, flammable=3, flora=1, attached_node=1, not_in_creative_inventory=1, dissolve=1},
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
