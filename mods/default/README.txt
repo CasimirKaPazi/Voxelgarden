@@ -32,6 +32,9 @@ Cisoun's WTFPL texture pack:
   default_wood.png
   default_ladder.png
   default_furnace_fire*
+  wieldhand.png
+  player.png
+  player_back.png
 
 VanessaE (WTFPL):
   default_nc_rb.png
@@ -62,7 +65,6 @@ kaeza (WTFPL):
 Casimir (CC BY-SA 3.0)
   default_junglesapling.png
   default_jungleleaves.png
-  wieldhand.png
   default_mineral_mese.png
   default_mese_crystal.png
   default_mese_crystal_fragment.png
