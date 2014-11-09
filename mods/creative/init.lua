@@ -161,5 +161,11 @@ if minetest.setting_getbool("creative_mode") then
 			end
 		end
 	end
+
+	minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
+		local hp = player:get_hp()
+		player:set_hp(hp + hp_change)
+		return itemstack
+	end)
 	
 end
