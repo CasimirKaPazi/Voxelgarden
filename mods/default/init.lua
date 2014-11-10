@@ -45,6 +45,7 @@ end)
 
 -- Definitions made by this mod that other mods can use too
 default = {}
+default.player_attached = {}
 
 -- Load files
 dofile(minetest.get_modpath("default").."/functions.lua")

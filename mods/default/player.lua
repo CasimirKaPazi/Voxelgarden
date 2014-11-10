@@ -35,7 +35,6 @@ local player_model = {}
 local player_textures = {}
 local player_anim = {}
 local player_sneak = {}
-default.player_attached = {}
 
 function default.player_get_animation(player)
 	local name = player:get_player_name()
