@@ -132,7 +132,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = "default:dirt_with_grass",
+	place_on = "default:dirt_with_snow",
 	sidelen = 16,
 	fill_ratio = 0.047,
 	biomes = {"mountain"},
@@ -142,7 +142,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = "default:dirt_with_grass",
+	place_on = "default:dirt_with_snow",
 	sidelen = 16,
 	fill_ratio = 0.037,
 	biomes = {"mountain"},
