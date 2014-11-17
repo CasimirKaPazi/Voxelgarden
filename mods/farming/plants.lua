@@ -103,7 +103,7 @@ minetest.register_craftitem("farming:bread", {
 minetest.register_node("farming:straw", {
   description = "Straw",
 	tiles = {"farming_straw.png"},
-	drop = "farming:wheat 4",
+	drop = "farming:wheat 9",
 	groups = {snappy=3, fall_damage_add_percent=COUSHION, flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -112,13 +112,14 @@ minetest.register_alias("darkage:straw", "farming:straw")
 minetest.register_craft({
 	output = "farming:straw",
 	recipe = {
-		{"farming:wheat", "farming:wheat"},
-		{"farming:wheat", "farming:wheat"},
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
 	},
 })
 
 minetest.register_craft({
-	output = 'farming:wheat 4',
+	output = 'farming:wheat 9',
 	recipe = {
 		{'farming:straw'},
 	}
