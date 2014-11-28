@@ -182,7 +182,7 @@ local function is_player_in_liquid(player)
 	pos.z = math.floor(pos.z+0.5)
 	
 	-- Get the nodename at the player's head
-	n_head = minetest.get_node(pos).name
+	local n_head = minetest.get_node(pos).name
 
 	-- Check if node is liquid (0=not 2=lava 3=water).
 	-- If it is, then the player is considered being in liquid.
