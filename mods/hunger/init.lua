@@ -41,6 +41,7 @@ minetest.register_privilege("no_hunger", {
 
 -- Hunger bar
 function hunger.update_bar(player)
+	if not player then return end
 	local name = player:get_player_name()
 	if minetest.get_player_privs(name)["no_hunger"] then
 		player:hud_remove(player_bar[name])
@@ -59,7 +60,6 @@ function hunger.update_bar(player)
 			size = { x=24, y=24 },
 		})
 	end
-	hunger.save_hunger()
 end
 
 if minetest.setting_getbool("enable_damage") == true then
@@ -92,6 +92,7 @@ minetest.register_on_respawnplayer(function(player)
 	local name = player:get_player_name()
 	player_hunger[name] = 20
 	hunger.update_bar(player)
+	hunger.save_hunger()
 end)
 
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
@@ -103,12 +104,11 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	else
 		player_hunger[name] = player_hunger[name] + 2 * hp_change
 	end
-
 	local headpos  = player:getpos()
 	headpos.y = headpos.y + 1
 	minetest.sound_play("hunger_eating", {pos = headpos, gain = 1.0, max_hear_distance = 32})
-
 	hunger.update_bar(player)
+	hunger.save_hunger()
 end)
 
 -- Main function
@@ -144,9 +144,10 @@ minetest.register_globalstep(function(dtime)
 			minetest.chat_send_player(name, "You are hungry.")
 		end
 		player_is_active[name] = false
+		hunger.update_bar(player)
 		change = true
 	end
-	if change then hunger.update_bar(player) end
+	if change then hunger.save_hunger() end
 end)
 
 end
