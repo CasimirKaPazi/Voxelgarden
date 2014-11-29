@@ -1,13 +1,41 @@
 hunger = {}
-player_is_active = {}
-player_hunger = {}
-player_step = {}
-player_bar = {}
+local player_is_active = {}
+local player_hunger = {}
+local player_step = {}
+local player_bar = {}
 local base_interval = 0.5
+local file = minetest.get_worldpath() .. "/hunger"
+
+function hunger.save_hunger()
+		local output = io.open(file, "w")
+		for name, v in pairs(player_hunger) do
+			output:write(player_hunger[name].." "..name.."\n")
+		end
+		io.close(output)
+end
+
+local function load_hunger()
+	local input = io.open(file, "r")
+	if input then
+		repeat
+			local hunger = input:read("*n")
+			local name = input:read("*l")
+			name = name:sub(2)
+			if name == nil then break end
+			if not hunger then hunger = 20 end
+			player_hunger[name] = hunger
+		until input:read(0) == nil
+		io.close(input)
+	else
+		hunger.save_hunger()
+	end
+end
+
+load_hunger()
 
 -- no_hunger privilege
 minetest.register_privilege("no_hunger", {
-	description = "Player will feel no hunger",
+	description = "Player will feel no hunger.",
 	give_to_singleplayer = false
 })
 
@@ -31,7 +59,7 @@ function hunger.update_bar(player)
 			size = { x=24, y=24 },
 		})
 	end
-	hunger.save_hunger(name, player_hunger[name])
+	hunger.save_hunger()
 end
 
 if minetest.setting_getbool("enable_damage") == true then
@@ -49,38 +77,9 @@ minetest.register_on_placenode(function(pos, node, player)
 	player_is_active[name] = true
 end)
 
--- Save and load hunger
-local function get_filename(player_name)
-	return minetest.get_worldpath() .. "/hunger_" .. player_name .. ".txt"
-end
-
-function hunger.save_hunger(name, value)
-	local filename  = get_filename(name)
-	local output    = io.open(filename, "w")
-
-	if not output then
-		minetest.debug("[hunger]: Cannot write drown value "..value.." to file " ..
-			filename .. "; the file cannot be opened for writing!")
-	else
-		output:write(value)
-		io.close(output)
-	end
-end
-
-local function load_hunger(name)
-	local filename  = get_filename(name)
-	local input     = io.open(filename, "r")
-
-	if not input then return 20 end
-
-	local load_hunger = input:read("*n")
-	io.close(input)
-	return load_hunger
-end
-
 minetest.register_on_joinplayer(function(player)
 	local name = player:get_player_name()
-	player_hunger[name] = load_hunger(name)
+	if not player_hunger[name] then player_hunger[name] = 20 end
 	hunger.update_bar(player)
 end)
 
@@ -118,6 +117,7 @@ minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
 	if timer < base_interval then return end
 	timer = 0
+	local change = false
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		local hp = player:get_hp()
@@ -135,9 +135,7 @@ minetest.register_globalstep(function(dtime)
 		player_step[name] = player_step[name] + 1
 		if player_step[name] < hp then return end
 		player_step[name] = 0
-		if not player_hunger[name] then
-			player_hunger[name] = 20
-		end
+		if not player_hunger[name] then player_hunger[name] = 20 end
 		player_hunger[name] = player_hunger[name] - 1
 		if player_hunger[name] <= 0 then
 			player:set_hp(hp - 1)
@@ -146,8 +144,9 @@ minetest.register_globalstep(function(dtime)
 			minetest.chat_send_player(name, "You are hungry.")
 		end
 		player_is_active[name] = false
-		hunger.update_bar(player)
+		change = true
 	end
+	if change then hunger.update_bar(player) end
 end)
 
 end
