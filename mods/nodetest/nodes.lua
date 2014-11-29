@@ -84,6 +84,7 @@ minetest.register_node("nodetest:seedling", {
 	inventory_image = "nodetest_seedling.png",
 	wield_image = "nodetest_seedling.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
 	buildable_to = true,

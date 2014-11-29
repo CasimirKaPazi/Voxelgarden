@@ -12,6 +12,7 @@ minetest.register_node("conifer:sapling", {
 	inventory_image = "conifer_sapling.png",
 	wield_image = "conifer_sapling.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
 	selection_box = {

@@ -157,6 +157,7 @@ local stages = farming.register_stages(max_stage, "farming:cotton")
 minetest.register_node("farming:cotton_"..max_stage.."", {
 	tiles = {"farming_cotton_"..max_stage..".png"},
 	paramtype = "light",
+	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
 	drawtype = "plantlike",

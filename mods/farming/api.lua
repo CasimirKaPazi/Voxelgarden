@@ -57,6 +57,7 @@ function farming.register_stages(max_stage, name, description)
 		minetest.register_node(name.."_"..i, {
 			tiles = {tiles_name.."_"..i..".png"},
 			paramtype = "light",
+			sunlight_propagates = true,
 			waving = 1,
 			walkable = false,
 			drawtype = "plantlike",

@@ -19,7 +19,7 @@ minetest.nodedef_default.liquid_range = 4
 -- Use tools right click to place nodes
 minetest.tooldef_default.on_place = function(itemstack, user, pointed)
 	if not pointed then return end
-	local above = minetest.env:get_node(pointed.above)
+	local above = minetest.get_node(pointed.above)
 	local inv = user:get_inventory()
 	local idx = user:get_wield_index()+1
 	local stack = inv:get_stack("main", idx)

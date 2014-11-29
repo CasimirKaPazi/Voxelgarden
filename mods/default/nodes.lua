@@ -214,6 +214,7 @@ minetest.register_node("default:junglesapling", {
 	inventory_image = "default_junglesapling.png",
 	wield_image = "default_junglesapling.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
 	selection_box = {
@@ -235,6 +236,7 @@ minetest.register_node("default:junglegrass", {
 	inventory_image = "default_junglegrass.png",
 	wield_image = "default_junglegrass.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
@@ -309,6 +311,7 @@ minetest.register_node("default:papyrus", {
 	inventory_image = "default_papyrus.png",
 	wield_image = "default_papyrus.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	walkable = false,
 	is_ground_content = true,
 	selection_box = {
@@ -348,6 +351,7 @@ minetest.register_node("default:fence_wood", {
 	inventory_image = "default_fence.png",
 	wield_image = "default_fence.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	is_ground_content = false,
 	selection_box = {
 		type = "fixed",
@@ -364,6 +368,7 @@ minetest.register_node("default:rail", {
 	inventory_image = "default_rail.png",
 	wield_image = "default_rail.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	walkable = false,
 	is_ground_content = false,
 	selection_box = {
@@ -382,6 +387,7 @@ minetest.register_node("default:ladder", {
 	wield_image = "default_ladder.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
 	walkable = false,
 	climbable = true,
 	is_ground_content = false,
@@ -400,13 +406,6 @@ minetest.register_node("default:wood", {
 	tiles = {"default_wood.png"},
 	groups = {choppy=2, oddly_breakable_by_hand=2, flammable=3, wood=1},
 	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node("default:cloud", {
-	description = "Cloud",
-	tiles = {"default_cloud.png"},
-	sounds = default.node_sound_defaults(),
-	groups = {not_in_creative_inventory=1},
 })
 
 minetest.register_node("default:water_flowing", {
@@ -598,7 +597,6 @@ minetest.register_node("default:sign_wall", {
 		meta:set_string("infotext", "\"\"")
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		--print("Sign at "..minetest.pos_to_string(pos).." got "..dump(fields))
 		local player_name = sender:get_player_name() or ""
 		if minetest.is_protected(pos, player_name) then
 			minetest.record_protection_violation(pos, player_name)
@@ -960,6 +958,7 @@ minetest.register_node("default:sapling", {
 	inventory_image = "default_sapling.png",
 	wield_image = "default_sapling.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
@@ -1001,6 +1000,7 @@ minetest.register_node("default:dry_shrub", {
 	inventory_image = "default_dry_shrub.png",
 	wield_image = "default_dry_shrub.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
 	is_ground_content = true,
@@ -1020,6 +1020,7 @@ minetest.register_node("default:grass_1", {
 	inventory_image = "default_grass_3.png",
 	wield_image = "default_grass_3.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
@@ -1046,6 +1047,7 @@ for i=2,5 do
 		inventory_image = "default_grass_"..i..".png",
 		wield_image = "default_grass_"..i..".png",
 		paramtype = "light",
+		sunlight_propagates = true,
 		waving = 1,
 		walkable = false,
 		buildable_to = true,
@@ -1063,7 +1065,6 @@ end
 minetest.register_node("default:ice", {
 	description = "Ice",
 	tiles = {"default_ice.png"},
-	is_ground_content = true,
 	paramtype = "light",
 	liquids_pointable = true,
 	is_ground_content = true,
