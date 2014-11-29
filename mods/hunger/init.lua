@@ -20,8 +20,8 @@ local function load_hunger()
 		repeat
 			local hunger = input:read("*n")
 			local name = input:read("*l")
-			name = name:sub(2)
 			if name == nil then break end
+			name = name:sub(2)
 			if not hunger then hunger = 20 end
 			player_hunger[name] = hunger
 		until input:read(0) == nil
