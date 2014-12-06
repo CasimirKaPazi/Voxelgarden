@@ -1,5 +1,5 @@
 minetest.register_node("farming:soil", {
-	tiles = {"farming_soil.png", "default_dirt.png", "default_dirt.png", "default_dirt.png", "default_dirt.png", "default_dirt.png"},
+	tiles = {"default_dirt.png^farming_soil.png", "default_dirt.png"},
 	drop = "default:dirt",
 	groups = {crumbly=2, falling_node=1, not_in_creative_inventory=1},
 	sounds = default.node_sound_dirt_defaults({
@@ -8,7 +8,7 @@ minetest.register_node("farming:soil", {
 })
 
 minetest.register_node("farming:soil_wet", {
-	tiles = {"farming_soil_wet.png", "farming_soil_wet_side.png", "farming_soil_wet_side.png", "farming_soil_wet_side.png", "farming_soil_wet_side.png", "farming_soil_wet_side.png"},
+	tiles = {"default_dirt.png^farming_soil_wet.png", "default_dirt.png^farming_soil_wet_side.png"},
 	drop = "default:dirt",
 	groups = {crumbly=2, falling_node=1, not_in_creative_inventory=1},
 	sounds = default.node_sound_dirt_defaults({
