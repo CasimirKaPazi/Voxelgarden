@@ -1,8 +1,6 @@
 -- Minetest 0.4 mod: bucket
 -- See README.txt for licensing and other information.
 
-local LIQUID_MAX = 8  -- The number of water levels when liquid_finite is enabled
-
 minetest.register_alias("bucket", "bucket:bucket_empty")
 minetest.register_alias("bucket_water", "bucket:bucket_water")
 minetest.register_alias("bucket_lava", "bucket:bucket_lava")
@@ -71,47 +69,25 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 					itemstack) or itemstack
 			end
 
-			local place_liquid = function(pos, node, source, flowing, fullness)
+			local place_liquid = function(pos, node, source, flowing)
 				if check_protection(pos,
 						user and user:get_player_name() or "",
 						"place "..source) then
 					return
 				end
-				if math.floor(fullness/128) == 1 or
-					not minetest.setting_getbool("liquid_finite") then
-					minetest.add_node(pos, {name=source,
-							param2=fullness})
-					return
-				elseif node.name == flowing then
-					fullness = fullness + node.param2
-				elseif node.name == source then
-					fullness = LIQUID_MAX
-				end
-					if fullness >= LIQUID_MAX then
-					minetest.add_node(pos, {name=source,
-							param2=LIQUID_MAX})
-				else
-					minetest.add_node(pos, {name=flowing,
-							param2=fullness})
-				end
+				minetest.add_node(pos, {name=source})
 			end
 
 			-- Check if pointing to a buildable node
-			local fullness = tonumber(itemstack:get_metadata())
-			if not fullness then fullness = LIQUID_MAX end
-
 			if ndef and ndef.buildable_to then
 				-- Buildable; replace the node
-				place_liquid(pointed_thing.under, node,
-						source, flowing, fullness)
+				place_liquid(pointed_thing.under, node, source, flowing)
 			else
 				-- Not buildable to; place the liquid above
 				-- Check if the node above can be replaced
 				local node = minetest.get_node_or_nil(pointed_thing.above)
 				if node and minetest.registered_nodes[node.name].buildable_to then
-					place_liquid(pointed_thing.above,
-							node, source,
-							flowing, fullness)
+					place_liquid(pointed_thing.above, node, source, flowing)
 				else
 					-- Do not remove the bucket with the liquid
 					return
@@ -135,9 +111,7 @@ minetest.register_craftitem("bucket:bucket_empty", {
 		local node = minetest.get_node(pointed_thing.under)
 		local liquiddef = bucket.liquids[node.name]
 		if liquiddef ~= nil and liquiddef.itemname ~= nil and
-			(node.name == liquiddef.source or
-			(node.name == liquiddef.flowing and
-				minetest.setting_getbool("liquid_finite"))) then
+			node.name == liquiddef.source then
 			if check_protection(pointed_thing.under,
 					user:get_player_name(),
 					"take ".. node.name) then
@@ -158,11 +132,7 @@ minetest.register_craftitem("bucket:bucket_empty", {
 				minetest.add_node(pointed_thing.under, {name="air"})
 				count = count - 1
 				itemstack:set_count(count)
-				if node.name == liquiddef.source then
-					node.param2 = LIQUID_MAX
-				end
-				bucket_liquid = ItemStack({name = liquiddef.itemname,
-					metadata = tostring(node.param2)})
+				bucket_liquid = ItemStack(liquiddef.itemname)
 				inv:add_item("main", bucket_liquid)
 				return itemstack
 			else
