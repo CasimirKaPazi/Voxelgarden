@@ -1,68 +1,12 @@
 -- minetest/dye/init.lua
 
--- To make recipes that will work with any dye ever made by anybody, define
--- them based on groups.
--- You can select any group of groups, based on your need for amount of colors.
--- basecolor: 9, excolor: 17, unicolor: 89
---
--- Example of one shapeless recipe using a color group:
--- Note: As this uses basecolor_*, you'd need 9 of these.
--- minetest.register_craft({
---     type = "shapeless",
---     output = '<mod>:item_yellow',
---     recipe = {'<mod>:item_no_color', 'group:basecolor_yellow'},
--- })
-
 -- Other mods can use these for looping through available colors
-local dye = {}
+dye = {}
 dye.basecolors = {"white", "grey", "black", "red", "yellow", "green", "cyan", "blue", "magenta"}
 dye.excolors = {"white", "lightgrey", "grey", "darkgrey", "black", "red", "orange", "yellow", "lime", "green", "aqua", "cyan", "sky_blue", "blue", "violet", "magenta", "red_violet"}
 
--- Base color groups:
--- - basecolor_white
--- - basecolor_grey
--- - basecolor_black
--- - basecolor_red
--- - basecolor_yellow
--- - basecolor_green
--- - basecolor_cyan
--- - basecolor_blue
--- - basecolor_magenta
-
--- Extended color groups (* = equal to a base color):
--- * excolor_white
--- - excolor_lightgrey
--- * excolor_grey
--- - excolor_darkgrey
--- * excolor_black
--- * excolor_red
--- - excolor_orange
--- * excolor_yellow
--- - excolor_lime
--- * excolor_green
--- - excolor_aqua
--- * excolor_cyan
--- - excolor_sky_blue
--- * excolor_blue
--- - excolor_violet
--- * excolor_magenta
--- - excolor_red_violet
-
--- The whole unifieddyes palette as groups:
--- - unicolor_<excolor>
--- For the following, no white/grey/black is allowed:
--- - unicolor_medium_<excolor>
--- - unicolor_dark_<excolor>
--- - unicolor_light_<excolor>
--- - unicolor_<excolor>_s50
--- - unicolor_medium_<excolor>_s50
--- - unicolor_dark_<excolor>_s50
-
--- Local stuff
-local dyelocal = {}
-
 -- This collection of colors is partly a historic thing, partly something else.
-dyelocal.dyes = {
+dyes = {
 	{"white",      "White dye",     {dye=1, basecolor_white=1,   excolor_white=1,     unicolor_white=1}},
 	{"grey",       "Grey dye",      {dye=1, basecolor_grey=1,    excolor_grey=1,      unicolor_grey=1}},
 	{"dark_grey",  "Dark grey dye", {dye=1, basecolor_grey=1,    excolor_darkgrey=1,  unicolor_darkgrey=1}},
@@ -81,7 +25,7 @@ dyelocal.dyes = {
 }
 
 -- Define items
-for _, row in ipairs(dyelocal.dyes) do
+for _, row in ipairs(dyes) do
 	local name = row[1]
 	local description = row[2]
 	local groups = row[3]
@@ -115,9 +59,9 @@ minetest.register_craft({
 -- Mix recipes
 -- Just mix everything to everything somehow sanely
 
-dyelocal.mixbases = {"magenta", "red", "orange", "brown", "yellow", "green", "dark_green", "cyan", "blue", "violet", "black", "dark_grey", "grey", "white"}
+mixbases = {"magenta", "red", "orange", "brown", "yellow", "green", "dark_green", "cyan", "blue", "violet", "black", "dark_grey", "grey", "white"}
 
-dyelocal.mixes = {
+mixes = {
 	--       magenta,  red,    orange,   brown,    yellow,  green,  dark_green, cyan,    blue,   violet,   black,  dark_grey,  grey,   white
 	white = {"pink",  "pink", "orange", "orange", "yellow", "green", "green",  "grey",  "cyan", "violet",  "grey",  "grey",   "white", "white"},
 	grey  = {"pink",  "pink", "orange", "orange", "yellow", "green", "green",  "grey",  "cyan",  "pink",  "dark_grey","grey", "grey"},
@@ -135,9 +79,9 @@ dyelocal.mixes = {
 	magenta={"magenta"},
 }
 
-for one,results in pairs(dyelocal.mixes) do
+for one,results in pairs(mixes) do
 	for i,result in ipairs(results) do
-		local another = dyelocal.mixbases[i]
+		local another = mixbases[i]
 		minetest.register_craft({
 			type = "shapeless",
 			output = 'dye:'..result..' 2',
@@ -145,8 +89,3 @@ for one,results in pairs(dyelocal.mixes) do
 		})
 	end
 end
-
--- Hide dyelocal
-dyelocal = nil
-
--- EOF
