@@ -1,13 +1,5 @@
 -- minetest/default/leafdecay.lua
 
--- To enable leaf decay for a node, add it to the "leafdecay" group.
---
--- The rating of the group determines how far from a node in the group "tree"
--- the node can be without decaying.
---
--- If param2 of the node is ~= 0, the node will always be preserved. Thus, if
--- the player places a node of that kind, you will want to set param2=1 or so.
-
 default.leafdecay_trunk_cache = {}
 default.leafdecay_enable_cache = true
 -- Spread the load of finding trunks
