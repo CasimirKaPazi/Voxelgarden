@@ -166,6 +166,19 @@ minetest.register_craft({
 	burntime = 30,
 })
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "nodetest:seedling",
+	burntime = 1,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "nodetest:bonfire",
+	burntime = 15,
+})
+
+
 --
 -- Cooking recipes
 --

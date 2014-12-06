@@ -27,71 +27,65 @@ core.register_entity(":__builtin:falling_node", {
 	end,
 
 	on_step = function(self, dtime)
-		if dtime > 0.2 then remove_fast = 1 end
 		-- Set gravity
 		self.object:setacceleration({x=0, y=-10, z=0})
 		-- Turn to actual node when it collides to ground or just move
 		local pos = self.object:getpos()
-		local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z}  -- Position of bottom center point
-		local bcn = core.get_node(bcp)
-		local bcd = core.registered_nodes[bcn.name]
+		local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z}  -- Position of bottom center point, p = pos
+		local bcn = core.get_node(bcp)	-- n = node
+		local bcd = core.registered_nodes[bcn.name] -- d = definition
 		-- Note: walkable is in the node definition, not in item groups
 		if not bcd then return end
-		if bcd.walkable or (core.get_node_group(self.node.name, "float") ~= 0 and
-				core.registered_nodes[bcn.name].liquidtype ~= "none") then
-			-- Increse level of bottom node
-			if bcd.leveled and bcn.name == self.node.name then
-				local addlevel = self.node.level
-				if addlevel == nil or addlevel <= 0 then
-					addlevel = bcd.leveled
-				end
-				local new_level = core.add_node_level(bcp, addlevel)
-				if new_level == 0 then
-					self.object:remove()
-					return
-				end
-				-- Turn into a full block if defined
-				if new_level >= bcd.leveled and bcd.leveled_full then
-					core.add_node(bcp, {name=bcd.leveled_full})
-				end
-			-- Remove bottom node
-			elseif bcd.buildable_to and
-					(core.get_item_group(self.node.name, "float") == 0 or
-					bcd.liquidtype == "none") then
-				core.remove_node(bcp, remove_fast)
+		if not bcd.walkable and bcd.liquidtype == "none" then return end
+
+		-- Increse level of bottom node
+		if bcd.leveled and bcn.name == self.node.name then
+			local addlevel = self.node.level
+			if addlevel == nil or addlevel <= 0 then
+				addlevel = bcd.leveled
+			end
+			local new_level = core.add_node_level(bcp, addlevel)
+			if new_level == 0 then
+				self.object:remove()
 				return
 			end
-			local np = {x=bcp.x, y=bcp.y+1, z=bcp.z}
-			-- Check what's here
-			local n2 = core.get_node(np)
-			-- If it's not air or liquid, remove node and replace it with
-			-- it's drops
-			if n2.name ~= "air" and (not core.registered_nodes[n2.name] or
-					core.registered_nodes[n2.name].liquidtype == "none") then
-				core.remove_node(np, remove_fast)
-				if core.registered_nodes[n2.name].buildable_to == false then
-					-- Add dropped items
-					local drops = core.get_node_drops(n2.name, "")
-					local _, dropped_item
-					for _, dropped_item in ipairs(drops) do
-						core.add_item(np, dropped_item)
-					end
-				end
-				-- Run script hook
-				local _, callback
-				for _, callback in ipairs(core.registered_on_dignodes) do
-					callback(np, n2, nil)
-				end
+			-- Turn into a full block if defined
+			if new_level >= bcd.leveled and bcd.leveled_full then
+				core.add_node(bcp, {name=bcd.leveled_full})
 			end
-			-- Create node and remove entity
-			if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
-				core.place_node(np, self.node)
-			else
-				core.add_node(np, self.node)
-			end
-			self.object:remove()
-			nodeupdate(np)
+		-- Remove bottom node
+		elseif bcd.buildable_to and
+				(core.get_item_group(self.node.name, "float") == 0 or
+				bcd.liquidtype == "none") then
+			core.remove_node(bcp)
+			return
 		end
+		-- Check what's here
+		local n2p = {x=bcp.x, y=bcp.y+1, z=bcp.z}
+		local n2n = core.get_node(n2p)
+		-- Remove node and replace it with it's drops
+		core.remove_node(n2p)
+		if core.registered_nodes[n2n.name].buildable_to == false then
+			-- Add dropped items
+			local drops = core.get_node_drops(n2n.name, "")
+			local _, dropped_item
+			for _, dropped_item in ipairs(drops) do
+				core.add_item(n2p, dropped_item)
+			end
+		end
+		-- Run script hook
+		local _, callback
+		for _, callback in ipairs(core.registered_on_dignodes) do
+			callback(n2p, n2n, nil)
+		end
+		-- Create node and remove entity
+		if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
+			core.place_node(n2p, self.node)
+		else
+			core.add_node(n2p, self.node)
+		end
+		self.object:remove()
+		nodeupdate(n2p)
 	end
 })
 
