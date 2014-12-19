@@ -630,7 +630,7 @@ minetest.register_node("default:chest", {
 		inv:set_size("main", 8*4)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -665,7 +665,7 @@ minetest.register_node("default:chest_locked", {
 		inv:set_size("main", 8*4)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -711,174 +711,6 @@ minetest.register_node("default:chest_locked", {
 				"list[nodemeta:".. pos .. ";main;0,0;8,4;]"..
 				"list[current_player;main;0,5;8,4;]")
 		end
-	end,
-})
-
-default.furnace_inactive_formspec =
-	"size[8,9]"..
-	"image[2,2;1,1;default_furnace_fire_bg.png]"..
-	"list[current_name;fuel;2,3;1,1;]"..
-	"list[current_name;src;2,1;1,1;]"..
-	"list[current_name;dst;5,1;2,2;]"..
-	"list[current_player;main;0,5;8,4;]"
-
-minetest.register_node("default:furnace", {
-	description = "Furnace",
-	tiles = {"default_furnace_top.png", "default_furnace_bottom.png", "default_furnace_side.png",
-		"default_furnace_side.png", "default_furnace_side.png", "default_furnace_front.png"},
-	paramtype2 = "facedir",
-	is_ground_content = false,
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", default.furnace_inactive_formspec)
-		meta:set_string("infotext", "Furnace")
-		local inv = meta:get_inventory()
-		inv:set_size("fuel", 1)
-		inv:set_size("src", 1)
-		inv:set_size("dst", 4)
-		nodeupdate(pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		if not inv:is_empty("fuel") or
-			not inv:is_empty("dst") or
-			not inv:is_empty("src") then
-			return false
-		end
-		return true
-	end,
-	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.get_meta(pos)
-		local inv = meta:get_inventory()
-		if listname == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
-				if inv:is_empty("src") then
-					meta:set_string("infotext","Furnace is empty")
-				end
-				return stack:get_count()
-			else
-				return 0
-			end
-		elseif listname == "src" then
-			return stack:get_count()
-		elseif listname == "dst" then
-			return 0
-		end
-	end,
-	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.get_meta(pos)
-		local inv = meta:get_inventory()
-		local stack = inv:get_stack(from_list, from_index)
-		if to_list == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
-				if inv:is_empty("src") then
-					meta:set_string("infotext","Furnace is empty")
-				end
-				return count
-			else
-				return 0
-			end
-		elseif to_list == "src" then
-			return count
-		elseif to_list == "dst" then
-			return 0
-		end
-	end,
-})
-
-minetest.register_node("default:furnace_active", {
-	description = "Furnace",
-	tiles = {
-		"default_furnace_top.png",
-		"default_furnace_bottom.png",
-		"default_furnace_side.png",
-		"default_furnace_side.png",
-		"default_furnace_side.png",
-		{
-			image = "default_furnace_front_active.png",
-			backface_culling = false,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 1.5
-			},
-		}
-	},
-	paramtype2 = "facedir",
-	light_source = 8,
-	drop = "default:furnace",
-	is_ground_content = false,
-	groups = {cracky=2, not_in_creative_inventory=1},
-	sounds = default.node_sound_stone_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", default.furnace_inactive_formspec)
-		meta:set_string("infotext", "Furnace");
-		local inv = meta:get_inventory()
-		inv:set_size("fuel", 1)
-		inv:set_size("src", 1)
-		inv:set_size("dst", 4)
-		nodeupdate(pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		if not inv:is_empty("fuel") or
-			not inv:is_empty("dst") or
-			not inv:is_empty("src") then
-			return false
-		end
-		return true
-	end,
-	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.get_meta(pos)
-		local inv = meta:get_inventory()
-		if listname == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
-				if inv:is_empty("src") then
-					meta:set_string("infotext","Furnace is empty")
-				end
-				return stack:get_count()
-			else
-				return 0
-			end
-		elseif listname == "src" then
-			return stack:get_count()
-		elseif listname == "dst" then
-			return 0
-		end
-	end,
-	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.get_meta(pos)
-		local inv = meta:get_inventory()
-		local stack = inv:get_stack(from_list, from_index)
-		if to_list == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
-				if inv:is_empty("src") then
-					meta:set_string("infotext","Furnace is empty")
-				end
-				return count
-			else
-				return 0
-			end
-		elseif to_list == "src" then
-			return count
-		elseif to_list == "dst" then
-			return 0
-		end
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"default:furnace","default:furnace_active"},
-	interval = 1.0,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.abm_furnace(pos, node, active_object_count, active_object_count_wider)
 	end,
 })
 
