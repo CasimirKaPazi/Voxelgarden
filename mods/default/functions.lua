@@ -81,6 +81,7 @@ end
 
 minetest.register_abm({
 	nodenames = {"default:dirt"},
+	neighbors = {"default:dirt_with_grass", "default:dirt_with_grass_footsteps"},
 	interval = 2,
 	chance = 200,
 	action = function(pos, node)
@@ -100,30 +101,17 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
-	nodenames = {"default:dirt_with_grass"},
+	nodenames = {"default:dirt_with_grass", "default:dirt_with_snow"},
 	interval = 2,
 	chance = 20,
 	action = function(pos, node)
 		local above = {x=pos.x, y=pos.y+1, z=pos.z}
 		local name = minetest.get_node(above).name
 		local nodedef = minetest.registered_nodes[name]
-		if name ~= "ignore" and nodedef
-				and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
-				and nodedef.liquidtype == "none") then
-			minetest.set_node(pos, {name = "default:dirt"})
+		if node.name == "default:dirt_with_snow"
+				and (name == "default:snow" or "default:snowblock") then
+			return
 		end
-	end
-})
-
-minetest.register_abm({
-	nodenames = {"default:dirt_with_snow"},
-	interval = 2,
-	chance = 20,
-	action = function(pos, node)
-		local above = {x=pos.x, y=pos.y+1, z=pos.z}
-		local name = minetest.get_node(above).name
-		if name == "default:snow" or "default:snowblock" then return end
-		local nodedef = minetest.registered_nodes[name]
 		if name ~= "ignore" and nodedef
 				and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
 				and nodedef.liquidtype == "none") then
