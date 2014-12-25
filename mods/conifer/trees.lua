@@ -14,13 +14,13 @@ minetest.register_abm({
 		end
 		-- Find snow
 		local snow = false
-		local node_under = minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
-		if not node_under then
-			return false
-		end
-		if node_under.name == "default:dirt_with_snow" then
-			snow = true
-		end
+--		local node_under = minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
+--		if not node_under then
+--			return false
+--		end
+--		if node_under.name == "default:dirt_with_snow" then
+--			snow = true
+--		end
 		-- Spawn tree
 		minetest.log("action", "A conifer sapling grows into a tree at "..
 				minetest.pos_to_string(pos))

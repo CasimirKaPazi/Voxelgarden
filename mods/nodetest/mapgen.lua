@@ -12,7 +12,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "nodetest:rock",
-	wherein        = {"default:dirt", "default:dirt_with_grass"},
+	wherein        = {"default:dirt", "default:dirt_with_grass", "default:dirt_with_snow"},
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 5,
 	clust_size     = 8,
