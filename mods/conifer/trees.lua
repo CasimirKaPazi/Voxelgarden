@@ -22,8 +22,6 @@ minetest.register_abm({
 --			snow = true
 --		end
 		-- Spawn tree
---		minetest.log("action", "A conifer sapling grows into a tree at "..
-				minetest.pos_to_string(pos))
 		conifer.grow_tree(pos, random(1, 4) == 1, snow)
 	end
 })
