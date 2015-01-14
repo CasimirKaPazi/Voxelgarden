@@ -25,7 +25,7 @@ minetest.register_abm({
 			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
 			return
 		end
-		minetest.log("action", "A sapling grows into a tree at "..
+--		minetest.log("action", "A sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 		default.grow_tree(pos, random(1, 8) == 1)
 	end
@@ -43,7 +43,7 @@ minetest.register_abm({
 			minetest.set_node(pos, {name="default:junglegrass"})
 			return
 		end
-		minetest.log("action", "A jungle sapling grows into a tree at "..
+--		minetest.log("action", "A jungle sapling grows into a tree at "..
 				minetest.pos_to_string(pos))
 		default.grow_jungletree(pos)
 	end
