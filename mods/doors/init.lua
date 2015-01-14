@@ -2,9 +2,9 @@ dofile(minetest.get_modpath("doors").."/functions.lua")
 
 doors:register_door("doors:door_wood", {
 	description = "Wooden Door",
-	inventory_image = "door_wood_b.png",
+	inventory_image = "doors_wood_b.png",
 	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
-	tiles = {"door_wood_b.png"},
+	tiles = {"doors_wood_b.png"},
 })
 
 minetest.register_craft({
@@ -18,9 +18,9 @@ minetest.register_craft({
 
 doors:register_door("doors:door_wood_window", {
 	description = "Wooden Window",
-	inventory_image = "door_wood_a.png",
+	inventory_image = "doors_wood_a.png",
 	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
-	tiles = {"door_wood_a.png"},
+	tiles = {"doors_wood_a.png"},
 })
 
 minetest.register_craft({
