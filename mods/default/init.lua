@@ -1,11 +1,8 @@
 -- Minetest 0.4 mod: default
 -- See README.txt for licensing and other information.
 
-WATER_ALPHA = 160
-WATER_VISC = 1
-LAVA_VISC = 7
-LIGHT_MAX = 14
-COUSHION = -10 -- Falling damage gets reduced by 10 percent.
+default.LIGHT_MAX = 14
+default.COUSHION = -10 -- Falling damage gets reduced by 10 percent.
 
 -- Define default max stack
 local stack = minetest.setting_get("stack_max")
@@ -54,7 +51,7 @@ dofile(minetest.get_modpath("default").."/furnace.lua")
 dofile(minetest.get_modpath("default").."/tools.lua")
 dofile(minetest.get_modpath("default").."/craftitems.lua")
 dofile(minetest.get_modpath("default").."/crafting.lua")
-if minetest.setting_get("mg_name") == "v5" or minetest.setting_get("mg_name") == "v7" then
+if minetest.get_mapgen_params() ~= "v6" then
 	dofile(minetest.get_modpath("default").."/biomes.lua")
 end
 dofile(minetest.get_modpath("default").."/mapgen.lua")
@@ -64,3 +61,9 @@ if not minetest.setting_getbool("disable_player_model") then
 end
 dofile(minetest.get_modpath("default").."/trees.lua")
 dofile(minetest.get_modpath("default").."/aliases.lua")
+
+-- Legacy:
+WATER_ALPHA = minetest.registered_nodes["default:water_source"].alpha
+WATER_VISC = minetest.registered_nodes["default:water_source"].liquid_viscosity
+LAVA_VISC = minetest.registered_nodes["default:lava_source"].liquid_viscosity
+LIGHT_MAX = default.LIGHT_MAX

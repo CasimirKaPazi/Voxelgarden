@@ -187,7 +187,7 @@ minetest.register_node("default:jungleleaves", {
 	waving = 1,
 	is_ground_content = false,
 	trunk = "default:jungletree",
-	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=default.COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -258,7 +258,7 @@ minetest.register_node("default:leaves", {
 	waving = 1,
 	is_ground_content = false,
 	trunk = "default:tree",
-	groups = {snappy=3, leafdecay=2, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+	groups = {snappy=3, leafdecay=2, flammable=2, leaves=1, fall_damage_add_percent=default.COUSHION},
 	drop = {
 		max_items = 1,
 		items = {
@@ -425,7 +425,7 @@ minetest.register_node("default:water_flowing", {
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=0.8}
 		},
 	},
-	alpha = WATER_ALPHA,
+	alpha = 160,
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
 	walkable = false,
@@ -437,7 +437,7 @@ minetest.register_node("default:water_flowing", {
 	liquidtype = "flowing",
 	liquid_alternative_flowing = "default:water_flowing",
 	liquid_alternative_source = "default:water_source",
-	liquid_viscosity = WATER_VISC,
+	liquid_viscosity = 1,
 	post_effect_color = {a=128, r=50, g=120, b=200},
 	groups = {water=3, liquid=3, puts_out_fire=1, not_in_creative_inventory=1},
 })
@@ -457,7 +457,7 @@ minetest.register_node("default:water_source", {
 			backface_culling = false,
 		}
 	},
-	alpha = WATER_ALPHA,
+	alpha = 160,
 	paramtype = "light",
 	walkable = false,
 	pointable = false,
@@ -468,7 +468,7 @@ minetest.register_node("default:water_source", {
 	liquidtype = "source",
 	liquid_alternative_flowing = "default:water_flowing",
 	liquid_alternative_source = "default:water_source",
-	liquid_viscosity = WATER_VISC,
+	liquid_viscosity = 1,
 	post_effect_color = {a=128, r=50, g=120, b=200},
 	is_ground_content = false,
 	groups = {water=3, liquid=3, puts_out_fire=1},
@@ -493,7 +493,7 @@ minetest.register_node("default:lava_flowing", {
 	},
 	paramtype = "light",
 	paramtype2 = "flowingliquid", 
-	light_source = LIGHT_MAX - 1,
+	light_source = default.LIGHT_MAX - 1,
 	walkable = false,
 	pointable = false,
 	diggable = false,
@@ -503,7 +503,7 @@ minetest.register_node("default:lava_flowing", {
 	liquidtype = "flowing",
 	liquid_alternative_flowing = "default:lava_flowing",
 	liquid_alternative_source = "default:lava_source",
-	liquid_viscosity = LAVA_VISC,
+	liquid_viscosity = 7,
 	liquid_renewable = false,
 	damage_per_second = 4*2,
 	post_effect_color = {a=192, r=255, g=64, b=0},
@@ -526,7 +526,7 @@ minetest.register_node("default:lava_source", {
 		}
 	},
 	paramtype = "light",
-	light_source = LIGHT_MAX - 1,
+	light_source = default.LIGHT_MAX - 1,
 	walkable = false,
 	pointable = false,
 	diggable = false,
@@ -536,7 +536,7 @@ minetest.register_node("default:lava_source", {
 	liquidtype = "source",
 	liquid_alternative_flowing = "default:lava_flowing",
 	liquid_alternative_source = "default:lava_source",
-	liquid_viscosity = LAVA_VISC,
+	liquid_viscosity = 7,
 	liquid_renewable = false,
 	damage_per_second = 4*2,
 	post_effect_color = {a=192, r=255, g=64, b=0},
@@ -559,7 +559,7 @@ minetest.register_node("default:torch", {
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
 	walkable = false,
-	light_source = LIGHT_MAX-1,
+	light_source = default.LIGHT_MAX-1,
 	is_ground_content = false,
 	selection_box = {
 		type = "wallmounted",
@@ -848,7 +848,7 @@ minetest.register_node("default:grass_1", {
 	description = "Grass",
 	drawtype = "plantlike",
 	tiles = {"default_grass_1.png"},
-	-- use a bigger inventory image
+	-- Use texture of a taller grass stage in inventory.
 	inventory_image = "default_grass_3.png",
 	wield_image = "default_grass_3.png",
 	paramtype = "light",
@@ -864,7 +864,7 @@ minetest.register_node("default:grass_1", {
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		-- place a random grass node
+		-- Place a random grass node.
 		local stack = ItemStack("default:grass_"..math.random(1,5))
 		local ret = minetest.item_place(stack, placer, pointed_thing)
 		return ItemStack("default:grass_1 "..itemstack:get_count()-(1-ret:get_count()))
@@ -921,7 +921,7 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5,  0.5, -0.5+2/16, 0.5},
 		},
 	},
-	groups = {crumbly=3, falling_node=1, fall_damage_add_percent=COUSHION, dissolve=1},
+	groups = {crumbly=3, falling_node=1, fall_damage_add_percent=default.COUSHION, dissolve=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -940,7 +940,7 @@ minetest.register_node("default:snowblock", {
 	description = "Snow Block",
 	tiles = {"default_snow.png"},
 	is_ground_content = true,
-	groups = {crumbly=3, fall_damage_add_percent=COUSHION},
+	groups = {crumbly=3, fall_damage_add_percent=default.COUSHION},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),

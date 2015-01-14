@@ -44,7 +44,13 @@ for i=1,2 do
 		paramtype = "light",
 		waving = 1,
 		trunk = "conifer:tree",
-		groups = {snappy=3, leafdecay=3, flammable=2, leaves=1, fall_damage_add_percent=COUSHION},
+		groups = {
+				snappy=3,
+				leafdecay=3,
+				flammable=2,
+				leaves=1,
+				fall_damage_add_percent=default.COUSHION
+			},
 		drop = {
 			max_items = 1,
 			items = {
