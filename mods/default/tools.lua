@@ -63,7 +63,7 @@ minetest.register_tool("default:pick_steel", {
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		groupcaps={
-			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=20, maxlevel=2},
+			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=30, maxlevel=2},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -165,7 +165,7 @@ minetest.register_tool("default:axe_steel", {
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		groupcaps={
-			choppy={times={[1]=2.50, [2]=1.30, [3]=1.00}, uses=20, maxlevel=3},
+			choppy={times={[1]=2.50, [2]=1.30, [3]=1.00}, uses=30, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -175,6 +175,7 @@ minetest.register_tool("default:axe_steel", {
 minetest.register_tool("default:sword_wood", {
 	description = "Wooden Sword",
 	inventory_image = "default_tool_woodsword.png",
+	range = 3.0,
 	tool_capabilities = {
 		full_punch_interval = 2.0,
 		groupcaps={
@@ -186,6 +187,7 @@ minetest.register_tool("default:sword_wood", {
 minetest.register_tool("default:sword_stone", {
 	description = "Stone Sword",
 	inventory_image = "default_tool_stonesword.png",
+	range = 3.0,
 	tool_capabilities = {
 		full_punch_interval = 2.4,
 		groupcaps={
@@ -197,6 +199,7 @@ minetest.register_tool("default:sword_stone", {
 minetest.register_tool("default:sword_copper", {
 	description = "Copper Sword",
 	inventory_image = "default_tool_coppersword.png",
+	range = 3.0,
 	tool_capabilities = {
 		full_punch_interval = 2.0,
 		groupcaps={
@@ -208,11 +211,12 @@ minetest.register_tool("default:sword_copper", {
 minetest.register_tool("default:sword_steel", {
 	description = "Steel Sword",
 	inventory_image = "default_tool_steelsword.png",
+	range = 3.0,
 	tool_capabilities = {
 		full_punch_interval = 1.6,
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=30, maxlevel=2},
 		},
-		damage_groups = {fleshy=3},
+		damage_groups = {fleshy=4},
 	}
 })

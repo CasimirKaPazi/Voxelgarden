@@ -28,7 +28,7 @@ function doors:register_door(name, def)
 	local function use(pos, replace_dir)
 		local node = minetest.get_node(pos)
 		local p2 = node.param2
-		minetest.sound_play("default_dig_choppy", {pos, gain = 1.0})
+		minetest.sound_play("default_dig_choppy", {pos, gain = 0.5, max_hear_distance = 32})
 		minetest.swap_node(pos, {name=replace_dir, param2=p2})
 	end
 
@@ -126,7 +126,7 @@ function doors:register_door(name, def)
 			if not minetest.setting_getbool("creative_mode") then
 				itemstack:take_item()
 			end
-			minetest.sound_play("default_place_node", {ptu, gain = 0.5})
+			minetest.sound_play("default_place_node", {ptu, gain = 0.5, max_hear_distance = 32})
 			return itemstack
 		end,
 	})
