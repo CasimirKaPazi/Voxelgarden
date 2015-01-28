@@ -34,9 +34,9 @@ minetest.register_craft({
 
 doors:register_door("doors:door_steel", {
 	description = "Steel Door",
-	inventory_image = "door_steel_b.png",
+	inventory_image = "doors_steel_b.png",
 	groups = {snappy=1, cracky=1, door=1},
-	tiles = {"door_steel_b.png"},
+	tiles = {"doors_steel_b.png"},
 	only_placer_can_open = true,
 })
 

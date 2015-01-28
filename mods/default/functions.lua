@@ -120,6 +120,21 @@ minetest.register_abm({
 	end
 })
 
+minetest.register_abm({
+	nodenames = {"group:flora"},
+	neighbors = {"default:dirt"},
+	interval = 2,
+	chance = 20,
+	action = function(pos, node)
+		local under = {x=pos.x, y=pos.y-1, z=pos.z}
+		local name = minetest.get_node(under).name
+		if name == "default:dirt" then
+			print("sfeesfinsvoshgoesw!!!!!!!!!!!!!!!!!!!!!")
+			minetest.set_node(under, {name = "default:dirt_with_grass"})
+		end
+	end
+})
+
 
 --
 -- Lavacooling
