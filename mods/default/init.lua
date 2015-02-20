@@ -50,7 +50,7 @@ dofile(minetest.get_modpath("default").."/furnace.lua")
 dofile(minetest.get_modpath("default").."/tools.lua")
 dofile(minetest.get_modpath("default").."/craftitems.lua")
 dofile(minetest.get_modpath("default").."/crafting.lua")
-if minetest.get_mapgen_params() ~= "v6" then
+if minetest.get_mapgen_params().mgname ~= "v6" then
 	dofile(minetest.get_modpath("default").."/biomes.lua")
 end
 dofile(minetest.get_modpath("default").."/mapgen.lua")
