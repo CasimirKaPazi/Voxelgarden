@@ -63,16 +63,15 @@ local max_stage = 4
 local stages = farming.register_stages(max_stage, "farming:wheat")
 
 minetest.override_item("farming:wheat_"..max_stage.."", {
-		drop = {
-			max_items = 4,
-			items = {
-				{ items = {"farming:wheat 2"} },
-				{ items = {"farming:wheat"}, rarity = 2},
-				{ items = {"farming:wheat"}, rarity = 4},
-			}
+	drop = {
+		max_items = 4,
+		items = {
+			{ items = {"farming:wheat 2"} },
+			{ items = {"farming:wheat"}, rarity = 2},
+			{ items = {"farming:wheat"}, rarity = 4},
 		}
 	}
-)
+})
 
 farming.register_growing(max_stage, stages, 57, 10, 10)
 
@@ -154,31 +153,21 @@ local max_stage = 3
 local stages = {}
 local stages = farming.register_stages(max_stage, "farming:cotton")
 
-minetest.register_node("farming:cotton_"..max_stage.."", {
-	tiles = {"farming_cotton_"..max_stage..".png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	waving = 1,
-	walkable = false,
-	drawtype = "plantlike",
-	drop = "",
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375},
-	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
-	on_rightclick = function(pos, node, clicker)
-		local inv = clicker:get_inventory()
-		if inv:room_for_item("main", "farming:cotton") then
-			minetest.add_node(pos, {name="farming:cotton_2"})	
-			minetest.sound_play("default_dig_crumbly", {pos,gain = 1.0})
-			inv:add_item("main", "farming:cotton 2")
-			return itemstack
-		else
-			minetest.chat_send_player(clicker:get_player_name(), "Your inventory is full.")
-		end
-	end,
-	sounds = default.node_sound_leaves_defaults(),
+minetest.override_item("farming:cotton_"..max_stage.."", {
+	after_dig_node = function(pos, node, clicker, itemstack)
+		minetest.add_node(pos, {name="farming:cotton_1"})
+	end
+})
+
+minetest.override_item("farming:cotton_"..max_stage.."", {
+	drop = {
+		max_items = 3,
+		items = {
+			{ items = {"farming:cotton"} },
+			{ items = {"farming:cotton"}, rarity = 2},
+			{ items = {"farming:cotton"}, rarity = 4},
+		}
+	}
 })
 
 farming.register_growing(max_stage, stages, 57, 15, 10)

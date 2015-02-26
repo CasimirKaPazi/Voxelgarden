@@ -29,7 +29,7 @@ function farming.place_seed(itemstack, placer, pointed, plantname)
 	-- check for rightclick
 	local reg_node = minetest.registered_nodes[under.name]
 	if reg_node.on_rightclick then
-		reg_node.on_rightclick(pointed.under, under, placer)
+		reg_node.on_rightclick(pointed.under, under, placer, itemstack)
 		return
 	end
 	-- place plant
