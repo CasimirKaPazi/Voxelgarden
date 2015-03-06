@@ -5,6 +5,7 @@
 minetest.register_node("farming:weed", {
 	description = "Weed",
 	paramtype = "light",
+	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
@@ -103,7 +104,7 @@ minetest.register_node("farming:straw", {
   description = "Straw",
 	tiles = {"farming_straw.png"},
 	drop = "farming:wheat 9",
-	groups = {snappy=3, fall_damage_add_percent=COUSHION, flammable=2},
+	groups = {snappy=3, fall_damage_add_percent=default.COUSHION, flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
 })
 minetest.register_alias("darkage:straw", "farming:straw")

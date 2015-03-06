@@ -34,7 +34,7 @@ for _, row in ipairs(wool.dyes) do
 	minetest.register_node("wool:"..name, {
 		description = desc.." Wool",
 		tiles = {"wool_"..name..".png"},
-		groups = {snappy=2,oddly_breakable_by_hand=3,flammable=3,wool=1, fall_damage_add_percent=COUSHION},
+		groups = {snappy=2,oddly_breakable_by_hand=3,flammable=3,wool=1, fall_damage_add_percent=default.COUSHION},
 		sounds = default.node_sound_leaves_defaults(),
 	})
 	if craft_color_group then
