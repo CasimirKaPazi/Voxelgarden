@@ -174,7 +174,7 @@ minetest.register_abm({
 minetest.register_abm({
 	nodenames = {"default:cactus"},
 	neighbors = {"group:sand"},
-	interval = 80,
+	interval = 70,
 	chance = 30,
 	action = function(pos, node)
 		pos.y = pos.y - 1
@@ -198,7 +198,7 @@ minetest.register_abm({
 minetest.register_abm({
 	nodenames = {"default:papyrus"},
 	neighbors = {"default:dirt", "default:dirt_with_grass", "default:papyrus_roots"},
-	interval = 47,
+	interval = 40,
 	chance = 30,
 	action = function(pos, node)
 		pos.y = pos.y - 1
