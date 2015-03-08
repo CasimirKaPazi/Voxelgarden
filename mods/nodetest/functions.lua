@@ -27,8 +27,6 @@ local function dissolve(pos_dissolve, pos_liquid)
 	local nodedef = minetest.registered_nodes[name]
 	if nodedef and nodedef.liquidtype ~= "none" then
 		local min_level = 8 - nodedef.liquid_range
-		print("min_level = "..min_level)
-		print("level = "..node.param2)
 		if node.param2 == 0 or node.param2 == 240 then
 			minetest.set_node(pos_dissolve, {name = nodedef.liquid_alternative_flowing, param2 = 7})
 		elseif node.param2 > min_level then		
