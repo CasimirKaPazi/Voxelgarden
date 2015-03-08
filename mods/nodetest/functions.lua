@@ -21,22 +21,34 @@ minetest.register_abm({
 -- Remove nodes in liquids
 --
 
+local function dissolve(pos_dissolve, pos_liquid)
+	local node = minetest.get_node(pos_liquid)
+	local name = node.name
+	local nodedef = minetest.registered_nodes[name]
+	if nodedef and nodedef.liquidtype ~= "none" then
+		local min_level = 8 - nodedef.liquid_range
+		print("min_level = "..min_level)
+		print("level = "..node.param2)
+		if node.param2 == 0 or node.param2 == 240 then
+			minetest.set_node(pos_dissolve, {name = nodedef.liquid_alternative_flowing, param2 = 7})
+		elseif node.param2 > min_level then		
+			minetest.set_node(pos_dissolve, {name = name, param2 = node.param2-1})
+		end
+		return true
+	end
+end
+
 minetest.register_abm({
 	nodenames = {"group:dissolve"},
 	neighbors = {"group:liquid"},
-	interval = 2,
+	interval = 5,
 	chance = 1,
 	action = function(pos, node)
-		local above = {x=pos.x, y=pos.y+1, z=pos.z}
-		local name = minetest.get_node(above).name
-		local nodedef = minetest.registered_nodes[name]
-		if nodedef and nodedef.liquidtype ~= "none" then
-			if liquid_finite then
-				minetest.set_node(pos, {name = "air"})
-			else
-				minetest.set_node(pos, {name = name})
-			end
-		end
+		if dissolve(pos, {x=pos.x, y=pos.y+1, z=pos.z}) then return end
+		if dissolve(pos, {x=pos.x+1, y=pos.y, z=pos.z}) then return end
+		if dissolve(pos, {x=pos.x-1, y=pos.y, z=pos.z}) then return end
+		if dissolve(pos, {x=pos.x, y=pos.y, z=pos.z+1}) then return end
+		if dissolve(pos, {x=pos.x, y=pos.y, z=pos.z-1}) then return end
 	end,
 })
 
