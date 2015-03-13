@@ -495,7 +495,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "default:steel_ingot",
-	recipe = "default:stone_with_steel",
+	recipe = "default:stone_with_iron",
 	cooktime = 10,
 })
 
