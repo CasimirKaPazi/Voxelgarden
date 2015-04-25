@@ -14,20 +14,20 @@ minetest.register_alias("mapgen_water_source", "default:water_source")
 minetest.register_alias("mapgen_dirt", "default:dirt")
 minetest.register_alias("mapgen_sand", "default:sand")
 minetest.register_alias("mapgen_gravel", "default:gravel")
-minetest.register_alias("mapgen_clay", "default:clay")
 minetest.register_alias("mapgen_lava_source", "default:lava_source")
 minetest.register_alias("mapgen_cobble", "default:cobble")
 minetest.register_alias("mapgen_mossycobble", "default:mossycobble")
 minetest.register_alias("mapgen_dirt_with_grass", "default:dirt_with_grass")
 minetest.register_alias("mapgen_junglegrass", "default:junglegrass")
-minetest.register_alias("mapgen_stone_with_coal", "default:stone_with_coal")
-minetest.register_alias("mapgen_stone_with_iron", "default:stone_with_iron")
-minetest.register_alias("mapgen_mese", "default:mese")
 minetest.register_alias("mapgen_desert_sand", "default:desert_sand")
 minetest.register_alias("mapgen_desert_stone", "default:desert_stone")
 minetest.register_alias("mapgen_stair_cobble", "stairsplus:stair_cobble")
 minetest.register_alias("mapgen_sandstonebrick", "default:sandstone")
 minetest.register_alias("mapgen_stair_sandstone", "stairsplus:stair_sandstone")
+minetest.register_alias("mapgen_dirt_with_snow", "default:dirt_with_snow")
+minetest.register_alias("mapgen_snow", "default:snow")
+minetest.register_alias("mapgen_snowblock", "default:snowblock")
+minetest.register_alias("mapgen_ice", "default:ice")
 
 --
 -- Ore generation
@@ -63,7 +63,6 @@ minetest.register_ore({
 	clust_size     = 3,
 	height_min     = -31000,
 	height_max     = -64,
-	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -75,7 +74,6 @@ minetest.register_ore({
 	clust_size     = 6,
 	height_min     = -31000,
 	height_max     = -64,
-	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -87,7 +85,6 @@ minetest.register_ore({
 	clust_size     = 2,
 	height_min     = -255,
 	height_max     = -128,
-	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -99,7 +96,6 @@ minetest.register_ore({
 	clust_size     = 3,
 	height_min     = -31000,
 	height_max     = -256,
-	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -111,7 +107,6 @@ minetest.register_ore({
 	clust_size     = 2,
 	height_min     = -31000,
 	height_max     = -1024,
-	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -134,7 +129,6 @@ minetest.register_ore({
 	clust_size     = 3,
 	height_min     = -1024,
 	height_max     = -64,
-	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -169,69 +163,6 @@ minetest.register_ore({
 	height_max     = 16,
 	height_min     = -10,
 })
-
-if minetest.setting_get("mg_name") == "indev" then
-	-- Floatlands and high mountains springs
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:water_source",
-		ore_param2     = 128,
-		wherein        = "default:stone",
-		clust_scarcity = 40*40*40,
-		clust_num_ores = 8,
-		clust_size     = 3,
-		height_min     = 100,
-		height_max     = 31000,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:lava_source",
-		ore_param2     = 128,
-		wherein        = "default:stone",
-		clust_scarcity = 50*50*50,
-		clust_num_ores = 5,
-		clust_size     = 2,
-		height_min     = 10000,
-		height_max     = 31000,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:sand",
-		wherein        = "default:stone",
-		clust_scarcity = 20*20*20,
-		clust_num_ores = 5*5*3,
-		clust_size     = 5,
-		height_min     = 500,
-		height_max     = 31000,
-	})
-
-	-- Underground springs
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:water_source",
-		ore_param2     = 128,
-		wherein        = "default:stone",
-		clust_scarcity = 25*25*25,
-		clust_num_ores = 8,
-		clust_size     = 3,
-		height_min     = -10000,
-		height_max     = -100,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:lava_source",
-		ore_param2     = 128,
-		wherein        = "default:stone",
-		clust_scarcity = 35*35*35,
-		clust_num_ores = 5,
-		clust_size     = 2,
-		height_min     = -31000,
-		height_max     = -100,
-	})
-end
 
 function default.generate_ore(name, wherein, minp, maxp, seed, chunks_per_volume, chunk_size, ore_per_chunk, height_min, height_max)
 	minetest.log('action', "WARNING: default.generate_ore is deprecated")
