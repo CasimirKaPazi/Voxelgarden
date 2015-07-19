@@ -65,7 +65,7 @@ function doors:register_door(name, def)
 	minetest.register_node(name.."_1", {
 		description = def.description,
 		inventory_image = def.inventory_image,
-		tiles = {tiles[1], tiles[1], tiles[1], tiles[1], tiles[1], tiles[1].."^[transformfx"},
+		tiles = {tiles[1].."^[transformfy", tiles[1].."^[transformfy", tiles[1], tiles[1], tiles[1], tiles[1].."^[transformfx"},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = name.."_1",
@@ -133,18 +133,18 @@ function doors:register_door(name, def)
 
 	-- Open door
 	minetest.register_node(name.."_2", {
-		tiles = {tiles[1], tiles[1], tiles[1].."^[transformfx", tiles[1], tiles[1].."^[transformfx", tiles[1].."^[transformfx"},
+		tiles = {tiles[1].."^[transformR90", tiles[1].."^[transformR270", tiles[1].."^[transformfx", tiles[1], tiles[1].."^[transformfx", tiles[1].."^[transformfx"},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = name.."_1",
 		drawtype = "nodebox",
 		node_box = {
 			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5,   -0.5+1/16, 0.5, 0.5}
+			fixed = {-0.5, -0.5, -0.5, -0.5+1/16, 0.5, 0.5}
 		},
 		selection_box = {
 			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5,   -0.5+1/16, 0.5, 0.5}
+			fixed = {-0.5, -0.5, -0.5, -0.5+1/16, 0.5, 0.5}
 		},
 		groups = def.groups,
 		status = 2,

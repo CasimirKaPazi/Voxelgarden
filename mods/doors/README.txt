@@ -14,8 +14,9 @@ License of media (textures and sounds)
 --------------------------------------
 Casimir (CC BY-SA 3.0)
   Based on the work of Gambit
-  door_brown.png
-  door_grey.png
   door_steel_b.png
   door_wood_a.png
   door_wood_b.png
+
+Gambit (WTFPL):
+  doors_steel_bars.png

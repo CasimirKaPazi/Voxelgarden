@@ -49,6 +49,23 @@ minetest.register_craft({
 	}
 })
 
+doors:register_door("doors:steel_bars", {
+	description = "Steel Bars",
+	inventory_image = "doors_steel_bars.png",
+	groups = {snappy=1, cracky=1, door=1},
+	tiles = {"doors_steel_bars.png"},
+	only_placer_can_open = true,
+})
+
+minetest.register_craft({
+	output = "doors:door_steel",
+	recipe = {
+		{"default:steel_ingot", "default:steel_ingot"},
+		{"default:stick", "default:stick"},
+		{"default:steel_ingot", "default:steel_ingot"}
+	}
+})
+
 minetest.register_alias("doors:door_wood", "doors:door_wood_1")
 minetest.register_alias("doors:door_wood_t_1", "doors:door_wood_window_1")
 minetest.register_alias("doors:door_wood_t_2", "doors:door_wood_window_2")
