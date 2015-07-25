@@ -30,7 +30,7 @@ minetest.register_node("nodetest:papyrus_roots", {
 			node.name = "default:papyrus"
 			default.dig_up(pos, node, digger)
 		end,
-	groups = {snappy=3, flammable=2},
+	groups = {snappy=2, flammable=2, oddly_breakable_by_hand=1, soil=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 minetest.register_alias("default:papyrus_roots", "nodetest:papyrus_roots")

@@ -152,8 +152,8 @@ minetest.register_abm({
 	neighbors = {"group:water"},
 	interval = 1,
 	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.cool_lava_flowing(pos, node, active_object_count, active_object_count_wider)
+	action = function(...)
+		default.cool_lava_flowing(...)
 	end,
 })
 
@@ -162,8 +162,8 @@ minetest.register_abm({
 	neighbors = {"group:water"},
 	interval = 1,
 	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.cool_lava_source(pos, node, active_object_count, active_object_count_wider)
+	action = function(...)
+		default.cool_lava_source(...)
 	end,
 })
 
@@ -171,27 +171,57 @@ minetest.register_abm({
 -- Papyrus and cactus growing
 --
 
+function default.grow_cactus(pos, node)
+	pos.y = pos.y - 1
+	local node = minetest.get_node(pos)
+	if minetest.get_item_group(node.name, "sand") == 0 then
+		return
+	end
+	pos.y = pos.y + 1
+	local height = 0
+	node = minetest.get_node(pos)
+	while node.name == "default:cactus" and height < 4 do
+		height = height + 1
+		pos.y = pos.y + 1
+		node = minetest.get_node(pos)
+	end
+	if height < 4 and node.name == "air" then
+		minetest.set_node(pos, {name="default:cactus"})
+		return true
+	end
+end
+
+function default.grow_papyrus(pos, node)
+	pos.y = pos.y - 1
+	local node = minetest.get_node(pos)
+	if minetest.get_item_group(node.name, "soil") == 0 then
+		return
+	end
+	if not minetest.find_node_near(pos, 3, {"group:water"}) then
+		return
+	end
+	pos.y = pos.y + 1
+	node = minetest.get_node(pos)
+	local height = 0
+	while node.name == "default:papyrus" and height < 5 do
+		height = height + 1
+		pos.y = pos.y + 1
+		node = minetest.get_node(pos)
+	end
+	if height < math.random(0, 5) and node.name == "air" then
+		minetest.set_node(pos, {name="default:papyrus"})
+		return true
+	end
+end
+
+-- Wrapping the functions in abm action is necessary to make overriding them possible.
 minetest.register_abm({
 	nodenames = {"default:cactus"},
 	neighbors = {"group:sand"},
 	interval = 70,
 	chance = 30,
-	action = function(pos, node)
-		pos.y = pos.y - 1
-		local name = minetest.get_node(pos).name
-		if minetest.get_item_group(name, "sand") ~= 0 then
-			pos.y = pos.y + 1
-			local height = 0
-			while minetest.get_node(pos).name == "default:cactus" and height < 4 do
-				height = height + 1
-				pos.y = pos.y + 1
-			end
-			if height < 4 then
-				if minetest.get_node(pos).name == "air" then
-					minetest.set_node(pos, {name="default:cactus"})
-				end
-			end
-		end
+	action = function(...)
+		default.grow_cactus(...)
 	end,
 })
 
@@ -200,25 +230,8 @@ minetest.register_abm({
 	neighbors = {"default:dirt", "default:dirt_with_grass", "default:papyrus_roots"},
 	interval = 40,
 	chance = 30,
-	action = function(pos, node)
-		pos.y = pos.y - 1
-		local name = minetest.get_node(pos).name
-		if minetest.get_item_group(name, "soil") > 0 or name == "nodetest:papyrus_roots" then
-			if not minetest.find_node_near(pos, 2, {"group:water"}) then
-				return
-			end
-			pos.y = pos.y + 1
-			local height = 0
-			while minetest.get_node(pos).name == "default:papyrus" and height < 5 do
-				height = height + 1
-				pos.y = pos.y + 1
-			end
-			if height < math.random(0, 5) then
-				if minetest.get_node(pos).name == "air" then
-					minetest.set_node(pos, {name="default:papyrus"})
-				end
-			end
-		end
+	action = function(...)
+		default.grow_papyrus(...)
 	end,
 })
 
