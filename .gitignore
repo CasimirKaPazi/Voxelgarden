@@ -6,3 +6,6 @@ tags
 *.vim
 *.orig
 *.rej
+
+## Files related to minetest development cycle
+*.patch
