@@ -110,6 +110,7 @@ minetest.register_on_joinplayer(function(player)
 		inventory_plus.inventory[player:get_player_name()] = player:get_inventory_formspec()
 	end
 	minetest.after(1,function()
+		if not player:is_player() then return end
 		inventory_plus.set_inventory_formspec(player,inventory_plus.get_formspec(player, inventory_plus.default))
 	end)
 end)
