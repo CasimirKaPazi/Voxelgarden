@@ -5,7 +5,8 @@ minetest.register_abm({
 	interval = 17,
 	chance = 50,
 	action = function(pos, node)
-		if not default.can_grow(pos) then
+		if minetest.get_item_group(minetest.get_node(
+				{x = pos.x, y = pos.y - 1, z = pos.z}).name, "soil") == 0 then
 			return
 		end
 		if minetest.find_node_near(pos, 3, {"group:tree", "group:sapling"}) then
