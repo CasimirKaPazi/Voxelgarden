@@ -35,55 +35,62 @@ core.register_entity(":__builtin:falling_node", {
 		local bcn = core.get_node(bcp)	-- n = node
 		local bcd = core.registered_nodes[bcn.name] -- d = definition
 		-- Note: walkable is in the node definition, not in item groups
-		if not bcd then return end
-		if not bcd.walkable or bcd.liquidtype ~= "none" then return end
-		-- Increase level of bottom node
-		if bcd.leveled and bcn.name == self.node.name then
-			local addlevel = self.node.level
-			if addlevel == nil or addlevel <= 0 then
-				addlevel = bcd.leveled
+		if bcd and bcd.walkable and bcd.liquidtype == "none" then
+			-- Increase level of bottom node
+			if bcd.leveled and bcn.name == self.node.name then
+				local addlevel = self.node.level
+				if addlevel == nil or addlevel <= 0 then
+					addlevel = bcd.leveled
+				end
+				local new_level = core.add_node_level(bcp, addlevel)
+				if new_level == 0 then
+					self.object:remove()
+					return
+				end
+				-- Turn into a full block if defined
+				if new_level >= bcd.leveled and bcd.leveled_full then
+					core.add_node(bcp, {name=bcd.leveled_full})
+				end
 			end
-			local new_level = core.add_node_level(bcp, addlevel)
-			if new_level == 0 then
-				self.object:remove()
+			-- Remove bottom node
+			if bcd.buildable_to then
+				core.remove_node(bcp)
 				return
 			end
-			-- Turn into a full block if defined
-			if new_level >= bcd.leveled and bcd.leveled_full then
-				core.add_node(bcp, {name=bcd.leveled_full})
+			-- Check what's here
+			local n2p = {x=bcp.x, y=bcp.y+1, z=bcp.z}
+			local n2n = core.get_node(n2p)
+			-- Remove node and replace it with it's drops
+			core.remove_node(n2p)
+			if core.registered_nodes[n2n.name].buildable_to == false then
+				-- Add dropped items
+				local drops = core.get_node_drops(n2n.name, "")
+				local _, dropped_item
+				for _, dropped_item in ipairs(drops) do
+					core.add_item(n2p, dropped_item)
+				end
 			end
-		end
-		-- Remove bottom node
-		if bcd.buildable_to then
-			core.remove_node(bcp)
-			return
-		end
-		-- Check what's here
-		local n2p = {x=bcp.x, y=bcp.y+1, z=bcp.z}
-		local n2n = core.get_node(n2p)
-		-- Remove node and replace it with it's drops
-		core.remove_node(n2p)
-		if core.registered_nodes[n2n.name].buildable_to == false then
-			-- Add dropped items
-			local drops = core.get_node_drops(n2n.name, "")
-			local _, dropped_item
-			for _, dropped_item in ipairs(drops) do
-				core.add_item(n2p, dropped_item)
+			-- Run script hook
+			local _, callback
+			for _, callback in ipairs(core.registered_on_dignodes) do
+				callback(n2p, n2n, nil)
 			end
-		end
-		-- Run script hook
-		local _, callback
-		for _, callback in ipairs(core.registered_on_dignodes) do
-			callback(n2p, n2n, nil)
-		end
-		-- Create node and remove entity
-		if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
-			core.place_node(n2p, self.node)
+			-- Create node and remove entity
+			if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
+				core.place_node(n2p, self.node)
+			else
+				core.add_node(n2p, self.node)
+			end
+			self.object:remove()
+			nodeupdate(n2p)
 		else
-			core.add_node(n2p, self.node)
+			-- Round to prevent floating in the air
+			local vel = self.object:getvelocity()
+			if vector.equals(vel, {x=0,y=0,z=0}) then
+				local npos = self.object:getpos()
+				self.object:setpos(vector.round(npos))
+			end
 		end
-		self.object:remove()
-		nodeupdate(n2p)
 	end
 })
 
