@@ -27,9 +27,9 @@ function doors:register_door(name, def)
 	-- Change door status
 	local function use(pos, replace_dir)
 		local node = minetest.get_node(pos)
-		local p2 = node.param2
+		local param2 = node.param2
 		minetest.sound_play("default_dig_choppy", {pos, gain = 0.5, max_hear_distance = 32})
-		minetest.swap_node(pos, {name=replace_dir, param2=p2})
+		minetest.swap_node(pos, {name=replace_dir, param2=param2})
 	end
 
 	-- Check for other doors
@@ -57,8 +57,8 @@ function doors:register_door(name, def)
 			return true
 		end
 		local meta = minetest.get_meta(pos)
-		local pn = player:get_player_name()
-		return meta:get_string("doors_owner") == pn
+		local playername = player:get_player_name()
+		return meta:get_string("doors_owner") == playername
 	end
 
 	-- Closed door
@@ -95,32 +95,33 @@ function doors:register_door(name, def)
 			end
 			local ptu = pointed_thing.under
 			local pta = pointed_thing.above
-			local p2 = minetest.dir_to_facedir(placer:get_look_dir())
-			local nu = minetest.get_node(ptu)
-			if minetest.registered_nodes[nu.name].on_rightclick then
-				return minetest.registered_nodes[nu.name].on_rightclick(ptu, nu, placer, itemstack)
+			local param2 = minetest.dir_to_facedir(placer:get_look_dir())
+			local nodeunder = minetest.get_node(ptu)
+			local nodeunder_def = minetest.registered_nodes[nodeunder.name]
+			if nodeunder_def and nodeunder_def.on_rightclick then
+				return nodeunder_def.on_rightclick(ptu, nodeunder, placer, itemstack)
 			end
 
 			-- Place joint on the surface the placer is pointing to
-			local face = p2
+			local face = param2
 			if ptu.y < pta.y then
-				face = floor_dir[p2]
+				face = floor_dir[param2]
 			elseif ptu.y > pta.y then
-				face = ceil_dir[p2]
-			elseif (p2 == 0 and ptu.x > pta.x) or
-					(p2 == 1 and ptu.z < pta.z) or
-					(p2 == 2 and ptu.x < pta.x) or
-					(p2 == 3 and ptu.z > pta.z) then
-				face = wall_dir[p2]
+				face = ceil_dir[param2]
+			elseif (param2 == 0 and ptu.x > pta.x) or
+					(param2 == 1 and ptu.z < pta.z) or
+					(param2 == 2 and ptu.x < pta.x) or
+					(param2 == 3 and ptu.z > pta.z) then
+				face = wall_dir[param2]
 			end
 			-- In every other case place normal
 			minetest.set_node(pta, {name=name.."_1", param2=face})
 
 			if def.only_placer_can_open then
-				local pn = placer:get_player_name()
+				local playername = placer:get_player_name()
 				local meta = minetest.get_meta(pta)
-				meta:set_string("doors_owner", pn)
-				meta:set_string("infotext", "Owned by "..pn)
+				meta:set_string("doors_owner", playername)
+				meta:set_string("infotext", "Owned by "..playername)
 			end
 
 			if not minetest.setting_getbool("creative_mode") then
