@@ -104,6 +104,7 @@ Casimir (CC BY-SA 3.0)
   default_grass_side.png
   default_torch_on_ceiling_animated.png
   default_grass_footsteps.png
+  gui_hotbar*
 
 Gambit (WTFPL)
   default_book.png
