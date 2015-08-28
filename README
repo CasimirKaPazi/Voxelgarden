@@ -33,9 +33,7 @@ inventory_plus  GPL
 legacy          LGPL
 nodetest	LGPL
 no_itemdrop     LGPL
-pots            WTFPL
 screwdriver     LGPL
-sethome         LGPL
 stairsplus      zlib/libpng
 wool            WTFPL
 zcg             WTFPL
