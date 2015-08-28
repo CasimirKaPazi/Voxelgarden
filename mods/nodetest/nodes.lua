@@ -1,15 +1,3 @@
--- mods/default/nodes.lua
-
-minetest.register_node("nodetest:desert_sandstone", {
-	description = "Desert Sandstone",
-	tiles = {"nodetest_desert_sandstone.png"},
-	is_ground_content = true,
-	groups = {crumbly=2, cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_alias("default:desertsandstone", "nodetest:desert_sandstone")
-minetest.register_alias("default:desert_sandstone", "nodetest:desert_sandstone")
-
 minetest.register_node("nodetest:rock", {
 	description = "Rock",
 	tiles = {"nodetest_rock.png"},

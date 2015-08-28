@@ -58,21 +58,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'nodetest:desert_sandstone',
-	recipe = {
-		{'default:desert_sand', 'default:desert_sand'},
-		{'default:desert_sand', 'default:desert_sand'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:desert_sand 4',
-	recipe = {
-		{'nodetest:desert_sandstone'},
-	}
-})
-
-minetest.register_craft({
 	output = 'nodetest:rock',
 	recipe = {
 		{'default:cobble', 'default:cobble'},
@@ -176,15 +161,4 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "nodetest:bonfire",
 	burntime = 15,
-})
-
-
---
--- Cooking recipes
---
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:desert_stone",
-	recipe = "nodetest:desert_sandstone",
 })
