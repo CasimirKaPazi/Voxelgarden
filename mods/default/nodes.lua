@@ -616,9 +616,12 @@ minetest.register_node("default:chest", {
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
-				"size[8,9]"..
+				"size[8,8.5]"..
 				"list[current_name;main;0,0;8,4;]"..
-				"list[current_player;main;0,5;8,4;]")
+				"list[current_player;main;0,4.75;8,4;]"..
+				"listring[current_name;main]"..
+				"listring[current_player;main]"
+		)
 		meta:set_string("infotext", "Chest")
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8*4)
@@ -701,9 +704,12 @@ minetest.register_node("default:chest_locked", {
 		if has_locked_chest_privilege(meta, clicker) then
 			local pos = pos.x .. "," .. pos.y .. "," ..pos.z
 			minetest.show_formspec(clicker:get_player_name(), "default:chest_locked",
-				"size[8,9]"..
+				"size[8,8.5]"..
 				"list[nodemeta:".. pos .. ";main;0,0;8,4;]"..
-				"list[current_player;main;0,5;8,4;]")
+				"list[current_player;main;0,4.75;8,4;]"..
+				"listring[nodemeta:".. pos .. ";main]"..
+				"listring[current_player;main]"
+			)
 		end
 	end,
 })
