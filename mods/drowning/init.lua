@@ -153,9 +153,9 @@ function drowning.update_bar(player)
 			position = {x=0.5,y=1.0},
 			text = "bubble.png",
 			number = 20,
-			dir = 0,
-			offset = {x=25,y=-(4*24+16)},
-			size = {x=24, y=24},
+			dir = 1,
+			offset = {x=(9*24)-6,y=-(4*24+8)},
+			size = {x=16, y=16},
 		})
 	end
 end
