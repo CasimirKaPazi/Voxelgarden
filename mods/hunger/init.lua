@@ -56,8 +56,8 @@ function hunger.update_bar(player)
 			text = "hunger.png",
 			number = player_hunger[name],
 			dir = 0,
-			offset = {x=25,y=-(48+24+10)},
-			size = { x=24, y=24 },
+			offset = {x=25,y=-(3*24+16)},
+			size = {x=24, y=24},
 		})
 	end
 end
