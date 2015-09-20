@@ -1,5 +1,4 @@
---[[
-local auto_refill = false  -- set to "true" if you want get refilled your stack automatic
+local auto_refill = true  -- set to "true" if you want get refilled your stack automatic
 
 function refill(player, stck_name, index)
 	local inv = player:get_inventory()
@@ -99,4 +98,3 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 		end
 	end
 end)
---]]

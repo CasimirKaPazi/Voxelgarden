@@ -51,20 +51,6 @@ minetest.register_on_joinplayer(function(player)
 	player:hud_set_hotbar_selected_image("gui_hotbar_selected.png")
 end)
 
--- Use tools right click to place nodes
-minetest.tooldef_default.on_place = function(itemstack, user, pointed)
-	if not pointed then return end
-	local above = minetest.get_node(pointed.above)
-	local inv = user:get_inventory()
-	local idx = user:get_wield_index()+1
-	local stack = inv:get_stack("main", idx)
-	local success
-	stack, success = minetest.item_place(stack, user, pointed)
-	if success then --if item was placed, put modified stack back in inv
-		inv:set_stack("main", idx, stack)
-	end
-end
-
 -- Set time to dawn on new game
 minetest.register_on_newplayer(function(player)
 	if minetest.get_gametime() < 5 then
