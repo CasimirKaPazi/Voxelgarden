@@ -274,7 +274,7 @@ minetest.register_craft({
 	output = 'default:furnace',
 	recipe = {
 		{'group:stone', 'group:stone', 'group:stone'},
-		{'group:stone', 'default:torch', 'group:stone'},
+		{'group:stone', '', 'group:stone'},
 		{'group:stone', 'group:stone', 'group:stone'},
 	}
 })
