@@ -1,5 +1,4 @@
 -- minetest/fire/init.lua
-
 fire = {}
 
 minetest.register_alias("fire", "fire:basic_flame")
@@ -12,14 +11,15 @@ minetest.register_node("fire:basic_flame", {
 		animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1},
 	}},
 	inventory_image = "fire_basic_flame.png",
+	paramtype = "light",
 	light_source = 14,
 	waving = 1,
 	groups = {igniter=2, dig_immediate=3},
 	drop = "",
 	walkable = false,
 	buildable_to = true,
-	damage_per_second = 4,
 	sunlight_propagates = true,
+	damage_per_second = 4,
 })
 
 -- Only ignite if there are at least two fire nods around
@@ -39,6 +39,7 @@ minetest.register_abm({
 	neighbors = {"group:igniter"},
 	interval = 1,
 	chance = 5,
+	catch_up = false,
 	action = function(p0, node, _, _)
 		if fire.node_should_burn(p0) then
 			minetest.set_node(p0, {name="fire:basic_flame"})
@@ -51,6 +52,7 @@ minetest.register_abm({
 	nodenames = {"fire:basic_flame"},
 	interval = 2,
 	chance = 4,
+	catch_up = false,
 	action = function(p0, node, _, _)
 		-- If there are no flammable nodes around flame, remove flame
 		local p = minetest.find_node_near(p0, 1, {"group:flammable"})

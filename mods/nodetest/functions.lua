@@ -40,7 +40,8 @@ minetest.register_abm({
 	nodenames = {"group:dissolve"},
 	neighbors = {"group:liquid"},
 	interval = 5,
-	chance = 1,
+	chance = 2,
+	catch_up = false,
 	action = function(pos, node)
 		if dissolve(pos, {x=pos.x, y=pos.y+1, z=pos.z}) then return end
 		if dissolve(pos, {x=pos.x+1, y=pos.y, z=pos.z}) then return end
@@ -58,6 +59,7 @@ minetest.register_abm({
 	nodenames = {"nodetest:seedling"},
 	interval = 11,
 	chance = 20,
+	catch_up = false,
 	action = function(pos, node)
 		local above = {x=pos.x, y=pos.y+1, z=pos.z}
 		local name = minetest.get_node(above).name

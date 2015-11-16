@@ -84,6 +84,7 @@ minetest.register_abm({
 	neighbors = {"default:dirt_with_grass", "default:dirt_with_grass_footsteps"},
 	interval = 2,
 	chance = 200,
+	catch_up = false,
 	action = function(pos, node)
 		local above = {x=pos.x, y=pos.y+1, z=pos.z}
 		local name = minetest.get_node(above).name
@@ -102,8 +103,10 @@ minetest.register_abm({
 
 minetest.register_abm({
 	nodenames = {"default:dirt_with_grass", "default:dirt_with_snow"},
+	neighbors = {"default:snow", "default:snowblock"},
 	interval = 2,
 	chance = 20,
+	catch_up = false,
 	action = function(pos, node)
 		local above = {x=pos.x, y=pos.y+1, z=pos.z}
 		local name = minetest.get_node(above).name
@@ -125,6 +128,7 @@ minetest.register_abm({
 	neighbors = {"default:dirt"},
 	interval = 2,
 	chance = 20,
+	catch_up = false,
 	action = function(pos, node)
 		local under = {x=pos.x, y=pos.y-1, z=pos.z}
 		local name = minetest.get_node(under).name
@@ -151,7 +155,8 @@ minetest.register_abm({
 	nodenames = {"default:lava_flowing"},
 	neighbors = {"group:water"},
 	interval = 1,
-	chance = 1,
+	chance = 2,
+	catch_up = false,
 	action = function(...)
 		default.cool_lava_flowing(...)
 	end,
@@ -161,7 +166,8 @@ minetest.register_abm({
 	nodenames = {"default:lava_source"},
 	neighbors = {"group:water"},
 	interval = 1,
-	chance = 1,
+	chance = 2,
+	catch_up = false,
 	action = function(...)
 		default.cool_lava_source(...)
 	end,
