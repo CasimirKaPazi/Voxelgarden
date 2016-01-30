@@ -7,6 +7,7 @@ minetest.register_abm({
 	action = function(pos, node)
 		if minetest.get_item_group(minetest.get_node(
 				{x = pos.x, y = pos.y - 1, z = pos.z}).name, "soil") == 0 then
+			minetest.remove_node(pos)
 			return
 		end
 		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
@@ -24,6 +25,7 @@ minetest.register_abm({
 	action = function(pos, node)
 		if minetest.get_item_group(minetest.get_node(
 				{x = pos.x, y = pos.y - 1, z = pos.z}).name, "soil") == 0 then
+			minetest.remove_node(pos)
 			return
 		end
 		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
