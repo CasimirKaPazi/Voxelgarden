@@ -18,13 +18,15 @@ minetest.register_node("conifer:sapling", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
+	floodable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1, dissolve=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
+
 minetest.register_alias("conifers:sapling", "conifer:sapling")
 minetest.register_alias("nodetest:conifersapling", "conifer:sapling")
 
@@ -35,6 +37,7 @@ minetest.register_node("conifer:tree", {
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
+
 minetest.register_alias("conifers:trunk", "conifer:tree")
 minetest.register_alias("nodetest:conifertree", "conifer:tree")
 
@@ -73,6 +76,7 @@ for i=1,2 do
 	})
 	minetest.register_alias("nodetest:coniferleaves_"..i, "conifer:leaves_"..i)
 end
+
 minetest.register_alias("conifers:leaves", "conifer:leaves_1")
 minetest.register_alias("conifers:leaves_special", "conifer:leaves_2")
 
@@ -94,6 +98,7 @@ minetest.register_node("conifer:tree_horizontal", {
 		default.rotate_horizontal(pos)
 	end,
 })
+
 minetest.register_alias("conifers:trunk_reversed", "conifer:tree_horizontal")
 minetest.register_alias("nodetest:conifertree_horizontal", "conifer:tree_horizontal")
 

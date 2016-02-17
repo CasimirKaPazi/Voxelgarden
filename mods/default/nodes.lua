@@ -213,11 +213,12 @@ minetest.register_node("default:junglesapling", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
+	floodable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1, dissolve=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 -- aliases for tree growing abm in content_abm.cpp
@@ -236,7 +237,8 @@ minetest.register_node("default:junglegrass", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3, flammable=2, flora=1, attached_node=1, dissolve=1},
+	floodable = true,
+	groups = {snappy=3, flammable=2, flora=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -551,13 +553,14 @@ minetest.register_node("default:torch", {
 	walkable = false,
 	light_source = default.LIGHT_MAX-1,
 	is_ground_content = false,
+	floodable = true,
 	selection_box = {
 		type = "wallmounted",
 		wall_top = {-0.125, -0.125, -0.125, 0.125, 0.5, 0.125},
 		wall_bottom = {-0.125, -0.5, -0.125, 0.125, 0.125, 0.125},
 		wall_side = {-0.5, -0.375, -0.1, -0.25, 0.25, 0.125},
 	},
-	groups = {choppy=2, dig_immediate=3, flammable=1, attached_node=1, dissolve=1},
+	groups = {choppy=2, dig_immediate=3, flammable=1, attached_node=1},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -789,11 +792,12 @@ minetest.register_node("default:sapling", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
+	floodable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1, dissolve=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -810,11 +814,12 @@ minetest.register_node("default:apple", {
 	walkable = false,
 	is_ground_content = false,
 	buildable_to = true,
+	floodable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.2, -0.5, -0.2, 0.2, 0, 0.2}
 	},
-	groups = {fleshy=3, dig_immediate=3, flammable=2, attached_node=1, dissolve=1},
+	groups = {fleshy=3, dig_immediate=3, flammable=2, attached_node=1},
 	on_use = minetest.item_eat(2),
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -830,7 +835,8 @@ minetest.register_node("default:dry_shrub", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3, flammable=3, attached_node=1, dissolve=1},
+	floodable = true,
+	groups = {snappy=3, flammable=3, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -850,7 +856,8 @@ minetest.register_node("default:grass_1", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3, flammable=3, flora=1, attached_node=1, dissolve=1},
+	floodable = true,
+	groups = {snappy=3, flammable=3, flora=1, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -876,8 +883,9 @@ for i=2,5 do
 		waving = 1,
 		walkable = false,
 		buildable_to = true,
+		floodable = true,
 		drop = "default:grass_1",
-		groups = {snappy=3, flammable=3, flora=1, attached_node=1, not_in_creative_inventory=1, dissolve=1},
+		groups = {snappy=3, flammable=3, flora=1, attached_node=1, not_in_creative_inventory=1},
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
@@ -902,6 +910,7 @@ minetest.register_node("default:snow", {
 	wield_image = "default_snowball.png",
 	paramtype = "light",
 	buildable_to = true,
+	floodable = true,
 	leveled = 7,
 	leveled_full = "default:snowblock",
 	drawtype = "nodebox",
@@ -911,7 +920,7 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5,  0.5, -0.5+2/16, 0.5},
 		},
 	},
-	groups = {crumbly=3, falling_node=1, fall_damage_add_percent=default.COUSHION, dissolve=1},
+	groups = {crumbly=3, falling_node=1, fall_damage_add_percent=default.COUSHION},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),

@@ -76,8 +76,9 @@ minetest.register_node("nodetest:seedling", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
+	floodable = true,
 	is_ground_content = true,
-	groups = {snappy=3, dig_immediate=3, flammable=3, attached_node=1, dissolve=1},
+	groups = {snappy=3, dig_immediate=3, flammable=3, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",

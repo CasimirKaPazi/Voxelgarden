@@ -32,7 +32,6 @@ for _, row in ipairs(flowers.datas) do
 	groups.dig_immediate = 3
 	groups.flammable = 2
 	groups.attached_node = 1
-	groups.dissolve = 1
 	minetest.register_node("flowers:"..name, {
 		description = desc,
 		drawtype = "plantlike",
@@ -43,6 +42,7 @@ for _, row in ipairs(flowers.datas) do
 		paramtype = "light",
 		walkable = false,
 		buildable_to = true,
+		floodable = true,
 		groups = groups,
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
