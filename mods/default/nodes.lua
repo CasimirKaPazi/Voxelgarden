@@ -734,7 +734,7 @@ minetest.register_node("default:coalblock", {
 	description = "Coal Block",
 	tiles = {"default_coal_block.png"},
 	is_ground_content = false,
-	groups = {cracky=3},
+	groups = {cracky=3, flammable=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
