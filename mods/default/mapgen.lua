@@ -11,6 +11,7 @@ minetest.register_alias("mapgen_jungletree", "default:jungletree")
 minetest.register_alias("mapgen_jungleleaves", "default:jungleleaves")
 minetest.register_alias("mapgen_apple", "default:apple")
 minetest.register_alias("mapgen_water_source", "default:water_source")
+minetest.register_alias("mapgen_river_water_source", "default:water_source")
 minetest.register_alias("mapgen_dirt", "default:dirt")
 minetest.register_alias("mapgen_sand", "default:sand")
 minetest.register_alias("mapgen_gravel", "default:gravel")
@@ -243,9 +244,6 @@ minetest.register_on_generated(function(minp, maxp, seed)
 
 	-- Generate nyan rats
 	generate_nyancats(seed, minp, maxp)
-
-	-- For mapgen v7 see biomes.lua
-	if minetest.setting_get("mg_name") == "v7" then return end
 	
 	if maxp.y <= 128 and minp.y >= -32 then
 		-- Generate cactuses
@@ -279,11 +277,11 @@ minetest.register_on_generated(function(minp, maxp, seed)
 					end
 				end
 				-- If desert sand, make cactus
-				if ground_y and minetest.get_node({x=x, y=ground_y, z=z}).name == "default:desert_sand" then
-					default.make_cactus({x=x, y=ground_y+1, z=z}, pr:next(3, 4))
-				elseif ground_y and minetest.get_node({x=x, y=ground_y, z=z}).name == "default:sand" and
-						minetest.find_node_near({x=x, y=1, z=z}, 5, "default:desert_sand") then
-					default.make_cactus({x=x, y=ground_y+1, z=z}, pr:next(3, 4))
+				if ground_y then
+					local ground_node = minetest.get_node({x=x, y=ground_y, z=z}).name
+					if ground_node == "default:desert_sand" or ground_node == "default:sand" then
+						default.make_cactus({x=x, y=ground_y+1, z=z}, pr:next(3, 4))
+					end
 				end
 			end
 		end
