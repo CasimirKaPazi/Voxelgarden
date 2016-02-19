@@ -899,6 +899,7 @@ minetest.register_node("default:ice", {
 	tiles = {"default_ice.png"},
 	paramtype = "light",
 	liquids_pointable = true,
+	sunlight_propagates = true,
 	groups = {cracky=3},
 	sounds = default.node_sound_glass_defaults(),
 })

@@ -92,20 +92,29 @@ minetest.register_biome({
 
 -- Special Biomes
 minetest.register_biome({
-	name = "Gravel",
-	node_top = "air",				depth_top = 1,
-	node_filler = "default:gravel",			depth_filler = 1,
+	name = "Glacier",
+	node_top = "default:snowblock",			depth_top = 2,
+	node_filler = "default:ice",			depth_filler = 32,
+	node_water_top = "default:ice",			depth_water_top = 3,
+	y_min = 1,					y_max = 32000,
+	heat_point = -10,				humidity_point = 20,
+})
+
+minetest.register_biome({
+	name = "Gravel_Ice",
+	node_top = "default:gravel",			depth_top = 3,
+	node_dust = "default:snow",
+	node_water_top = "default:ice",			depth_water_top = 3,
 	y_min = 1,					y_max = 32000,
 	heat_point = -20,				humidity_point = -20,
 })
 
 minetest.register_biome({
-	name = "Glacier",
-	node_top = "default:snowblock",			depth_top = 2,
-	node_filler = "default:ice",			depth_filler = 5,
-	node_water_top = "default:ice",			depth_water_top = 1,
+	name = "Gravel_Desert",
+	node_top = "default:gravel",			depth_top = 3,
+	node_filler = "default:desert_stone",		depth_filler = 3,
 	y_min = 1,					y_max = 32000,
-	heat_point = -10,				humidity_point = 30,
+	heat_point = 140,				humidity_point = 20,
 })
 
 -- Decoration
@@ -138,7 +147,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.04,
+	fill_ratio = 0.035,
 	biomes = {"Conifer", "CT"},
 	decoration = {"default:snow"},
 	y_min = 0,
@@ -149,7 +158,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.035,
+	fill_ratio = 0.030,
 	biomes = {"Tree", "CT", "TJ"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/default_tree.mts",
