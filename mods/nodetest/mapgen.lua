@@ -1,30 +1,4 @@
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "nodetest:rock",
-	wherein        = {"default:stone"},
-	clust_scarcity = 8*8*8,
-	clust_num_ores = 1,
-	clust_size     = 3,
-	height_min     = -64,
-	height_max     = 1024,
-})
-
-minetest.register_ore({
-	ore_type       = "scatter",
-	ore            = "nodetest:rock",
-	wherein        = {"default:dirt", "default:dirt_with_grass", "default:dirt_with_snow"},
-	clust_scarcity = 25*25*25,
-	clust_num_ores = 5,
-	clust_size     = 8,
-	height_min     = -64,
-	height_max     = 1024,
-})
-
 minetest.register_on_generated(function(minp, maxp, seed)
-
-	-- For mapgen v7 see default/biomes.lua
-	if minetest.setting_get("mg_name") == "v7" then return end
-	
 	if maxp.y <= 128 and minp.y >= -32 then
 		-- Generate papyrus
 		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)

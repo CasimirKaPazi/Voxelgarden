@@ -1,13 +1,3 @@
-minetest.register_node("nodetest:rock", {
-	description = "Rock",
-	tiles = {"nodetest_rock.png"},
-	inventory_image = "nodetest_rock_item.png",
-	wield_image = "nodetest_rock_item.png",
-	is_ground_content = true,
-	groups = {cracky=3, stone=2, stone_hard=1, oddly_breakable_by_hand=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-
 minetest.register_node("nodetest:papyrus_roots", {
 	description = "Papyrus Roots",
 	tiles = {"nodetest_papyrus_roots.png"},
