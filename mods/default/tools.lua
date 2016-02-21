@@ -33,6 +33,7 @@ minetest.register_tool("default:pick_wood", {
 		groupcaps={
 			cracky = {times={[3]=5.0}, uses=1, maxlevel=3},
 		},
+		damage_groups = {fleshy=1},
 	},
 })
 minetest.register_tool("default:pick_stone", {
@@ -79,6 +80,7 @@ minetest.register_tool("default:pick_mese", {
 			snappy = {times={[1]=2.0, [2]=1.0, [3]=0.50}, uses=8, maxlevel=3},
 			choppy = {times={[1]=2.0, [2]=1.0, [3]=0.50}, uses=8, maxlevel=3}
 		},
+		damage_groups = {fleshy=1},
 	},
 })
 
@@ -91,6 +93,7 @@ minetest.register_tool("default:shovel_wood", {
 		groupcaps={
 			crumbly = {times={[2]=2.5, [3]=0.80}, uses=5, maxlevel=2},
 		},
+		damage_groups = {fleshy=1},
 	},
 })
 minetest.register_tool("default:shovel_stone", {
@@ -101,6 +104,7 @@ minetest.register_tool("default:shovel_stone", {
 		groupcaps={
 			crumbly = {times={[1]=1.80, [2]=1.20, [3]=0.50}, uses=20, maxlevel=1},
 		},
+		damage_groups = {fleshy=1},
 	},
 })
 minetest.register_tool("default:shovel_copper", {
@@ -135,6 +139,7 @@ minetest.register_tool("default:axe_wood", {
 		groupcaps={
 			choppy = {times={[2]=3.00, [3]=2.50}, uses=5, maxlevel=2},
 		},
+		damage_groups = {fleshy=1},
 	},
 })
 minetest.register_tool("default:axe_stone", {

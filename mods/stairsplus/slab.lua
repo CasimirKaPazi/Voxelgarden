@@ -1,7 +1,7 @@
 -- Node will be called <modname>slab_<subname>
 
 function stairsplus.register_slab(modname, subname, recipeitem, groups, images, description, drop, sounds, sunlight)
-
+	groups.slab = 1
 --
 -- nodes
 --

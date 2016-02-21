@@ -1,6 +1,7 @@
 -- Node will be called <modname>:stair_<subname>
 
 function stairsplus.register_stair(modname, subname, recipeitem, groups, images, description, drop, sounds, sunlight)
+	groups.stair = 1
 
 --
 -- nodes
@@ -288,6 +289,22 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 		recipe = {
 			{modname .. ":stair_" .. subname .. "_half_inverted"},
 			{modname .. ":stair_" .. subname .. "_half_inverted"},
+		},
+	})
+
+	minetest.register_craft({
+		output = recipeitem.." 3",
+		recipe = {
+			{modname .. ":stair_" .. subname, modname .. ":stair_" .. subname},
+			{modname .. ":stair_" .. subname, modname .. ":stair_" .. subname},
+		},
+	})
+
+	minetest.register_craft({
+		output = recipeitem.." 3",
+		recipe = {
+			{modname .. ":stair_" .. subname .. "_inverted", modname .. ":stair_" .. subname .. "_inverted"},
+			{modname .. ":stair_" .. subname .. "_inverted", modname .. ":stair_" .. subname .. "_inverted"},
 		},
 	})
 

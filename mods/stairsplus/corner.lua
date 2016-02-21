@@ -310,6 +310,14 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 		},
 	})
 
+	minetest.register_craft({
+		output = recipeitem.." 3",
+		recipe = {
+			{modname .. ":corner_" .. subname, modname .. ":corner_" .. subname},
+			{modname .. ":corner_" .. subname, modname .. ":corner_" .. subname},
+		},
+	})
+
 --
 -- cooking
 --
