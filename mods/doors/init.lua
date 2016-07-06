@@ -58,7 +58,7 @@ doors:register_door("doors:steel_bars", {
 })
 
 minetest.register_craft({
-	output = "doors:door_steel",
+	output = "doors:steel_bars_1",
 	recipe = {
 		{"default:steel_ingot", "default:steel_ingot"},
 		{"default:stick", "default:stick"},
