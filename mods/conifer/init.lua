@@ -1,6 +1,6 @@
 conifer = {}
 
-minetest.register_alias("mapgen_pinetree", "conifer:tree")
+minetest.register_alias("mapgen_pine_tree", "conifer:tree")
 minetest.register_alias("mapgen_pine_needles", "conifer:leaves_1")
 
 --
@@ -34,7 +34,6 @@ minetest.register_node("conifer:tree", {
 	description = "Conifer Tree",
 	tiles = {"conifer_tree_top.png", "conifer_tree_top.png", "conifer_tree.png"},
 	groups = {tree=1, choppy=2, flammable=1},
-	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),
 })
 

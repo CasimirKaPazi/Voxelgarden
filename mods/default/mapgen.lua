@@ -21,9 +21,9 @@ minetest.register_alias("mapgen_ice", "default:ice")
 -- Flora
 minetest.register_alias("mapgen_tree", "default:tree")
 minetest.register_alias("mapgen_leaves", "default:leaves")
+minetest.register_alias("mapgen_apple", "default:apple")
 minetest.register_alias("mapgen_jungletree", "default:jungletree")
 minetest.register_alias("mapgen_jungleleaves", "default:jungleleaves")
-minetest.register_alias("mapgen_apple", "default:apple")
 minetest.register_alias("mapgen_junglegrass", "default:junglegrass")
 
 -- Dungeons

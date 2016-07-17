@@ -138,6 +138,26 @@ minetest.register_abm({
 	end
 })
 
+minetest.register_abm({
+	nodenames = {
+		"default:dirt_with_grass",
+		"default:dirt_with_snow",
+	},
+	interval = 8,
+	chance = 50,
+	catch_up = false,
+	action = function(pos, node)
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+		local name = minetest.get_node(above).name
+		local nodedef = minetest.registered_nodes[name]
+		if name ~= "ignore" and nodedef and not ((nodedef.sunlight_propagates or
+				nodedef.paramtype == "light") and
+				nodedef.liquidtype == "none") then
+			minetest.set_node(pos, {name = "default:dirt"})
+		end
+	end
+})
+
 
 --
 -- Lavacooling
