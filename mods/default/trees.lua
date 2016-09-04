@@ -22,7 +22,7 @@ minetest.register_abm({
 	interval = 11,
 	chance = 50,
 	action = function(pos, node)
-		if not default.can_grow(pos) then return end
+		if not default.can_grow(pos) then minetest.remove_node(pos) return end
 		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
 			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
 			return
@@ -36,7 +36,7 @@ minetest.register_abm({
 	interval = 13,
 	chance = 50,
 	action = function(pos, node)
-		if not default.can_grow(pos) then return end
+		if not default.can_grow(pos) then minetest.remove_node(pos) return end
 		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
 			minetest.set_node(pos, {name="default:junglegrass"})
 			return

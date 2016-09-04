@@ -5,7 +5,7 @@ minetest.register_abm({
 	interval = 17,
 	chance = 50,
 	action = function(pos, node)
-		if not default.can_grow(pos) then return end
+		if not default.can_grow(pos) then minetest.remove_node(pos) return end
 		if minetest.find_node_near(pos, 3, {"group:tree", "group:sapling"}) then
 			minetest.set_node(pos, {name="conifer:leaves_"..math.random(1, 2)})
 			return
