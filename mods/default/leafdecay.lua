@@ -102,3 +102,9 @@ minetest.register_abm({
 		default.leafdecay(p0)
 	end
 })
+
+minetest.register_on_dignode(function(pos, oldnode, digger)
+	if minetest.get_item_group(oldnode.name, "tree") then
+		leafupdate(pos)
+	end
+end)
