@@ -35,6 +35,7 @@ minetest.register_tool("default:pick_wood", {
 		},
 		damage_groups = {fleshy=1},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 minetest.register_tool("default:pick_stone", {
 	description = "Stone Pickaxe",
@@ -46,7 +47,9 @@ minetest.register_tool("default:pick_stone", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:pick_copper", {
 	description = "Copper Pickaxe",
 	inventory_image = "default_tool_copperpick.png",
@@ -57,7 +60,9 @@ minetest.register_tool("default:pick_copper", {
 		},
 		damage_groups = {fleshy=3},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:pick_steel", {
 	description = "Steel Pickaxe",
 	inventory_image = "default_tool_steelpick.png",
@@ -68,7 +73,9 @@ minetest.register_tool("default:pick_steel", {
 		},
 		damage_groups = {fleshy=3},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:pick_mese", {
 	description = "Mese Pickaxe",
 	inventory_image = "default_tool_mesepick.png",
@@ -82,6 +89,7 @@ minetest.register_tool("default:pick_mese", {
 		},
 		damage_groups = {fleshy=1},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 
 -- Shovels
@@ -95,7 +103,9 @@ minetest.register_tool("default:shovel_wood", {
 		},
 		damage_groups = {fleshy=1},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:shovel_stone", {
 	description = "Stone Shovel",
 	inventory_image = "default_tool_stoneshovel.png",
@@ -106,7 +116,9 @@ minetest.register_tool("default:shovel_stone", {
 		},
 		damage_groups = {fleshy=1},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:shovel_copper", {
 	description = "Copper Shovel",
 	inventory_image = "default_tool_coppershovel.png",
@@ -117,7 +129,9 @@ minetest.register_tool("default:shovel_copper", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:shovel_steel", {
 	description = "Steel Shovel",
 	inventory_image = "default_tool_steelshovel.png",
@@ -128,6 +142,7 @@ minetest.register_tool("default:shovel_steel", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 
 -- Axes
@@ -141,7 +156,9 @@ minetest.register_tool("default:axe_wood", {
 		},
 		damage_groups = {fleshy=1},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:axe_stone", {
 	description = "Stone Axe",
 	inventory_image = "default_tool_stoneaxe.png",
@@ -152,7 +169,9 @@ minetest.register_tool("default:axe_stone", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:axe_copper", {
 	description = "Copper Axe",
 	inventory_image = "default_tool_copperaxe.png",
@@ -163,6 +182,7 @@ minetest.register_tool("default:axe_copper", {
 		},
 		damage_groups = {fleshy=3},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 minetest.register_tool("default:axe_steel", {
 	description = "Steel Axe",
@@ -174,6 +194,7 @@ minetest.register_tool("default:axe_steel", {
 		},
 		damage_groups = {fleshy=3},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 
 -- Swords
@@ -187,8 +208,10 @@ minetest.register_tool("default:sword_wood", {
 			snappy={times={[2]=3.0, [3]=0.40}, uses=5, maxlevel=2},
 		},
 		damage_groups = {fleshy=1},
-	}
+	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:sword_stone", {
 	description = "Stone Sword",
 	inventory_image = "default_tool_stonesword.png",
@@ -199,8 +222,10 @@ minetest.register_tool("default:sword_stone", {
 			snappy={times={[2]=1.40, [3]=0.30}, uses=20, maxlevel=2},
 		},
 		damage_groups = {fleshy=2},
-	}
+	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:sword_copper", {
 	description = "Copper Sword",
 	inventory_image = "default_tool_coppersword.png",
@@ -211,8 +236,10 @@ minetest.register_tool("default:sword_copper", {
 			snappy={times={[1]=3.0, [2]=1.30, [3]=0.30}, uses=15, maxlevel=2},
 		},
 		damage_groups = {fleshy=3},
-	}
+	},
+	sound = {breaks = "default_tool_breaks"},
 })
+
 minetest.register_tool("default:sword_steel", {
 	description = "Steel Sword",
 	inventory_image = "default_tool_steelsword.png",
@@ -223,5 +250,6 @@ minetest.register_tool("default:sword_steel", {
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.20}, uses=30, maxlevel=2},
 		},
 		damage_groups = {fleshy=4},
-	}
+	},
+	sound = {breaks = "default_tool_breaks"},
 })

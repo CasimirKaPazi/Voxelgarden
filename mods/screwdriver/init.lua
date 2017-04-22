@@ -134,6 +134,7 @@ minetest.register_craft({
 minetest.register_tool("screwdriver:screwdriver", {
 	description = "Screwdriver",
 	inventory_image = "screwdriver.png",
+	sound = {breaks = "default_tool_breaks"},
 	on_use = function(itemstack, user, pointed_thing)
 		screwdriver_use(itemstack, user, pointed_thing)
 		return itemstack

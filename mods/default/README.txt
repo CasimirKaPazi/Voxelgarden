@@ -166,3 +166,6 @@ Glass breaking sounds (CC BY 3.0):
 n3b http://opengameart.org/users/n3b (CC BY)
   player_damage.1.ogg
   player_damage.2.ogg
+
+Tool breaking sounds
+  default_tool_breaks - https://opengameart.org/content/35-wooden-crackshitsdestructions - CC0

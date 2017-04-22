@@ -11,6 +11,7 @@ minetest.register_tool("farming:hoe_wood", {
 			crumbly = {times={[1]=3.20, [2]=1.00, [3]=0.80}, uses=10, maxlevel=1},
 		}
 	},
+	sound = {breaks = "default_tool_breaks"},
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 30)
 	end
@@ -25,6 +26,7 @@ minetest.register_tool("farming:hoe_stone", {
 			crumbly = {times={[1]=1.70, [2]=0.80, [3]=0.60}, uses=20, maxlevel=1},
 		}
 	},
+	sound = {breaks = "default_tool_breaks"},
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 60)
 	end
@@ -39,6 +41,7 @@ minetest.register_tool("farming:hoe_copper", {
 			crumbly = {times={[1]=1.70, [2]=0.80, [3]=0.60}, uses=15, maxlevel=1},
 		}
 	},
+	sound = {breaks = "default_tool_breaks"},
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 40)
 	end
@@ -53,6 +56,7 @@ minetest.register_tool("farming:hoe_steel", {
 			crumbly = {times={[1]=1.60, [2]=0.70, [3]=0.30}, uses=30, maxlevel=2},
 		}
 	},
+	sound = {breaks = "default_tool_breaks"},
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.hoe_on_use(itemstack, placer, pointed_thing.under, 120)
 	end
@@ -67,6 +71,7 @@ minetest.register_tool("farming:hoe_mese", {
 			crumbly = {times={[1]=1.50, [2]=0.60, [3]=0.10}, uses=50, maxlevel=2},
 		}
 	},
+	sound = {breaks = "default_tool_breaks"},
 	on_place = function(itemstack, placer, pointed_thing)
 		d = 1
 		for xi = -d, d do
