@@ -74,6 +74,21 @@ minetest.override_item("farming:wheat_"..max_stage.."", {
 	}
 })
 
+-- Use different names for textures
+-- To be compatible with texturepacks expecting 8 stages.
+minetest.override_item("farming:wheat_1", {
+	tiles = {"farming_wheat_2.png"},
+})
+minetest.override_item("farming:wheat_2", {
+	tiles = {"farming_wheat_4.png"},
+})
+minetest.override_item("farming:wheat_3", {
+	tiles = {"farming_wheat_6.png"},
+})
+minetest.override_item("farming:wheat_4", {
+	tiles = {"farming_wheat_8.png"},
+})
+
 farming.register_growing(max_stage, stages, 57, 10, 10)
 
 minetest.register_craft({
@@ -169,6 +184,18 @@ minetest.override_item("farming:cotton_"..max_stage.."", {
 			{ items = {"farming:cotton"}, rarity = 4},
 		}
 	}
+})
+
+-- Use different names for textures
+-- To be compatible with texturepacks expecting 8 stages.
+minetest.override_item("farming:cotton_1", {
+	tiles = {"farming_cotton_2.png"},
+})
+minetest.override_item("farming:cotton_2", {
+	tiles = {"farming_cotton_4.png"},
+})
+minetest.override_item("farming:cotton_3", {
+	tiles = {"farming_cotton_8.png"},
 })
 
 farming.register_growing(max_stage, stages, 57, 15, 10)
