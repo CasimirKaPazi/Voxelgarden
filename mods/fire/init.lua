@@ -12,7 +12,7 @@ minetest.register_node("fire:basic_flame", {
 	}},
 	inventory_image = "fire_basic_flame.png",
 	paramtype = "light",
-	light_source = 14,
+	light_source = 13,
 	waving = 1,
 	groups = {igniter=2, dig_immediate=3},
 	drop = "",
@@ -50,8 +50,8 @@ minetest.register_abm({
 -- Remove flammable nodes and flame
 minetest.register_abm({
 	nodenames = {"fire:basic_flame"},
-	interval = 2,
-	chance = 4,
+	interval = 1,
+	chance = 8,
 	catch_up = false,
 	action = function(p0, node, _, _)
 		-- If there are no flammable nodes around flame, remove flame

@@ -90,7 +90,7 @@ minetest.register_node("nodetest:bonfire", {
 	walkable = false,
 	drop = "default:coal_lump",
 	damage_per_second = 1,
-	light_source = LIGHT_MAX-1,
+	light_source = 12,
 	groups = {snappy=3, attached_node=1},
 	sounds = default.node_sound_defaults(),
 	selection_box = {
