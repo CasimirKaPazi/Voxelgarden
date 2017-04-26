@@ -99,7 +99,7 @@ function spawn_falling_node(p, node)
 	obj:get_luaentity():set_node(node)
 end
 
-function drop_attached_node(p)
+local function drop_attached_node(p)
 	local node = core.get_node(p)
 	local nn = node.name
 	core.remove_node(p)
@@ -123,4 +123,65 @@ function drop_attached_node(p)
 			core.add_item(pos_drop, item)
 		end
 	end
+end
+
+function check_attached_node(p, n)
+	local def = core.registered_nodes[n.name]
+	local d = {x = 0, y = 0, z = 0}
+	if def.paramtype2 == "wallmounted" or
+			def.paramtype2 == "colorwallmounted" then
+		-- The fallback vector here is in case 'wallmounted to dir' is nil due
+		-- to voxelmanip placing a wallmounted node without resetting a
+		-- pre-existing param2 value that is out-of-range for wallmounted.
+		-- The fallback vector corresponds to param2 = 0.
+		d = core.wallmounted_to_dir(n.param2) or {x = 0, y = 1, z = 0}
+	else
+		d.y = -1
+	end
+	local p2 = vector.add(p, d)
+	local nn = core.get_node(p2).name
+	local def2 = core.registered_nodes[nn]
+	if def2 and not def2.walkable then
+		return false
+	end
+	return true
+end
+
+function core.check_single_for_falling(p)
+	local n = core.get_node(p)
+	if core.get_item_group(n.name, "falling_node") ~= 0 then
+		local p_bottom = {x = p.x, y = p.y - 1, z = p.z}
+		-- Only spawn falling node if node below is loaded
+		local n_bottom = core.get_node_or_nil(p_bottom)
+		local d_bottom = n_bottom and core.registered_nodes[n_bottom.name]
+		if d_bottom and
+
+				(core.get_item_group(n.name, "float") == 0 or
+				d_bottom.liquidtype == "none") and
+
+				(n.name ~= n_bottom.name or (d_bottom.leveled and
+				core.get_node_level(p_bottom) <
+				core.get_node_max_level(p_bottom))) and
+
+				(not d_bottom.walkable or d_bottom.buildable_to) then
+			n.level = core.get_node_level(p)
+			local meta = core.get_meta(p)
+			local metatable = {}
+			if meta ~= nil then
+				metatable = meta:to_table()
+			end
+			core.remove_node(p)
+			spawn_falling_node(p, n, metatable)
+			return true
+		end
+	end
+
+	if core.get_item_group(n.name, "attached_node") ~= 0 then
+		if not check_attached_node(p, n) then
+			drop_attached_node(p)
+			return true
+		end
+	end
+
+	return false
 end

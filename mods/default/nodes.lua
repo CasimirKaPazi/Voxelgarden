@@ -218,7 +218,7 @@ minetest.register_node("default:junglesapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 -- aliases for tree growing abm in content_abm.cpp
@@ -238,7 +238,7 @@ minetest.register_node("default:junglegrass", {
 	walkable = false,
 	buildable_to = true,
 	floodable = true,
-	groups = {snappy=3, flammable=2, flora=1, attached_node=1},
+	groups = {snappy=3, flammable=2, flora=1, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -371,7 +371,7 @@ minetest.register_node("default:rail", {
                 -- but how to specify the dimensions for curved and sideways rails?
                 fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
 	},
-	groups = {bendy=2, dig_immediate=2, attached_node=1},
+	groups = {bendy=2, dig_immediate=2, falling_node=1},
 })
 
 minetest.register_node("default:ladder", {
@@ -797,7 +797,7 @@ minetest.register_node("default:sapling", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
-	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, attached_node=1},
+	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -836,7 +836,7 @@ minetest.register_node("default:dry_shrub", {
 	walkable = false,
 	buildable_to = true,
 	floodable = true,
-	groups = {snappy=3, flammable=3, attached_node=1},
+	groups = {snappy=3, flammable=3, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -857,7 +857,7 @@ minetest.register_node("default:grass_1", {
 	walkable = false,
 	buildable_to = true,
 	floodable = true,
-	groups = {snappy=3, flammable=3, flora=1, attached_node=1},
+	groups = {snappy=3, flammable=3, flora=1, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -885,7 +885,7 @@ for i=2,5 do
 		buildable_to = true,
 		floodable = true,
 		drop = "default:grass_1",
-		groups = {snappy=3, flammable=3, flora=1, attached_node=1, not_in_creative_inventory=1},
+		groups = {snappy=3, flammable=3, flora=1, falling_node=1, not_in_creative_inventory=1},
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",

@@ -31,7 +31,7 @@ for _, row in ipairs(flowers.datas) do
 	local groups = row[3]
 	groups.dig_immediate = 3
 	groups.flammable = 2
-	groups.attached_node = 1
+	groups.falling_node = 1
 	minetest.register_node("flowers:"..name, {
 		description = desc,
 		drawtype = "plantlike",

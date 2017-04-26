@@ -66,7 +66,7 @@ function farming.register_stages(max_stage, name, description)
 				type = "fixed",
 				fixed = {-0.375, -0.5, -0.375, 0.375, hight, 0.375},
 			},
-			groups = {snappy=3, flammable=2, not_in_creative_inventory=1, attached_node=1},
+			groups = {snappy=3, flammable=2, not_in_creative_inventory=1, falling_node=1},
 			sounds = default.node_sound_leaves_defaults(),
 		})
 

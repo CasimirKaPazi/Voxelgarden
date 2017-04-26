@@ -25,7 +25,7 @@ minetest.register_node("farming:weed", {
 			{ items = {'farming:cotton'}, rarity = 13 },
 		}
 	},
-	groups = {snappy=3, flammable=2, sickle=1, attached_node=1},
+	groups = {snappy=3, flammable=2, sickle=1, falling_node=1},
 	sounds = default.node_sound_leaves_defaults()
 })
 
