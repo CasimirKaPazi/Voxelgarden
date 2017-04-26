@@ -1,16 +1,24 @@
--- Use place node instead of add node and turn full leveled nodes into others.
+-- 
+-- Use place node instead of add node, for torches and the like.
+-- Stack up leveled nodes and turn into full nodes if defined.
+
 core.register_entity(":__builtin:falling_node", {
-	physical = true,
-	collide_with_objects = false,
-	collisionbox = {-0.5,-0.5,-0.5, 0.5,0.5,0.5},
-	visual = "wielditem",
-	textures = {},
-	visual_size = {x=0.667, y=0.667},
+	initial_properties = {
+		visual = "wielditem",
+		visual_size = {x = 0.667, y = 0.667},
+		textures = {},
+		physical = true,
+		is_visible = false,
+		collide_with_objects = false,
+		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+	},
 
 	node = {},
+	meta = {},
 
-	set_node = function(self, node)
+	set_node = function(self, node, meta)
 		self.node = node
+		self.meta = meta or {}
 		self.object:set_properties({
 			is_visible = true,
 			textures = {node.name},
@@ -18,28 +26,47 @@ core.register_entity(":__builtin:falling_node", {
 	end,
 
 	get_staticdata = function(self)
-		return self.node.name
+		local ds = {
+			node = self.node,
+			meta = self.meta,
+		}
+		return core.serialize(ds)
 	end,
 
 	on_activate = function(self, staticdata)
-		self.object:set_armor_groups({immortal=1})
-		self:set_node({name=staticdata})
+		self.object:set_armor_groups({immortal = 1})
+		
+		local ds = core.deserialize(staticdata)
+		if ds and ds.node then
+			self:set_node(ds.node, ds.meta)
+		elseif ds then
+			self:set_node(ds)
+		elseif staticdata ~= "" then
+			self:set_node({name = staticdata})
+		end
 	end,
 
 	on_step = function(self, dtime)
 		-- Set gravity
-		self.object:setacceleration({x=0, y=-10, z=0})
-		-- Turn to actual node when it collides to ground or just move
+		local acceleration = self.object:getacceleration()
+		if not vector.equals(acceleration, {x = 0, y = -10, z = 0}) then
+			self.object:setacceleration({x = 0, y = -10, z = 0})
+		end
+		-- Turn to actual node when colliding with ground, or continue to move
 		local pos = self.object:getpos()
-		local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z}  -- Position of bottom center point, p = pos
-		local bcn = core.get_node(bcp)	-- n = node
-		local bcd = core.registered_nodes[bcn.name] -- d = definition
-		-- Note: walkable is in the node definition, not in item groups
-		if bcd and bcd.walkable and bcd.liquidtype == "none" then
-			-- Increase level of bottom node
-			if bcd.leveled and bcn.name == self.node.name then
+		-- Position of bottom center point
+		local bcp = {x = pos.x, y = pos.y - 0.7, z = pos.z}
+		-- Avoid bugs caused by an unloaded node below
+		local bcn = core.get_node_or_nil(bcp)
+		local bcd = bcn and core.registered_nodes[bcn.name]
+		if bcn and
+				(not bcd or bcd.walkable or
+				(core.get_item_group(self.node.name, "float") ~= 0 and
+				bcd.liquidtype ~= "none")) then
+			if bcd and bcd.leveled and
+					bcn.name == self.node.name then
 				local addlevel = self.node.level
-				if addlevel == nil or addlevel <= 0 then
+				if not addlevel or addlevel <= 0 then
 					addlevel = bcd.leveled
 				end
 				local new_level = core.add_node_level(bcp, addlevel)
@@ -51,54 +78,65 @@ core.register_entity(":__builtin:falling_node", {
 				if new_level >= bcd.leveled and bcd.leveled_full then
 					core.add_node(bcp, {name=bcd.leveled_full})
 				end
-			end
-			-- Remove bottom node
-			if bcd.buildable_to then
+			elseif bcd and bcd.buildable_to and
+					(core.get_item_group(self.node.name, "float") == 0 or
+					bcd.liquidtype == "none") then
 				core.remove_node(bcp)
 				return
 			end
+			local np = {x = bcp.x, y = bcp.y + 1, z = bcp.z}
 			-- Check what's here
-			local n2p = {x=bcp.x, y=bcp.y+1, z=bcp.z}
-			local n2n = core.get_node(n2p)
-			-- Remove node and replace it with it's drops
-			core.remove_node(n2p)
-			if core.registered_nodes[n2n.name].buildable_to == false then
-				-- Add dropped items
-				local drops = core.get_node_drops(n2n.name, "")
-				local _, dropped_item
-				for _, dropped_item in ipairs(drops) do
-					core.add_item(n2p, dropped_item)
+			local n2 = core.get_node(np)
+			local nd = core.registered_nodes[n2.name]
+			-- If it's not air or liquid, remove node and replace it with
+			-- it's drops
+			if n2.name ~= "air" and (not nd or nd.liquidtype == "none") then
+				core.remove_node(np)
+				if nd and nd.buildable_to == false then
+					-- Add dropped items
+					local drops = core.get_node_drops(n2.name, "")
+					for _, dropped_item in pairs(drops) do
+						core.add_item(np, dropped_item)
+					end
+				end
+				-- Run script hook
+				for _, callback in pairs(core.registered_on_dignodes) do
+					callback(np, n2)
 				end
 			end
-			-- Run script hook
-			local _, callback
-			for _, callback in ipairs(core.registered_on_dignodes) do
-				callback(n2p, n2n, nil)
-			end
 			-- Create node and remove entity
-			if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
-				core.place_node(n2p, self.node)
-			else
-				core.add_node(n2p, self.node)
+			if core.registered_nodes[self.node.name] then
+				-- Have wallmounted properly placed.
+				if core.registered_items[self.node.name].paramtype2 == "wallmounted" then
+					core.place_node(np, self.node)
+				else
+					core.add_node(np, self.node)
+				end
+				if self.meta then
+					local meta = core.get_meta(np)
+					meta:from_table(self.meta)
+				end
 			end
 			self.object:remove()
-			nodeupdate(n2p)
-		else
-			-- Round to prevent floating in the air
-			local vel = self.object:getvelocity()
-			if vector.equals(vel, {x=0,y=0,z=0}) then
-				local npos = self.object:getpos()
-				self.object:setpos(vector.round(npos))
-			end
+			core.check_for_falling(np)
+			return
+		end
+		local vel = self.object:getvelocity()
+		if vector.equals(vel, {x = 0, y = 0, z = 0}) then
+			local npos = self.object:getpos()
+			self.object:setpos(vector.round(npos))
 		end
 	end
 })
 
-function spawn_falling_node(p, node)
+-- Same as builtin
+-- Function has been made local, so we need a copy here.
+local function spawn_falling_node(p, node)
 	local obj = core.add_entity(p, "__builtin:falling_node")
 	obj:get_luaentity():set_node(node)
 end
 
+-- Node falls instead of dropping.
 local function drop_attached_node(p)
 	local node = core.get_node(p)
 	local nn = node.name
@@ -111,7 +149,7 @@ local function drop_attached_node(p)
 	local drops = minetest.registered_nodes[nn].drop
 	if drops == nil or minetest.registered_nodes[drops] ~= nil then
 		-- when there are no drops defined let the node fall down
-		core.after(0.1, spawn_falling_node, pos, node)
+		spawn_falling_node(pos, node)
 	else
 		-- when there are, drop them
 		for _,item in ipairs(core.get_node_drops(nn, "")) do
@@ -125,7 +163,9 @@ local function drop_attached_node(p)
 	end
 end
 
-function check_attached_node(p, n)
+-- Same as builtin
+-- function has been made local, so we need a copy here.
+local function check_attached_node(p, n)
 	local def = core.registered_nodes[n.name]
 	local d = {x = 0, y = 0, z = 0}
 	if def.paramtype2 == "wallmounted" or
@@ -147,6 +187,8 @@ function check_attached_node(p, n)
 	return true
 end
 
+-- Same as builtin
+-- Only needed to call drop_attached_node, which contains our actual changes.
 function core.check_single_for_falling(p)
 	local n = core.get_node(p)
 	if core.get_item_group(n.name, "falling_node") ~= 0 then
