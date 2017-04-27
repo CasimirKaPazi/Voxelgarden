@@ -9,7 +9,7 @@ core.register_entity(":__builtin:falling_node", {
 		textures = {},
 		physical = true,
 		is_visible = false,
-		collide_with_objects = false,
+		collide_with_objects = true,
 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 	},
 
@@ -131,7 +131,7 @@ core.register_entity(":__builtin:falling_node", {
 
 -- Same as builtin
 -- Function has been made local, so we need a copy here.
-local function spawn_falling_node(p, node)
+function spawn_falling_node(p, node)
 	local obj = core.add_entity(p, "__builtin:falling_node")
 	obj:get_luaentity():set_node(node)
 end
