@@ -135,8 +135,8 @@ minetest.register_ore({
 	clust_scarcity = 8*8*8,
 	clust_num_ores = 1,
 	clust_size     = 3,
-	height_min     = -32,
-	height_max     = 1024,
+	y_min     = -32,
+	y_max     = 1024,
 })
 -- Alias
 

@@ -46,8 +46,8 @@ minetest.register_ore({
 	clust_scarcity = 12*12*12,
 	clust_num_ores = 8,
 	clust_size     = 3,
-	height_min     = -31000,
-	height_max     = 64,
+	y_min     = -31000,
+	y_max     = 64,
 })
 
 minetest.register_ore({
@@ -57,8 +57,8 @@ minetest.register_ore({
 	clust_scarcity = 15*15*15,
 	clust_num_ores = 5,
 	clust_size     = 3,
-	height_min     = -63,
-	height_max     = -32,
+	y_min     = -63,
+	y_max     = -32,
 })
 
 minetest.register_ore({
@@ -68,8 +68,8 @@ minetest.register_ore({
 	clust_scarcity = 13*13*13,
 	clust_num_ores = 5,
 	clust_size     = 3,
-	height_min     = -31000,
-	height_max     = -64,
+	y_min     = -31000,
+	y_max     = -64,
 })
 
 minetest.register_ore({
@@ -79,8 +79,8 @@ minetest.register_ore({
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 27,
 	clust_size     = 6,
-	height_min     = -31000,
-	height_max     = -64,
+	y_min     = -31000,
+	y_max     = -64,
 })
 
 minetest.register_ore({
@@ -90,8 +90,8 @@ minetest.register_ore({
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 3,
 	clust_size     = 2,
-	height_min     = -255,
-	height_max     = -128,
+	y_min     = -255,
+	y_max     = -128,
 })
 
 minetest.register_ore({
@@ -101,8 +101,8 @@ minetest.register_ore({
 	clust_scarcity = 20*20*20,
 	clust_num_ores = 5,
 	clust_size     = 3,
-	height_min     = -31000,
-	height_max     = -256,
+	y_min     = -31000,
+	y_max     = -256,
 })
 
 minetest.register_ore({
@@ -112,8 +112,8 @@ minetest.register_ore({
 	clust_scarcity = 42*42*42,
 	clust_num_ores = 3,
 	clust_size     = 2,
-	height_min     = -31000,
-	height_max     = -1024,
+	y_min     = -31000,
+	y_max     = -1024,
 })
 
 minetest.register_ore({
@@ -123,8 +123,8 @@ minetest.register_ore({
 	clust_scarcity = 14*14*14,
 	clust_num_ores = 4,
 	clust_size     = 3,
-	height_min     = -63,
-	height_max     = 2,
+	y_min     = -63,
+	y_max     = 2,
 })
 
 minetest.register_ore({
@@ -134,8 +134,8 @@ minetest.register_ore({
 	clust_scarcity = 12*12*12,
 	clust_num_ores = 5,
 	clust_size     = 3,
-	height_min     = -1024,
-	height_max     = -64,
+	y_min     = -1024,
+	y_max     = -64,
 })
 
 minetest.register_ore({
@@ -145,8 +145,8 @@ minetest.register_ore({
 	clust_scarcity = 16*16*16,
 	clust_num_ores = 32,
 	clust_size     = 4,
-	height_min     = -4096,
-	height_max     = -2048,
+	y_min     = -4096,
+	y_max     = -2048,
 })
 
 minetest.register_ore({
@@ -156,8 +156,8 @@ minetest.register_ore({
 	clust_scarcity = 20*20*20,
 	clust_num_ores = 32,
 	clust_size     = 6,
-	height_max     = 0,
-	height_min     = -10,
+	y_max     = 0,
+	y_min     = -10,
 })
 
 minetest.register_ore({
@@ -167,8 +167,8 @@ minetest.register_ore({
 	clust_scarcity = 20*20*20,
 	clust_num_ores = 32,
 	clust_size     = 6,
-	height_max     = 16,
-	height_min     = -10,
+	y_max     = 16,
+	y_min     = -10,
 })
 
 function default.make_papyrus(pos, size)
@@ -224,13 +224,13 @@ function default.make_nyancat(pos, facedir, length)
 end
 
 function generate_nyancats(seed, minp, maxp)
-	local height_min = -31000
-	local height_max = 31000
-	if maxp.y < height_min or minp.y > height_max then
+	local y_min = -31000
+	local y_max = 31000
+	if maxp.y < y_min or minp.y > y_max then
 		return
 	end
-	local y_min = math.max(minp.y, height_min)
-	local y_max = math.min(maxp.y, height_max)
+	local y_min = math.max(minp.y, y_min)
+	local y_max = math.min(maxp.y, y_max)
 	local volume = (maxp.x-minp.x+1)*(y_max-y_min+1)*(maxp.z-minp.z+1)
 	local pr = PseudoRandom(seed + 9324342)
 	local max_num_nyancats = math.floor(volume / (16*16*16))

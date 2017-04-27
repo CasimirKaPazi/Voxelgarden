@@ -92,7 +92,6 @@ Casimir (CC BY-SA 3.0)
   default_paper.png
   default_desert_stone.png
   default_stone.png
-  default_leaves.png
   crack_anylenght.png
   default_dry_shrub.png
   default_nc_back.png
@@ -157,6 +156,9 @@ PilzAdam (CC BY-SA 3.0)
 kilbith (CC BY-SA 3.0)
   default_cobble.png
   default_mossycobble.png
+
+MC PixelPerfection texture pack, converted by sofar (CC BY-SA 4.0)
+  default_leaves.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
