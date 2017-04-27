@@ -82,7 +82,7 @@ minetest.register_node("default:dirt_with_grass", {
 
 minetest.register_node("default:dirt_with_grass_footsteps", {
 	description = "Dirt with Grass and Footsteps",
-	tiles = {"default_grass_footsteps.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
+	tiles = {"default_grass.png^default_grass_footsteps.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
 	groups = {crumbly=3, not_in_creative_inventory=1, falling_node=1, soil=1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({

@@ -37,7 +37,7 @@ Created by Mito551 (License: CC BY-SA):
   farming_wheat_3.png
   farming_wheat_4.png
 
-Gambit (WTFPL):
+Gambit (modified by Casimir) (WTFPL):
   farming_cotton_1.png
   farming_cotton_2.png
   farming_cotton_3.png

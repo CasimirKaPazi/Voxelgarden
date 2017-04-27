@@ -79,9 +79,6 @@ Casimir (CC BY-SA 3.0)
   default_copper_ingot.png
   default_copper_block.png
   default_glass.png
-  default_papyrus.png
-  default_papyrus_roots.png
-  default_steel_block.png
   default_furnace*
   default_tool_copperpick.png
   default_tool_copperaxe.png
@@ -99,10 +96,7 @@ Casimir (CC BY-SA 3.0)
   default_nc_side.png
   default_apple.png
   default_fence.png
-  default_grass.png
-  default_grass_side.png
   default_torch_on_ceiling_animated.png
-  default_grass_footsteps.png
   gui_hotbar*
 
 Gambit (WTFPL)
@@ -154,11 +148,18 @@ PilzAdam (CC BY-SA 3.0)
   default_ice.png
 
 kilbith (CC BY-SA 3.0)
+  default_steel_block.png
   default_cobble.png
   default_mossycobble.png
 
 MC PixelPerfection texture pack, converted by sofar (CC BY-SA 4.0)
   default_leaves.png
+  default_papyrus.png
+
+tobyplowy (aka toby109tt) (CC BY 3.0)
+  default_grass.png
+  default_grass_side.png
+  default_grass_footsteps.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
