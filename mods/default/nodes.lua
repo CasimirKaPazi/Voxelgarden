@@ -131,6 +131,7 @@ minetest.register_node("default:gravel", {
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_gravel_footstep", gain=0.3},
 	}),
+	drop = "default:small_stone 4",
 })
 
 minetest.register_node("default:sandstone", {

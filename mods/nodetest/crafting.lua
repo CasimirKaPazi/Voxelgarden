@@ -58,21 +58,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'nodetest:rock',
-	recipe = {
-		{'default:cobble', 'default:cobble'},
-		{'default:cobble', 'default:cobble'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:cobble 4',
-	recipe = {
-		{'nodetest:rock'},
-	}
-})
-
-minetest.register_craft({
 	output = 'nodetest:bone 9',
 	recipe = {
 		{'bones:bones'},
@@ -110,13 +95,6 @@ minetest.register_craft({
 		{'', '', 'group:stone'},
 		{'', 'default:stick', ''},
 		{'default:stick', '', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:clay_lump 4',
-	recipe = {
-		{'default:clay'},
 	}
 })
 

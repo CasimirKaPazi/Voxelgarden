@@ -351,6 +351,13 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:clay_lump 4',
+	recipe = {
+		{'default:clay'},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:brick',
 	recipe = {
 		{'default:clay_brick', 'default:clay_brick'},
@@ -362,6 +369,21 @@ minetest.register_craft({
 	output = 'default:clay_brick 4',
 	recipe = {
 		{'default:brick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:small_stone 4',
+	recipe = {
+		{'default:gravel'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:gravel',
+	recipe = {
+		{'default:small_stone', 'default:small_stone'},
+		{'default:small_stone', 'default:small_stone'},
 	}
 })
 
