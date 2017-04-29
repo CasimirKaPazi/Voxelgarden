@@ -99,7 +99,6 @@ minetest.register_node("default:dirt_with_snow", {
 		footstep = {name="default_grass_footstep", gain=0.1},
 	}),
 })
-minetest.register_alias("dirt_with_snow", "default:dirt_with_snow")
 
 minetest.register_node("default:dirt", {
 	description = "Dirt",
@@ -222,9 +221,6 @@ minetest.register_node("default:junglesapling", {
 	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
--- aliases for tree growing abm in content_abm.cpp
-minetest.register_alias("sapling", "default:sapling")
-minetest.register_alias("junglesapling", "default:junglesapling")
 
 minetest.register_node("default:junglegrass", {
 	description = "Jungle Grass",
@@ -750,7 +746,7 @@ minetest.register_node("default:copperblock", {
 	description = "Copper Block",
 	tiles = {"default_copper_block.png"},
 	is_ground_content = false,
-	groups = {cracky=1, level=2},
+	groups = {cracky=2, level=2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -761,7 +757,6 @@ minetest.register_node("default:mese", {
 	groups = {cracky=1, level=2},
 	sounds = default.node_sound_stone_defaults(),
 })
-minetest.register_alias("default:mese_block", "default:mese")
 
 minetest.register_node("default:nyancat", {
 	description = "Nyan Rat",
@@ -935,7 +930,6 @@ minetest.register_node("default:snow", {
 		end
 	end,
 })
-minetest.register_alias("snow", "default:snow")
 
 minetest.register_node("default:snowblock", {
 	description = "Snow Block",
