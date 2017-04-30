@@ -749,7 +749,7 @@ minetest.register_node("default:steelblock", {
 	description = "Steel Block",
 	tiles = {"default_steel_block.png"},
 	is_ground_content = false,
-	groups = {cracky=1, level=2},
+	groups = {cracky=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -757,7 +757,7 @@ minetest.register_node("default:copperblock", {
 	description = "Copper Block",
 	tiles = {"default_copper_block.png"},
 	is_ground_content = false,
-	groups = {cracky=2, level=2},
+	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -765,7 +765,7 @@ minetest.register_node("default:mese", {
 	description = "Mese",
 	tiles = {"default_mese_block.png"},
 	is_ground_content = false,
-	groups = {cracky=1, level=2},
+	groups = {cracky=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 

@@ -8,7 +8,7 @@ minetest.register_tool("farming:hoe_wood", {
 	tool_capabilities = {
 		full_punch_interval = 1.2,
 		groupcaps={
-			crumbly = {times={[1]=3.20, [2]=1.00, [3]=0.80}, uses=10, maxlevel=1},
+			crumbly = {times={[2]=2.2, [3]=1.00}, uses=10, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},
@@ -23,7 +23,7 @@ minetest.register_tool("farming:hoe_stone", {
 	tool_capabilities = {
 		full_punch_interval = 1.4,
 		groupcaps={
-			crumbly = {times={[1]=1.70, [2]=0.80, [3]=0.60}, uses=20, maxlevel=1},
+			crumbly = {times={[1]=2.00, [2]=1.40, [3]=0.80}, uses=40-1, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},
@@ -38,7 +38,7 @@ minetest.register_tool("farming:hoe_copper", {
 	tool_capabilities = {
 		full_punch_interval = 1.2,
 		groupcaps={
-			crumbly = {times={[1]=1.70, [2]=0.80, [3]=0.60}, uses=15, maxlevel=1},
+			crumbly = {times={[1]=1.40, [2]=1.10, [3]=0.60}, uses=15-1, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},
@@ -53,7 +53,7 @@ minetest.register_tool("farming:hoe_steel", {
 	tool_capabilities = {
 		full_punch_interval = 1.1,
 		groupcaps={
-			crumbly = {times={[1]=1.60, [2]=0.70, [3]=0.30}, uses=30, maxlevel=2},
+			crumbly = {times={[1]=1.00, [2]=0.80, [3]=0.40}, uses=30-1, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},
@@ -68,7 +68,7 @@ minetest.register_tool("farming:hoe_mese", {
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		groupcaps={
-			crumbly = {times={[1]=1.50, [2]=0.60, [3]=0.10}, uses=50, maxlevel=2},
+			crumbly = {times={[1]=1.0, [2]=0.60, [3]=0.20}, uses=20, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},
