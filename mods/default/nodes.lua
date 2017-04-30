@@ -533,6 +533,17 @@ minetest.register_node("default:lava_source", {
 	groups = {lava=3, liquid=2, igniter=1},
 })
 
+minetest.register_node("default:molten_rock", {
+  description = "Molten Rock",
+--  inventory_image = minetest.inventorycube("default_moltenrock.png"),
+  tiles = {
+    {name="default_moltenrock_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=6.0}}
+  },
+  light_source = 5,
+  groups = {cracky=2, hot=3, igniter=1},
+  sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("default:torch", {
 	description = "Torch",
 	drawtype = "torchlike",

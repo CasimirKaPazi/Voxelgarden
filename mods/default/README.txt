@@ -161,6 +161,9 @@ tobyplowy (aka toby109tt) (CC BY 3.0)
   default_grass_side.png
   default_grass_footsteps.png
 
+Rath (CC BY-SA 3.0)
+  default_molten_rock*
+
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
   2: http://www.freesound.org/people/Tomlija/sounds/97669/
