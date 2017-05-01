@@ -41,7 +41,7 @@ doors:register_door("doors:door_steel", {
 })
 
 minetest.register_craft({
-	output = "doors:door_steel",
+	output = "doors:door_steel 2",
 	recipe = {
 		{"default:steel_ingot", "default:steel_ingot"},
 		{"default:steel_ingot", "default:steel_ingot"},
@@ -58,11 +58,27 @@ doors:register_door("doors:steel_bars", {
 })
 
 minetest.register_craft({
-	output = "doors:steel_bars_1",
+	output = "doors:steel_bars_1 2",
 	recipe = {
 		{"default:steel_ingot", "default:steel_ingot"},
 		{"default:stick", "default:stick"},
 		{"default:steel_ingot", "default:steel_ingot"}
+	}
+})
+
+doors:register_door("doors:door_glass", {
+	description = "Glass Door",
+	inventory_image = "default_glass.png",
+	groups = {oddly_breakable_by_hand=3, door=1},
+	tiles = {"default_glass.png"},
+})
+
+minetest.register_craft({
+	output = "doors:door_glass_1 2",
+	recipe = {
+		{"default:glass", "default:glass"},
+		{"default:glass", "default:glass"},
+		{"default:glass", "default:glass"}
 	}
 })
 
