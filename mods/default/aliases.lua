@@ -38,6 +38,7 @@ minetest.register_alias("rainbow", "default:nyancat_rainbow")
 minetest.register_alias("sapling", "default:sapling")
 minetest.register_alias("apple", "default:apple")
 minetest.register_alias("snow", "default:snow")
+minetest.register_alias("dirt_with_snow", "default:dirt_with_snow")
 
 minetest.register_alias("woodpick", "default:pick_wood")
 minetest.register_alias("stonepick", "default:pick_stone")
@@ -63,5 +64,5 @@ minetest.register_alias("steel", "default:steel_ingot")
 minetest.register_alias("clay_brick", "default:clay_brick")
 
 -- Old node names
-minetest.register_alias("dirt_with_snow", "default:dirt_with_snow")
 minetest.register_alias("default:mese_block", "default:mese")
+minetest.register_alias("default:nyancat_rainbow", "default:rainbow")

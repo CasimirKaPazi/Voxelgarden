@@ -535,7 +535,6 @@ minetest.register_node("default:lava_source", {
 
 minetest.register_node("default:molten_rock", {
   description = "Molten Rock",
---  inventory_image = minetest.inventorycube("default_moltenrock.png"),
   tiles = {
     {name="default_moltenrock_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=6.0}}
   },
@@ -779,7 +778,7 @@ minetest.register_node("default:nyancat", {
 	sounds = default.node_sound_defaults(),
 })
 
-minetest.register_node("default:nyancat_rainbow", {
+minetest.register_node("default:rainbow", {
 	description = "Rainbow",
 	tiles = {"default_nc_rb.png^[transformR90", "default_nc_rb.png^[transformR90", "default_nc_rb.png", "default_nc_rb.png"},
 	paramtype2 = "facedir",
