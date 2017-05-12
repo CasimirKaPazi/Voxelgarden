@@ -516,21 +516,8 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "cooking",
-	output = "default:steel_ingot",
-	recipe = "default:stone_with_iron",
-	cooktime = 10,
-})
-
-minetest.register_craft({
-	type = "cooking",
 	output = "default:copper_ingot",
 	recipe = "default:copper_lump",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:copper_ingot",
-	recipe = "default:stone_with_copper",
 })
 
 minetest.register_craft({
@@ -542,12 +529,6 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "default:coal_lump",
-	recipe = "group:tree",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:stone_with_coal",
 	recipe = "group:tree",
 })
 
@@ -666,12 +647,6 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:coal_lump",
-	burntime = 40,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "default:stone_with_coal",
 	burntime = 40,
 })
 

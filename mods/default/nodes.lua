@@ -21,46 +21,36 @@ minetest.register_node("default:desert_stone", {
 })
 
 minetest.register_node("default:stone_with_coal", {
-	description = "Coal Lump",
-	inventory_image = "default_coal_lump.png",
+	description = "Coal Ore",
 	tiles = {"default_stone.png^default_mineral_coal.png"},
 	groups = {cracky=3},
 	drop = 'default:coal_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
-minetest.register_alias("default:coal_lump", "default:stone_with_coal")
 
 minetest.register_node("default:stone_with_iron", {
 	description = "Iron Ore",
-	inventory_image = "default_iron_lump.png",
 	tiles = {"default_stone.png^default_mineral_iron.png"},
 	groups = {cracky=2},
 	drop = 'default:iron_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
-minetest.register_alias("default:iron_lump", "default:stone_with_iron")
 
 minetest.register_node("default:stone_with_copper", {
 	description = "Copper Ore",
-	inventory_image = "default_copper_lump.png",
 	tiles = {"default_stone.png^default_mineral_copper.png"},
 	groups = {cracky=3},
 	drop = 'default:copper_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
-minetest.register_alias("default:copper_lump", "default:stone_with_copper")
 
 minetest.register_node("default:stone_with_mese", {
-	description = "Mese Crystal",
-	inventory_image = "default_mese_crystal.png",
-	wield_image = "default_mese_crystal.png",
-	wield_scale = {x=1,y=1,z=0},
+	description = "Mese Crystal Ore",
 	tiles = {"default_stone.png^default_mineral_mese.png"},
 	groups = {cracky=1},
 	drop = "default:mese_crystal",
 	sounds = default.node_sound_stone_defaults(),
 })
-minetest.register_alias("default:mese_crystal", "default:stone_with_mese")
 
 minetest.register_node("default:stonebrick", {
 	description = "Stone Brick",

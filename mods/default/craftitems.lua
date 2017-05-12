@@ -20,6 +20,27 @@ minetest.register_craftitem("default:book", {
 	inventory_image = "default_book.png",
 })
 
+minetest.register_craftitem("default:coal_lump", {
+	description = "Coal Lump",
+	inventory_image = "default_coal_lump.png",
+})
+
+minetest.register_craftitem("default:iron_lump", {
+	description = "Iron Lump",
+	inventory_image = "default_iron_lump.png",
+})
+
+minetest.register_craftitem("default:copper_lump", {
+	description = "Copper Lump",
+	inventory_image = "default_copper_lump.png",
+})
+
+minetest.register_craftitem("default:mese_crystal", {
+	wield_scale = {x=1,y=1,z=0},
+	description = "Mese Crystal",
+	inventory_image = "default_mese_crystal.png",
+})
+
 minetest.register_craftitem("default:clay_lump", {
 	description = "Clay Lump",
 	inventory_image = "default_clay_lump.png",
