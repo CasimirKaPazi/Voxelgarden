@@ -221,6 +221,7 @@ minetest.register_abm({
 	neighbors = {"default:water_source"},
 	interval = 1,
 	chance = 5,
+	catch_up = false,
 	action = function(pos, node)
 		-- Direct neighbors
 		local px = {x = pos.x + 1, y = pos.y, z = pos.z}
