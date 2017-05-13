@@ -200,6 +200,51 @@ minetest.register_abm({
 })
 
 --
+-- Water renewable
+--
+
+-- If the water edge is a straight line flowing has 3 neighbors,
+-- everything curved inwards would be more, anything outwards would be less.
+
+local function check_for_source(candidates)
+	local count = 0
+	for _, pos in ipairs(candidates) do
+		if minetest.get_node(pos).name == "default:water_source" then
+			count = count +1
+		end
+	end
+	return count
+end
+
+minetest.register_abm({
+	nodenames = {"default:water_flowing"},
+	neighbors = {"default:water_source"},
+	interval = 1,
+	chance = 5,
+	action = function(pos, node)
+		-- Direct neighbors
+		local px = {x = pos.x + 1, y = pos.y, z = pos.z}
+		local mx = {x = pos.x - 1, y = pos.y, z = pos.z}
+		local pz = {x = pos.x, y = pos.y, z = pos.z + 1}
+		local mz = {x = pos.x, y = pos.y, z = pos.z - 1}
+		local n_direct ={px, mx, pz, mz}
+		local count_direct = check_for_source(n_direct)
+		if count_direct <= 1 then return end
+		-- Diagonal neighbors
+		local pxpz = {x = pos.x + 1, y = pos.y, z = pos.z + 1}
+		local pxmz = {x = pos.x + 1, y = pos.y, z = pos.z - 1}
+		local mxpz = {x = pos.x - 1, y = pos.y, z = pos.z + 1}
+		local mxmz = {x = pos.x - 1, y = pos.y, z = pos.z - 1}
+		local n_diagonal = {pxpz, pxmz, mxpz, mxmz}
+		local count_diagonal = check_for_source(n_diagonal)
+		if count_direct + count_diagonal >= 4 then
+			node.name = "default:water_source"
+			minetest.set_node(pos, node)
+		end
+	end
+})
+
+--
 -- Papyrus and cactus growing
 --
 
