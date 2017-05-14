@@ -459,6 +459,35 @@ minetest.register_node("default:water_source", {
 	groups = {water=3, liquid=3, puts_out_fire=1},
 })
 
+-- Dummy node for valleys mapgen.
+minetest.register_node("default:river_water_source", {
+	description = "River Water Dummy Node",
+	drawtype = "liquid",
+	tiles = {"default_water.png"},
+	alpha = 160,
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	drowning = false,
+	drop = "",
+	groups = {water=3, liquid=3, not_in_creative_inventory=1},
+})
+
+-- Replace river water with real water.
+if minetest.get_mapgen_params().mgname == "valleys" then
+print("MG: valleys")
+	minetest.register_abm({
+		nodenames = {"default:river_water_source"},
+		interval = 1,
+		chance = 1,
+		action = function(pos, node)
+			minetest.set_node(pos, {name = "default:water_source"})
+		end
+	})
+end
+
 minetest.register_node("default:lava_flowing", {
 	description = "Flowing Lava",
 	drawtype = "flowingliquid",
