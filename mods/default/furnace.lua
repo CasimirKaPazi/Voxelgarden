@@ -16,6 +16,8 @@ local function active_formspec(fuel_percent, item_percent)
 		"listring[current_name;dst]"..
 		"listring[current_player;main]"..
 		"listring[current_name;src]"..
+		"listring[current_player;main]"..
+		"listring[current_name;fuel]"..
 		"listring[current_player;main]"
 	return formspec
 end
@@ -31,6 +33,8 @@ local inactive_formspec =
 	"listring[current_name;dst]"..
 	"listring[current_player;main]"..
 	"listring[current_name;src]"..
+	"listring[current_player;main]"..
+	"listring[current_name;fuel]"..
 	"listring[current_player;main]"
 
 
