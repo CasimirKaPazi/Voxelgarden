@@ -121,7 +121,6 @@ local function on_drown(player)
 			-- Player is still alive, so:
 			-- deal damage, play sound and schedule next damage
 			local new_hp = math.max(0, (player:get_hp() - DROWNING_DAMAGE))
-
 			player:set_hp(new_hp)
 			minetest.chat_send_player(name, "You are drowning.")
 			schedule_next_damage(name)
@@ -182,7 +181,6 @@ local function load_drowning()
 			while holding_breath[name] >= next_scheduled_damage[name] do
 				schedule_next_damage(name)
 			end
-			
 		until input:read(0) == nil
 		io.close(input)
 	else

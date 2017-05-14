@@ -8,7 +8,7 @@ minetest.register_tool("farming:hoe_wood", {
 	tool_capabilities = {
 		full_punch_interval = 1.2,
 		groupcaps={
-			crumbly = {times={[2]=2.2, [3]=1.00}, uses=10, maxlevel=0},
+			crumbly = {times={[2]=2.2, [3]=1.00}, uses=10-1, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},
@@ -68,7 +68,7 @@ minetest.register_tool("farming:hoe_mese", {
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		groupcaps={
-			crumbly = {times={[1]=1.0, [2]=0.60, [3]=0.20}, uses=20, maxlevel=0},
+			crumbly = {times={[1]=1.0, [2]=0.60, [3]=0.20}, uses=20-1, maxlevel=0},
 		}
 	},
 	sound = {breaks = "default_tool_breaks"},

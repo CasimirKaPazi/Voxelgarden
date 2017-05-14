@@ -116,28 +116,6 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
-	nodenames = {"default:dirt_with_grass", "default:dirt_with_snow"},
-	neighbors = {"default:snow", "default:snowblock"},
-	interval = 2,
-	chance = 20,
-	catch_up = false,
-	action = function(pos, node)
-		local above = {x=pos.x, y=pos.y+1, z=pos.z}
-		local name = minetest.get_node(above).name
-		local nodedef = minetest.registered_nodes[name]
-		if node.name == "default:dirt_with_snow"
-				and (name == "default:snow" or "default:snowblock") then
-			return
-		end
-		if name ~= "ignore" and nodedef
-				and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
-				and nodedef.liquidtype == "none") then
-			minetest.set_node(pos, {name = "default:dirt"})
-		end
-	end
-})
-
-minetest.register_abm({
 	nodenames = {"group:flora"},
 	neighbors = {"default:dirt"},
 	interval = 2,
@@ -295,7 +273,7 @@ function default.grow_cactus(pos, node)
 		pos.y = pos.y + 1
 		node = minetest.get_node(pos)
 	end
-	if height < 4 and node.name == "air" then
+	if height < math.random(0, 5) and node.name == "air" then
 		minetest.set_node(pos, {name="default:cactus"})
 		return true
 	end
