@@ -10,11 +10,10 @@ the Free Software Foundation; either version 2 of the License, or
 
 http://www.gnu.org/licenses/lgpl-2.1.html
 
-
 License of media (textures):
 ----------------------------
  
-Created by Casimir (License: CC BY-SA):
+Created by Casimir (License: CC BY-SA 4.0):
   farming_string.png
   farming_hoe_wood.png
   farming_hoe_stone.png
@@ -37,10 +36,10 @@ Created by Mito551 (License: CC BY-SA):
   farming_wheat_3.png
   farming_wheat_4.png
 
-Gambit (modified by Casimir) (WTFPL):
+Gambit (modified by Casimir) (CC BY-SA 4.0):
   farming_cotton_1.png
   farming_cotton_2.png
   farming_cotton_3.png
 
-Master Gollum (WTFPL):
+Master Gollum (CC BY-SA 4.0):
   farming_straw.png

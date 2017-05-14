@@ -26,7 +26,7 @@ Originating from work by kddekadenz/Dogers:
   default_grass_footstep.{1,2,3}.ogg
   default_dig_crumbly.{1,2}.ogg
 
-Cisoun's WTFPL texture pack:
+Cisoun (CC BY-SA 4.0):
   default_dirt.png
   default_sand.png
   default_wood.png
@@ -36,7 +36,7 @@ Cisoun's WTFPL texture pack:
   player.png
   player_back.png
 
-VanessaE (WTFPL):
+VanessaE (CC BY-SA 4.0):
   default_nc_rb.png
   default_torch_animated.png
   default_torch_on_floor_animated.png
@@ -49,7 +49,7 @@ Calinou (CC BY-SA):
   default_brick.png
   default_tool_steelsword.png
 
-MirceaKitsune (WTFPL):
+MirceaKitsune (CC BY-SA 4.0):
   character.x
 
 Jordach (CC BY-SA 3.0):
@@ -59,7 +59,7 @@ Zeg9 (CC BY-SA 3.0):
   default_coal_block.png
   default_gravel.png
 
-kaeza (WTFPL):
+kaeza (CC BY-SA 4.0):
   bubble.png
   
 Casimir (CC BY-SA 3.0)
@@ -99,7 +99,7 @@ Casimir (CC BY-SA 3.0)
   default_torch_on_ceiling_animated.png
   gui_hotbar*
 
-Gambit (WTFPL)
+Gambit (CC BY-SA 4.0)
   default_book.png
   default_cactus_side.png
   default_cactus_top.png

@@ -1,5 +1,5 @@
-Hunger mod of nodetest
-=========================
+Hunger
+======
 
 License of source code:
 -----------------------
@@ -20,7 +20,7 @@ Authors of media files
 Everything not listed in here:
 Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
 
-Gambit (WTFPL):
+Gambit (CC BY-SA 4.0):
   hunger.png
 
 Caroline Ford SoundBible.com (CC BY-SA)

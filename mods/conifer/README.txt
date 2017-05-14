@@ -1,5 +1,5 @@
 Conifer
-==========================
+=======
 
 Rewrite of Cisouns original mod "Conifers".
 https://forum.minetest.net/viewtopic.php?pid=17541
@@ -21,7 +21,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 Authors of media files
 -----------------------
 
-Cisoun (WTFPL):
+Cisoun (CC BY-SA 4.0):
   nodetest_coniferleaves_1.png
   nodetest_coniferleaves_2.png
   nodetest_conifersapling.png

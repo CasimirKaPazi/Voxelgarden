@@ -51,4 +51,4 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 For every mod applies the original license. See list below.
 All other media is licenced under Creative Commons BY-SA license.
 
-bones (WTFPL), bucket (LGPL), conifer (LGPL), creative (WTFPL), default (LGPL), doors (LGPL), drowning (WTFPL), dye (WTFPL), farming (LGPL), fire (LGPL), flowers (WTFPL), footsteps (LGPL), hunger (LGPL), inventory_plus (GPL), nodetest (LGPL), no_itemdrop (LGPL), screwdriver (LGPL), stairsplus (zlib/libpng), wool (WTFPL), zcg (WTFPL)
+bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), drowning (LGPL), dye (LGPL), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory_plus (GPL), nodetest (LGPL), no_itemdrop (LGPL), screwdriver (LGPL), stairsplus (zlib/libpng), walls (LGPL) wool (LGPL), zcg (LGPL)

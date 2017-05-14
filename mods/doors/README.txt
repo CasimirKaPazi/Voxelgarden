@@ -18,5 +18,5 @@ Casimir (CC BY-SA 3.0)
   door_wood_a.png
   door_wood_b.png
 
-Gambit (WTFPL):
+Gambit (CC BY-SA 4.0):
   doors_steel_bars.png

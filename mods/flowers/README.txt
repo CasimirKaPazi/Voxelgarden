@@ -5,15 +5,30 @@ License of source code:
 -----------------------
 Copyright (C) 2012-2013 Ironzorg, VanessaE, Casimir
 
-This program is free software. It comes without any warranty, to
-the extent permitted by applicable law. You can redistribute it
-and/or modify it under the terms of the Do What The Fuck You Want
-To Public License, Version 2, as published by Sam Hocevar. See
-http://sam.zoy.org/wtfpl/COPYING for more details.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
+
+http://www.gnu.org/licenses/lgpl-2.1.html
 
 License of media (textures and sounds)
 --------------------------------------
-WTFPL
+Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)                                 
+http://creativecommons.org/licenses/by-sa/3.0/
 
-Gambit (WTFPL):
+Authors of media files
+-----------------------
+
+Gambit (CC BY-SA 4.0):
   flowers_mushroom_*.png
+
+RHRhino (CC BY-SA 3.0):
+  flowers_dandelion_white.png
+  flowers_dandelion_yellow.png
+  flowers_rose.png
+  flowers_tulip.png
+
+Casimir (CC BY-SA 4.0)
+  flowers_geranium.png
+  flowers_viola.png

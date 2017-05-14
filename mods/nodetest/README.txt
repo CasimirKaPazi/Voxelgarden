@@ -1,5 +1,5 @@
 Nodetest
-==========================
+========
 
 License of source code:
 -----------------------
@@ -20,12 +20,11 @@ Authors of media files
 Everything not listed in here:
 Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
   
-Casimir (CC BY-SA 3.0)
+Casimir (CC BY-SA 4.0)
   nodetest_bone.png
   nodetest_papyrus_roots.png
-  nodetest_rock.png
-  nodetest_rock_item.png
+  nodetest_seedling
 
-Mossmanikin (WTFPL)
+Mossmanikin (CC BY-SA 4.0)
   nodetest_spearstone.png
   nodetest_spearwood.png

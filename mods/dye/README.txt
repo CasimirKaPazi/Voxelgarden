@@ -7,11 +7,16 @@ License of source code and media files:
 ---------------------------------------
 Copyright (C) 2012 Perttu Ahola (celeron55) <celeron55@gmail.com>
 
-This program is free software. It comes without any warranty, to
-the extent permitted by applicable law. You can redistribute it
-and/or modify it under the terms of the Do What The Fuck You Want
-To Public License, Version 2, as published by Sam Hocevar. See
-http://sam.zoy.org/wtfpl/COPYING for more details.
+License of source code:
+-----------------------
+Copyright (C) 2011-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
+
+http://www.gnu.org/licenses/lgpl-2.1.html
 
 License of media (textures and sounds)
 --------------------------------------
@@ -24,4 +29,4 @@ Everything not listed in here:
 Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
 
 Casimir (CC BY-SA)
-	dye_*
+  dye_*
