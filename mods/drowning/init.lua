@@ -63,9 +63,6 @@ minetest.register_privilege("no_drown", {
 })
 
 local function init_drown_state(name)
-	if holding_breath[name] == nil then
-		holding_breath[name] = 0
-	end
 	if scheduling_interval[name] == nil then
 		scheduling_interval[name] = START_DROWNING_SECONDS
 	end
@@ -74,8 +71,9 @@ local function init_drown_state(name)
 	end
 end
 
-local function reset_drown_state(name)
-	holding_breath[name]        = 0
+local function reset_drown_state(player)
+	player:set_attribute("h_breath", 0)
+	local name = player:get_player_name()
 	scheduling_interval[name]   = START_DROWNING_SECONDS
 	next_scheduled_damage[name] = START_DROWNING_SECONDS
 	-- Don't display breath in hud.
@@ -93,9 +91,7 @@ local function is_player_in_liquid(player)
 	if  n_head == "ignore" then return end -- No change on startup.
 	-- Check if node is liquid (0=not 2=lava 3=water).
 	if minetest.get_item_group(n_head, "liquid") ~= 0 then
-		return "yes"
-	else
-		return "no"
+		return true
 	end
 end
 
@@ -116,7 +112,9 @@ end
 
 local function on_drown(player)
 	local name = player:get_player_name()
-	if holding_breath[name] >= next_scheduled_damage[name] then
+	local h_breath = tonumber(player:get_attribute("h_breath") or 0)
+--print("h_breath "..h_breath..", type"..type(h_breath))
+	if h_breath >= next_scheduled_damage[name] then
 		if player:get_hp() > 0 then
 			-- Player is still alive, so:
 			-- deal damage, play sound and schedule next damage
@@ -126,14 +124,13 @@ local function on_drown(player)
 			schedule_next_damage(name)
 		else
 			-- Player has died; reset drowning state.
-			reset_drown_state(name)
+			reset_drown_state(player)
 		end
 	end
 end
 
 local function on_gasp(player)
-	local name = player:get_player_name()
-	reset_drown_state(name)
+	reset_drown_state(player)
 	play_drown_sound(player, "drowning_gasp", 32)
 end
 
@@ -142,7 +139,9 @@ function drowning.update_bar(player)
 	local name = player:get_player_name()
 	local bubbles = 0
 	if scheduling_interval[name] > 1 then
-		bubbles = math.ceil(20*((next_scheduled_damage[name] - holding_breath[name])/scheduling_interval[name]))
+		local h_breath = tonumber(player:get_attribute("h_breath") or 0)
+--print("h_breath "..h_breath..", type"..type(h_breath))
+		bubbles = math.ceil(20*((next_scheduled_damage[name] - h_breath)/scheduling_interval[name]))
 	end
 	if player_bubbles[name] then
 		player:hud_change(player_bubbles[name], "number", bubbles)
@@ -159,75 +158,36 @@ function drowning.update_bar(player)
 	end
 end
 
-function drowning.save_drowning()
-		local output = io.open(file, "w")
-		for name, v in pairs(holding_breath) do
-			output:write(holding_breath[name].." "..name.."\n")
-		end
-		io.close(output)
-end
-
-local function load_drowning()
-	local input = io.open(file, "r")
-	if input then
-		repeat
-			local breath = input:read("*n")
-			local name = input:read("*l")
-			if not name then break end
-			name = name:sub(2)
-			if not breath then breath = 0 end
-			holding_breath[name] = breath
-			init_drown_state(name)
-			while holding_breath[name] >= next_scheduled_damage[name] do
-				schedule_next_damage(name)
-			end
-		until input:read(0) == nil
-		io.close(input)
-	else
-		drowning.save_drowning()
-	end
-end
-
-load_drowning()
-
-minetest.register_on_joinplayer(function(player)
-	local name = player:get_player_name()
-	if not holding_breath[name] then holding_breath[name] = 0 end
-end)
-
 -- Main function
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime
 	if timer >= MIN_TIME_SLICE then
 		timer = timer - MIN_TIME_SLICE
 	else return end
-	local change = false
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		if minetest.get_player_privs(name)["no_drown"] then
 			if player_bubbles[name] then
-				reset_drown_state(name)
+				reset_drown_state(player)
 			end
-			change = true
 			return
 		end
+		local h_breath = tonumber(player:get_attribute("h_breath") or 0)
+--print("h_breath "..h_breath..", type"..type(h_breath))
 		init_drown_state(name)
-		if is_player_in_liquid(player) == "yes" then
-			holding_breath[name] = holding_breath[name] + MIN_TIME_SLICE
+		if is_player_in_liquid(player) then
+			h_breath = h_breath + MIN_TIME_SLICE
+			player:set_attribute("h_breath", h_breath)
 			drowning.update_bar(player)
 			on_drown(player)
-			change = true
-		elseif is_player_in_liquid(player) == "no" and holding_breath[name] > 0 then
+		elseif h_breath > 0 then
 			on_gasp(player)
-			change = true
 		end
 	end
-	if change then drowning.save_drowning() end
 end)
 
 minetest.register_on_respawnplayer(function(player)
-		local name = player:get_player_name()
-		reset_drown_state(name)
+		reset_drown_state(player)
 	end)
 end
 
