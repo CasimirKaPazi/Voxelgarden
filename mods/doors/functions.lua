@@ -81,10 +81,9 @@ function doors:register_door(name, def)
 		groups = def.groups,
 		status = 1,
 		base_name = name,
-		on_rightclick = function(pos, node, clicker)
-			if not check_player_priv(pos, clicker) then
-				return
-			end
+		on_rightclick = function(pos, node, user)
+			if user:get_player_control().sneak then return end
+			if not check_player_priv(pos, user) then return	end
 			update(pos, 1)
 			update(pos, -1)
 			use(pos, name.."_2")
@@ -150,10 +149,9 @@ function doors:register_door(name, def)
 		groups = def.groups,
 		status = 2,
 		base_name = name,
-		on_rightclick = function(pos, node, clicker)
-			if not check_player_priv(pos, clicker) then
-				return
-			end
+		on_rightclick = function(pos, node, user)
+			if user:get_player_control().sneak then return end
+			if not check_player_priv(pos, user) then return	end
 			update(pos, 1)
 			update(pos, -1)
 			use(pos, name.."_1")
