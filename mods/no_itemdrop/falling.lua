@@ -187,8 +187,7 @@ local function check_attached_node(p, n)
 	return true
 end
 
--- Same as builtin
--- Only needed to call drop_attached_node, which contains our actual changes.
+-- Have a delay on falling. Handle each node independent.
 function core.check_single_for_falling(p)
 	local n = core.get_node(p)
 	if core.get_item_group(n.name, "falling_node") ~= 0 then
@@ -214,6 +213,7 @@ function core.check_single_for_falling(p)
 			end
 			core.remove_node(p)
 			spawn_falling_node(p, n, metatable)
+			minetest.after(0.1, core.check_for_falling, p)
 			return true
 		end
 	end
@@ -226,4 +226,24 @@ function core.check_single_for_falling(p)
 	end
 
 	return false
+end
+
+local check_for_falling_neighbors = {
+	{x = -1, y = -1, z = 0},
+	{x = 1, y = -1, z = 0},
+	{x = 0, y = -1, z = -1},
+	{x = 0, y = -1, z = 1},
+	{x = 0, y = -1, z = 0},
+	{x = -1, y = 0, z = 0},
+	{x = 1, y = 0, z = 0},
+	{x = 0, y = 0, z = 1},
+	{x = 0, y = 0, z = -1},
+	{x = 0, y = 0, z = 0},
+	{x = 0, y = 1, z = 0},
+}
+
+function core.check_for_falling(p)
+	for _, v in ipairs(check_for_falling_neighbors) do
+		core.check_single_for_falling({x = p.x+v.x, y = p.y+v.y, z = p.z+v.z})
+	end
 end
