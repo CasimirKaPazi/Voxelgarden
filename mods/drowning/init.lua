@@ -112,8 +112,8 @@ end
 
 local function on_drown(player)
 	local name = player:get_player_name()
+	-- get_attribut always returns a string, so we have to convert it.
 	local h_breath = tonumber(player:get_attribute("h_breath") or 0)
---print("h_breath "..h_breath..", type"..type(h_breath))
 	if h_breath >= next_scheduled_damage[name] then
 		if player:get_hp() > 0 then
 			-- Player is still alive, so:
@@ -140,7 +140,6 @@ function drowning.update_bar(player)
 	local bubbles = 0
 	if scheduling_interval[name] > 1 then
 		local h_breath = tonumber(player:get_attribute("h_breath") or 0)
---print("h_breath "..h_breath..", type"..type(h_breath))
 		bubbles = math.ceil(20*((next_scheduled_damage[name] - h_breath)/scheduling_interval[name]))
 	end
 	if player_bubbles[name] then
@@ -173,7 +172,6 @@ minetest.register_globalstep(function(dtime)
 			return
 		end
 		local h_breath = tonumber(player:get_attribute("h_breath") or 0)
---print("h_breath "..h_breath..", type"..type(h_breath))
 		init_drown_state(name)
 		if is_player_in_liquid(player) then
 			h_breath = h_breath + MIN_TIME_SLICE
