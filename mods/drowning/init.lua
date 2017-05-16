@@ -72,7 +72,7 @@ local function init_drown_state(name)
 end
 
 local function reset_drown_state(player)
-	player:set_attribute("h_breath", 0)
+	player:set_attribute("h_breath", nil)
 	local name = player:get_player_name()
 	scheduling_interval[name]   = START_DROWNING_SECONDS
 	next_scheduled_damage[name] = START_DROWNING_SECONDS
