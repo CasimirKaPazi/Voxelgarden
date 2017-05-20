@@ -32,3 +32,5 @@ RHRhino (CC BY-SA 3.0):
 Casimir (CC BY-SA 4.0)
   flowers_geranium.png
   flowers_viola.png
+  flowers_mushroom_brown_spores.png
+  flowers_mushroom_red_spores.png
