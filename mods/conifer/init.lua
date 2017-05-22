@@ -19,12 +19,18 @@ minetest.register_node("conifer:sapling", {
 	walkable = false,
 	buildable_to = true,
 	floodable = true,
+	on_timer = function(pos)
+		conifer.grow_conifersapling(pos)
+	end,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
 	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(math.random(6000, 96000))
+	end,
 })
 
 minetest.register_alias("conifers:sapling", "conifer:sapling")

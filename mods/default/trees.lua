@@ -2,12 +2,8 @@ local random = math.random
 
 function default.can_grow(pos)
 	local node_under = minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
-	if not node_under then
-		return false
-	end
-	local name_under = node_under.name
-	local is_soil = minetest.get_item_group(name_under, "soil")
-	if is_soil == 0 then
+	if not node_under then return false end
+	if minetest.get_item_group(node_under.name, "soil") == 0 then
 		minetest.remove_node(pos)
 		return false
 	end
@@ -17,35 +13,6 @@ function default.can_grow(pos)
 	end
 	return true
 end
-
-minetest.register_abm({
-	nodenames = {"default:sapling"},
-	interval = 11,
-	chance = 50,
-	action = function(pos, node)
-		if not default.can_grow(pos) then return end
-		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
-			minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
-			return
-		end
-		default.grow_tree(pos, random(1, 8) == 1)
-	end
-})
-
-minetest.register_abm({
-	nodenames = {"default:junglesapling"},
-	interval = 13,
-	chance = 50,
-	action = function(pos, node)
-		if not default.can_grow(pos) then return end
-		if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
-			minetest.set_node(pos, {name="default:junglegrass"})
-			return
-		end
-		default.grow_jungletree(pos)
-	end
-})
-
 
 local c_air = minetest.get_content_id("air")
 local c_apple = minetest.get_content_id("default:apple")
@@ -180,3 +147,29 @@ function default.grow_jungletree(pos, bad)
 	vm:write_to_map()
 	vm:update_map()
 end
+
+function default.grow_sapling(pos)
+	if not default.can_grow(pos) then return true end
+	if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
+		minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
+		return
+	end
+	default.grow_tree(pos, math.random(1, 8) == 1)
+end
+
+function default.grow_junglesapling(pos)
+	if not default.can_grow(pos) then return true end
+	if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
+		minetest.set_node(pos, {name="default:junglegrass"})
+		return
+	end
+	default.grow_jungletree(pos)
+end
+
+minetest.register_lbm({
+	name = "default:convert_saplings_to_node_timer",
+	nodenames = {"default:sapling", "default:junglesapling"},
+	action = function(pos)
+		minetest.get_node_timer(pos):start(math.random(6000, 48000))
+	end
+})

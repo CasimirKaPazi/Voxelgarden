@@ -1,29 +1,5 @@
 local random = math.random
 
-minetest.register_abm({
-	nodenames = {"conifer:sapling"},
-	interval = 17,
-	chance = 50,
-	action = function(pos, node)
-		if not default.can_grow(pos) then return end
-		if minetest.find_node_near(pos, 3, {"group:tree", "group:sapling"}) then
-			minetest.set_node(pos, {name="conifer:leaves_"..math.random(1, 2)})
-			return
-		end
-		-- Find snow
-		local snow = false
---		local node_under = minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
---		if not node_under then
---			return false
---		end
---		if node_under.name == "default:dirt_with_snow" then
---			snow = true
---		end
-		-- Spawn tree
-		conifer.grow_tree(pos, random(1, 4) == 1, snow)
-	end
-})
-
 local c_air = minetest.get_content_id("air")
 local c_leaves_1 = minetest.get_content_id("conifer:leaves_1")
 local c_leaves_2 = minetest.get_content_id("conifer:leaves_2")
@@ -67,7 +43,7 @@ local function add_trunk_and_leaves(data, a, pos, tree_cid, leaves_special, heig
 	end
 	end
 	d = d + 1
-	if d > math.random(2,4) then d = 1 end
+	if d > random(2,4) then d = 1 end
 	end
 end
 
@@ -111,3 +87,20 @@ function conifer.grow_tree(pos, leaves_special, snow)
 	vm:write_to_map()
 	vm:update_map()
 end
+
+function conifer.grow_conifersapling(pos)
+	if not default.can_grow(pos) then return true end
+	if minetest.find_node_near(pos, 3, {"group:tree", "group:sapling"}) then
+		minetest.set_node(pos, {name="conifer:leaves_"..random(1, 2)})
+		return
+	end
+	conifer.grow_tree(pos, random(1, 4) == 1)
+end
+
+minetest.register_lbm({
+	name = "conifer:convert_saplings_to_node_timer",
+	nodenames = {"conifer:sapling"},
+	action = function(pos)
+		minetest.get_node_timer(pos):start(random(6000, 48000))
+	end
+})
