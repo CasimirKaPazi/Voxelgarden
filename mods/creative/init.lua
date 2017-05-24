@@ -182,14 +182,14 @@ if minetest.setting_getbool("creative_mode") then
 		drop = "default:water_source"
 	})
 
-	local water_flowing_groups = minetest.registered_nodes["default:water_source"].groups
+	local water_flowing_groups = minetest.registered_nodes["default:water_flowing"].groups
 	water_flowing_groups.dig_immediate = 3
 	minetest.override_item("default:water_flowing", {
 		diggable = true,
 		groups = water_flowing_groups,
 	})
 
-	local lava_source_groups = minetest.registered_nodes["default:water_source"].groups
+	local lava_source_groups = minetest.registered_nodes["default:lava_source"].groups
 	lava_source_groups.dig_immediate = 3
 	minetest.override_item("default:lava_source", {
 		diggable = true,
@@ -197,7 +197,7 @@ if minetest.setting_getbool("creative_mode") then
 		drop = "default:lava_source"
 	})
 
-	local lava_flowing_groups = minetest.registered_nodes["default:water_source"].groups
+	local lava_flowing_groups = minetest.registered_nodes["default:lava_flowing"].groups
 	lava_flowing_groups.dig_immediate = 3
 	minetest.override_item("default:lava_flowing", {
 		diggable = true,
