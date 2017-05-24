@@ -169,5 +169,39 @@ if minetest.setting_getbool("creative_mode") then
 		player:set_hp(hp + hp_change)
 		return itemstack
 	end)
-	
+
+	--
+	-- Allow crative players to remove liquids the fast way
+	--
+
+	local water_source_groups = minetest.registered_nodes["default:water_source"].groups
+	water_source_groups.dig_immediate = 3
+	minetest.override_item("default:water_source", {
+		diggable = true,
+		groups = water_source_groups,
+		drop = "default:water_source"
+	})
+
+	local water_flowing_groups = minetest.registered_nodes["default:water_source"].groups
+	water_flowing_groups.dig_immediate = 3
+	minetest.override_item("default:water_flowing", {
+		diggable = true,
+		groups = water_flowing_groups,
+	})
+
+	local lava_source_groups = minetest.registered_nodes["default:water_source"].groups
+	lava_source_groups.dig_immediate = 3
+	minetest.override_item("default:lava_source", {
+		diggable = true,
+		groups = lava_source_groups,
+		drop = "default:lava_source"
+	})
+
+	local lava_flowing_groups = minetest.registered_nodes["default:water_source"].groups
+	lava_flowing_groups.dig_immediate = 3
+	minetest.override_item("default:lava_flowing", {
+		diggable = true,
+		groups = lava_flowing_groups,
+	})
+
 end
