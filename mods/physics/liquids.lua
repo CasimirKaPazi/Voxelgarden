@@ -60,6 +60,7 @@ local source_pos = {
 
 local function register_dynamic_liquid(source, flowing)
 	minetest.register_abm({
+		label = "Liquid physics "..source,
 		nodenames = {flowing},
 		neighbors = {source},
 		interval = 1,

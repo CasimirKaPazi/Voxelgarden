@@ -94,6 +94,7 @@ default.leafdecay = function(p0)
 end
 
 minetest.register_abm({
+	label = "leafdecay",
 	nodenames = {"group:leafdecay"},
 	neighbors = {"air", "group:liquid"},
 	-- A low interval and a high inverse chance spreads the load

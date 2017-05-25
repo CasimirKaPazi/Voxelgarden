@@ -178,7 +178,7 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
-	label = "Lava cooling",
+	label = "Molten rock cooling",
 	nodenames = {"default:molten_rock"},
 	neighbors = {"group:cools_lava", "group:water"},
 	interval = 11,
@@ -230,6 +230,7 @@ local function renew_liquid(pos, source)
 end
 
 minetest.register_abm({
+	label = "Renew water",
 	nodenames = {"default:water_flowing"},
 	neighbors = {"default:water_source"},
 	interval = 1,
@@ -243,6 +244,7 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
+	label = "Renew lava",
 	nodenames = {"default:lava_flowing"},
 	neighbors = {"default:lava_source"},
 	interval = 1,
@@ -304,6 +306,7 @@ end
 
 -- Wrapping the functions in abm action is necessary to make overriding them possible.
 minetest.register_abm({
+	label = "Grow cactus",
 	nodenames = {"default:cactus"},
 	neighbors = {"group:sand"},
 	interval = 70,
@@ -314,6 +317,7 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
+	label = "Grow papyrus",
 	nodenames = {"default:papyrus"},
 	neighbors = {"default:dirt", "default:dirt_with_grass", "default:papyrus_roots"},
 	interval = 40,
