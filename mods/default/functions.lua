@@ -139,7 +139,7 @@ minetest.register_abm({
 		"default:dirt_with_snow",
 	},
 	interval = 8,
-	chance = 50,
+	chance = 100,
 	catch_up = false,
 	action = function(pos, node)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -210,7 +210,7 @@ minetest.register_abm({
 	nodenames = {"default:water_flowing"},
 	neighbors = {"default:water_source"},
 	interval = 1,
-	chance = 5,
+	chance = 10,
 	catch_up = false,
 	action = function(pos, node)
 		if node.param2 ~= 0 and node.param2 ~= 7 then return end
@@ -225,7 +225,7 @@ minetest.register_abm({
 	nodenames = {"default:lava_flowing"},
 	neighbors = {"default:lava_source"},
 	interval = 1,
-	chance = 5,
+	chance = 10,
 	catch_up = false,
 	action = function(pos, node)
 		if node.param2 ~= 0 and node.param2 ~= 7 then return end
