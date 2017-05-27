@@ -1,13 +1,14 @@
-local function register_mgv6_flower(name)
+local function register_mgv6_flower(name, seed)
+	seed = seed or 0
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"default:dirt_with_grass"},
 		sidelen = 16,
 		noise_params = {
-			offset = 0,
-			scale = 0.006,
-			spread = {x = 100, y = 100, z = 100},
-			seed = 436,
+			offset = -0.01,
+			scale = 0.03,
+			spread = {x = 10, y = 10, z = 10},
+			seed = 436+seed,
 			octaves = 3,
 			persist = 0.5
 		},
@@ -18,6 +19,7 @@ local function register_mgv6_flower(name)
 end
 
 local function register_mgv6_mushroom(name)
+	seed = seed or 0
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"default:dirt_with_grass"},
@@ -26,7 +28,7 @@ local function register_mgv6_mushroom(name)
 			offset = 0,
 			scale = 0.04,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 7133,
+			seed = 7133+seed,
 			octaves = 3,
 			persist = 0.6
 		},
@@ -39,15 +41,15 @@ local function register_mgv6_mushroom(name)
 end
 
 function flowers.register_mgv6_decorations()
-	register_mgv6_flower("rose")
-	register_mgv6_flower("tulip")
-	register_mgv6_flower("dandelion_yellow")
-	register_mgv6_flower("geranium")
-	register_mgv6_flower("viola")
-	register_mgv6_flower("dandelion_white")
+	register_mgv6_flower("rose", 1)
+	register_mgv6_flower("tulip", 2)
+	register_mgv6_flower("dandelion_yellow", 3)
+	register_mgv6_flower("geranium", 4)
+	register_mgv6_flower("viola", 5)
+	register_mgv6_flower("dandelion_white", 6)
 
-	register_mgv6_mushroom("mushroom_brown")
-	register_mgv6_mushroom("mushroom_red")
+	register_mgv6_mushroom("mushroom_brown", 1)
+	register_mgv6_mushroom("mushroom_red", 2)
 	-- TODO: Add waterlily
 --	register_mgv6_waterlily()
 end
