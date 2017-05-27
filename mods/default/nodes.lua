@@ -479,13 +479,12 @@ minetest.register_node("default:river_water_source", {
 	groups = {water=3, liquid=3, not_in_creative_inventory=1},
 })
 
--- Replace river water with real water.
 if minetest.get_mapgen_params().mgname == "valleys" then
-print("MG: valleys")
-	minetest.register_abm({
+	minetest.register_lbm({
+        label = "Replace river water",
+		name = "default:replace_river_water",
 		nodenames = {"default:river_water_source"},
-		interval = 1,
-		chance = 1,
+        run_at_every_load = true,
 		action = function(pos, node)
 			minetest.set_node(pos, {name = "default:water_source"})
 		end
