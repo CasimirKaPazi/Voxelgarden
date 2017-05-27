@@ -94,6 +94,7 @@ end
 --
 
 minetest.register_abm({
+	label = "Grass spread",
 	nodenames = {"default:dirt"},
 	neighbors = {"default:dirt_with_grass", "default:dirt_with_grass_footsteps"},
 	interval = 2,
@@ -116,6 +117,7 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
+	label = "Grass new",
 	nodenames = {"group:flora"},
 	neighbors = {"default:dirt"},
 	interval = 2,
@@ -131,6 +133,7 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
+	label = "Grass covered",
 	nodenames = {
 		"default:dirt_with_grass",
 		"default:dirt_with_snow",
