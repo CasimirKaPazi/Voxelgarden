@@ -40,7 +40,7 @@ function farming.place_seed(itemstack, placer, pointed, plantname)
 	above.name = plantname
 	minetest.place_node(pointed.above, above, placer)
 	minetest.sound_play("default_place_node", {pos = pointed.above, gain = 0.5})
-	if minetest.setting_getbool("creative_mode") then
+	if minetest.settings:get_bool("creative_mode") then
 		return
 	end
 	itemstack:take_item()

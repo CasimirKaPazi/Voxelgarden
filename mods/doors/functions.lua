@@ -123,7 +123,7 @@ function doors:register_door(name, def)
 				meta:set_string("infotext", "Owned by "..playername)
 			end
 
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.settings:get_bool("creative_mode") then
 				itemstack:take_item()
 			end
 			minetest.sound_play("default_place_node", {ptu, gain = 0.5, max_hear_distance = 32})

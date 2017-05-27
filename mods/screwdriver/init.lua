@@ -116,7 +116,7 @@ local function screwdriver_use(itemstack, user, pointed_thing)
 	--print (dump(axisdir..", "..rotation))
 	node.param2 = n
 	minetest.swap_node(pos, node)
-	if minetest.setting_getbool("creative_mode") then
+	if minetest.settings:get_bool("creative_mode") then
 		return	
 	end
 	itemstack:add_wear(327)

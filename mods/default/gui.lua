@@ -41,7 +41,7 @@ default.gui_survival_form = "size[8,7.5]"..
 
 minetest.register_on_joinplayer(function(player)
 	-- set GUI
-	if not minetest.setting_getbool("creative_mode") then
+	if not minetest.settings:get_bool("creative_mode") then
 		player:set_inventory_formspec(default.gui_survival_form)
 	end
 	player:hud_set_hotbar_image("gui_hotbar.png")

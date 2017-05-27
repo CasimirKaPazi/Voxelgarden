@@ -8,7 +8,7 @@ default.LIGHT_MAX = 14
 default.COUSHION = -10 -- Falling damage gets reduced by 10 percent.
 
 -- Define default max stack
-local stack = minetest.setting_get("stack_max")
+local stack = minetest.settings:get("stack_max")
 if not stack then
 	stack = 90
 end

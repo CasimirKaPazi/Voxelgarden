@@ -1,4 +1,4 @@
-if not minetest.setting_getbool("creative_mode") then
+if not minetest.settings:get_bool("creative_mode") then
 
 local default_dig = minetest.node_dig
 

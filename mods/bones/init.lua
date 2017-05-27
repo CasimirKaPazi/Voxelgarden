@@ -2,7 +2,7 @@
 -- See README.txt for licensing and other information. 
 
 bones = {}
-local share_bones_time = tonumber(minetest.setting_get("share_bones_time") or 1200)
+local share_bones_time = tonumber(minetest.settings:get("share_bones_time") or 1200)
 
 local function is_owner(pos, name)
 	local owner = minetest.get_meta(pos):get_string("owner")
@@ -189,8 +189,8 @@ function bones.place_bones(player)
 end
 
 minetest.register_on_dieplayer(function(player)
-	if minetest.setting_getbool("creative_mode") or
-		minetest.setting_getbool("disable_bones") then
+	if minetest.settings:get_bool("creative_mode") or
+		minetest.settings:get_bool("disable_bones") then
 		return
 	end
 	bones.place_bones(player)

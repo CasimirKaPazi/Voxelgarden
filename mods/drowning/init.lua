@@ -54,7 +54,7 @@ local MIN_TIME_SLICE		= 0.5	-- Minimum number of seconds that must pass before
 
 
 local timer = 0
-if minetest.setting_getbool("enable_damage") == true then
+if minetest.settings:get_bool("enable_damage") == true then
 
 -- no_drown privilege
 minetest.register_privilege("no_drown", {

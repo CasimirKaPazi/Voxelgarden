@@ -41,7 +41,7 @@ function fire.node_should_burn(pos)
 	return (#ps >= 2)
 end
 
-if not minetest.setting_getbool("disable_fire") then
+if not minetest.settings:get_bool("disable_fire") then
 
 -- Ignite neighboring nodes
 minetest.register_abm({

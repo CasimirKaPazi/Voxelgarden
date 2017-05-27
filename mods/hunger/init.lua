@@ -34,7 +34,7 @@ function hunger.update_bar(player, full)
 	end
 end
 
-if minetest.setting_getbool("enable_damage") == true then
+if minetest.settings:get_bool("enable_damage") == true then
 
 -- Prevent players from starving while afk (<--joke)
 minetest.register_on_dignode(function(pos, oldnode, player)
