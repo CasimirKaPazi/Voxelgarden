@@ -227,7 +227,7 @@ minetest.register_node("default:furnace", {
 		"default_furnace_side.png", "default_furnace_front.png"
 	},
 	paramtype2 = "facedir",
-	groups = {cracky=2},
+	groups = {cracky=3},
 	legacy_facedir_simple = true,
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
@@ -276,7 +276,7 @@ minetest.register_node("default:furnace_active", {
 	paramtype2 = "facedir",
 	light_source = 8,
 	drop = "default:furnace",
-	groups = {cracky=2, not_in_creative_inventory=1},
+	groups = {cracky=3, not_in_creative_inventory=1},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 
