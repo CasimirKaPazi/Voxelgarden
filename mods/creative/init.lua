@@ -107,7 +107,7 @@ if minetest.settings:get_bool("creative_mode") then
 		creative_inventory.set_creative_formspec(player, start_i, start_i / (6*4) + 1)
 	end)
 	
-	local digtime = 0.1
+	local digtime = 0.15
 	local caps = {times = {digtime, digtime, digtime}, uses = 0, maxlevel = 0}
 	minetest.register_item(":", {
 		type = "none",
