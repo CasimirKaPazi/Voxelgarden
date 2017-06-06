@@ -170,6 +170,6 @@ minetest.register_lbm({
 	name = "default:convert_saplings_to_node_timer",
 	nodenames = {"default:sapling", "default:junglesapling"},
 	action = function(pos)
-		minetest.get_node_timer(pos):start(math.random(6000, 48000))
+		minetest.get_node_timer(pos):start(math.random(300, 4800))
 	end
 })

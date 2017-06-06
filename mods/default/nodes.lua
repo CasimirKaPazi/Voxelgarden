@@ -214,7 +214,7 @@ minetest.register_node("default:junglesapling", {
 	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(3000, 48000))
+		minetest.get_node_timer(pos):start(math.random(300, 4800))
 	end,
 })
 
@@ -835,7 +835,7 @@ minetest.register_node("default:sapling", {
 	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(3000, 48000))
+		minetest.get_node_timer(pos):start(math.random(300, 4800))
 	end,
 })
 

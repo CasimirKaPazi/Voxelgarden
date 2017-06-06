@@ -29,7 +29,7 @@ minetest.register_node("conifer:sapling", {
 	groups = {snappy=2, dig_immediate=3, sapling=1, flammable=2, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(6000, 96000))
+		minetest.get_node_timer(pos):start(math.random(600, 9600))
 	end,
 })
 
@@ -57,7 +57,7 @@ for i=1,2 do
 		trunk = "conifer:tree",
 		groups = {
 				snappy=3,
-				leafdecay=3,
+				leafdecay=4,
 				flammable=2,
 				leaves=1,
 				fall_damage_add_percent=default.COUSHION
