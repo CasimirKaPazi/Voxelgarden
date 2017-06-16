@@ -81,27 +81,6 @@ minetest.register_biome({
 	heat_point = 100,				humidity_point = 70,
 })
 
--- Plains
-minetest.register_biome({
-	name = "Snow",
-	node_dust = "default:snow",
-	node_top = "default:dirt_with_snow",		depth_top = 1,
-	node_filler = "default:dirt",			depth_filler = 2,
-	node_water_top = "default:ice",			depth_water_top = 1,
-	node_riverbed = "default:dirt",	depth_riverbed = 2,
-	y_min = 1,					y_max = 32000,
-	heat_point = -10,				humidity_point = 20,
-})
-
-minetest.register_biome({
-	name = "Grass",
-	node_top = "default:dirt_with_grass",		depth_top = 1,
-	node_filler = "default:dirt",			depth_filler = 3,
-	node_riverbed = "default:dirt",	depth_riverbed = 2,
-	y_min = 1,					y_max = 32000,
-	heat_point = 50,				humidity_point = 20,
-})
-
 minetest.register_biome({
 	name = "Desert",
 	node_top = "default:desert_sand",		depth_top = 3,
@@ -149,7 +128,14 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.025,
+	noise_params = {
+		offset = 0.00,
+		scale = 0.020,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 153,
+		octaves = 3,
+		persist = 0.66
+	},
 	biomes = {"Conifer", "CT"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/conifer_conifertree_1.mts",
@@ -161,7 +147,14 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.010,
+	noise_params = {
+		offset = 0.00,
+		scale = 0.010,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 154,
+		octaves = 3,
+		persist = 0.66
+	},
 	biomes = {"Conifer", "CT"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/conifer_conifertree_2.mts",
@@ -173,35 +166,58 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.030,
+	noise_params = {
+		offset = 0.00,
+		scale = 0.030,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 538,
+		octaves = 3,
+		persist = 0.66
+	},
 	biomes = {"Tree", "CT", "TJ"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/default_tree.mts",
+	rotation = "random",
 	y_min = 0,
 	y_max = 32000,
 })
 
-for i=1,5 do
-	minetest.register_decoration({
-		deco_type = "simple",
-		place_on = "default:dirt_with_grass",
-		sidelen = 16,
-		fill_ratio = 0.17,
-		biomes = {"Tree", "CT", "TJ", "Grass"},
-		decoration = {"default:grass_"..i},
-		y_min = 0,
-		y_max = 32000,
-	})
-end
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 16,
+	noise_params = {
+		offset = -0.05,
+		scale = 0.020,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 539,
+		octaves = 3,
+		persist = 0.66
+	},
+	biomes = {"Tree", "CT", "TJ"},
+	flags = "place_center_x, place_center_z",
+	schematic = minetest.get_modpath("default").."/schematics/default_apple_tree.mts",
+	rotation = "random",
+	y_min = 0,
+	y_max = 32000,
+})
 
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "default:dirt_with_grass",
 	sidelen = 16,
-	fill_ratio = 0.045,
+	noise_params = {
+		offset = 0.00,
+		scale = 0.030,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 680,
+		octaves = 3,
+		persist = 0.66
+	},
 	biomes = {"Jungle", "TJ"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/default_jungletree.mts",
+	rotation = "random",
 	y_min = 0,
 	y_max = 32000,
 })
