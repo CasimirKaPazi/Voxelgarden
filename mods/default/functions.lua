@@ -175,7 +175,9 @@ minetest.register_abm({
 	interval = 1,
 	chance = 2,
 	catch_up = false,
-	action = default.cool_lava,
+	action = function(...)
+		default.cool_lava(...)
+	end,
 })
 
 minetest.register_abm({
@@ -287,7 +289,9 @@ minetest.register_abm({
 	neighbors = {"group:sand"},
 	interval = 70,
 	chance = 30,
-	action = default.grow_cactus,
+	action = function(...)
+		default.grow_cactus(...)
+	end,
 })
 
 minetest.register_abm({
@@ -296,7 +300,9 @@ minetest.register_abm({
 	neighbors = {"default:dirt", "default:dirt_with_grass", "default:papyrus_roots"},
 	interval = 40,
 	chance = 30,
-	action = default.grow_papyrus,
+	action = function(...)
+		default.grow_papyrus(...)
+	end,
 })
 
 -- Dig upwards
