@@ -94,6 +94,10 @@ function conifer.grow_conifersapling(pos)
 		minetest.set_node(pos, {name="conifer:leaves_"..random(1, 2)})
 		return
 	end
+	if not default.enough_light(pos) then
+		minetest.get_node_timer(pos):start(math.random(60, 960))
+		return
+	end
 	conifer.grow_tree(pos, random(1, 4) == 1)
 end
 
@@ -101,6 +105,6 @@ minetest.register_lbm({
 	name = "conifer:convert_saplings_to_node_timer",
 	nodenames = {"conifer:sapling"},
 	action = function(pos)
-		minetest.get_node_timer(pos):start(random(6000, 48000))
+		minetest.get_node_timer(pos):start(random(600, 4800))
 	end
 })

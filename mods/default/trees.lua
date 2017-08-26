@@ -7,6 +7,10 @@ function default.can_grow(pos)
 		minetest.remove_node(pos)
 		return false
 	end
+	return true
+end
+
+function default.enough_light(pos)
 	local light_level = minetest.get_node_light(pos)
 	if not light_level or light_level < 10 then
 		return false
@@ -154,6 +158,11 @@ function default.grow_sapling(pos)
 		minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
 		return
 	end
+	-- Restart the timer with a shorter timeout, as we just wait for enough light
+	if not default.enough_light(pos) then
+		minetest.get_node_timer(pos):start(math.random(30, 480))
+		return
+	end
 	default.grow_tree(pos, math.random(1, 8) == 1)
 end
 
@@ -161,6 +170,10 @@ function default.grow_junglesapling(pos)
 	if not default.can_grow(pos) then return true end
 	if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
 		minetest.set_node(pos, {name="default:junglegrass"})
+		return
+	end
+	if not default.enough_light(pos) then
+		minetest.get_node_timer(pos):start(math.random(30, 480))
 		return
 	end
 	default.grow_jungletree(pos)
