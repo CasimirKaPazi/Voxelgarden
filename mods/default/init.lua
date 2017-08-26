@@ -16,19 +16,6 @@ minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 2
 
--- Set time to dawn on new game
-minetest.register_on_newplayer(function(player)
-	if minetest.get_gametime() < 5 then
-		minetest.set_timeofday(0.25)
-	end
-end)
-
-minetest.register_on_respawnplayer(function(player)
-	if minetest.is_singleplayer() then
-		minetest.set_timeofday(0.25)
-	end
-end)
-
 -- Load files
 dofile(minetest.get_modpath("default").."/gui.lua")
 dofile(minetest.get_modpath("default").."/functions.lua")
