@@ -42,7 +42,6 @@ if minetest.get_mapgen_params().mgname ~= "v6" then
 end
 dofile(minetest.get_modpath("default").."/mapgen.lua")
 dofile(minetest.get_modpath("default").."/leafdecay.lua")
-dofile(minetest.get_modpath("default").."/player.lua")
 dofile(minetest.get_modpath("default").."/trees.lua")
 dofile(minetest.get_modpath("default").."/aliases.lua")
 
