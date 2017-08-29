@@ -1,5 +1,5 @@
 local function register_mgv6_flower(name, seed)
-	seed = seed or 0
+	local seed = seed or 0
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"default:dirt_with_grass"},
@@ -18,8 +18,8 @@ local function register_mgv6_flower(name, seed)
 	})
 end
 
-local function register_mgv6_mushroom(name)
-	seed = seed or 0
+local function register_mgv6_mushroom(name, seed)
+	local seed = seed or 0
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"default:dirt_with_grass"},
