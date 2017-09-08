@@ -88,7 +88,7 @@ default.leafdecay = function(p0)
 		end
 		-- Remove node
 		minetest.remove_node(p0)
-		nodeupdate(p0)
+		minetest.check_for_falling(p0)
 		leafupdate(p0)
 	end
 end
