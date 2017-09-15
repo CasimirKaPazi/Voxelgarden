@@ -476,6 +476,10 @@ minetest.register_node("default:river_water_source", {
 	buildable_to = true,
 	drowning = false,
 	drop = "",
+	liquidtype = "source",
+	liquid_alternative_flowing = "default:water_flowing",
+	liquid_alternative_source = "default:water_source",
+	liquid_renewable = false,
 	groups = {water=3, liquid=3, not_in_creative_inventory=1},
 })
 
