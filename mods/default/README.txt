@@ -98,6 +98,7 @@ Casimir (CC BY-SA 3.0)
   default_fence.png
   default_torch_on_ceiling_animated.png
   gui_hotbar*
+  default_cactus_fig.png (based on work by toby109tt)
 
 Gambit (CC BY-SA 4.0)
   default_book.png
@@ -160,6 +161,7 @@ tobyplowy (aka toby109tt) (CC BY 3.0)
   default_grass.png
   default_grass_side.png
   default_grass_footsteps.png
+  default_cactus_fig_item.png
 
 Rath (CC BY-SA 3.0)
   default_molten_rock*

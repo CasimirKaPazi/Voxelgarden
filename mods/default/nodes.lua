@@ -290,7 +290,29 @@ minetest.register_node("default:cactus", {
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
+		default.dig_up(pos, {name = "default:cactus_fig"}, digger)
 	end,
+})
+
+minetest.register_node("default:cactus_fig", {
+	description = "Cactus Fig",
+	drawtype = "plantlike",
+	tiles = {"default_cactus_fig.png"},
+	inventory_image = "default_cactus_fig_item.png",
+	wield_image = "default_cactus_fig_item.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	floodable = true,
+	groups = {oddly_breakable_by_hand=3, flammable=3, flora=1, falling_node=1},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.25, -0.5, -0.25, 0.25, 0.25, 0.25},
+	},
+	damage_per_second = 1,
+	on_use = minetest.item_eat(1),
 })
 
 minetest.register_node("default:papyrus", {

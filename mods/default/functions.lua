@@ -248,15 +248,19 @@ function default.grow_cactus(pos, node)
 	pos.y = pos.y + 1
 	local height = 0
 	node = minetest.get_node(pos)
-	while node.name == "default:cactus" and height < 4 do
+	while node.name == "default:cactus" and height < 5 do
 		height = height + 1
 		pos.y = pos.y + 1
 		node = minetest.get_node(pos)
 	end
-	if height < math.random(0, 5) and node.name == "air" then
+	if node.name ~= "air" then return end
+	-- Increased chance for figs to grow the taller the cactus is.
+	if height < math.random(2, 5) then
 		minetest.set_node(pos, {name="default:cactus"})
-		return true
+	else
+		minetest.set_node(pos, {name="default:cactus_fig"})
 	end
+	return true
 end
 
 function default.grow_papyrus(pos, node)
@@ -291,6 +295,20 @@ minetest.register_abm({
 	chance = 30,
 	action = function(...)
 		default.grow_cactus(...)
+	end,
+})
+
+minetest.register_abm({
+	label = "Grow cactus from fig",
+	nodenames = {"default:cactus_fig"},
+	neighbors = {"group:sand"},
+	interval = 7,
+	chance = 3,
+	action = function(pos, node)
+		local node_under = minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
+		if minetest.get_item_group(node_under.name, "sand") ~= 0 then
+			minetest.set_node(pos, {name="default:cactus"})
+		end
 	end,
 })
 
