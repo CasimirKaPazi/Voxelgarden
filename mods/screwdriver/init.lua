@@ -126,7 +126,7 @@ end
 minetest.register_craft({
 	output = "screwdriver:screwdriver",
 	recipe = {
-		{"default:steel_ingot"},
+		{"group:metal_ingot"},
 		{"group:stick"}
 	}
 })
