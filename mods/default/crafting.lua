@@ -448,17 +448,17 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:small_stone 4',
+	output = 'default:stone_crumbled 4',
 	recipe = {
-		{'default:gravel'},
+		{'default:cobble'},
 	}
 })
 
 minetest.register_craft({
-	output = 'default:gravel',
+	output = 'default:cobble',
 	recipe = {
-		{'default:small_stone', 'default:small_stone'},
-		{'default:small_stone', 'default:small_stone'},
+		{'default:stone_crumbled', 'default:stone_crumbled'},
+		{'default:stone_crumbled', 'default:stone_crumbled'},
 	}
 })
 
@@ -573,12 +573,12 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "default:stone",
-	recipe = "default:cobble",
+	recipe = "default:stone_crumbled",
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "default:stone",
+	output = "default:cobble",
 	recipe = "default:mossycobble",
 })
 

@@ -106,6 +106,7 @@ Casimir (CC BY-SA 3.0)
   default_tin_lump.png
   default_mineral_tin.png
   default_bronze_ingot.png
+  default_stone_crumbled.png (based on work by Gambit)
 
 Gambit (CC BY-SA 4.0)
   default_book.png

@@ -8,7 +8,14 @@ minetest.register_node("default:stone", {
 	description = "Stone",
 	tiles = {"default_stone.png"},
 	groups = {cracky=3, stone=1},
-	drop = 'default:cobble',
+	drop = 'default:stone_crumbled',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:stone_crumbled", {
+	description = "Crumbled Stone",
+	tiles = {"default_stone_crumbled.png"},
+	groups = {cracky=3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -128,7 +135,6 @@ minetest.register_node("default:gravel", {
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_gravel_footstep", gain=0.3},
 	}),
-	drop = "default:small_stone 4",
 })
 
 minetest.register_node("default:sandstone", {
