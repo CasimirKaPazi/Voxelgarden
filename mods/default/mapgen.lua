@@ -300,6 +300,89 @@ function default.register_mgv6_decorations()
 		y_max = 300,
 		decoration = "default:dry_shrub",
 	})
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:sand"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.5,
+			scale = 0.60,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 7013,
+			octaves = 3,
+			persist = 0.1,
+		},
+		y_min = -64,
+		y_max = -2,
+		decoration = "default:coral_brown",
+		height = 1,
+		height_max = 2,
+		flags = "force_placement",
+	})
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:sand"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.5,
+			scale = 0.64,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 7013,
+			octaves = 3,
+			persist = 0.1,
+		},
+		y_min = -64,
+		y_max = -2,
+		decoration = "default:coral_orange",
+		height = 1,
+		height_max = 2,
+		flags = "force_placement",
+	})
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:sand"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.5,
+			scale = 0.63,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 7013,
+			octaves = 3,
+			persist = 0.1,
+		},
+		y_min = -64,
+		y_max = -2,
+		decoration = "default:coral_purple",
+		height = 1,
+		height_max = 2,
+		flags = "force_placement",
+	})
+
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"default:dirt"},
+		-- Same params as grass.
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.06,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 329,
+			octaves = 3,
+			persist = 0.8
+		},
+		y_min = -64,
+		y_max = -2,
+		-- We use a schematic to replace the dirt.
+		schematic = {
+			size = {x = 1, y = 1, z = 1},
+			data = { {name = "default:seaweed"} },
+		},
+		flags = "force_placement",
+	})
 end
 
 default.register_mgv6_decorations()

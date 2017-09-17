@@ -99,6 +99,8 @@ Casimir (CC BY-SA 3.0)
   default_torch_on_ceiling_animated.png
   gui_hotbar*
   default_cactus_fig.png (based on work by toby109tt)
+  default_seaweed_top.png (based on work by Gambit)
+  default_coral_purple.png (based on work by Pithydon)
 
 Gambit (CC BY-SA 4.0)
   default_book.png
@@ -121,6 +123,7 @@ Gambit (CC BY-SA 4.0)
   default_lava_source_animated.png
   default_stone_brick.png
   default_brick.png
+  default_seaweed.png
 
 Originating from work by pixel32 (CC0)
   default_clay_lump.png
@@ -165,6 +168,11 @@ tobyplowy (aka toby109tt) (CC BY 3.0)
 
 Rath (CC BY-SA 3.0)
   default_molten_rock*
+
+Pithydon (CC BY-SA 3.0)
+  default_coral_brown.png
+  default_coral_orange.png
+  default_coral_skeleton.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/

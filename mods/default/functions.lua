@@ -286,6 +286,19 @@ function default.grow_papyrus(pos, node)
 	end
 end
 
+minetest.register_abm({
+	nodenames = {"default:coral_brown", "default:coral_orange", "default:coral_purple"},
+	neighbors = {"air"},
+	interval = 17,
+	chance = 5,
+	catch_up = false,
+	action = function(pos, node)
+		if not minetest.find_node_near(pos, 1, "group:water") then
+			minetest.set_node(pos, {name = "default:coral_skeleton"})
+		end
+	end,
+})
+
 -- Wrapping the functions in abm action is necessary to make overriding them possible.
 minetest.register_abm({
 	label = "Grow cactus",

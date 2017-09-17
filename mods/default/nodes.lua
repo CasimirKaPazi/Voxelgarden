@@ -1031,3 +1031,45 @@ minetest.register_node("default:snowblock", {
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 })
+
+minetest.register_node(":default:coral_brown", {
+	description = "Brown Coral",
+	tiles = {"default_coral_brown.png"},
+	groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node(":default:coral_orange", {
+	description = "Orange Coral",
+	tiles = {"default_coral_orange.png"},
+	groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node(":default:coral_purple", {
+	description = "Purple Coral",
+	tiles = {"default_coral_purple.png"},
+	groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node(":default:coral_skeleton", {
+	description = "Coral Skeleton",
+	tiles = {"default_coral_skeleton.png"},
+	groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node(":default:seaweed", {
+	description = "Dirt with Seaweed",
+	tiles = {"default_dirt.png^default_seaweed_top.png", "default_dirt.png"},
+	special_tiles = {{name = "default_seaweed.png",
+tileable_vertical = false}},
+	inventory_image = "default_seaweed.png",
+	drawtype = "plantlike_rooted",
+	groups = {crumbly=3, falling_node=1, soil=1},
+	drop = 'default:dirt',
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name="default_grass_footstep", gain=0.1},
+	}),
+})
