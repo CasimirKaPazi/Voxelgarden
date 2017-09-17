@@ -101,6 +101,11 @@ Casimir (CC BY-SA 3.0)
   default_cactus_fig.png (based on work by toby109tt)
   default_seaweed_top.png (based on work by Gambit)
   default_coral_purple.png (based on work by Pithydon)
+  default_tin_block.png
+  default_tin_ingot.png
+  default_tin_lump.png
+  default_mineral_tin.png
+  default_bronze_ingot.png
 
 Gambit (CC BY-SA 4.0)
   default_book.png
@@ -153,6 +158,7 @@ PilzAdam (CC BY-SA 3.0)
 
 kilbith (CC BY-SA 3.0)
   default_steel_block.png
+  default_bronze_block.png
   default_cobble.png
   default_mossycobble.png
 
