@@ -16,6 +16,12 @@ minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 2
 
+minetest.register_on_newplayer(function(player)
+	local physics = player:get_physics_override()
+	physics.jump = 1.25
+	player:set_physics_override(physics)
+end)
+
 -- Load files
 dofile(minetest.get_modpath("default").."/gui.lua")
 dofile(minetest.get_modpath("default").."/functions.lua")
