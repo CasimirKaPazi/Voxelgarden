@@ -62,7 +62,7 @@ Zeg9 (CC BY-SA 3.0):
 kaeza (CC BY-SA 4.0):
   bubble.png
   
-Casimir (CC BY-SA 3.0)
+Casimir (CC BY-SA 4.0)
   default_junglesapling.png
   default_jungleleaves.png
   default_mineral_mese.png
@@ -130,6 +130,7 @@ Gambit (CC BY-SA 4.0)
   default_stone_brick.png
   default_brick.png
   default_seaweed.png
+  default_sandstone.png
 
 BlockMen (CC BY 3.0)
   default_water.png
@@ -160,9 +161,10 @@ kilbith (CC BY-SA 3.0)
   default_cobble.png
   default_mossycobble.png
 
-MC PixelPerfection texture pack, converted by sofar (CC BY-SA 4.0)
+xssheep MC PixelPerfection texture pack, converted by sofar (CC BY-SA 4.0)
   default_leaves.png
   default_papyrus.png
+  default_granite.png
 
 tobyplowy (aka toby109tt) (CC BY 3.0)
   default_grass.png

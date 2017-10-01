@@ -27,6 +27,13 @@ minetest.register_node("default:desert_stone", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("default:granite", {
+	description = "Granite",
+	tiles = {"default_granite.png"},
+	groups = {cracky=1, stone=1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("default:stone_with_coal", {
 	description = "Coal Ore",
 	tiles = {"default_stone.png^default_mineral_coal.png"},
