@@ -16,7 +16,7 @@ minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
 minetest.nodedef_default.liquid_range = 2
 
-minetest.register_on_newplayer(function(player)
+minetest.register_on_joinplayer(function(player)
 	local physics = player:get_physics_override()
 	physics.jump = 1.25
 	player:set_physics_override(physics)
