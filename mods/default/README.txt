@@ -131,9 +131,6 @@ Gambit (CC BY-SA 4.0)
   default_brick.png
   default_seaweed.png
 
-Originating from work by pixel32 (CC0)
-  default_clay_lump.png
-
 BlockMen (CC BY 3.0)
   default_water.png
   default_water_source_animated.png
@@ -172,6 +169,8 @@ tobyplowy (aka toby109tt) (CC BY 3.0)
   default_grass_side.png
   default_grass_footsteps.png
   default_cactus_fig_item.png
+  default_clay.png
+  default_clay_lump.png
 
 Rath (CC BY-SA 3.0)
   default_molten_rock*
