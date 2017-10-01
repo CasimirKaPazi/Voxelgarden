@@ -22,15 +22,13 @@ Authors of media files
 
 Gambit (CC BY-SA 4.0):
   flowers_mushroom_*.png
-
-RHRhino (CC BY-SA 3.0):
   flowers_dandelion_white.png
   flowers_dandelion_yellow.png
   flowers_rose.png
   flowers_tulip.png
-
-Casimir (CC BY-SA 4.0)
   flowers_geranium.png
   flowers_viola.png
+
+Casimir (CC BY-SA 4.0)
   flowers_mushroom_brown_spores.png
   flowers_mushroom_red_spores.png

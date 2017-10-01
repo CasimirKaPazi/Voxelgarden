@@ -32,7 +32,7 @@ for _, row in ipairs(flowers.flowers) do
 	groups.falling_node = 1
 	minetest.register_node("flowers:"..name, {
 		description = desc,
-		drawtype = "plantlike",
+		drawtype = "torchlike",
 		tiles = {"flowers_"..name..".png"},
 		inventory_image = "flowers_"..name..".png",
 		wield_image = "flowers_"..name..".png",
