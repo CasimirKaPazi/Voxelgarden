@@ -1080,6 +1080,7 @@ minetest.register_node(":default:seaweed", {
 tileable_vertical = false}},
 	inventory_image = "default_seaweed.png",
 	drawtype = "plantlike_rooted",
+	waving = 1,
 	groups = {crumbly=3, falling_node=1, soil=1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({

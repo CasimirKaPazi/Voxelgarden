@@ -288,6 +288,7 @@ minetest.register_tool("default:sword_copper", {
 minetest.register_tool(":default:sword_bronze", {
 	description = "Bronze Sword",
 	inventory_image = "default_tool_bronzesword.png",
+	range = 3.0,
 	tool_capabilities = {
 		full_punch_interval = 2.0,
 		groupcaps={

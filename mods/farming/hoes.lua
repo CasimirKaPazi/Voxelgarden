@@ -130,7 +130,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "farming:hoe_copper",
+	output = "farming:hoe_bronze",
 	recipe = {
 		{"default:bronze_ingot", "default:bronze_ingot"},
 		{"", "group:stick"},
