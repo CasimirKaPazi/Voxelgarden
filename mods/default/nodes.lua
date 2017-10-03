@@ -308,6 +308,13 @@ minetest.register_node("default:cactus", {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}
 	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.1875, -0.5, -0.1875, 0.1875, 0.5, 0.1875},
+		}
+	},
+	damage_per_second = 1,
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
