@@ -772,3 +772,9 @@ minetest.register_craft({
 	recipe = "default:dry_shrub",
 	burntime = 5,
 })
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:fern_1",
+	burntime = 2,
+})

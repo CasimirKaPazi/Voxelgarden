@@ -182,6 +182,9 @@ Pithydon (CC BY-SA 3.0)
   default_coral_orange.png
   default_coral_skeleton.png
 
+Mossmanikin (CC BY-SA 3.0):
+  default_fern_*.png
+
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
   2: http://www.freesound.org/people/Tomlija/sounds/97669/

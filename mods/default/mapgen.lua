@@ -312,6 +312,26 @@ function default.register_mgv6_decorations()
 		})
 	end
 
+	-- Ferns
+	for length = 1, 3 do
+		minetest.register_decoration({
+			deco_type = "simple",
+			place_on = {"default:dirt_with_grass"},
+			sidelen = 16,
+			noise_params = {
+				offset = 0,
+				scale = 0.04,
+				spread = {x = 100, y = 100, z = 100},
+				seed = 800+length,
+				octaves = 3,
+				persist = 0.65
+			},
+			y_min = 6,
+			y_max = 31000,
+			decoration = "default:fern_" .. length,
+		})
+	end
+
 	-- Dry shrubs
 	minetest.register_decoration({
 		deco_type = "simple",
@@ -330,6 +350,7 @@ function default.register_mgv6_decorations()
 		decoration = "default:dry_shrub",
 	})
 
+	-- Corals
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"default:sand"},
@@ -390,6 +411,7 @@ function default.register_mgv6_decorations()
 		flags = "force_placement",
 	})
 
+	-- Seaweed
 	minetest.register_decoration({
 		deco_type = "schematic",
 		place_on = {"default:dirt"},
