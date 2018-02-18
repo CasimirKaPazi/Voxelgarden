@@ -112,6 +112,19 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "glass", "d
 		default.node_sound_glass_defaults(),
 		true)
 
+stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "sandstone", "default:sandstone",
+		{crumbly=2, cracky=2, not_in_creative_inventory=1, not_in_craft_guide=1},
+		{"default_sandstone.png"},
+		"Sandstone Stairs",
+		"Sandstone Corner",
+		"Sandstone Slab",
+		"Sandstone Wall",
+		"Sandstone Panel",
+		"Sandstone Microblock",
+		"sandstone",
+		default.node_sound_stone_defaults()
+		)
+
 minetest.register_craft({
 	output = "mesecons_pressureplates:pressure_plate_wood_off",
 	recipe = {
