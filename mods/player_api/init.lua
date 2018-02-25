@@ -15,6 +15,7 @@ player_api.register_model("character.b3d", {
 	},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.77, 0.3},
 	stepheight = 1.1,
+	eye_height = 1.625, 
 })
 
 -- Update appearance when the player joins
