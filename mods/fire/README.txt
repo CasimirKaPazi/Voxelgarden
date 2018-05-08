@@ -22,6 +22,10 @@ Authors of media files
 Everything not listed in here:
 Copyright (C) 2012 Perttu Ahola (celeron55) <celeron55@gmail.com>
 
+Casimir (CC BY-SA 3.0)
+  flint_firestriker.png
+  flint_tinder.png
+
 fire_small.ogg sampled from:
   http://www.freesound.org/people/dobroide/sounds/4211/
 

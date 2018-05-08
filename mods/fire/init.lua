@@ -1,7 +1,26 @@
 -- minetest/fire/init.lua
 fire = {}
 
+minetest.register_privilege("fire", {
+	description = "Player can set fire.",
+	give_to_singleplayer = true
+})
+
+minetest.register_alias("flint:tinder", "fire:tinder")
+minetest.register_alias("flint:firestriker", "fire:flint_and_steel")
+minetest.register_alias("nodetest:rock", "default:gravel")
+minetest.register_alias("flint:silex_ore", "default:gravel")
+minetest.register_alias("flint:silex", "default:cobble")
 minetest.register_alias("fire", "fire:basic_flame")
+
+function fire.node_should_burn(pos)
+	local p0 = {x=pos.x-1, y=pos.y-1, z=pos.z-1}
+	local p1 = {x=pos.x+1, y=pos.y+1, z=pos.z+1}
+	local ps = minetest.find_nodes_in_area(p0, p1, {"group:igniter"})
+	return (#ps >= 2)
+end
+
+dofile(minetest.get_modpath("fire").."/flintandsteel.lua")
 
 minetest.register_node("fire:basic_flame", {
 	description = "Fire",
@@ -33,13 +52,6 @@ minetest.register_node("fire:basic_flame", {
 		minetest.get_node_timer(pos):start(math.random(5, 10))
 	end,
 })
-
-function fire.node_should_burn(pos)
-	local p0 = {x=pos.x-1, y=pos.y-1, z=pos.z-1}
-	local p1 = {x=pos.x+1, y=pos.y+1, z=pos.z+1}
-	local ps = minetest.find_nodes_in_area(p0, p1, {"group:igniter"})
-	return (#ps >= 2)
-end
 
 if not minetest.settings:get_bool("disable_fire") then
 

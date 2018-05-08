@@ -1,8 +1,3 @@
-minetest.register_privilege("fire", {
-	description = "Player can set fire.",
-	give_to_singleplayer = true
-})
-
 local function strike_fire(user, pointed_thing)
 	-- Fire priviledge
 	local name = user:get_player_name()
@@ -15,8 +10,8 @@ local function strike_fire(user, pointed_thing)
 		local n_pointed_above = minetest.get_node(pointed_thing.above)
 		if not n_pointed_above.name == "air" then return end
 		local tinder = user:get_inventory():get_stack("main", user:get_wield_index()+1):get_name()
-		if tinder == "flint:tinder" then
-			user:get_inventory():remove_item("main", "flint:tinder")
+		if tinder == "fire:tinder" then
+			user:get_inventory():remove_item("main", "fire:tinder")
 			minetest.add_node(pointed_thing.above, {name="fire:basic_flame"})
 			return true
 		else
@@ -25,12 +20,12 @@ local function strike_fire(user, pointed_thing)
 	end
 end
 
-minetest.register_craftitem("flint:tinder", {
+minetest.register_craftitem("fire:tinder", {
 	description = "Tinder",
 	inventory_image = "flint_tinder.png",
 })
 
-minetest.register_tool("flint:firestriker", {
+minetest.register_tool("fire:flint_and_steel", {
 	description = "Fire Striker",
 	inventory_image = "flint_firestriker.png",
 	range = 2.0,
@@ -45,35 +40,29 @@ minetest.register_tool("flint:firestriker", {
 -- Craft
 
 minetest.register_craft({
-	output = 'flint:firestriker',
+	output = 'fire:flint_and_steel',
 	recipe = {
-		{'default:steel_ingot', 'default:cobble'},
+		{'default:cobble', 'default:steel_ingot'},
 	}
 })
 
 minetest.register_craft({
-	output = 'flint:tinder',
+	output = 'fire:tinder',
 	recipe = {
 		{'farming:cotton'},
 	}
 })
 
 minetest.register_craft({
-	output = 'flint:tinder',
+	output = 'fire:tinder',
 	recipe = {
 		{'farming:wheat'},
 	}
 })
 
 minetest.register_craft({
-	output = 'flint:tinder',
+	output = 'fire:tinder',
 	recipe = {
 		{'default:paper'},
 	}
 })
-
--- Alias
-
-minetest.register_alias("nodetest:rock", "default:gravel")
-minetest.register_alias("flint:silex_ore", "default:gravel")
-minetest.register_alias("flint:silex", "default:small_stone")
