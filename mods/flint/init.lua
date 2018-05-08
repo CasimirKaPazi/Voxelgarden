@@ -47,7 +47,7 @@ minetest.register_tool("flint:firestriker", {
 minetest.register_craft({
 	output = 'flint:firestriker',
 	recipe = {
-		{'default:steel_ingot', 'default:small_stone'},
+		{'default:steel_ingot', 'default:cobble'},
 	}
 })
 
