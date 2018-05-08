@@ -64,5 +64,6 @@ minetest.register_alias("steel", "default:steel_ingot")
 minetest.register_alias("clay_brick", "default:clay_brick")
 
 -- Old node names
+minetest.register_alias("default:small_stone", "default:stone_crumbled")
 minetest.register_alias("default:mese_block", "default:mese")
 minetest.register_alias("default:nyancat_rainbow", "default:rainbow")
