@@ -1,17 +1,7 @@
 Voxelgarden 0.4.16
 ==================
 
-A Subgame for Minetest
-
-
-Download and Install
---------------------
-
-Download either the latest [stable release](https://github.com/CasimirKaPazi/Voxelgarden/archive/master.zip).
-
-If you run the latest minetest you can use the [rolling release](https://github.com/CasimirKaPazi/Voxelgarden/archive/master.zip).
-
-Unzip the archive and place the folder in your Minetest installation ```minetest/games/Voxelgarden```.
+A survival game for the Minetest engine, for exploring, progress and building.
 
 
 Getting Started
@@ -21,7 +11,7 @@ Getting Started
 
 When you open your inventory, the **craftguide** is the red-white ring top left.
 
-You need to find flint to craft your first stone tools. Flint deposits look similar to gravel.
+You need to find broken stone to craft your first stone tools.
 
 
 Contribute
@@ -31,9 +21,9 @@ Issues use the system of:
 
     bugs >> cleanups >> features >> nice to haves
 
-Which means bugs are done first, then cleanups, than features, than the things nice to have. Every issue should be labeled with one of those.
+Which means bugs are done first, then cleanups, than new features, than the things nice to have. Every issue should be labeled with one of those.
 
-This has the downside of having a few features, but the upside of having a stable and mostly bug free base to work with and little maintenance. And I prefer to have a few well done features working over many not working.
+This has the downside of having only few features, but the upside of having a stable and mostly bug free base to work with and little maintenance. And I prefer to have a few well done features working over many not working.
 
 Bigger additions should work as a mod on their own. This allows easier testing, benefits a modular design and ensure that they can still be used as a mod if the feature does not get merged.
 
