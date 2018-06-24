@@ -1060,6 +1060,7 @@ minetest.register_node("default:ice", {
 	liquids_pointable = true,
 	sunlight_propagates = true,
 	groups = {cracky=3, slippery = 3},
+	is_ground_content = false,
 	sounds = default.node_sound_glass_defaults(),
 })
 

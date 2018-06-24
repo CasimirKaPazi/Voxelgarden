@@ -1,9 +1,7 @@
---
--- Water renewable
---
-
 -- If the water edge is a straight line flowing has 3 neighbors,
 -- everything curved inwards would be more, anything outwards would be less.
+-- Water nodes propagate downwards to fill holes.
+
 local function count_source(pos, source)
 	local p0 = {x=pos.x-1, y=pos.y, z=pos.z-1}
 	local p1 = {x=pos.x+1, y=pos.y, z=pos.z+1}
@@ -53,7 +51,7 @@ local function register_dynamic_liquid(source, flowing)
 			end
 			if node.param2 == 0 or node.param2 == 7 then
 				-- Renewable
-				if count_source(pos, source) >= 4 then
+				if count_source(pos, source) >= 5 then
 					minetest.set_node(pos, {name = source})
 				end
 			end
