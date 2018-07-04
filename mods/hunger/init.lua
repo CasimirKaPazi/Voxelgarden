@@ -74,7 +74,7 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	else
 		full = full + 2*hp_change
 	end
-	local headpos  = player:getpos()
+	local headpos  = player:get_pos()
 	headpos.y = headpos.y + 1
 	minetest.sound_play("hunger_eating", {pos = headpos, gain = 1.0, max_hear_distance = 32})
 	hunger.update_bar(player, full)
@@ -110,7 +110,7 @@ minetest.register_globalstep(function(dtime)
 		if full <= 0 then
 			player:set_hp(hp - 1)
 			full = 20
-			local pos_sound  = player:getpos()
+			local pos_sound  = player:get_pos()
 			minetest.chat_send_player(name, "You are hungry.")
 		end
 		player_is_active[name] = false

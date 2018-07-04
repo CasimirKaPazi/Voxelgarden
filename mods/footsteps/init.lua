@@ -30,7 +30,7 @@ minetest.register_globalstep(function(dtime)
 	timer = 0
 	
 	for _,player in ipairs(minetest.get_connected_players()) do
-		local pos = player:getpos()
+		local pos = player:get_pos()
 		local player_name = player:get_player_name()
 		player_pos[player_name] = { x=math.floor(pos.x+0.5), y=math.floor(pos.y+0.5), z=math.floor(pos.z+0.5) }
 		local p_ground = { x=math.floor(pos.x+0.5), y=math.floor(pos.y), z=math.floor(pos.z+0.5) }

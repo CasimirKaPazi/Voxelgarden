@@ -130,7 +130,7 @@ local function may_replace(pos, player)
 end
 
 function bones.place_bones(player)
-	local pos = player:getpos()
+	local pos = player:get_pos()
 	pos.x = math.floor(pos.x+0.5)
 	pos.y = math.floor(pos.y+0.5)
 	pos.z = math.floor(pos.z+0.5)

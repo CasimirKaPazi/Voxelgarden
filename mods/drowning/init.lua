@@ -83,7 +83,7 @@ local function reset_drown_state(player)
 end
 
 local function is_player_in_liquid(player)
-	local pos = player:getpos()
+	local pos = player:get_pos()
 	pos.x = math.floor(pos.x+0.5)
 	pos.y = math.floor(pos.y+2.0)
 	pos.z = math.floor(pos.z+0.5)
@@ -96,7 +96,7 @@ local function is_player_in_liquid(player)
 end
 
 local function play_drown_sound(player, filename, hear_distance)
-	local headpos  = player:getpos()
+	local headpos  = player:get_pos()
 	headpos.y = headpos.y + 1
 	minetest.sound_play(filename,
 		{pos = headpos, gain = 1.0, max_hear_distance = hear_distance})

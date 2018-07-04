@@ -36,7 +36,7 @@ local function register_dynamic_liquid(source, flowing)
 			-- What we check for can only be true for those two flowing types.
 			if node.param2 == 15 then
 				-- Flowing down
-				above = {x = pos.x, y = pos.y + 1, z = pos.z}
+				local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 				for _, p in ipairs(source_pos) do
 					local s_pos = {x = above.x + p.x, y = above.y + p.y, z = above.z + p.z}
 					local n_checked = minetest.get_node(s_pos)
