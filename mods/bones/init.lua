@@ -23,7 +23,8 @@ minetest.register_node("bones:bones", {
 		"bones_front.png"
 	},
 	paramtype2 = "facedir",
-	groups = {dig_immediate=2},
+	groups = {crumbly=3},
+	drop = "",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_gravel_footstep", gain=0.45},
 	}),
@@ -80,10 +81,7 @@ minetest.register_node("bones:bones", {
 
 		-- Remove bones if player emptied them
 		if has_space then
-			if player_inv:room_for_item("main", "bones:bones") then
-				player_inv:add_item("main", "bones:bones")
-				minetest.remove_node(pos)
-			end
+			minetest.remove_node(pos)
 		end
 	end,
 	on_timer = function(pos, elapsed)
