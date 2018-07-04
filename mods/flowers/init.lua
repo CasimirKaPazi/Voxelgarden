@@ -108,7 +108,7 @@ for _, row in ipairs(flowers.mushrooms) do
 			fixed = {-0.5, -0.5, -0.5, 0.5, -0.5 + (1 / 16), 0.5}
 		},
 		tiles = {"flowers_"..name.."_spores.png"},
-		inventory_image = {"flowers_"..name.."_spores.png"},
+		inventory_image = "flowers_"..name.."_spores.png",
 		paramtype = "light",
 		sunlight_propagates = true,
 		walkable = false,
