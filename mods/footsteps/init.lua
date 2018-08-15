@@ -11,6 +11,14 @@ minetest.register_on_leaveplayer(function(player)
 	player_pos_previous[player_name] = nil
 end)
 
+minetest.override_item("default:dirt_with_grass_footsteps", {
+	on_timer = function(pos)
+		local node = minetest.get_node(pos)
+		node.name = "default:dirt_with_grass"
+		minetest.add_node(pos, node)
+	end,
+})
+
 -- Chance to change is odd of 100
 local odd = 30
 local timer = 0
@@ -22,7 +30,7 @@ minetest.register_globalstep(function(dtime)
 	timer = 0
 	
 	for _,player in ipairs(minetest.get_connected_players()) do
-		local pos = player:getpos()
+		local pos = player:get_pos()
 		local player_name = player:get_player_name()
 		player_pos[player_name] = { x=math.floor(pos.x+0.5), y=math.floor(pos.y+0.5), z=math.floor(pos.z+0.5) }
 		local p_ground = { x=math.floor(pos.x+0.5), y=math.floor(pos.y), z=math.floor(pos.z+0.5) }
@@ -43,36 +51,19 @@ minetest.register_globalstep(function(dtime)
 		then
 			return
 		end
+
+		
 			
 		-- Make footsteps
-		if n_ground.name == "default:dirt_with_grass" then
-			if math.random(1, 100) <= odd then
+		if math.random(1, 100) <= odd then
+			if n_ground.name == "default:dirt_with_grass" or "default:dirt_with_grass_footsteps" then
 				minetest.add_node(p_ground,{type="node",name="default:dirt_with_grass_footsteps"})
+				minetest.get_node_timer(p_ground):start(math.random(3, 48))
 			end
-		end
-		
-		if ( minetest.get_modpath("farming") ) ~= nil then
-		if n_ground.name == "farming:soil" then
-			if math.random(1, 100) <= odd then
+			
+			if n_ground.name == "farming:soil" or n_ground.name == "farming:soil_wet" then
 				minetest.add_node(p_ground,{type="node",name="default:dirt"})
 			end
-		elseif n_ground.name == "farming:soil_wet" then
-			if math.random(1, 100) <= odd then
-				minetest.add_node(p_ground,{type="node",name="default:dirt"})
-			end
-		end
-		end
-		
-		if ( minetest.get_modpath("garden") ) ~= nil then
-		if n_ground.name == "garden:soil" then
-			if math.random(1, 100) <= odd then
-				minetest.add_node(p_ground,{type="node",name="default:dirt"})
-			end
-		elseif n_ground.name == "garden:soil_wet" then
-			if math.random(1, 100) <= odd then
-				minetest.add_node(p_ground,{type="node",name="default:dirt"})
-			end
-		end
 		end
 	
 		-- Make position to previous position
@@ -80,24 +71,10 @@ minetest.register_globalstep(function(dtime)
 	end
 end)
 
-minetest.register_abm({
+minetest.register_lbm({
+	name = "footsteps:convert_footsteps_to_node_timer",
 	nodenames = {"default:dirt_with_grass_footsteps"},
-	interval = 5,
-	chance = 1,
-	action = function(pos, node)
-		local meta = minetest.get_meta(pos)
-		local decay = meta:get_int("decay")
-		if not decay then
-			meta:set_int("decay", 1)
-			return
-		end
-		if decay >= math.random(36, 44) then
-			node.name = "default:dirt_with_grass"
-			minetest.add_node(pos, node)
-			meta:set_int("decay", nil)
-			return
-		end
-		decay = decay + 1
-		meta:set_int("decay", decay)
+	action = function(pos)
+		minetest.get_node_timer(pos):start(math.random(3, 48))
 	end
 })
