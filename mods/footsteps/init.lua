@@ -56,7 +56,8 @@ minetest.register_globalstep(function(dtime)
 			
 		-- Make footsteps
 		if math.random(1, 100) <= odd then
-			if n_ground.name == "default:dirt_with_grass" or "default:dirt_with_grass_footsteps" then
+			if n_ground.name == "default:dirt_with_grass"
+				or n_ground.name == "default:dirt_with_grass_footsteps" then
 				minetest.add_node(p_ground,{type="node",name="default:dirt_with_grass_footsteps"})
 				minetest.get_node_timer(p_ground):start(math.random(3, 48))
 			end
