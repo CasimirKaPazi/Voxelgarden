@@ -250,7 +250,7 @@ minetest.register_tool("default:sword_wood", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[2]=2.8, [3]=0.30}, uses=60-1, maxlevel=0},
+			snappy={times={[2]=2.8, [3]=0.60}, uses=60-1, maxlevel=0},
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -264,7 +264,7 @@ minetest.register_tool("default:sword_stone", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[2]=1.20, [3]=0.20}, uses=240-1, maxlevel=0},
+			snappy={times={[2]=1.20, [3]=0.50}, uses=240-1, maxlevel=0},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -278,7 +278,7 @@ minetest.register_tool("default:sword_copper", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[1]=2.8, [2]=1.10, [3]=0.15}, uses=160-1, maxlevel=0},
+			snappy={times={[1]=2.8, [2]=1.10, [3]=0.40}, uses=160-1, maxlevel=0},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -292,7 +292,7 @@ minetest.register_tool(":default:sword_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[1]=2.6, [2]=1.00, [3]=0.10}, uses=240
+			snappy={times={[1]=2.6, [2]=1.00, [3]=0.30}, uses=240
 -1, maxlevel=0},
 		},
 		damage_groups = {fleshy=3},
@@ -307,7 +307,7 @@ minetest.register_tool("default:sword_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[1]=2.4, [2]=0.90, [3]=0.05}, uses=360-1, maxlevel=0},
+			snappy={times={[1]=2.4, [2]=0.90, [3]=0.20}, uses=360-1, maxlevel=0},
 		},
 		damage_groups = {fleshy=4},
 	},
