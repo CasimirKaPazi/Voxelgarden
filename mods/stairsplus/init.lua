@@ -125,6 +125,19 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "sandstone"
 		default.node_sound_stone_defaults()
 		)
 
+stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "stonebrick", "default:stonebrick",
+		{cracky=1, not_in_creative_inventory=1, not_in_craft_guide=1},
+		{"default_stone_brick.png"},
+		"Stone Brick Stairs",
+		"Stone Brick Corner",
+		"Stone Brick Slab",
+		"Stone Brick Wall",
+		"Stone Brick Panel",
+		"Stone Brick Microblock",
+		"stonebrick",
+		default.node_sound_stone_defaults()
+		)
+
 minetest.register_craft({
 	output = "mesecons_pressureplates:pressure_plate_wood_off",
 	recipe = {
