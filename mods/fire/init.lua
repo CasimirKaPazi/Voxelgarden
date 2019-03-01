@@ -37,6 +37,7 @@ minetest.register_node("fire:basic_flame", {
 	drop = "",
 	walkable = false,
 	buildable_to = true,
+	floodable = true,
 	sunlight_propagates = true,
 	damage_per_second = 4,
 	on_timer = function(pos)
