@@ -3500,6 +3500,8 @@ function mobs:boom(self, pos, radius)
 			damage_radius = radius,
 			sound = self.sounds and self.sounds.explode,
 			explode_center = true,
+			disable_drops = true,
+			ignite_only = true,
 		})
 	else
 		mobs:safe_boom(self, pos, radius)
