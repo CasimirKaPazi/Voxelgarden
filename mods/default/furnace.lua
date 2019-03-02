@@ -5,13 +5,13 @@
 local function active_formspec(fuel_percent, item_percent)
 	local formspec = 
 		"size[8,8.5]"..
-		"list[current_name;src;3,0.5;1,1;]"..
-		"list[current_name;fuel;3,2.5;1,1;]"..
-		"image[3,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
+		"list[current_name;src;2.5,3;1,1;]"..
+		"list[current_name;fuel;3.5,1.5;1,1;]"..
+		"image[3.5,0.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
 		(100-fuel_percent)..":default_furnace_fire_fg.png]"..
-		"image[4,1.5;1,1;gui_furnace_arrow_bg.png^[lowpart:"..
+		"image[3.5,3;1,1;gui_furnace_arrow_bg.png^[lowpart:"..
 		(item_percent)..":gui_furnace_arrow_fg.png^[transformR270]"..
-		"list[current_name;dst;5,1;2,2;]"..
+		"list[current_name;dst;4.5,3;1,1;]"..
 		"list[current_player;main;0,4.75;8,4;]"..
 		"listring[current_name;dst]"..
 		"listring[current_player;main]"..
@@ -24,11 +24,11 @@ end
 
 local inactive_formspec =
 	"size[8,8.5]"..
-	"list[current_name;src;3,0.5;1,1;]"..
-	"list[current_name;fuel;3,2.5;1,1;]"..
-	"image[3,1.5;1,1;default_furnace_fire_bg.png]"..
-	"image[4,1.5;1,1;gui_furnace_arrow_bg.png^[transformR270]"..
-	"list[current_name;dst;5,1;2,2;]"..
+	"list[current_name;src;2.5,3;1,1;]"..
+	"list[current_name;fuel;3.5,1.5;1,1;]"..
+	"image[3.5,0.5;1,1;default_furnace_fire_bg.png]"..
+	"image[3.5,3;1,1;gui_furnace_arrow_bg.png^[transformR270]"..
+	"list[current_name;dst;4.5,3;1,1;]"..
 	"list[current_player;main;0,4.75;8,4;]"..
 	"listring[current_name;dst]"..
 	"listring[current_player;main]"..
@@ -225,6 +225,8 @@ end
 -- Node definitions
 --
 
+-- Stone furnace
+
 minetest.register_node("default:furnace", {
 	description = "Furnace",
 	tiles = {
@@ -246,7 +248,7 @@ minetest.register_node("default:furnace", {
 		local inv = meta:get_inventory()
 		inv:set_size('src', 1)
 		inv:set_size('fuel', 1)
-		inv:set_size('dst', 4)
+		inv:set_size('dst', 1)
 	end,
 
 	on_metadata_inventory_move = function(pos)
