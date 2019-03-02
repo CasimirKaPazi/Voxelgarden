@@ -30,7 +30,7 @@ mobs:register_mob("mobs_flat:rat", {
 	fear_height = 2,
 	floats = 1,
 	on_rightclick = function(self, clicker)
-		mobs:capture_mob(self, clicker, 50, 90, 0, true, "mobs_flat:rat")
+		mobs:capture_mob(self, clicker, 50, 90, 0, true, "mobs_flat:rat_caught")
 	end,
 })
 
