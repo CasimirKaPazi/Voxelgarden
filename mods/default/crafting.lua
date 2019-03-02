@@ -316,6 +316,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:clay_furnace',
+	recipe = {
+		{'default:clay', 'default:clay', 'default:clay'},
+		{'default:clay', '', 'default:clay'},
+		{'default:clay', 'default:clay', 'default:clay'},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:coalblock',
 	recipe = {
 		{'default:coal_lump', 'default:coal_lump', 'default:coal_lump'},
