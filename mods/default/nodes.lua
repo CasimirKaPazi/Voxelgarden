@@ -1066,7 +1066,7 @@ minetest.register_node("default:ice", {
 	paramtype = "light",
 	liquids_pointable = true,
 	sunlight_propagates = true,
-	groups = {cracky=3, slippery = 3},
+	groups = {cracky=3, slippery = 3, cools_lava = 1},
 	is_ground_content = false,
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -1105,7 +1105,7 @@ minetest.register_node("default:snow", {
 minetest.register_node("default:snowblock", {
 	description = "Snow Block",
 	tiles = {"default_snow.png"},
-	groups = {crumbly=3, fall_damage_add_percent=default.COUSHION},
+	groups = {crumbly=3, cools_lava = 1, fall_damage_add_percent=default.COUSHION,},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
