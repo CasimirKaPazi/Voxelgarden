@@ -114,8 +114,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "nodetest:bonfire",
 	recipe = {
-		{"", "group:wood", ""},
-		{"group:wood", "group:leaves", "group:wood"},
+		{"", "group:leaves", ""},
+		{"group:stick", "group:stick", "group:stick"},
 	}
 })
 

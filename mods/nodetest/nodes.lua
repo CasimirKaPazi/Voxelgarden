@@ -88,7 +88,7 @@ minetest.register_node("nodetest:bonfire", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	drop = "default:coal_lump",
+	drop = "",
 	damage_per_second = 1,
 	light_source = 12,
 	groups = {snappy=3, attached_node=1},

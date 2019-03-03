@@ -19,8 +19,12 @@ Authors of media files
 -----------------------
 Everything not listed in here:
 Copyright (C) 2010-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
+
+Pixelbox by Gambit (CC BY-SA 4.0)
+  nodetest_bonfire_animated.png
   
 Casimir (CC BY-SA 4.0)
+  nodetest_bonfire.png (Based on Pixlebox)
   nodetest_bone.png
   nodetest_papyrus_roots.png
   nodetest_seedling
