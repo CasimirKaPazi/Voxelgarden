@@ -1,7 +1,8 @@
-Voxelgarden 0.4.16
+Voxelgarden 5.0.0
 ==================
 
-A survival game for the Minetest engine, for exploring, progress and building.
+A classic game for the Minetest engine.
+Explore, survive and build.
 
 
 Getting Started
@@ -41,4 +42,4 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 For every mod applies the original license. See list below.
 All other media is licenced under Creative Commons BY-SA license.
 
-bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), drowning (LGPL), dye (LGPL), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory_plus (GPL), nodetest (LGPL), no_itemdrop (LGPL), screwdriver (LGPL), stairsplus (zlib/libpng), walls (LGPL) wool (LGPL), zcg (LGPL)
+beds (LGPL), binoculars (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), drowning (LGPL), dye (LGPL), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory_plus (GPL), mobs (MIT), mobs_flat (LGPL), nodetest (LGPL), physics (LGPL), player_api (LGPL), screwdriver (LGPL), stairs (LGPL), stairsplus (zlib/libpng), tnt (LGPL), walls (LGPL) wool (LGPL), xpanes (LGPL), zcg (LGPL)
