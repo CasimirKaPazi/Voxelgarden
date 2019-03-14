@@ -42,8 +42,8 @@ mobs:register_mob("mobs_flat:dungeon_master", {
 
 mobs:spawn({
 	name = "mobs_flat:dungeon_master",
-	nodes = {"default:cobble", "default:mossycobble"},
-	neighbors = {"default:mese", "default:stone_with_mese", "default:lava_source", "default:mossycobble"},
+	nodes = {"default:mossycobble"},
+	neighbors = {"default:mese", "default:stone_with_mese", "default:lava_source"},
 	chance = 70,
 	active_object_count = 2,
 })

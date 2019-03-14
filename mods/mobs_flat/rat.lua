@@ -37,7 +37,8 @@ mobs:register_mob("mobs_flat:rat", {
 
 mobs:spawn({
 	name = "mobs_flat:rat",
-	nodes = {"default:dirt_with_grass", "default:dirt"},
+	nodes = {"default:dirt_with_grass"},
+	neighbors = {"default:grass_1", "default:grass_2", "default:grass_3", "default:grass_4", "default:grass_5"},
 	chance = 70,
 	active_object_count = 2
 })
