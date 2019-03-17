@@ -3650,27 +3650,23 @@ function mobs:capture_mob(self, clicker, chance_hand, chance_net, chance_lasso, 
 	local tool = clicker:get_wielded_item()
 
 	-- are we using hand, net or lasso to pick up mob?
-	if tool:get_name() ~= ""
-	and tool:get_name() ~= "mobs:net"
-	and tool:get_name() ~= "mobs:lasso" then
-		return false
-	end
+--	if tool:get_name() ~= ""
+--	and tool:get_name() ~= "mobs:net"
+--	and tool:get_name() ~= "mobs:lasso" then
+--		return false
+--	end
 
 	-- is mob tamed?
 	if self.tamed == false
 	and force_take == false then
-
 		minetest.chat_send_player(name, S("Not tamed!"))
-
 		return true -- false
 	end
 
 	-- cannot pick up if not owner
 	if self.owner ~= name
 	and force_take == false then
-
 		minetest.chat_send_player(name, S("@1 is owner!", self.owner))
-
 		return true -- false
 	end
 
@@ -3678,26 +3674,16 @@ function mobs:capture_mob(self, clicker, chance_hand, chance_net, chance_lasso, 
 
 		-- was mob clicked with hand, net, or lasso?
 		local chance = 0
-
-		if tool:get_name() == "" then
-			chance = chance_hand
-
-		elseif tool:get_name() == "mobs:net" then
-
+		if tool:get_name() == "mobs:net" then
 			chance = chance_net
-
 			tool:add_wear(4000) -- 17 uses
-
 			clicker:set_wielded_item(tool)
-
 		elseif tool:get_name() == "mobs:lasso" then
-
 			chance = chance_lasso
-
 			tool:add_wear(650) -- 100 uses
-
 			clicker:set_wielded_item(tool)
-
+		else
+			chance = chance_hand
 		end
 
 		-- calculate chance.. add to inventory if successful?
