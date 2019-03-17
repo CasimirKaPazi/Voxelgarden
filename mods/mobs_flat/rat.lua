@@ -4,7 +4,7 @@ mobs:register_mob("mobs_flat:rat", {
 	attack_type = "dogfight",
 	group_attack = true,
 	pathfinding = true,
-	reach = 0.5,
+	reach = 1,
 	damage = 1,
 	hp_min = 1,
 	hp_max = 4,
@@ -29,8 +29,16 @@ mobs:register_mob("mobs_flat:rat", {
 	light_damage = 0,
 	fear_height = 2,
 	floats = 1,
-	on_rightclick = function(self, clicker)
-		mobs:capture_mob(self, clicker, 50, 90, 0, true, "mobs_flat:rat_caught")
+	on_rightclick = function(self, player)
+		local caught = mobs:capture_mob(self, player, 50, 90, 0, true, "mobs_flat:rat_caught")
+		if caught == false then 
+			if self.state == "attack" then
+				return
+			end
+
+			self.attack = player
+			self.state = "attack"
+		end
 	end,
 })
 

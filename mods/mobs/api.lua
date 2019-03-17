@@ -3744,6 +3744,7 @@ function mobs:capture_mob(self, clicker, chance_hand, chance_net, chance_lasso, 
 			minetest.chat_send_player(name, S("Missed!"))
 
 			mob_sound(self, "mobs_swing")
+			return false
 		end
 	end
 
