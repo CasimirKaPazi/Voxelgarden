@@ -30,7 +30,7 @@ minetest.register_node("farming:weed", {
 })
 
 minetest.register_abm({
-	nodenames = {"farming:soil_wet", "farming:soil"},
+	nodenames = {"farming:soil", "farming:soil_wet", "farming:soil_footsteps", "farming:soil_wet_footsteps"},
 	interval = 23,
 	chance = 23,
 	action = function(pos, node)
@@ -63,7 +63,7 @@ minetest.register_craftitem("farming:wheat", {
 local max_stage = 4
 local stages = farming.register_stages(max_stage, "farming:wheat")
 
-minetest.override_item("farming:wheat_"..max_stage.."", {
+minetest.override_item("farming:wheat_"..max_stage, {
 	drop = {
 		max_items = 4,
 		items = {
@@ -152,6 +152,16 @@ minetest.register_craft({
 	burntime = 10
 })
 
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 32,
+	fill_ratio = 0.0001,
+	y_min = 1,
+	y_max = 300,
+	decoration = "farming:wheat_"..max_stage,
+})
+
 --
 -- Cotton
 --
@@ -169,13 +179,11 @@ local max_stage = 3
 local stages = {}
 local stages = farming.register_stages(max_stage, "farming:cotton")
 
-minetest.override_item("farming:cotton_"..max_stage.."", {
+minetest.override_item("farming:cotton_"..max_stage, {
 	after_dig_node = function(pos, node, clicker, itemstack)
 		minetest.add_node(pos, {name="farming:cotton_1"})
-	end
-})
+	end,
 
-minetest.override_item("farming:cotton_"..max_stage.."", {
 	drop = {
 		max_items = 3,
 		items = {
@@ -230,4 +238,14 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:cotton",
 	burntime = 1
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 32,
+	fill_ratio = 0.0001,
+	y_min = 1,
+	y_max = 300,
+	decoration = "farming:cotton_"..max_stage,
 })

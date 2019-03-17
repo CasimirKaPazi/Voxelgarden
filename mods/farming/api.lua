@@ -10,7 +10,7 @@ function farming.hoe_on_use(itemstack, placer, pos, uses)
 		return
 	end
 	-- place node
-	if above.name ~= "air" then return end
+	if above.walkable == "true" then return end
 	if minetest.get_item_group(under.name, "soil") ~= 1 then return end
 	minetest.set_node(pos, {name = "farming:soil"})
 	minetest.sound_play("default_dig_crumbly", {
@@ -66,7 +66,7 @@ function farming.register_stages(max_stage, name, description)
 				type = "fixed",
 				fixed = {-0.375, -0.5, -0.375, 0.375, hight, 0.375},
 			},
-			groups = {snappy=3, flammable=2, not_in_creative_inventory=1, falling_node=1},
+			groups = {snappy=3, flammable=2, falling_node=1},
 			sounds = default.node_sound_leaves_defaults(),
 		})
 
