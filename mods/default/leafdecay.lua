@@ -15,14 +15,15 @@ local function leafupdate(p0)
 	for xi = -1, 1 do
 	for yi = -1, 1 do
 	for zi = -1, 1 do
-		if xi == 0 and yi == 0 and zi == 0 then return end
-		local p1 = {x=p0.x + xi, y=p0.y + yi, z=p0.z + zi}
-		local node = minetest.get_node(p1)
-		local n_def = minetest.registered_nodes[node.name]
-		if not n_def then return end
-		local range = minetest.registered_nodes[node.name].groups.leafdecay
-		if range then
-			minetest.after(math.random(1,8), default.leafdecay, p1)
+		if not (xi == 0 and yi == 0 and zi == 0) then
+			local p1 = {x=p0.x + xi, y=p0.y + yi, z=p0.z + zi}
+			local node = minetest.get_node(p1)
+			local n_def = minetest.registered_nodes[node.name]
+			if not n_def then return end
+			local range = minetest.registered_nodes[node.name].groups.leafdecay
+			if range then
+				minetest.after(math.random(1,8), default.leafdecay, p1)
+			end
 		end
 	end
 	end
