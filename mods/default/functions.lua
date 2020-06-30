@@ -45,6 +45,18 @@ function default.node_sound_sand_defaults(table)
 	return table
 end
 
+function default.node_sound_gravel_defaults(table)
+	table = table or {}
+	table.footstep = table.footstep or
+			{name="default_grass_footstep", gain=0.2}
+	--table.dug = table.dug or
+	--		{name="default_dirt_break", gain=0.25}
+	table.dug = table.dug or
+			{name="", gain=0.25}
+	default.node_sound_defaults(table)
+	return table
+end
+
 function default.node_sound_wood_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
@@ -160,9 +172,9 @@ minetest.register_abm({
 
 default.cool_lava = function(pos, node)
 	if node.name == "default:lava_source" then
-		minetest.set_node(pos, {name = "default:molten_rock"})
+		minetest.set_node(pos, {name = "default:obsidian"})
 	else -- Lava flowing
-		minetest.set_node(pos, {name = "default:stone"})
+		minetest.set_node(pos, {name = "default:molten_rock"})
 	end
 	minetest.sound_play("default_cool_lava",
 		{pos = pos, max_hear_distance = 16, gain = 0.25})

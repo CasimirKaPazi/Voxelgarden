@@ -561,6 +561,29 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "default:obsidian_shard 9",
+	recipe = {
+		{"default:obsidian"}
+	}
+})
+
+minetest.register_craft({
+	output = "default:obsidian",
+	recipe = {
+		{"default:obsidian_shard", "default:obsidian_shard", "default:obsidian_shard"},
+		{"default:obsidian_shard", "default:obsidian_shard", "default:obsidian_shard"},
+		{"default:obsidian_shard", "default:obsidian_shard", "default:obsidian_shard"},
+	}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:obsidian_glass",
+	recipe = "default:obsidian_shard",
+})
+
+
 --
 -- Crafting (tool repair)
 --
@@ -786,4 +809,10 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "default:fern_1",
 	burntime = 2,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:molten_rock",
+	burntime = 360,
 })

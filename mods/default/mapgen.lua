@@ -42,6 +42,27 @@ minetest.register_alias("mapgen_stair_sandstone", "stairsplus:stair_sandstone")
 
 minetest.register_ore({
 	ore_type       = "sheet",
+	ore            = "air",
+	wherein        = {"default:stone", "default:desert_stone"},
+	column_height_min = 1,
+	column_height_max = 12,
+	column_midpoint_factor = 0.6,
+	noise_params = {
+	    offset  = -1.3,
+	    scale   = 3,
+	    spread  = {x=100, y=100, z=100},
+	    seed    = 8565,
+	    octaves = 1,
+	    persist = 0.5,
+	    flags = "eased",
+	},
+	noise_threshold = 1.6,
+	y_min     = -31000,
+	y_max     = 64,
+})
+
+minetest.register_ore({
+	ore_type       = "sheet",
 	ore            = "default:granite",
 	wherein        = {"default:stone", "default:desert_stone"},
 	column_height_min = 1,

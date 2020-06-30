@@ -1153,3 +1153,22 @@ tileable_vertical = false}},
 		footstep = {name="default_grass_footstep", gain=0.1},
 	}),
 })
+
+minetest.register_node("default:obsidian", {
+	description = "Obsidian",
+	tiles = {"default_obsidian.png"},
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+})
+
+minetest.register_node("default:obsidian_glass", {
+	description = "Obsidian Glass",
+	drawtype = "glasslike_framed_optional",
+	tiles = {"default_obsidian_glass.png", "default_obsidian_glass_detail.png"},
+	paramtype = "light",
+	paramtype2 = "glasslikeliquidlevel",
+	is_ground_content = false,
+	sunlight_propagates = true,
+	sounds = default.node_sound_glass_defaults(),
+	groups = {cracky = 3},
+})
