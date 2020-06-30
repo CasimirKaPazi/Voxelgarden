@@ -27,3 +27,9 @@ mob_chance_multiplier (Mob chance multiplier) float 1.0
 
 #    When false Mob no longer drop items when killed
 mobs_drop_items (Mob drops) bool true
+
+#    Sets minimum distance around player that mobs cannot spawn
+mob_nospawn_range (Mob no-spawn range) float 12.0
+
+#    Sets maximum number of active mobs in game (0 for unlimited)
+mob_active_limit (Mob Active Limit) float 0
