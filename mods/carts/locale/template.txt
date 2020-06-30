@@ -1,0 +1,6 @@
+# textdomain: carts
+Rail=
+Powered Rail=
+Brake Rail=
+Cart=
+(Sneak+Click to pick up)=
