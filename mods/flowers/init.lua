@@ -4,6 +4,14 @@ flowers = {}
 -- Map Generation
 dofile(minetest.get_modpath("flowers").."/mapgen.lua")
 
+-- Register dungeon loot
+if minetest.global_exists("dungeon_loot") then
+	dungeon_loot.register({
+		name = "flowers:mushroom_brown", chance = 0.3, count = {1, 6},
+		name = "flowers:mushroom_red", chance = 0.3, count = {1, 6},
+	})
+end
+
 -- Aliases for original flowers mod
 minetest.register_alias("flowers:flower_dandelion_white", "flowers:dandelion_white")
 minetest.register_alias("flowers:flower_dandelion_yellow", "flowers:dandelion_yellow")
