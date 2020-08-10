@@ -25,7 +25,9 @@ mobs:register_mob("mobs_flat:oerkki", {
 	run_velocity = 2,
 	view_range = 5,
 	jump = true,
-	drops = {},
+	drops = {
+		{name = "default:obsidian_shard", chance = 0.5, min = 0, max = 1},
+	},
 	water_damage = 2,
 	lava_damage = 4,
 	light_damage = 0,

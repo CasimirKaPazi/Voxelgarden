@@ -6,7 +6,7 @@ mobs:register_mob("mobs_flat:dustdevil", {
 	dogshoot_switch = 1,
 	dogshoot_count_max = 10, -- shoot for 10 seconds
 	dogshoot_count2_max = 3, -- dogfight for 3 seconds
-	reach = 1,
+	reach = 3,
 	shoot_interval = 2,
 	arrow = "mobs_flat:spear",
 	shoot_offset = 1,
@@ -31,7 +31,9 @@ mobs:register_mob("mobs_flat:dustdevil", {
 	run_velocity = 3,
 	view_range = 10,
 	jump = true,
-	drops = {},
+	drops = {
+		{name = "nodetest:spearwood", chance = 0.5, min = 0, max = 1},
+	},
 	water_damage = 1,
 	lava_damage = 4,
 	light_damage = 0,

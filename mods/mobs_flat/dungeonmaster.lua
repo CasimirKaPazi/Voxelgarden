@@ -32,7 +32,9 @@ mobs:register_mob("mobs_flat:dungeon_master", {
 	run_velocity = 1,
 	jump = true,
 	view_range = 15,
-	drops = {},
+	drops = {
+		{name = "default:mese_crystal_fragment", chance = 0.5, min = 0, max = 1},
+	},
 	water_damage = 1,
 	lava_damage = 0,
 	light_damage = 0,
