@@ -30,6 +30,11 @@ minetest.register_craftitem("default:iron_lump", {
 	inventory_image = "default_iron_lump.png",
 })
 
+minetest.register_craftitem("default:gold_lump", {
+	description = "Gold Lump",
+	inventory_image = "default_gold_lump.png",
+})
+
 minetest.register_craftitem("default:tin_lump", {
 	description = "Tin Lump",
 	inventory_image = "default_tin_lump.png",
@@ -55,6 +60,16 @@ minetest.register_craftitem("default:steel_ingot", {
 	description = "Steel Ingot",
 	inventory_image = "default_steel_ingot.png",
 	groups = {metal_ingot=1},
+})
+
+minetest.register_craftitem("default:gold_ingot", {
+	description = "Gold Ingot",
+	inventory_image = "default_gold_ingot.png"
+})
+
+minetest.register_craftitem("default:diamond", {
+	description = "Diamond",
+	inventory_image = "default_diamond.png",
 })
 
 minetest.register_craftitem("default:copper_ingot", {

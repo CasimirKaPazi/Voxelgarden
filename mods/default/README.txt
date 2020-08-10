@@ -185,6 +185,13 @@ Pithydon (CC BY-SA 3.0)
 Mossmanikin (CC BY-SA 3.0):
   default_fern_*.png
 
+“Faithful 1.11” by Vattic, xMrVizzy and contributers (MIT License)
+  default_gold_ingot.png
+  default_gold_block.png
+  default_gold_lump.png
+  default_diamond.png
+  default_diamond_block.png
+
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
   2: http://www.freesound.org/people/Tomlija/sounds/97669/

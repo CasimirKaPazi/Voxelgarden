@@ -412,6 +412,38 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:goldblock',
+	recipe = {
+		{'default:gold_ingot', 'default:gold_ingot', 'default:gold_ingot'},
+		{'default:gold_ingot', 'default:gold_ingot', 'default:gold_ingot'},
+		{'default:gold_ingot', 'default:gold_ingot', 'default:gold_ingot'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:gold_ingot 9',
+	recipe = {
+		{'default:goldblock'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:diamondblock',
+	recipe = {
+		{'default:diamond', 'default:diamond', 'default:diamond'},
+		{'default:diamond', 'default:diamond', 'default:diamond'},
+		{'default:diamond', 'default:diamond', 'default:diamond'},
+	}
+})
+
+minetest.register_craft({
+	output = "default:diamond 9",
+	recipe = {
+		{"default:diamondblock"},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:sandstone',
 	recipe = {
 		{'default:sand', 'default:sand'},
@@ -631,6 +663,12 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:tin_ingot",
 	recipe = "default:tin_lump",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:gold_ingot",
+	recipe = "default:gold_lump",
 })
 
 minetest.register_craft({
