@@ -23,7 +23,9 @@ mobs:register_mob("mobs_flat:rat", {
 	walk_velocity = 1,
 	run_velocity = 2,
 	jump = true,
-	drops = {},
+	drops = {
+		{name = "mobs_flat:rat_dead", chance = 1, min = 1, max = 1},
+	},
 	water_damage = 1,
 	lava_damage = 4,
 	light_damage = 0,
@@ -57,8 +59,8 @@ mobs:register_egg("mobs_flat:rat", "Rat", "default_gravel.png", 1)
 
 minetest.register_craftitem("mobs_flat:rat_caught" ,{
 	description = "Rat",
-	inventory_image = "mobs_flat_rat_caught.png",
-	wield_image = "mobs_flat_rat_caught.png^[transformR90",
+	inventory_image = "mobs_flat_rat.png",
+	wield_image = "mobs_flat_rat.png^[transformR90",
 	stack_max = 1,
 	on_place = function(itemstack, placer, pointed_thing)
 		if pointed_thing.type ~= "node" then
@@ -71,6 +73,12 @@ minetest.register_craftitem("mobs_flat:rat_caught" ,{
 	end,
 })
 
+minetest.register_craftitem("mobs_flat:rat_dead" ,{
+	description = "Dead Rat",
+	inventory_image = "mobs_flat_rat_dead.png",
+	wield_image = "mobs_flat_rat_dead.png",
+})
+
 minetest.register_craftitem("mobs_flat:rat_cooked", {
 	description = "Cooked Rat",
 	inventory_image = "mobs_flat_rat_cooked.png",
@@ -81,5 +89,5 @@ minetest.register_craftitem("mobs_flat:rat_cooked", {
 minetest.register_craft({
 	type = "cooking",
 	output = "mobs_flat:rat_cooked",
-	recipe = "mobs_flat:rat_caught",
+	recipe = "mobs_flat:rat_dead",
 })
