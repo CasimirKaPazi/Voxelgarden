@@ -610,6 +610,13 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "default:sand_with_small_kelp 2",
+	recipe = {
+		{"default:sand_with_kelp"},
+	}
+})
+
+minetest.register_craft({
 	type = "cooking",
 	output = "default:obsidian_glass",
 	recipe = "default:obsidian_shard",

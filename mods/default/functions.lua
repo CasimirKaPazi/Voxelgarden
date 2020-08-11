@@ -305,6 +305,25 @@ minetest.register_abm({
 	end,
 })
 
+minetest.register_abm({
+	label = "Grow Kelp",
+	nodenames = {"default:sand_with_small_kelp"},
+	interval = 11,
+	chance = 50,
+	action = function(pos, node)
+		local height = math.random(4, 6)
+		local pos_top = {x = pos.x, y = pos.y + height, z = pos.z}
+		local node_top = minetest.get_node(pos_top)
+		local def_top = minetest.registered_nodes[node_top.name]
+
+		if def_top and def_top.liquidtype == "source" and
+			minetest.get_item_group(node_top.name, "water") > 0 then
+			minetest.set_node(pos, {name = "default:sand_with_kelp",
+				param2 = height * 16})
+		end
+	end,
+})
+
 -- Dig upwards
 function default.dig_up(pos, node, digger)
 	if digger == nil then return end

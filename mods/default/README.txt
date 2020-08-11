@@ -173,6 +173,7 @@ tobyplowy (aka toby109tt) (CC BY 3.0)
   default_cactus_fig_item.png
   default_clay.png
   default_clay_lump.png
+  default_kelp.png
 
 Rath (CC BY-SA 3.0)
   default_molten_rock*
