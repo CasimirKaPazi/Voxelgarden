@@ -84,7 +84,8 @@ default.leafdecay = function(p0)
 					y = math.floor(p0.y + 0.5),
 					z = math.floor(p0.z + 0.5),
 				}
-				core.spawn_falling_node(p_drop, {name=itemname})
+				minetest.set_node(p_drop, {name=itemname})
+				core.spawn_falling_node(p_drop)
 			end
 		end
 		-- Remove node
