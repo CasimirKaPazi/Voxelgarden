@@ -3,7 +3,7 @@ if not minetest.settings:get_bool("creative_mode") then
 local default_dig = minetest.node_dig
 
 function minetest.node_dig(pos, node, digger)
-	if not digger:is_player() then
+	if not digger or not digger:is_player() then
 		return
 	end
 	local inv = digger:get_inventory()
