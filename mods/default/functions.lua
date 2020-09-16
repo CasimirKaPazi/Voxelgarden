@@ -200,7 +200,7 @@ minetest.register_abm({
 	chance = 50,
 	catch_up = false,
 	action = function(pos, node)
-		minetest.set_node(pos, {name = "default:stone"})
+		minetest.set_node(pos, {name = "default:stone_crumbled"})
 	end,
 })
 
