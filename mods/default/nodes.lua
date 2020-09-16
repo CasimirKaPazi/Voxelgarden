@@ -354,6 +354,7 @@ minetest.register_node("default:papyrus", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
+	floodable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.375, -0.5, -0.375, 0.375, 0.5, 0.375}
