@@ -1,7 +1,10 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("doors")
+
 dofile(minetest.get_modpath("doors").."/functions.lua")
 
 doors:register_door("doors:door_wood", {
-	description = "Wooden Door",
+	description = S("Wooden Door"),
 	inventory_image = "doors_wood_b.png",
 	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
 	tiles = {"doors_wood_b.png"},
@@ -17,7 +20,7 @@ minetest.register_craft({
 })
 
 doors:register_door("doors:door_wood_window", {
-	description = "Wooden Window",
+	description = S("Wooden Window"),
 	inventory_image = "doors_wood_a.png",
 	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
 	tiles = {"doors_wood_a.png"},
@@ -33,7 +36,7 @@ minetest.register_craft({
 })
 
 doors:register_door("doors:door_steel", {
-	description = "Steel Door",
+	description = S("Steel Door"),
 	inventory_image = "doors_steel_b.png",
 	groups = {snappy=1, cracky=1, door=1},
 	tiles = {"doors_steel_b.png"},
@@ -50,7 +53,7 @@ minetest.register_craft({
 })
 
 doors:register_door("doors:steel_bars", {
-	description = "Steel Bars",
+	description = S("Steel Bars"),
 	inventory_image = "doors_steel_bars.png",
 	groups = {snappy=1, cracky=1, door=1},
 	tiles = {"doors_steel_bars.png"},
@@ -67,7 +70,7 @@ minetest.register_craft({
 })
 
 doors:register_door("doors:door_glass", {
-	description = "Glass Door",
+	description = S("Glass Door"),
 	inventory_image = "default_glass.png",
 	groups = {oddly_breakable_by_hand=3, door=1},
 	tiles = {"default_glass.png"},

@@ -1,9 +1,12 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 --
 -- Hoes
 --
 
 minetest.register_tool("farming:hoe_wood", {
-	description = "Wood Hoe",
+	description = S("Wood Hoe"),
 	inventory_image = "farming_hoe_wood.png",
 	tool_capabilities = {
 		full_punch_interval = 1.2,
@@ -18,7 +21,7 @@ minetest.register_tool("farming:hoe_wood", {
 })
 
 minetest.register_tool("farming:hoe_stone", {
-	description = "Stone Hoe",
+	description = S("Stone Hoe"),
 	inventory_image = "farming_hoe_stone.png",
 	tool_capabilities = {
 		full_punch_interval = 1.4,
@@ -33,7 +36,7 @@ minetest.register_tool("farming:hoe_stone", {
 })
 
 minetest.register_tool("farming:hoe_copper", {
-	description = "Copper Hoe",
+	description = S("Copper Hoe"),
 	inventory_image = "farming_hoe_copper.png",
 	tool_capabilities = {
 		full_punch_interval = 1.2,
@@ -48,7 +51,7 @@ minetest.register_tool("farming:hoe_copper", {
 })
 
 minetest.register_tool(":farming:hoe_bronze", {
-	description = "Bronze Hoe",
+	description = S("Bronze Hoe"),
 	inventory_image = "farming_hoe_bronze.png",
 	tool_capabilities = {
 		full_punch_interval = 1.2,
@@ -63,7 +66,7 @@ minetest.register_tool(":farming:hoe_bronze", {
 })
 
 minetest.register_tool("farming:hoe_steel", {
-	description = "Steel Hoe",
+	description = S("Steel Hoe"),
 	inventory_image = "farming_hoe_steel.png",
 	tool_capabilities = {
 		full_punch_interval = 1.1,
@@ -78,7 +81,7 @@ minetest.register_tool("farming:hoe_steel", {
 })
 
 minetest.register_tool("farming:hoe_mese", {
-	description = "Mese Hoe",
+	description = S("Mese Hoe"),
 	inventory_image = "farming_hoe_mese.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,

@@ -1,3 +1,6 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("conifer")
+
 conifer = {}
 
 minetest.register_alias("mapgen_pine_tree", "conifer:tree")
@@ -8,7 +11,7 @@ minetest.register_alias("mapgen_pine_needles", "conifer:leaves_1")
 --
 
 minetest.register_node("conifer:sapling", {
-	description = "Conifer Sapling",
+	description = S("Conifer Sapling"),
 	drawtype = "plantlike",
 	visual_scale = 1.0,
 	tiles = {"conifer_sapling.png"},
@@ -37,7 +40,7 @@ minetest.register_alias("conifers:sapling", "conifer:sapling")
 minetest.register_alias("nodetest:conifersapling", "conifer:sapling")
 
 minetest.register_node("conifer:tree", {
-	description = "Conifer Tree",
+	description = S("Conifer Tree"),
 	tiles = {"conifer_tree_top.png", "conifer_tree_top.png", "conifer_tree.png"},
 	groups = {tree=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
@@ -48,7 +51,7 @@ minetest.register_alias("nodetest:conifertree", "conifer:tree")
 
 for i=1,2 do
 	minetest.register_node("conifer:leaves_"..i, {
-		description = "Conifer Leaves",
+		description = S("Conifer Leaves"),
 		drawtype = "allfaces_optional",
 		visual_scale = 1.3,
 		tiles = {"conifer_leaves_"..i..".png"},
@@ -86,7 +89,7 @@ minetest.register_alias("conifers:leaves", "conifer:leaves_1")
 minetest.register_alias("conifers:leaves_special", "conifer:leaves_2")
 
 minetest.register_node("conifer:tree_horizontal", {
-	description = "Conifer Tree",
+	description = S("Conifer Tree"),
 	tiles = {
 		"conifer_tree.png", 
 		"conifer_tree.png",

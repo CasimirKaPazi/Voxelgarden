@@ -1,7 +1,7 @@
-default.chest = {}
-
 -- support for MT game translation.
---local S = default.get_translator
+local S = default.get_translator
+
+default.chest = {}
 
 function default.chest.get_chest_formspec(pos)
 	local spos = pos.x .. "," .. pos.y .. "," .. pos.z
@@ -89,7 +89,7 @@ function default.chest.register_chest(prefixed_name, d)
 	if def.protected then
 		def.on_construct = function(pos)
 			local meta = minetest.get_meta(pos)
-			meta:set_string("infotext", "Locked Chest")
+			meta:set_string("infotext", S("Locked Chest"))
 			meta:set_string("owner", "")
 			local inv = meta:get_inventory()
 			inv:set_size("main", 8*4)
@@ -97,7 +97,7 @@ function default.chest.register_chest(prefixed_name, d)
 		def.after_place_node = function(pos, placer)
 			local meta = minetest.get_meta(pos)
 			meta:set_string("owner", placer:get_player_name() or "")
-			meta:set_string("infotext", "Locked Chest (owned by @1)", meta:get_string("owner"))
+			meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
 		end
 		def.can_dig = function(pos,player)
 			local meta = minetest.get_meta(pos);
@@ -175,7 +175,7 @@ function default.chest.register_chest(prefixed_name, d)
 			-- verify placer is owner of lockable chest
 			if owner ~= pn then
 				minetest.record_protection_violation(pos, pn)
-				minetest.chat_send_player(pn, "You do not own this chest.")
+				minetest.chat_send_player(pn, S("You do not own this chest."))
 				return nil
 			end
 
@@ -185,12 +185,12 @@ function default.chest.register_chest(prefixed_name, d)
 				meta:set_string("key_lock_secret", secret)
 			end
 
-			return secret, "a locked chest", owner
+			return secret, S("a locked chest"), owner
 		end
 	else
 		def.on_construct = function(pos)
 			local meta = minetest.get_meta(pos)
-			meta:set_string("infotext", "Chest")
+			meta:set_string("infotext", S("Chest"))
 			local inv = meta:get_inventory()
 			inv:set_size("main", 8*4)
 		end
@@ -291,7 +291,7 @@ function default.chest.register_chest(prefixed_name, d)
 end
 
 default.chest.register_chest("default:chest", {
-	description = "Chest",
+	description = S("Chest"),
 	tiles = {
 		"default_chest_top.png",
 		"default_chest_top.png",
@@ -307,7 +307,7 @@ default.chest.register_chest("default:chest", {
 })
 
 default.chest.register_chest("default:chest_locked", {
-	description = "Locked Chest",
+	description = S("Locked Chest"),
 	tiles = {
 		"default_chest_top.png",
 		"default_chest_top.png",

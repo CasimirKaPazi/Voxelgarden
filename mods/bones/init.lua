@@ -1,6 +1,9 @@
 -- Minetest 0.4 mod: bones
 -- See README.txt for licensing and other information. 
 
+-- Load support for MT game translation.
+local S = minetest.get_translator("bones")
+
 bones = {}
 local share_bones_time = tonumber(minetest.settings:get("share_bones_time") or 1200)
 
@@ -13,7 +16,7 @@ local function is_owner(pos, name)
 end
 
 minetest.register_node("bones:bones", {
-	description = "Bones",
+	description = S("Bones"),
 	tiles = {
 		"bones_top.png",
 		"bones_bottom.png",
@@ -50,7 +53,7 @@ minetest.register_node("bones:bones", {
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		local meta = minetest.get_meta(pos)
 		if meta:get_string("owner") ~= "" and meta:get_inventory():is_empty("main") then
-			meta:set_string("infotext", meta:get_string("owner").."'s old bones")
+			meta:set_string("infotext", S(meta:get_string("owner").."'s old bones"))
 			meta:set_string("formspec", "")
 			meta:set_string("owner", "")
 		end
@@ -88,7 +91,7 @@ minetest.register_node("bones:bones", {
 		local meta = minetest.get_meta(pos)
 		local time = meta:get_int("time") + elapsed
 		if time >= share_bones_time then
-			meta:set_string("infotext", meta:get_string("owner").."'s old bones")
+			meta:set_string("infotext", S(meta:get_string("owner").."'s old bones"))
 			meta:set_string("owner", "")
 		else
 			meta:set_int("time", time)
@@ -178,11 +181,11 @@ function bones.place_bones(player)
 	meta:set_string("owner", player_name)
 
 	if share_bones_time ~= 0 then
-		meta:set_string("infotext", player_name.."'s fresh bones")
+		meta:set_string("infotext", S(player_name.."'s fresh bones"))
 		meta:set_int("time", 0)
 		minetest.get_node_timer(pos):start(10)
 	else
-		meta:set_string("infotext", player_name.."'s bones")
+		meta:set_string("infotext", S(player_name.."'s bones"))
 	end
 end
 

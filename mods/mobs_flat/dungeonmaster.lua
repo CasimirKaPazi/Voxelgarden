@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 -- Dungeon Master by PilzAdam
 
 mobs:register_mob("mobs_flat:dungeon_master", {
@@ -51,7 +54,7 @@ mobs:spawn({
 })
 
 
-mobs:register_egg("mobs_flat:dungeon_master", "Dungeon Master", "default_lava.png", 1)
+mobs:register_egg("mobs_flat:dungeon_master", S("Dungeon Master"), "default_lava.png", 1)
 
 
 -- fireball (weapon)

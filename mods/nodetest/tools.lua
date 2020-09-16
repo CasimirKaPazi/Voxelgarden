@@ -1,5 +1,8 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 minetest.register_tool("nodetest:spearwood", {
-	description = "Wooden Spear",
+	description = S("Wooden Spear"),
 	inventory_image = "nodetest_spearwood.png",
 	wield_image = "nodetest_spearwood.png^[transformFX",
 	range = 5,
@@ -13,7 +16,7 @@ minetest.register_tool("nodetest:spearwood", {
 })
 
 minetest.register_tool("nodetest:spearstone", {
-	description = "Stone Spear",
+	description = S("Stone Spear"),
 	inventory_image = "nodetest_spearstone.png",
 	wield_image = "nodetest_spearstone.png^[transformFX",
 	range = 5,

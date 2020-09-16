@@ -1,3 +1,6 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("beds")
+
 beds = {}
 beds.player = {}
 beds.bed_position = {}

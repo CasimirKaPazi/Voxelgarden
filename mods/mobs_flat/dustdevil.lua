@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 mobs:register_mob("mobs_flat:dustdevil", {
 	type = "monster",
 	passive = false,
@@ -81,4 +84,4 @@ mobs:spawn({
 })
 
 
-mobs:register_egg("mobs_flat:dustdevil", "Dust Devil", "default_desert_sand.png", 1)
+mobs:register_egg("mobs_flat:dustdevil", S("Dust Devil"), "default_desert_sand.png", 1)

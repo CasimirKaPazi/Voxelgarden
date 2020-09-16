@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 local function strike_fire(user, pointed_thing)
 	-- Fire priviledge
 	local name = user:get_player_name()
@@ -21,12 +24,12 @@ local function strike_fire(user, pointed_thing)
 end
 
 minetest.register_craftitem("fire:tinder", {
-	description = "Tinder",
+	description = S("Tinder"),
 	inventory_image = "flint_tinder.png",
 })
 
 minetest.register_tool("fire:flint_and_steel", {
-	description = "Fire Striker",
+	description = S("Fire Striker"),
 	inventory_image = "flint_firestriker.png",
 	range = 2.0,
 	on_place = function(itemstack, user, pointed_thing)

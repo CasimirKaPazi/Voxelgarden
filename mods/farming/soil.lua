@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 local footsteps = {"", "_footsteps"}
 
 for _, f in ipairs(footsteps) do

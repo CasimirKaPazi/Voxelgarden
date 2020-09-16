@@ -1,9 +1,12 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 --
 -- Weed
 --
 
 minetest.register_node("farming:weed", {
-	description = "Weed",
+	description = S("Weed"),
 	paramtype = "light",
 	sunlight_propagates = true,
 	waving = 1,
@@ -53,7 +56,7 @@ minetest.register_craft({
 --
 
 minetest.register_craftitem("farming:wheat", {
-	description = "Wheat",
+	description = S("Wheat"),
 	inventory_image = "farming_wheat.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.place_seed(itemstack, placer, pointed_thing, "farming:wheat_1")
@@ -98,7 +101,7 @@ minetest.register_craft({
 })
 
 minetest.register_craftitem("farming:dough", {
-	description = "Dough",
+	description = S("Dough"),
 	inventory_image = "farming_dough.png",
 })
 
@@ -110,13 +113,13 @@ minetest.register_craft({
 })
 
 minetest.register_craftitem("farming:bread", {
-	description = "Bread",
+	description = S("Bread"),
 	inventory_image = "farming_bread.png",
 	on_use = minetest.item_eat(4)
 })
 
 minetest.register_node("farming:straw", {
-  description = "Straw",
+  description = S("Straw"),
 	tiles = {"farming_straw.png"},
 	drop = "farming:wheat 9",
 	groups = {snappy=3, fall_damage_add_percent=default.COUSHION, flammable=2},
@@ -167,7 +170,7 @@ minetest.register_decoration({
 --
 
 minetest.register_craftitem("farming:cotton", {
-	description = "Cotton",
+	description = S("Cotton"),
 	inventory_image = "farming_cotton.png",
 	wield_image = "farming_cotton.png",
 	on_place = function(itemstack, placer, pointed_thing)
@@ -209,7 +212,7 @@ minetest.override_item("farming:cotton_3", {
 farming.register_growing(max_stage, stages, 57, 15, 10)
 
 minetest.register_craftitem("farming:string", {
-	description = "String",
+	description = S("String"),
 	inventory_image = "farming_string.png",
 })
 

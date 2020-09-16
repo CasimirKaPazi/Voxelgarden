@@ -1,3 +1,6 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("nodetest")
+
 -- Definitions made by this mod that other mods can use too
 nodetest = {}
 

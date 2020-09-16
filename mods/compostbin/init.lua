@@ -1,3 +1,6 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("compostbin")
+
 --
 -- Formspecs
 --
@@ -201,7 +204,7 @@ end
 --
 
 minetest.register_node("compostbin:wood_bin", {
-	description = "Compost Bin",
+	description = S("Compost Bin"),
 	tiles = {
 		"default_wood.png",
 	},
@@ -289,7 +292,7 @@ minetest.register_craft({
 })
 
 minetest.register_craftitem("compostbin:compost", {
-	description = "Compost",
+	description = S("Compost"),
 	inventory_image = "compostbin_compost.png",
 })
 

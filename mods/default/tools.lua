@@ -1,4 +1,6 @@
 -- mods/default/tools.lua
+-- support for MT game translation.
+local S = default.get_translator
 
 -- To stay simple tools don't use maxlevel.
 -- The engine assumes maxlevel=0, so we have to specify 0
@@ -30,7 +32,7 @@ minetest.register_item(":", {
 
 -- Picks
 minetest.register_tool("default:pick_wood", {
-	description = "Wooden Pickaxe",
+	description = S("Wooden Pickaxe"),
 	inventory_image = "default_tool_woodpick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -42,7 +44,7 @@ minetest.register_tool("default:pick_wood", {
 	sound = {breaks = "default_tool_breaks"},
 })
 minetest.register_tool("default:pick_stone", {
-	description = "Stone Pickaxe",
+	description = S("Stone Pickaxe"),
 	inventory_image = "default_tool_stonepick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -55,7 +57,7 @@ minetest.register_tool("default:pick_stone", {
 })
 
 minetest.register_tool("default:pick_copper", {
-	description = "Copper Pickaxe",
+	description = S("Copper Pickaxe"),
 	inventory_image = "default_tool_copperpick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -68,7 +70,7 @@ minetest.register_tool("default:pick_copper", {
 })
 
 minetest.register_tool(":default:pick_bronze", {
-	description = "Bronze Pickaxe",
+	description = S("Bronze Pickaxe"),
 	inventory_image = "default_tool_bronzepick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -81,7 +83,7 @@ minetest.register_tool(":default:pick_bronze", {
 })
 
 minetest.register_tool("default:pick_steel", {
-	description = "Steel Pickaxe",
+	description = S("Steel Pickaxe"),
 	inventory_image = "default_tool_steelpick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -94,7 +96,7 @@ minetest.register_tool("default:pick_steel", {
 })
 
 minetest.register_tool("default:pick_mese", {
-	description = "Mese Pickaxe",
+	description = S("Mese Pickaxe"),
 	inventory_image = "default_tool_mesepick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -111,7 +113,7 @@ minetest.register_tool("default:pick_mese", {
 
 -- Shovels
 minetest.register_tool("default:shovel_wood", {
-	description = "Wooden Shovel",
+	description = S("Wooden Shovel"),
 	inventory_image = "default_tool_woodshovel.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -124,7 +126,7 @@ minetest.register_tool("default:shovel_wood", {
 })
 
 minetest.register_tool("default:shovel_stone", {
-	description = "Stone Shovel",
+	description = S("Stone Shovel"),
 	inventory_image = "default_tool_stoneshovel.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -137,7 +139,7 @@ minetest.register_tool("default:shovel_stone", {
 })
 
 minetest.register_tool("default:shovel_copper", {
-	description = "Copper Shovel",
+	description = S("Copper Shovel"),
 	inventory_image = "default_tool_coppershovel.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -150,7 +152,7 @@ minetest.register_tool("default:shovel_copper", {
 })
 
 minetest.register_tool(":default:shovel_bronze", {
-	description = "Bronze Shovel",
+	description = S("Bronze Shovel"),
 	inventory_image = "default_tool_bronzeshovel.png",
 	wield_image = "default_tool_bronzeshovel.png^[transformR90",
 	tool_capabilities = {
@@ -164,7 +166,7 @@ minetest.register_tool(":default:shovel_bronze", {
 })
 
 minetest.register_tool("default:shovel_steel", {
-	description = "Steel Shovel",
+	description = S("Steel Shovel"),
 	inventory_image = "default_tool_steelshovel.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -178,7 +180,7 @@ minetest.register_tool("default:shovel_steel", {
 
 -- Axes
 minetest.register_tool("default:axe_wood", {
-	description = "Wooden Axe",
+	description = S("Wooden Axe"),
 	inventory_image = "default_tool_woodaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -191,7 +193,7 @@ minetest.register_tool("default:axe_wood", {
 })
 
 minetest.register_tool("default:axe_stone", {
-	description = "Stone Axe",
+	description = S("Stone Axe"),
 	inventory_image = "default_tool_stoneaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -204,7 +206,7 @@ minetest.register_tool("default:axe_stone", {
 })
 
 minetest.register_tool("default:axe_copper", {
-	description = "Copper Axe",
+	description = S("Copper Axe"),
 	inventory_image = "default_tool_copperaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -217,7 +219,7 @@ minetest.register_tool("default:axe_copper", {
 })
 
 minetest.register_tool(":default:axe_bronze", {
-	description = "Bronze Axe",
+	description = S("Bronze Axe"),
 	inventory_image = "default_tool_bronzeaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -230,7 +232,7 @@ minetest.register_tool(":default:axe_bronze", {
 })
 
 minetest.register_tool("default:axe_steel", {
-	description = "Steel Axe",
+	description = S("Steel Axe"),
 	inventory_image = "default_tool_steelaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
@@ -244,7 +246,7 @@ minetest.register_tool("default:axe_steel", {
 
 -- Swords
 minetest.register_tool("default:sword_wood", {
-	description = "Wooden Sword",
+	description = S("Wooden Sword"),
 	inventory_image = "default_tool_woodsword.png",
 	range = 3.0,
 	tool_capabilities = {
@@ -258,7 +260,7 @@ minetest.register_tool("default:sword_wood", {
 })
 
 minetest.register_tool("default:sword_stone", {
-	description = "Stone Sword",
+	description = S("Stone Sword"),
 	inventory_image = "default_tool_stonesword.png",
 	range = 3.0,
 	tool_capabilities = {
@@ -272,7 +274,7 @@ minetest.register_tool("default:sword_stone", {
 })
 
 minetest.register_tool("default:sword_copper", {
-	description = "Copper Sword",
+	description = S("Copper Sword"),
 	inventory_image = "default_tool_coppersword.png",
 	range = 3.0,
 	tool_capabilities = {
@@ -285,8 +287,8 @@ minetest.register_tool("default:sword_copper", {
 	sound = {breaks = "default_tool_breaks"},
 })
 
-minetest.register_tool(":default:sword_bronze", {
-	description = "Bronze Sword",
+minetest.register_tool("default:sword_bronze", {
+	description = S("Bronze Sword"),
 	inventory_image = "default_tool_bronzesword.png",
 	range = 3.0,
 	tool_capabilities = {
@@ -301,7 +303,7 @@ minetest.register_tool(":default:sword_bronze", {
 })
 
 minetest.register_tool("default:sword_steel", {
-	description = "Steel Sword",
+	description = S("Steel Sword"),
 	inventory_image = "default_tool_steelsword.png",
 	range = 3.0,
 	tool_capabilities = {

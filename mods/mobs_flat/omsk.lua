@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 mobs:register_mob("mobs_flat:omsk", {
 	type = "monster",
 	passive = false,
@@ -42,4 +45,4 @@ mobs:spawn({
 	active_object_count = 1
 })
 
-mobs:register_egg("mobs_flat:omsk", "Omsk", "wool_red.png", 1)
+mobs:register_egg("mobs_flat:omsk", S("Omsk"), "wool_red.png", 1)

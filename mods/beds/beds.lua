@@ -1,5 +1,8 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 beds.register_bed("beds:bed", {
-	description = "Bed",
+	description = S("Bed"),
 	inventory_image = "beds_bed.png",
 	wield_image = "beds_bed.png",
 	tiles = {

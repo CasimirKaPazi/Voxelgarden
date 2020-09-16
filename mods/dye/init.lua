@@ -1,5 +1,8 @@
 -- minetest/dye/init.lua
 
+-- Load support for MT game translation.
+local S = minetest.get_translator("dye")
+
 -- Other mods can use these for looping through available colors
 dye = {}
 dye.basecolors = {"white", "grey", "black", "red", "yellow", "green", "cyan", "blue", "magenta"}
@@ -7,21 +10,21 @@ dye.excolors = {"white", "lightgrey", "grey", "darkgrey", "black", "red", "orang
 
 -- This collection of colors is partly a historic thing, partly something else.
 dyes = {
-	{"white",      "White Dye",     {dye=1, basecolor_white=1,   excolor_white=1,     unicolor_white=1}},
-	{"grey",       "Grey Dye",      {dye=1, basecolor_grey=1,    excolor_grey=1,      unicolor_grey=1}},
-	{"dark_grey",  "Dark grey Dye", {dye=1, basecolor_grey=1,    excolor_darkgrey=1,  unicolor_darkgrey=1}},
-	{"black",      "Black Dye",     {dye=1, basecolor_black=1,   excolor_black=1,     unicolor_black=1}},
-	{"violet",     "Violet Dye",    {dye=1, basecolor_magenta=1, excolor_violet=1,    unicolor_violet=1}},
-	{"blue",       "Blue Dye",      {dye=1, basecolor_blue=1,    excolor_blue=1,      unicolor_blue=1}},
-	{"cyan",       "Cyan Dye",      {dye=1, basecolor_cyan=1,    excolor_cyan=1,      unicolor_cyan=1}},
-	{"dark_green", "Dark green Dye",{dye=1, basecolor_green=1,   excolor_green=1,     unicolor_dark_green=1}},
-	{"green",      "Green Dye",     {dye=1, basecolor_green=1,   excolor_green=1,     unicolor_green=1}},
-	{"yellow",     "Yellow Dye",    {dye=1, basecolor_yellow=1,  excolor_yellow=1,    unicolor_yellow=1}},
-	{"brown",      "Brown Dye",     {dye=1, basecolor_brown=1,   excolor_orange=1,    unicolor_dark_orange=1}},
-	{"orange",     "Orange Dye",    {dye=1, basecolor_orange=1,  excolor_orange=1,    unicolor_orange=1}},
-	{"red",        "Red Dye",       {dye=1, basecolor_red=1,     excolor_red=1,       unicolor_red=1}},
-	{"magenta",    "Magenta Dye",   {dye=1, basecolor_magenta=1, excolor_red_violet=1,unicolor_red_violet=1}},
-	{"pink",       "Pink Dye",      {dye=1, basecolor_red=1,     excolor_red=1,       unicolor_light_red=1}},
+	{"white",      S("White Dye"),     {dye=1, basecolor_white=1,   excolor_white=1,     unicolor_white=1}},
+	{"grey",       S("Grey Dye"),      {dye=1, basecolor_grey=1,    excolor_grey=1,      unicolor_grey=1}},
+	{"dark_grey",  S("Dark grey Dye"), {dye=1, basecolor_grey=1,    excolor_darkgrey=1,  unicolor_darkgrey=1}},
+	{"black",      S("Black Dye"),     {dye=1, basecolor_black=1,   excolor_black=1,     unicolor_black=1}},
+	{"violet",     S("Violet Dye"),    {dye=1, basecolor_magenta=1, excolor_violet=1,    unicolor_violet=1}},
+	{"blue",       S("Blue Dye"),      {dye=1, basecolor_blue=1,    excolor_blue=1,      unicolor_blue=1}},
+	{"cyan",       S("Cyan Dye"),      {dye=1, basecolor_cyan=1,    excolor_cyan=1,      unicolor_cyan=1}},
+	{"dark_green", S("Dark green Dye"),{dye=1, basecolor_green=1,   excolor_green=1,     unicolor_dark_green=1}},
+	{"green",      S("Green Dye"),     {dye=1, basecolor_green=1,   excolor_green=1,     unicolor_green=1}},
+	{"yellow",     S("Yellow Dye"),    {dye=1, basecolor_yellow=1,  excolor_yellow=1,    unicolor_yellow=1}},
+	{"brown",      S("Brown Dye"),     {dye=1, basecolor_brown=1,   excolor_orange=1,    unicolor_dark_orange=1}},
+	{"orange",     S("Orange Dye"),    {dye=1, basecolor_orange=1,  excolor_orange=1,    unicolor_orange=1}},
+	{"red",        S("Red Dye"),       {dye=1, basecolor_red=1,     excolor_red=1,       unicolor_red=1}},
+	{"magenta",    S("Magenta Dye"),   {dye=1, basecolor_magenta=1, excolor_red_violet=1,unicolor_red_violet=1}},
+	{"pink",       S("Pink Dye"),      {dye=1, basecolor_red=1,     excolor_red=1,       unicolor_light_red=1}},
 }
 
 -- Define items

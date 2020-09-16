@@ -1,4 +1,6 @@
 -- mods/default/crafting.lua
+-- support for MT game translation.
+local S = default.get_translator
 
 --
 -- Crafting definition

@@ -1,3 +1,6 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("walls")
+
 walls = {}
 
 walls.register = function(wall_name, wall_desc, wall_texture, wall_mat, wall_sounds)
@@ -43,12 +46,12 @@ walls.register = function(wall_name, wall_desc, wall_texture, wall_mat, wall_sou
 
 end
 
-walls.register("walls:cobble", "Cobblestone Wall", "default_cobble.png",
+walls.register("walls:cobble", S("Cobblestone Wall"), "default_cobble.png",
 		"default:cobble", default.node_sound_stone_defaults())
 
-walls.register("walls:mossycobble", "Mossy Cobblestone Wall", "default_mossycobble.png",
+walls.register("walls:mossycobble", S("Mossy Cobblestone Wall"), "default_mossycobble.png",
 		"default:mossycobble", default.node_sound_stone_defaults())
 
-walls.register("walls:brick", "Brick Wall", "default_brick.png",
+walls.register("walls:brick", S("Brick Wall"), "default_brick.png",
 		"default:brick", default.node_sound_stone_defaults())
 

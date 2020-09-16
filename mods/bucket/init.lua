@@ -1,6 +1,9 @@
 -- Minetest 0.4 mod: bucket
 -- See README.txt for licensing and other information.
 
+-- Load support for MT game translation.
+local S = minetest.get_translator("bucket")
+
 minetest.register_alias("bucket", "bucket:bucket_empty")
 minetest.register_alias("bucket_water", "bucket:bucket_water")
 minetest.register_alias("bucket_lava", "bucket:bucket_lava")
@@ -99,7 +102,7 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 end
 
 minetest.register_craftitem("bucket:bucket_empty", {
-	description = "Empty Bucket",
+	description = S("Empty Bucket"),
 	inventory_image = "bucket.png",
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)

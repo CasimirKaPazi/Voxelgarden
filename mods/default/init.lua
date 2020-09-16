@@ -1,11 +1,17 @@
 -- Minetest 0.4 mod: default
 -- See README.txt for licensing and other information.
 
+-- Load support for MT game translation.
+local S = minetest.get_translator("default")
+
 -- Definitions made by this mod that other mods can use too
 default = {}
 default.player_attached = {}
 default.LIGHT_MAX = 14
 default.COUSHION = -10 -- Falling damage gets reduced by 10 percent.
+
+-- To be loaded in separate Lua files.
+default.get_translator = S
 
 -- Define default max stack
 local stack = minetest.settings:get("stack_max")

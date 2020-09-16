@@ -1,3 +1,6 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("hunger")
+
 hunger = {}
 local player_is_active = {}
 local player_step = {}
@@ -6,7 +9,7 @@ local base_interval = 0.5
 
 -- no_hunger privilege
 minetest.register_privilege("no_hunger", {
-	description = "Player will feel no hunger.",
+	description = S("Player will feel no hunger."),
 	give_to_singleplayer = false
 })
 
@@ -111,7 +114,7 @@ minetest.register_globalstep(function(dtime)
 			player:set_hp(hp - 1)
 			full = 20
 			local pos_sound  = player:get_pos()
-			minetest.chat_send_player(name, "You are hungry.")
+			minetest.chat_send_player(name, S("You are hungry."))
 		end
 		player_is_active[name] = false
 		hunger.update_bar(player, full)

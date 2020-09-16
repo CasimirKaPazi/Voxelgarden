@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 mobs:register_mob("mobs_flat:rat", {
 	type = "animal",
 	passive = true,
@@ -53,12 +56,12 @@ mobs:spawn({
 	active_object_count = 2
 })
 
-mobs:register_egg("mobs_flat:rat", "Rat", "default_gravel.png", 1)
+mobs:register_egg("mobs_flat:rat", S("Rat"), "default_gravel.png", 1)
 
 -- Catch and cook delicious rats
 
 minetest.register_craftitem("mobs_flat:rat_caught" ,{
-	description = "Rat",
+	description = S("Rat"),
 	inventory_image = "mobs_flat_rat.png",
 	wield_image = "mobs_flat_rat.png^[transformR90",
 	stack_max = 1,
@@ -74,13 +77,13 @@ minetest.register_craftitem("mobs_flat:rat_caught" ,{
 })
 
 minetest.register_craftitem("mobs_flat:rat_dead" ,{
-	description = "Dead Rat",
+	description = S("Dead Rat"),
 	inventory_image = "mobs_flat_rat_dead.png",
 	wield_image = "mobs_flat_rat_dead.png",
 })
 
 minetest.register_craftitem("mobs_flat:rat_cooked", {
-	description = "Cooked Rat",
+	description = S("Cooked Rat"),
 	inventory_image = "mobs_flat_rat_cooked.png",
 	on_use = minetest.item_eat(4),
 	cooktime = 5,

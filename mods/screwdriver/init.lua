@@ -1,8 +1,11 @@
+-- Load support for MT game translation.
+local S = minetest.get_translator("screwdriver")
+
 local mode_text = {
-	{"Change rotation, Don't change axisdir."},
-	{"Keep choosen face in front then rotate it."},
-	{"Change axis dir, Reset rotation."},
-	{"Bring top in front then rotate it."},
+	{S("Change rotation, Don't change axisdir.")},
+	{S("Keep choosen face in front then rotate it.")},
+	{S("Change axis dir, Reset rotation.")},
+	{S("Bring top in front then rotate it.")},
 }
 
 local opposite_faces = {
@@ -19,14 +22,14 @@ local function screwdriver_setmode(user,itemstack)
 	local item = itemstack:to_table()
 	local mode = tonumber(itemstack:get_metadata())
 	if not mode then
-		minetest.chat_send_player(player_name, "Right click to change screwdriwer modes.")
+		minetest.chat_send_player(player_name, S("Right click to change screwdriwer modes."))
 		mode = 0
 	end
 	mode = mode + 1
 	if mode == 5 then
 		mode = 1
 	end
-	minetest.chat_send_player(player_name, "Screwdriver mode : "..mode.." - "..mode_text[mode][1] )
+	minetest.chat_send_player(player_name, S("Screwdriver mode : ")..mode.." - "..mode_text[mode][1] )
 	itemstack:set_name("screwdriver:screwdriver"..mode)
 	itemstack:set_metadata(mode)
 	return itemstack
@@ -132,7 +135,7 @@ minetest.register_craft({
 })
 
 minetest.register_tool("screwdriver:screwdriver", {
-	description = "Screwdriver",
+	description = S("Screwdriver"),
 	inventory_image = "screwdriver.png",
 	sound = {breaks = "default_tool_breaks"},
 	on_use = function(itemstack, user, pointed_thing)
@@ -147,7 +150,7 @@ minetest.register_tool("screwdriver:screwdriver", {
 
 for i = 1, 4 do
 	minetest.register_tool("screwdriver:screwdriver"..i, {
-		description = "Screwdriver in Mode "..i,
+		description = S("Screwdriver in Mode ")..i,
 		inventory_image = "screwdriver.png^tool_mode"..i..".png",
 		wield_image = "screwdriver.png",
 		groups = {not_in_creative_inventory=1},

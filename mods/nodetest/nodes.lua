@@ -1,5 +1,8 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 minetest.register_node("nodetest:papyrus_roots", {
-	description = "Papyrus Roots",
+	description = S("Papyrus Roots"),
 	tiles = {"nodetest_papyrus_roots.png"},
 	paramtype = "light",
 	is_ground_content = true,
@@ -18,7 +21,7 @@ minetest.register_alias("default:papyrus_roots", "nodetest:papyrus_roots")
 --
 
 minetest.register_node("nodetest:tree_horizontal", {
-	description = "Tree",
+	description = S("Tree"),
 	tiles = {
 		"default_tree.png", 
 		"default_tree.png",
@@ -37,7 +40,7 @@ minetest.register_node("nodetest:tree_horizontal", {
 minetest.register_alias("default:tree_horizontal", "nodetest:tree_horizontal")
 
 minetest.register_node("nodetest:jungletree_horizontal", {
-	description = "Jungle Tree",
+	description = S("Jungle Tree"),
 		tiles = {
 		"default_jungletree.png", 
 		"default_jungletree.png",
@@ -56,7 +59,7 @@ minetest.register_node("nodetest:jungletree_horizontal", {
 minetest.register_alias("default:jungletree_horizontal", "nodetest:jungletree_horizontal")
 
 minetest.register_node("nodetest:seedling", {
-	description = "Seedling",
+	description = S("Seedling"),
 	drawtype = "torchlike",
 	tiles = {"nodetest_seedling.png"},
 	inventory_image = "nodetest_seedling.png",
@@ -77,7 +80,7 @@ minetest.register_node("nodetest:seedling", {
 })
 
 minetest.register_node("nodetest:bonfire", {
-	description = "Bonfire",
+	description = S("Bonfire"),
 	drawtype = "plantlike",
 	visual_scale = 1.0,
 	tiles = {

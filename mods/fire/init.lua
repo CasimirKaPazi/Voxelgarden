@@ -1,8 +1,11 @@
 -- minetest/fire/init.lua
+-- Load support for MT game translation.
+local S = minetest.get_translator("fire")
+
 fire = {}
 
 minetest.register_privilege("fire", {
-	description = "Player can set fire.",
+	description = S("Player can set fire."),
 	give_to_singleplayer = true
 })
 
@@ -23,7 +26,7 @@ end
 dofile(minetest.get_modpath("fire").."/flintandsteel.lua")
 
 minetest.register_node("fire:basic_flame", {
-	description = "Fire",
+	description = S("Fire"),
 	drawtype = "firelike",
 	tiles = {{
 		name="fire_basic_flame_animated.png",

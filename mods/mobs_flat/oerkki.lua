@@ -1,3 +1,6 @@
+-- support for MT game translation.
+local S = default.get_translator
+
 -- Oerkki by PilzAdam
 
 mobs:register_mob("mobs_flat:oerkki", {
@@ -47,4 +50,4 @@ mobs:spawn({
 	active_object_count = 8,
 })
 
-mobs:register_egg("mobs_flat:oerkki", "Oerkki", "default_coal_block.png", 1)
+mobs:register_egg("mobs_flat:oerkki", S("Oerkki"), "default_coal_block.png", 1)

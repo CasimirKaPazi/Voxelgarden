@@ -1,5 +1,9 @@
 -- Minetest 0.4 mod: default
 -- See README.txt for licensing and other information.
+
+-- Load support for MT game translation.
+local S = minetest.get_translator("flowers")
+
 flowers = {}
 -- Map Generation
 dofile(minetest.get_modpath("flowers").."/mapgen.lua")
@@ -22,12 +26,12 @@ minetest.register_alias("flowers:flower_viola", "flowers:viola")
 
 flowers.flowers = {
 --	flower name,		desc,			groups
-	{"dandelion_white",	"White Dandelion",	{flower=1, flora=1, color_white=1}},
-	{"dandelion_yellow",	"Yellow Dandelion",	{flower=1, flora=1, color_yellow=1}},
-	{"geranium",		"Blue Geranium",	{flower=1, flora=1, color_blue=1}},
-	{"rose",		"Rose",			{flower=1, flora=1, color_red=1}},
-	{"tulip",		"Tulip",		{flower=1, flora=1, color_orange=1}},
-	{"viola",		"Viola",		{flower=1, flora=1, color_violet=1}},
+	{"dandelion_white",	S("White Dandelion"),	{flower=1, flora=1, color_white=1}},
+	{"dandelion_yellow",	S("Yellow Dandelion"),	{flower=1, flora=1, color_yellow=1}},
+	{"geranium",		S("Blue Geranium"),	{flower=1, flora=1, color_blue=1}},
+	{"rose",		S("Rose"),			{flower=1, flora=1, color_red=1}},
+	{"tulip",		S("Tulip"),		{flower=1, flora=1, color_orange=1}},
+	{"viola",		S("Viola"),		{flower=1, flora=1, color_violet=1}},
 }
 
 -- Flowers
@@ -60,8 +64,8 @@ end
 
 flowers.mushrooms = {
 --	name,		desc,			groups,		hp change
-	{"mushroom_brown",	"Brown Mushroom",	{},	1},
-	{"mushroom_red",	"Red Mushroom",	{},	-1},
+	{"mushroom_brown",	S("Brown Mushroom"),	{},	1},
+	{"mushroom_red",	S("Red Mushroom"),	{},	-1},
 }
 
 -- Mushrooms

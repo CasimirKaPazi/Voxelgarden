@@ -37,6 +37,9 @@
 --
 --
 
+-- Load support for MT game translation.
+local S = minetest.get_translator("drowning")
+
 drowning = {}	-- Exported functions
 
 local holding_breath			= {}	-- How long have players been holding their breath?
@@ -58,7 +61,7 @@ if minetest.settings:get_bool("enable_damage") == true then
 
 -- no_drown privilege
 minetest.register_privilege("no_drown", {
-	description = "Player is not drowning",
+	description = S("Player is not drowning"),
 	give_to_singleplayer = false
 })
 
@@ -120,7 +123,7 @@ local function on_drown(player)
 			-- deal damage, play sound and schedule next damage
 			local new_hp = math.max(0, (player:get_hp() - DROWNING_DAMAGE))
 			player:set_hp(new_hp)
-			minetest.chat_send_player(name, "You are drowning.")
+			minetest.chat_send_player(name, S("You are drowning."))
 			schedule_next_damage(name)
 		else
 			-- Player has died; reset drowning state.

@@ -1,5 +1,7 @@
--- Mod global namespace
+-- Load support for MT game translation.
+local S = minetest.get_translator("binoculars")
 
+-- Mod global namespace
 binoculars = {}
 
 
@@ -54,7 +56,7 @@ minetest.after(4.7, cyclic_update)
 -- Binoculars item
 
 minetest.register_craftitem("binoculars:binoculars", {
-	description = "Binoculars\nUse with 'Zoom' key",
+	description = S("Binoculars\nUse with 'Zoom' key"),
 	inventory_image = "binoculars_binoculars.png",
 	stack_max = 1,
 
