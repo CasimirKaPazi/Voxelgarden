@@ -64,8 +64,8 @@ end
 
 flowers.mushrooms = {
 --	name,		desc,			groups,		hp change
-	{"mushroom_brown",	S("Brown Mushroom"),	{},	1},
-	{"mushroom_red",	S("Red Mushroom"),	{},	-1},
+	{"mushroom_brown",	S("Brown Mushroom"),	{fungi=1},	1},
+	{"mushroom_red",	S("Red Mushroom"),	{fungi=1},	-1},
 }
 
 -- Mushrooms

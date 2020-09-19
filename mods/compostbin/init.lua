@@ -38,7 +38,7 @@ local inactive_formspec =
 --
 
 compostbin = {}
-compostbin.compostable_groups = {'flora', 'leaves', 'flower'}
+compostbin.compostable_groups = {'flora', 'leaves', 'flower', 'fungi'}
 compostbin.compostable_nodes = {
 	'default:cactus',
 	'default:papyrus',
