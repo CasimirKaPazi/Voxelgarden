@@ -44,16 +44,10 @@ minetest.register_node("fire:basic_flame", {
 	sunlight_propagates = true,
 	damage_per_second = 4,
 	on_timer = function(pos)
-		-- If there are no flammable nodes around flame, remove flame
-		local p = minetest.find_node_near(pos, 1, {"group:flammable"})
-		if not p then
-			minetest.remove_node(pos)
-			return false
-		end
-		return true
+		minetest.remove_node(pos)
 	end,
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(5, 10))
+		minetest.get_node_timer(pos):start(math.random(1, 10))
 	end,
 })
 
@@ -69,6 +63,13 @@ minetest.register_abm({
 	action = function(pos, node, _, _)
 		if minetest.find_node_near(pos, 1, {"air"}) or
 				fire.node_should_burn(pos) then
+			-- First remove node properly then create fire
+			local node = minetest.get_node(pos)
+			if minetest.get_item_group(node.name, leafdecay) > 0 then
+				default.leafdecay(pos)
+			else
+				minetest.dig_node(pos)
+			end
 			minetest.set_node(pos, {name="fire:basic_flame"})
 		end
 	end,
