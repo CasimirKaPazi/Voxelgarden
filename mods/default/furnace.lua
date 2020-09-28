@@ -213,7 +213,15 @@ local function furnace_node_timer(pos, elapsed)
 		-- stop timer on the inactive furnace
 		minetest.get_node_timer(pos):stop()
 	end
-	local infotext = S("Furnace ") .. active .. S("(Item: ") .. item_state .. S("; Fuel: ") .. fuel_state .. ")"
+	
+	local infotext
+	if active then
+		infotext = S("Furnace active")
+	else
+		infotext = S("Furnace inactive")
+	end
+	infotext = infotext .. "\n" .. S("(Item: @1; Fuel: @2)", item_state, fuel_state)
+	
 	-- Set meta values
 	meta:set_float("fuel_totaltime", fuel_totaltime)
 	meta:set_float("fuel_time", fuel_time)
@@ -418,7 +426,15 @@ local function clay_furnace_node_timer(pos, elapsed)
 		-- stop timer on the inactive furnace
 		minetest.get_node_timer(pos):stop()
 	end
-	local infotext = S("Furnace")" " .. active .. S("(Item: " .. item_state .. "; Fuel: " .. fuel_state .. ")")
+	
+	local infotext
+	if active then
+		infotext = S("Furnace active")
+	else
+		infotext = S("Furnace inactive")
+	end
+	infotext = infotext .. "\n" .. S("(Item: @1; Fuel: @2)", item_state, fuel_state)
+	
 	-- Set meta values
 	meta:set_float("fuel_totaltime", fuel_totaltime)
 	meta:set_float("fuel_time", fuel_time)
