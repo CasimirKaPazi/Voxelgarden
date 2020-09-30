@@ -139,6 +139,9 @@ function bones.place_bones(player)
 	local player_name = player:get_player_name()
 	local player_inv = player:get_inventory()
 
+	-- don't place empty bones
+	if player_inv:is_empty("main") and player_inv:is_empty("craft") then return end
+
 	if (not may_replace(pos, player)) then
 		if (may_replace({x=pos.x, y=pos.y+1, z=pos.z}, player)) then
 			-- drop one node above if there's space
