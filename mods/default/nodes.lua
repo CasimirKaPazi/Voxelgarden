@@ -432,6 +432,7 @@ minetest.register_node("default:ladder", {
 	walkable = false,
 	climbable = true,
 	is_ground_content = false,
+	floodable = true,
 	selection_box = {
 		type = "wallmounted",
 		--wall_top = = <default>
@@ -670,6 +671,7 @@ minetest.register_node("default:sign_wall", {
 	sunlight_propagates = true,
 	walkable = false,
 	is_ground_content = false,
+	floodable = true,
 	selection_box = {
 		type = "wallmounted",
 		--wall_top = <default>

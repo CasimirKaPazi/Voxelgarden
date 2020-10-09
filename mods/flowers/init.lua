@@ -125,6 +125,7 @@ for _, row in ipairs(flowers.mushrooms) do
 		sunlight_propagates = true,
 		walkable = false,
 		buildable_to = true,
+		floodable = true,
 		groups = {snappy = 3, attached_node = 1},
 		drop = "",
 		sounds = default.node_sound_leaves_defaults(),

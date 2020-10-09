@@ -209,6 +209,7 @@ function carts:register_rail(name, def_overwrite, railparams)
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
+		floodable = true,
 		walkable = false,
 		selection_box = {
 			type = "fixed",

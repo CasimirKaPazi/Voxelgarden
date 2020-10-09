@@ -91,6 +91,7 @@ minetest.register_node("nodetest:bonfire", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
+	floodable = true,
 	drop = "",
 	damage_per_second = 1,
 	light_source = 12,
