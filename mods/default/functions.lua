@@ -305,22 +305,46 @@ minetest.register_abm({
 	end,
 })
 
+function default.place_kelp(itemstack, placer, pos)
+	if minetest.get_node(pos).name ~= "default:sand" then
+		return itemstack
+	end
+
+	local height = math.random(4, 6)
+	local pos_top = {x = pos.x, y = pos.y + height, z = pos.z}
+	local node_top = minetest.get_node(pos_top)
+	local def_top = minetest.registered_nodes[node_top.name]
+	
+	if placer then
+		local player_name = placer:get_player_name()
+		if minetest.is_protected(pos, player_name)
+			and minetest.is_protected(pos_top, player_name) then
+			minetest.chat_send_player(player_name, "Node is protected")
+			minetest.record_protection_violation(pos, player_name)
+			return itemstack
+		end
+	end
+
+	if def_top and def_top.liquidtype == "source" and
+			minetest.get_item_group(node_top.name, "water") > 0 then
+		minetest.set_node(pos, {name = "default:sand_with_kelp",
+			param2 = height * 16})
+		if itemstack and not minetest.settings:get_bool("creative_mode") then
+			itemstack:take_item()
+		end
+	end
+
+	return itemstack
+end
+
 minetest.register_abm({
 	label = "Grow Kelp",
 	nodenames = {"default:sand_with_small_kelp"},
 	interval = 11,
 	chance = 50,
 	action = function(pos, node)
-		local height = math.random(4, 6)
-		local pos_top = {x = pos.x, y = pos.y + height, z = pos.z}
-		local node_top = minetest.get_node(pos_top)
-		local def_top = minetest.registered_nodes[node_top.name]
-
-		if def_top and def_top.liquidtype == "source" and
-			minetest.get_item_group(node_top.name, "water") > 0 then
-			minetest.set_node(pos, {name = "default:sand_with_kelp",
-				param2 = height * 16})
-		end
+		minetest.set_node(pos, {name = "default:sand"})
+		default.place_kelp(nil, nil, pos)
 	end,
 })
 
