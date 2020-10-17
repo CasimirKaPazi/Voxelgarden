@@ -794,7 +794,7 @@ minetest.register_node("default:diamondblock", {
 	description = S("Diamond Block"),
 	tiles = {"default_diamond_block.png"},
 	is_ground_content = false,
-	groups = {cracky = 1, level = 3},
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -1207,7 +1207,7 @@ minetest.register_node("default:obsidian", {
 	description = S("Obsidian"),
 	tiles = {"default_obsidian.png"},
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1},
 })
 
 minetest.register_node("default:obsidian_glass", {

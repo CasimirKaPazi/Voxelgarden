@@ -3,7 +3,7 @@
 local S = default.get_translator
 
 -- To stay simple tools don't use maxlevel.
--- The engine assumes maxlevel=0, so we have to specify 0
+-- The engine assumes maxlevel=1, so we have to specify 0
 -- A bug adds + 1 to uses, so we subtract 1.
 
 --
