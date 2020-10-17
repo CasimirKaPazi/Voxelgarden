@@ -315,37 +315,37 @@ function stairsplus.register_stair(modname, subname, recipeitem, groups, images,
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":stair_stone",
-		recipe = modname .. ":stair_cobble",
+		recipe = modname .. ":stair_stone_crumbled",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":stair_stone_inverted",
-		recipe = modname .. ":stair_cobble_inverted",
+		recipe = modname .. ":stair_stone_crumbled_inverted",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":stair_stone_half",
-		recipe = modname .. ":stair_cobble_half",
+		recipe = modname .. ":stair_stone_crumbled_half",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":stair_stone_half_inverted",
-		recipe = modname .. ":stair_cobble_half_inverted",
+		recipe = modname .. ":stair_stone_crumbled_half_inverted",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":stair_stone_right_half",
-		recipe = modname .. ":stair_cobble_right_half",
+		recipe = modname .. ":stair_stone_crumbled_right_half",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":stair_stone_half_inverted",
-		recipe = modname .. ":stair_cobble_half_inverted",
+		recipe = modname .. ":stair_stone_crumbled_half_inverted",
 	})
 	
 end

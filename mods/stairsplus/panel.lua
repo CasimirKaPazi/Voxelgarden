@@ -136,18 +136,18 @@ function stairsplus.register_panel(modname, subname, recipeitem, groups, images,
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":panel_stone_bottom",
-		recipe = modname .. ":panel_cobble_bottom",
+		recipe = modname .. ":panel_stone_crumbled_bottom",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":panel_stone_top",
-		recipe = modname .. ":panel_cobble_top",
+		recipe = modname .. ":panel_stone_crumbled_top",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":panel_stone_vertical",
-		recipe = modname .. ":panel_cobble_vertical",
+		recipe = modname .. ":panel_stone_crumbled_vertical",
 	})
 end

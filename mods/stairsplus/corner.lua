@@ -324,43 +324,43 @@ function stairsplus.register_corner(modname, subname, recipeitem, groups, images
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone",
-		recipe = modname .. ":corner_cobble",
+		recipe = modname .. ":corner_stone_crumbled",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone_half",
-		recipe = modname .. ":corner_cobble_half",
+		recipe = modname .. ":corner_stone_crumbled_half",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone_half_inverted",
-		recipe = modname .. ":corner_cobble_half_inverted",
+		recipe = modname .. ":corner_stone_crumbled_half_inverted",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone_inner",
-		recipe = modname .. ":corner_cobble_inner",
+		recipe = modname .. ":corner_stone_crumbled_inner",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone_outer",
-		recipe = modname .. ":corner_cobble_outer",
+		recipe = modname .. ":corner_stone_crumbled_outer",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone_inner_inverted",
-		recipe = modname .. ":corner_cobble_inner_inverted",
+		recipe = modname .. ":corner_stone_crumbled_inner_inverted",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":corner_stone_outer_inverted",
-		recipe = modname .. ":corner_cobble_outer_inverted",
+		recipe = modname .. ":corner_stone_crumbled_outer_inverted",
 	})
 
 end

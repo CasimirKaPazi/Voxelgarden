@@ -71,12 +71,12 @@ function stairsplus.register_quater_wall(modname, subname, recipeitem, groups, i
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":wall_stone_quarter",
-		recipe = modname .. ":wall_cobble_quarter",
+		recipe = modname .. ":wall_stone_crumbled_quarter",
 	})
 
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":wall_stone_three_quarter",
-		recipe = modname .. ":wall_cobble_three_quarter",
+		recipe = modname .. ":wall_stone_crumbled_three_quarter",
 	})
 end

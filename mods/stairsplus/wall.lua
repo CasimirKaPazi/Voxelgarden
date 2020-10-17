@@ -52,6 +52,6 @@ function stairsplus.register_wall(modname, subname, recipeitem, groups, images, 
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":wall_stone",
-		recipe = modname .. ":wall_cobble",
+		recipe = modname .. ":wall_stone_crumbled",
 	})
 end

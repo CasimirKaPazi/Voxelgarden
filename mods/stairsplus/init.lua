@@ -44,7 +44,20 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "stone", "d
 		S("Stone Wall"),
 		S("Stone Panel"),
 		S("Stone Microblock"),
-		"cobble",
+		"stone_crumbled",
+		default.node_sound_stone_defaults()
+		)
+
+stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "stone_crumbled", "default:stone_crumbled",
+		{cracky=3, not_in_creative_inventory=1, not_in_craft_guide=1, oddly_breakable_by_hand=1},
+		{"default_stone_crumbled.png"},
+		S("Crumbled Stairs"),
+		S("Crumbled Corner"),
+		S("Crumbled Slab"),
+		S("Crumbled Wall"),
+		S("Crumbled Panel"),
+		S("Crumbled Microblock"),
+		"stone_crumbled",
 		default.node_sound_stone_defaults()
 		)
 

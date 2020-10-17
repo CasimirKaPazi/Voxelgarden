@@ -175,25 +175,25 @@ function stairsplus.register_quater_slab(modname, subname, recipeitem, groups, i
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":slab_stone_quarter",
-		recipe = modname .. ":slab_cobble_quarter",
+		recipe = modname .. ":slab_stone_crumbled_quarter",
 	})
 
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":slab_stone_quarter_inverted",
-		recipe = modname .. ":slab_cobble_quarter_inverted",
+		recipe = modname .. ":slab_stone_crumbled_quarter_inverted",
 	})
 
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":slab_stone_three_quarter",
-		recipe = modname .. ":slab_cobble_three_quarter",
+		recipe = modname .. ":slab_stone_crumbled_three_quarter",
 	})
 
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":slab_stone_three_quarter_inverted",
-		recipe = modname .. ":slab_cobble_three_quarter_inverted",
+		recipe = modname .. ":slab_stone_crumbled_three_quarter_inverted",
 	})
 
 end

@@ -109,13 +109,13 @@ function stairsplus.register_slab(modname, subname, recipeitem, groups, images, 
 	minetest.register_craft({
 		type = "cooking",
 		output = ":stairs:slab_stone",
-		recipe = ":stairs:slab_cobble",
+		recipe = ":stairs:slab_stone_crumbled",
 	})
 
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":slab_stone_inverted",
-		recipe = modname .. ":slab_cobble_inverted",
+		recipe = modname .. ":slab_stone_crumbled_inverted",
 	})
 
 end

@@ -91,12 +91,12 @@ function stairsplus.register_micro(modname, subname, recipeitem, groups, images,
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":micro_stone_bottom",
-		recipe = modname .. ":micro_cobble_bottom",
+		recipe = modname .. ":micro_stone_crumbled_bottom",
 	})
 	
 	minetest.register_craft({
 		type = "cooking",
 		output = modname .. ":micro_stone_top",
-		recipe = modname .. ":micro_cobble_top",
+		recipe = modname .. ":micro_stone_crumbled_top",
 	})
 end
