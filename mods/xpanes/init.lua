@@ -175,6 +175,19 @@ xpanes.register_pane("bar", {
 	}
 })
 
+xpanes.register_pane("pane_wattle", {
+	description = S("Wattle"),
+	textures = {"xpanes_wattle.png","xpanes_wattle.png","xpanes_wattle_top.png"},
+	inventory_image = "xpanes_wattle.png",
+	wield_image = "xpanes_wattle.png",
+	groups = {choppy=3, oddly_breakable_by_hand=3},
+	sounds = default.node_sound_leaves_defaults(),
+	recipe = {
+		{"default:stick", "default:stick", "default:stick"},
+		{"default:stick", "default:stick", "default:stick"}
+	}
+})
+
 minetest.register_lbm({
 	name = "xpanes:gen2",
 	nodenames = {"group:pane"},

@@ -22,3 +22,6 @@ paramat (CC BY-SA 3.0):
 
 Krock (CC0 1.0):
   xpanes_edge.png
+  
+Dokimi (CC BY-SA 3.0):
+  xpanes_wattle*
