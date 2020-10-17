@@ -5,7 +5,7 @@ hunger = {}
 local player_is_active = {}
 local player_step = {}
 local player_bar = {}
-local base_interval = 0.5
+local base_interval = 5
 
 -- no_hunger privilege
 minetest.register_privilege("no_hunger", {
@@ -14,6 +14,20 @@ minetest.register_privilege("no_hunger", {
 })
 
 -- Hunger bar
+function hunger.new_bar(player, full)
+	local name = player:get_player_name()
+	player_bar[name] = player:hud_add({
+		hud_elem_type = "statbar",
+		position = {x=0.5,y=1.0},
+		text = "hunger.png",
+		number = full,
+		dir = 1,
+		offset = {x=(9*24)-6,y=-(3*24+8)},
+		size = {x=16, y=16},
+		})
+end
+
+-- Change display
 function hunger.update_bar(player, full)
 	if not player then return end
 	if not full then return end
@@ -25,15 +39,7 @@ function hunger.update_bar(player, full)
 	if player_bar[name] then
 		player:hud_change(player_bar[name], "number", full)
 	else
-		player_bar[name] = player:hud_add({
-			hud_elem_type = "statbar",
-			position = {x=0.5,y=1.0},
-			text = "hunger.png",
-			number = full,
-			dir = 1,
-			offset = {x=(9*24)-6,y=-(3*24+8)},
-			size = {x=16, y=16},
-		})
+		hunger.new_bar(player, full)
 	end
 end
 
@@ -55,9 +61,11 @@ end)
 minetest.register_on_joinplayer(function(player)
 	local name = player:get_player_name()
 	local full = player:get_attribute("hunger")
-	if not full then full = 20 end
-	hunger.update_bar(player, full)
-	player:set_attribute("hunger", full)
+	if not full then
+		full = 20
+		player:set_attribute("hunger", full)
+	end
+	hunger.new_bar(player, full)
 end)
 
 minetest.register_on_respawnplayer(function(player)
