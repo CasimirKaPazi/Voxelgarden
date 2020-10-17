@@ -85,6 +85,22 @@ minetest.register_craft({
 	}
 })
 
+doors:register_door("doors:door_wattle", {
+	description = S("Wattle Door"),
+	inventory_image = "doors_wattle.png",
+	groups = {snappy = 1, oddly_breakable_by_hand=3, door=1, flammable=2},
+	tiles = {"doors_wattle.png"},
+})
+
+minetest.register_craft({
+	output = "doors:door_wattle_1 2",
+	recipe = {
+		{"default:stick", "default:stick"},
+		{"default:stick", "default:stick"},
+		{"default:stick", "default:stick"}
+	}
+})
+
 minetest.register_alias("doors:door_wood", "doors:door_wood_1")
 minetest.register_alias("doors:door_wood_t_1", "doors:door_wood_window_1")
 minetest.register_alias("doors:door_wood_t_2", "doors:door_wood_window_2")
