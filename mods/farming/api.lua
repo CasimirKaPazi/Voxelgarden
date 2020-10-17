@@ -1,4 +1,7 @@
 function farming.hoe_on_use(itemstack, placer, pos, uses)
+	if minetest.is_protected(pos, placer:get_player_name()) then
+		return
+	end
 	if pos == nil then return end
 	local under = minetest.get_node(pos)
 	local pos_above = {x=pos.x, y=pos.y+1, z=pos.z}
@@ -22,6 +25,9 @@ function farming.hoe_on_use(itemstack, placer, pos, uses)
 end
 
 function farming.place_seed(itemstack, placer, pointed, plantname)
+	if minetest.is_protected(pointed.above, placer:get_player_name()) then
+		return
+	end
 	local under = minetest.get_node(pointed.under)
 	local above = minetest.get_node(pointed.above)
 	local p_below = {x=pointed.above.x, y=pointed.above.y-1, z=pointed.above.z}
@@ -38,7 +44,7 @@ function farming.place_seed(itemstack, placer, pointed, plantname)
 		return
 	end
 	above.name = plantname
-	minetest.place_node(pointed.above, above, placer)
+	minetest.add_node(pointed.above, above)
 	minetest.sound_play("default_place_node", {pos = pointed.above, gain = 0.5})
 	if minetest.settings:get_bool("creative_mode") then
 		return
