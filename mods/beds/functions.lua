@@ -2,9 +2,13 @@ local pi = math.pi
 local player_in_bed = 0
 local is_sp = minetest.is_singleplayer()
 local enable_respawn = minetest.settings:get_bool("enable_bed_respawn")
+local player_physics = {}
 if enable_respawn == nil then
 	enable_respawn = true
 end
+
+-- support for game translation.
+local S = beds.get_translator
 
 -- Helper functions
 
@@ -75,7 +79,12 @@ local function lay_down(player, pos, bed_pos, state, skip)
 		-- physics, eye_offset, etc
 		player:set_eye_offset({x = 0, y = 0, z = 0}, {x = 0, y = 0, z = 0})
 		default.player_attached[name] = false
-		player:set_physics_override(1, 1, 1)
+		if player_physics[name] then
+			player:set_physics_override(player_physics[name])
+			player_physics[name] = nil
+		else
+			player:set_physics_override(1, 1, 1)
+		end
 		hud_flags.wielditem = true
 		player_api.set_animation(player, "stand" , 30)
 
@@ -92,6 +101,7 @@ local function lay_down(player, pos, bed_pos, state, skip)
 		player:set_look_horizontal(yaw)
 		local dir = minetest.facedir_to_dir(param2)
 		local p = {x = bed_pos.x + dir.x / 2, y = bed_pos.y, z = bed_pos.z + dir.z / 2}
+		player_physics[name] = player:get_physics_override()
 		player:set_physics_override(0, 0, 0)
 		player:set_pos(p)
 		default.player_attached[name] = true
