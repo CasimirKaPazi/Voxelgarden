@@ -62,6 +62,12 @@ for _, row in ipairs(flowers.flowers) do
 	})
 end
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "group:flowers",
+	burntime = 1,
+})
+
 flowers.mushrooms = {
 --	name,		desc,			groups,		hp change
 	{"mushroom_brown",	S("Brown Mushroom"),	{fungi=1},	1},

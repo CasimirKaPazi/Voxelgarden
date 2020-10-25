@@ -19,6 +19,12 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "doors:door_wood_1",
+	burntime = 16,
+})
+
 doors:register_door("doors:door_wood_window", {
 	description = S("Wooden Window"),
 	inventory_image = "doors_wood_a.png",
@@ -33,6 +39,12 @@ minetest.register_craft({
 		{"group:stick", "group:stick"},
 		{"group:wood", "group:wood"}
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "doors:door_wood_window_1",
+	burntime = 16,
 })
 
 doors:register_door("doors:door_steel", {
@@ -99,6 +111,12 @@ minetest.register_craft({
 		{"default:stick", "default:stick"},
 		{"default:stick", "default:stick"}
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "doors:door_wattle_1",
+	burntime = 3,
 })
 
 minetest.register_alias("doors:door_wood", "doors:door_wood_1")

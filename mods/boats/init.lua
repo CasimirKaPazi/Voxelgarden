@@ -290,5 +290,5 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "boats:boat",
-	burntime = 20,
+	burntime = 32,
 })

@@ -45,12 +45,6 @@ minetest.register_abm({
 	end
 })
 
-minetest.register_craft({
-	type = "fuel",
-	recipe = "farming:weed",
-	burntime = 1
-})
-
 --
 -- Wheat
 --
@@ -152,7 +146,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "farming:straw",
-	burntime = 10
+	burntime = 9
 })
 
 minetest.register_decoration({

@@ -126,7 +126,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "group:tree_horizontal",
-	burntime = 30,
+	burntime = 32,
 })
 
 minetest.register_craft({
@@ -138,5 +138,11 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "nodetest:bonfire",
-	burntime = 15,
+	burntime = 10,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "nodetest:spearwood",
+	burntime = 6,
 })

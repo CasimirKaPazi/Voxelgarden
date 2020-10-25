@@ -47,5 +47,10 @@ for _, row in ipairs(wool.dyes) do
 			recipe = {'group:dye,'..craft_color_group, 'group:wool'},
 		})
 	end
+	minetest.register_craft({
+		type = "fuel",
+		recipe = "wool:"..name,
+		burntime = 4,
+	})
 end
 

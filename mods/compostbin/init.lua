@@ -283,12 +283,18 @@ minetest.register_node("compostbin:wood_bin_full", {
 })
 
 minetest.register_craft({
-	output = "compostbin:wood_bin",
+	output = "compostbin:wood_bin 3",
 	recipe = {
 		{"group:wood", "", "group:wood"},
 		{"group:wood", "", "group:wood"},
 		{"group:wood", "group:stick", "group:wood"}
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "compostbin:wood_bin",
+	burntime = 30,
 })
 
 minetest.register_craftitem("compostbin:compost", {

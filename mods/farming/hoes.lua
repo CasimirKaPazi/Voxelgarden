@@ -158,3 +158,9 @@ minetest.register_craft({
 		{"", "group:stick"}
 	}
 })
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "farming:hoe_wood",
+	burntime = 5,
+})

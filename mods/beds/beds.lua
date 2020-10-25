@@ -39,5 +39,5 @@ beds.register_bed("beds:bed", {
 minetest.register_craft({
 	type = "fuel",
 	recipe = "beds:bed_bottom",
-	burntime = 12,
+	burntime = 32,
 })

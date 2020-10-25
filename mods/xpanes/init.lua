@@ -144,7 +144,7 @@ function xpanes.register_pane(name, def)
 	})
 
 	minetest.register_craft({
-		output = "xpanes:" .. name .. "_flat 16",
+		output = "xpanes:" .. name .. "_flat 6",
 		recipe = def.recipe
 	})
 end
@@ -186,6 +186,12 @@ xpanes.register_pane("pane_wattle", {
 		{"default:stick", "default:stick", "default:stick"},
 		{"default:stick", "default:stick", "default:stick"}
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "xpanes:pane_wattle_flat",
+	burntime = 2,
 })
 
 minetest.register_lbm({
