@@ -1,5 +1,5 @@
 -- Load support for MT game translation.
-local S = minetest.get_translator("hunger")
+local S = minetest.get_translator("stairsplus")
 
 stairsplus = {}
 
@@ -140,7 +140,7 @@ stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "sandstone"
 		)
 
 stairsplus.register_stair_and_slab_and_panel_and_micro("stairsplus", "stonebrick", "default:stonebrick",
-		{cracky=1, not_in_creative_inventory=1, not_in_craft_guide=1},
+		{cracky=2, not_in_creative_inventory=1, not_in_craft_guide=1},
 		{"default_stone_brick.png"},
 		S("Stone Brick Stairs"),
 		S("Stone Brick Corner"),
