@@ -10,7 +10,24 @@ local health_bar_definition =
 	offset = {x=(-9*24)-12, y=-(48+24+8)},
 }
 
+local breath = 20
+minetest.register_on_joinplayer(function(player)
+	player:set_properties({breath_max = breath})
+end)
+
+local breath_bar_definition = {
+	hud_elem_type = "statbar",
+	position = {x = 0.5, y = 1},
+	text = "bubble.png",
+	number = breath,
+	item = breath,
+	direction = 1,
+	size = {x = 16, y = 16},
+	offset = {x = (9*24)-6, y= -(3*24+8+16)},
+}
+
 core.hud_replace_builtin("health", health_bar_definition)
+core.hud_replace_builtin("breath", breath_bar_definition)
 
 
 -- GUI related stuff
