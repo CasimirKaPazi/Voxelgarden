@@ -41,6 +41,8 @@ zcg.add_craft = function(input, output, groups)
 	c.width = input.width
 	c.type = input.type
 	c.items = input.items
+	c.result = input.output
+	if not c.result then print("Nope") return end
 	if c.items == nil then return end
 	for i, item in pairs(c.items) do
 		if item:sub(0,6) == "group:" then
@@ -60,6 +62,10 @@ zcg.add_craft = function(input, output, groups)
 				return
 			end
 		end
+	end
+	local _ start = string.find(c.result, " ")
+	if start then
+		c.count = c.result:sub(start)
 	end
 	if c.width == 0 then c.width = 3 end
 	table.insert(zcg.crafts[output],c)
@@ -141,6 +147,9 @@ zcg.formspec = function(pn)
 				end
 				formspec = formspec .. "image[6,1;1,1;zcg_craft_arrow.png]"
 				formspec = formspec .. "item_image_button[7,1;1,1;"..zcg.users[pn].current_item..";;]"
+				if c.count then
+					formspec = formspec .. "label[7.5,1.5;"..c.count.."]"
+				end
 			end
 		end
 	end
