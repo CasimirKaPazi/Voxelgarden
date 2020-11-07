@@ -9,12 +9,6 @@ mobs.mod = "redo"
 mobs.version = "20180808"
 
 
--- Intllib
-local MP = minetest.get_modpath(minetest.get_current_modname())
-local S, NS = dofile(MP .. "/intllib.lua")
-mobs.intllib = S
-
-
 -- CMI support check
 local use_cmi = minetest.global_exists("cmi")
 
