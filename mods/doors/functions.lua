@@ -1,3 +1,5 @@
+local S = minetest.get_translator("doors")
+
 doors = {}
 
 local floor_dir = {
@@ -120,7 +122,7 @@ function doors:register_door(name, def)
 				local playername = placer:get_player_name()
 				local meta = minetest.get_meta(pta)
 				meta:set_string("doors_owner", playername)
-				meta:set_string("infotext", "Owned by "..playername)
+				meta:set_string("infotext", S("Owned by @1", playername))
 			end
 
 			if not minetest.settings:get_bool("creative_mode") then
