@@ -13,7 +13,6 @@ minetest.register_alias("mapgen_pine_needles", "conifer:leaves_1")
 minetest.register_node("conifer:sapling", {
 	description = S("Conifer Sapling"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"conifer_sapling.png"},
 	inventory_image = "conifer_sapling.png",
 	wield_image = "conifer_sapling.png",
@@ -53,7 +52,6 @@ for i=1,2 do
 	minetest.register_node("conifer:leaves_"..i, {
 		description = S("Conifer Leaves"),
 		drawtype = "allfaces_optional",
-		visual_scale = 1.3,
 		tiles = {"conifer_leaves_"..i..".png"},
 		paramtype = "light",
 		waving = 1,

@@ -202,7 +202,6 @@ minetest.register_node("default:jungletree", {
 minetest.register_node("default:jungleleaves", {
 	description = S("Jungle Leaves"),
 	drawtype = "allfaces_optional",
-	visual_scale = 1.3,
 	tiles = {"default_jungleleaves.png"},
 	paramtype = "light",
 	waving = 1,
@@ -230,7 +229,6 @@ minetest.register_node("default:jungleleaves", {
 minetest.register_node("default:junglesapling", {
 	description = S("Jungle Sapling"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"default_junglesapling.png"},
 	inventory_image = "default_junglesapling.png",
 	wield_image = "default_junglesapling.png",
@@ -277,7 +275,6 @@ minetest.register_node("default:junglegrass", {
 minetest.register_node("default:leaves", {
 	description = S("Leaves"),
 	drawtype = "allfaces_optional",
-	visual_scale = 1.3,
 	tiles = {"default_leaves.png"},
 	paramtype = "light",
 	waving = 1,
@@ -831,7 +828,6 @@ minetest.register_node("default:rainbow", {
 minetest.register_node("default:sapling", {
 	description = S("Sapling"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"default_sapling.png"},
 	inventory_image = "default_sapling.png",
 	wield_image = "default_sapling.png",
@@ -857,7 +853,6 @@ minetest.register_node("default:sapling", {
 minetest.register_node("default:apple", {
 	description = S("Apple"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"default_apple.png"},
 	inventory_image = "default_apple.png",
 	wield_image = "default_apple.png",
@@ -880,7 +875,6 @@ minetest.register_node("default:apple", {
 minetest.register_node("default:dry_shrub", {
 	description = S("Dry Shrub"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"default_dry_shrub.png"},
 	inventory_image = "default_dry_shrub.png",
 	wield_image = "default_dry_shrub.png",
