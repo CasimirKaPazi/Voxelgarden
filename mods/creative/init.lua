@@ -1,5 +1,8 @@
 -- minetest/creative/init.lua
 
+local S = minetest.get_translator("creative")
+local F = minetest.formspec_escape
+
 creative_inventory = {}
 creative_inventory.creative_inventory_size = 0
 
@@ -71,7 +74,7 @@ if minetest.settings:get_bool("creative_mode") then
 				"listring[current_player;craft]"..
 				"listring[current_player;main]"..
 				"listring[detached:creative;main]"..
-				"label[5,1.5;Trash:]"..
+				"label[5,1.5;"..F(S("Trash:")).."]"..
 				"list[detached:creative_trash;main;5,2;1,1;]")
 	end
 

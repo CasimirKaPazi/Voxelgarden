@@ -53,7 +53,7 @@ minetest.register_node("bones:bones", {
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		local meta = minetest.get_meta(pos)
 		if meta:get_string("owner") ~= "" and meta:get_inventory():is_empty("main") then
-			meta:set_string("infotext", S(meta:get_string("owner").."'s old bones"))
+			meta:set_string("infotext", S("@1's old bones", meta:get_string("owner")))
 			meta:set_string("formspec", "")
 			meta:set_string("owner", "")
 		end
@@ -91,7 +91,7 @@ minetest.register_node("bones:bones", {
 		local meta = minetest.get_meta(pos)
 		local time = meta:get_int("time") + elapsed
 		if time >= share_bones_time then
-			meta:set_string("infotext", S(meta:get_string("owner").."'s old bones"))
+			meta:set_string("infotext", S("@1's old bones", meta:get_string("owner")))
 			meta:set_string("owner", "")
 		else
 			meta:set_int("time", time)
@@ -184,11 +184,11 @@ function bones.place_bones(player)
 	meta:set_string("owner", player_name)
 
 	if share_bones_time ~= 0 then
-		meta:set_string("infotext", S(player_name.."'s fresh bones"))
+		meta:set_string("infotext", S("@1's fresh bones", player_name))
 		meta:set_int("time", 0)
 		minetest.get_node_timer(pos):start(10)
 	else
-		meta:set_string("infotext", S(player_name.."'s bones"))
+		meta:set_string("infotext", S("@1's bones", player_name))
 	end
 end
 

@@ -1,11 +1,11 @@
 -- support for MT game translation.
-local S = default.get_translator
+local S = minetest.get_translator("fire")
 
 local function strike_fire(user, pointed_thing)
 	-- Fire priviledge
 	local name = user:get_player_name()
 	if not minetest.get_player_privs(name)["fire"] then 
-		minetest.chat_send_player(name, "You need the fire privilege.")
+		minetest.chat_send_player(name, S("You need the 'fire' privilege."))
 		return
 	end
 	-- Use tinder, place flame
@@ -18,7 +18,7 @@ local function strike_fire(user, pointed_thing)
 			minetest.add_node(pointed_thing.above, {name="fire:basic_flame"})
 			return true
 		else
-			minetest.chat_send_player(name, "You need tinder right to the tool.")
+			minetest.chat_send_player(name, S("You need tinder right to the tool."))
 		end
 	end
 end

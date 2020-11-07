@@ -69,17 +69,18 @@ minetest.register_craft({
 })
 
 flowers.mushrooms = {
---	name,		desc,			groups,		hp change
-	{"mushroom_brown",	S("Brown Mushroom"),	{fungi=1},	1},
-	{"mushroom_red",	S("Red Mushroom"),	{fungi=1},	-1},
+--	name,			desc,			desc spores,			groups,		hp change
+	{"mushroom_brown",	S("Brown Mushroom"),	S("Brown Mushroom Spores"),	{fungi=1},	1},
+	{"mushroom_red",	S("Red Mushroom"),	S("Red Mushroom Spores"),	{fungi=1},	-1},
 }
 
 -- Mushrooms
 for _, row in ipairs(flowers.mushrooms) do
 	local name = row[1]
 	local desc = row[2]
-	local groups = row[3]
-	local hp = row[4]
+	local desc_spores = row[3]
+	local groups = row[4]
+	local hp = row[5]
 	groups.dig_immediate = 3
 	groups.flammable = 2
 	groups.falling_node = 1
@@ -119,7 +120,7 @@ for _, row in ipairs(flowers.mushrooms) do
 	})
 
 	minetest.register_node("flowers:"..name.."_spores", {
-		description = ""..desc.." Spores",
+		description = desc_spores,
 		drawtype = "nodebox",
 		node_box = {
 			type = "fixed",

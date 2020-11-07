@@ -11,21 +11,21 @@ local wool = {}
 -- colors, and then some recipes using more specific colors for a few non-base
 -- colors available. When crafting, the last recipes will be checked first.
 wool.dyes = {
-	{"white",      S("White"),      nil},
-	{"grey",       S("Grey"),       "basecolor_grey"},
-	{"black",      S("Black"),      "basecolor_black"},
-	{"red",        S("Red"),        "basecolor_red"},
-	{"yellow",     S("Yellow"),     "basecolor_yellow"},
-	{"green",      S("Green"),      "basecolor_green"},
-	{"cyan",       S("Cyan"),       "basecolor_cyan"},
-	{"blue",       S("Blue"),       "basecolor_blue"},
-	{"magenta",    S("Magenta"),    "basecolor_magenta"},
-	{"orange",     S("Orange"),     "excolor_orange"},
-	{"violet",     S("Violet"),     "excolor_violet"},
-	{"brown",      S("Brown"),      "unicolor_dark_orange"},
-	{"pink",       S("Pink"),       "unicolor_light_red"},
-	{"dark_grey",  S("Dark Grey"),  "unicolor_darkgrey"},
-	{"dark_green", S("Dark Green"), "unicolor_dark_green"},
+	{"white",      S("White Wool"),      nil},
+	{"grey",       S("Grey Wool"),       "basecolor_grey"},
+	{"black",      S("Black Wool"),      "basecolor_black"},
+	{"red",        S("Red Wool"),        "basecolor_red"},
+	{"yellow",     S("Yellow Wool"),     "basecolor_yellow"},
+	{"green",      S("Green Wool"),      "basecolor_green"},
+	{"cyan",       S("Cyan Wool"),       "basecolor_cyan"},
+	{"blue",       S("Blue Wool"),       "basecolor_blue"},
+	{"magenta",    S("Magenta Wool"),    "basecolor_magenta"},
+	{"orange",     S("Orange Wool"),     "excolor_orange"},
+	{"violet",     S("Violet Wool"),     "excolor_violet"},
+	{"brown",      S("Brown Wool"),      "unicolor_dark_orange"},
+	{"pink",       S("Pink Wool"),       "unicolor_light_red"},
+	{"dark_grey",  S("Dark Grey Wool"),  "unicolor_darkgrey"},
+	{"dark_green", S("Dark Green Wool"), "unicolor_dark_green"},
 }
 
 for _, row in ipairs(wool.dyes) do
@@ -34,7 +34,7 @@ for _, row in ipairs(wool.dyes) do
 	local craft_color_group = row[3]
 	-- Node Definition
 	minetest.register_node("wool:"..name, {
-		description = desc.." Wool",
+		description = desc,
 		tiles = {"wool_"..name..".png"},
 		groups = {snappy=2,oddly_breakable_by_hand=3,flammable=3,wool=1, fall_damage_add_percent=default.COUSHION},
 		sounds = default.node_sound_leaves_defaults(),
