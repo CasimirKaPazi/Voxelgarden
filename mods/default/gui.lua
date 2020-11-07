@@ -13,6 +13,7 @@ local health_bar_definition =
 local breath = 20
 minetest.register_on_joinplayer(function(player)
 	player:set_properties({breath_max = breath})
+	player:set_breath(breath)
 end)
 
 local breath_bar_definition = {
