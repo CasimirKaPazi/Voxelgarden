@@ -1,0 +1,13 @@
+# textdomain: mobs
+** Peaceful Mode Active - No Monsters Will Spawn=
+Active Mob Limit Reached!=
+Mob has been protected!=
+@1 (Tamed)=
+Not tamed!=Evcil değil!
+@1 is owner!=Sahibi @1!
+Missed!=Kaçırdın!
+Already protected!=
+@1 at full health (@2)=@1 tam canında (@2)
+@1 has been tamed!=@1 tamamen evcilleştirilmiştir!
+Enter name:=İsim gir:
+Rename=Yeniden adlandır
