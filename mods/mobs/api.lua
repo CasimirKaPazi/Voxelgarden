@@ -1,13 +1,11 @@
 
 -- Intllib and CMI support check
-local MP = minetest.get_modpath(minetest.get_current_modname())
-local S, NS = dofile(MP .. "/intllib.lua")
+local S = minetest.get_translator("mobs")
 local use_cmi = minetest.global_exists("cmi")
 
 mobs = {
 	mod = "redo",
 	version = "20200629",
-	intllib = S,
 	invis = minetest.global_exists("invisibility") and invisibility or {}
 }
 
@@ -3255,7 +3253,7 @@ function mob_class:mob_expire(pos, dtime)
 			end
 
 --			minetest.log("action",
---				S("lifetimer expired, removed @1", self.name))
+--				"lifetimer expired, removed @1", self.name)
 
 			effect(pos, 15, "tnt_smoke.png", 2, 4, 2, 0)
 

@@ -1,0 +1,13 @@
+# textdomain: mobs
+** Peaceful Mode Active - No Monsters Will Spawn=
+Active Mob Limit Reached!=
+Mob has been protected!=
+@1 (Tamed)=
+Not tamed!=
+@1 is owner!=
+Missed!=
+Already protected!=
+@1 at full health (@2)=
+@1 has been tamed!=
+Enter name:=
+Rename=

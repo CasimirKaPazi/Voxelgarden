@@ -5,7 +5,7 @@
 --
 
 -- support for MT game translation.
-local S = default.get_translator
+local S = minetest.get_translator("nodetest")
 
 minetest.register_craftitem("nodetest:bone", {
 	description = S("Bone"),

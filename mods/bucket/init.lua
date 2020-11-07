@@ -139,7 +139,7 @@ minetest.register_craftitem("bucket:bucket_empty", {
 				inv:add_item("main", bucket_liquid)
 				return itemstack
 			else
-				minetest.chat_send_player(user:get_player_name(), "Your inventory is full.")
+				minetest.chat_send_player(user:get_player_name(), S("Your inventory is full."))
 			end
 
 		end
@@ -151,7 +151,7 @@ bucket.register_liquid(
 	"default:water_flowing",
 	"bucket:bucket_water",
 	"bucket_water.png",
-	"Water Bucket"
+	S("Water Bucket")
 )
 
 bucket.register_liquid(
@@ -159,7 +159,7 @@ bucket.register_liquid(
 	"default:lava_flowing",
 	"bucket:bucket_lava",
 	"bucket_lava.png",
-	"Lava Bucket"
+	S("Lava Bucket")
 )
 
 minetest.register_craft({

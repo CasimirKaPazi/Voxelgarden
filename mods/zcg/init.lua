@@ -2,6 +2,9 @@
 -- See README for more information
 -- Released by Zeg9 under WTFPL
 
+local S = minetest.get_translator("zcg")
+local F = minetest.formspec_escape
+
 zcg = {}
 
 zcg.users = {}
@@ -110,7 +113,7 @@ zcg.formspec = function(pn)
 	local alt = zcg.users[pn].alt
 	local current_item = zcg.users[pn].current_item
 	local formspec = "size[8,7.5]"
-	.. "button[0,0;2,.5;main;Back]"
+	.. "button[0,0;2,.5;main;"..F(S("Back")).."]"
 	if zcg.users[pn].history.index > 1 then
 		formspec = formspec .. "image_button[0,1;1,1;zcg_previous.png;zcg_previous;;false;false;zcg_previous_press.png]"
 	else
@@ -143,7 +146,7 @@ zcg.formspec = function(pn)
 				if c.type == "normal" or c.type == "cooking" then
 					formspec = formspec .. "image[6,2;1,1;zcg_method_"..c.type..".png]"
 				else -- we don't have an image for other types of crafting
-					formspec = formspec .. "label[0,2;Method: "..c.type.."]"
+					formspec = formspec .. "label[0,2;"..F(S("Method: @1", c.type)).."]"
 				end
 				formspec = formspec .. "image[6,1;1,1;zcg_craft_arrow.png]"
 				formspec = formspec .. "item_image_button[7,1;1,1;"..zcg.users[pn].current_item..";;]"
@@ -171,7 +174,7 @@ zcg.formspec = function(pn)
 	if i >= npp then
 		formspec = formspec .. "button[1,7;1,.5;zcg_page:"..(page+1)..";>>]"
 	end
-	formspec = formspec .. "label[2,6.85;Page "..(page+1).."/"..(math.floor(#zcg.itemlist/npp+1)).."]" -- The Y is approximatively the good one to have it centered vertically...
+	formspec = formspec .. "label[2,6.85;"..F(S("Page @1/@2", page+1, math.floor(#zcg.itemlist/npp+1))).."]" -- The Y is approximatively the good one to have it centered vertically...
 	return formspec
 end
 

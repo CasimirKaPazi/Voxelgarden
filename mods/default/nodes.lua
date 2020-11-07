@@ -692,7 +692,7 @@ minetest.register_node("default:sign_wall", {
 		--local n = minetest.get_node(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", "field[text;;${text}]")
-		meta:set_string("infotext", "\"\"")
+		meta:set_string("infotext", S("\"@1\"", ""))
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		local player_name = sender:get_player_name() or ""
@@ -705,7 +705,7 @@ minetest.register_node("default:sign_wall", {
 		print(player_name.." wrote \""..fields.text..
 				"\" to sign at "..minetest.pos_to_string(pos))
 		meta:set_string("text", fields.text)
-		meta:set_string("infotext", '"'..fields.text..'"')
+		meta:set_string("infotext", S("\"@1\"", fields.text))
 	end,
 })
 

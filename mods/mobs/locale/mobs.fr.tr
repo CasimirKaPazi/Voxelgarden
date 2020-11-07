@@ -1,0 +1,13 @@
+# textdomain: mobs
+** Peaceful Mode Active - No Monsters Will Spawn=** Mode pacifique activé - Aucun monstre ne sera généré
+Active Mob Limit Reached!=
+Mob has been protected!=L'animal a été protégé !
+@1 (Tamed)=@1 (apprivoisé)
+Not tamed!=Non-apprivoisé !
+@1 is owner!=Appartient à @1 !
+Missed!=Raté !
+Already protected!=Déjà protégé !
+@1 at full health (@2)=@1 est en pleine forme (@2) 
+@1 has been tamed!=@1 a été apprivoisé ! 
+Enter name:=Saisissez un nom :
+Rename=Renommer

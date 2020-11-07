@@ -1,5 +1,5 @@
 -- support for MT game translation.
-local S = default.get_translator
+local S = minetest.get_translator("beds")
 
 beds.register_bed("beds:bed", {
 	description = S("Bed"),

@@ -183,7 +183,7 @@ local function furnace_node_timer(pos, elapsed)
 		if item_percent > 100 then
 			item_state = S("100% (output full)")
 		else
-			item_state = item_percent .. "%"
+			item_state = S("@1%", item_percent)
 		end
 	else
 		if srclist[1]:is_empty() then
@@ -194,13 +194,13 @@ local function furnace_node_timer(pos, elapsed)
 	end
 
 	local fuel_state = S("Empty")
-	local active = S("inactive ")
+	local active = false
 	local result = false
 
 	if fuel_totaltime ~= 0 then
-		active = "active "
+		active = true
 		local fuel_percent = math.floor(fuel_time / fuel_totaltime * 100)
-		fuel_state = fuel_percent .. "%"
+		fuel_state = S("@1%", fuel_percent)
 		formspec = active_formspec(fuel_percent, item_percent)
 		swap_node(pos, "default:furnace_active")
 		-- make sure timer restarts automatically
@@ -396,7 +396,7 @@ local function clay_furnace_node_timer(pos, elapsed)
 		if item_percent > 100 then
 			item_state = S("100% (output full)")
 		else
-			item_state = item_percent .. "%"
+			item_state = S("@1%", item_percent)
 		end
 	else
 		if srclist[1]:is_empty() then
@@ -407,20 +407,20 @@ local function clay_furnace_node_timer(pos, elapsed)
 	end
 
 	local fuel_state = S("Empty")
-	local active = S("inactive ")
+	local active = false
 	local result = false
 
 	if fuel_totaltime ~= 0 then
-		active = "active "
+		active = true
 		local fuel_percent = math.floor(fuel_time / fuel_totaltime * 100)
-		fuel_state = fuel_percent .. "%"
+		fuel_state = S("@1%", fuel_percent)
 		formspec = active_formspec(fuel_percent, item_percent)
 		swap_node(pos, "default:clay_furnace_active")
 		-- make sure timer restarts automatically
 		result = true
 	else
 		if not fuellist[1]:is_empty() then
-			fuel_state = "0%"
+			fuel_state = S("@1%", 0)
 		end
 		swap_node(pos, "default:clay_furnace")
 		-- stop timer on the inactive furnace

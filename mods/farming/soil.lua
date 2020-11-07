@@ -1,5 +1,5 @@
 -- support for MT game translation.
-local S = default.get_translator
+local S = minetest.get_translator("farming")
 
 local footsteps = {"", "_footsteps"}
 

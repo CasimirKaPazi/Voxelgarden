@@ -29,7 +29,7 @@ local function screwdriver_setmode(user,itemstack)
 	if mode == 5 then
 		mode = 1
 	end
-	minetest.chat_send_player(player_name, S("Screwdriver mode : ")..mode.." - "..mode_text[mode][1] )
+	minetest.chat_send_player(player_name, S("Screwdriver mode: @1 - @2", mode, mode_text[mode][1] ))
 	itemstack:set_name("screwdriver:screwdriver"..mode)
 	itemstack:set_metadata(mode)
 	return itemstack
@@ -150,7 +150,7 @@ minetest.register_tool("screwdriver:screwdriver", {
 
 for i = 1, 4 do
 	minetest.register_tool("screwdriver:screwdriver"..i, {
-		description = S("Screwdriver in Mode ")..i,
+		description = S("Screwdriver in Mode @1", i),
 		inventory_image = "screwdriver.png^tool_mode"..i..".png",
 		wield_image = "screwdriver.png",
 		groups = {not_in_creative_inventory=1},

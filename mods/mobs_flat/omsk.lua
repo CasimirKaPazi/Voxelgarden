@@ -1,5 +1,5 @@
 -- support for MT game translation.
-local S = default.get_translator
+local S = minetest.get_translator("mobs_flat")
 
 mobs:register_mob("mobs_flat:omsk", {
 	type = "monster",

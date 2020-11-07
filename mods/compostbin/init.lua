@@ -163,24 +163,24 @@ local function compost_node_timer(pos, elapsed)
 	if cookable then
 		item_percent = math.floor(src_time / cooktime * 100)
 		if item_percent > 100 then
-			item_state = "100% (output full)"
+			item_state = S("100% (output full)")
 		else
-			item_state = item_percent .. "%"
+			item_state = S("@1%", item_percent)
 		end
 	else
 		if srclist[1]:is_empty() then
-			item_state = "Empty"
+			item_state = S("Empty")
 		else
-			item_state = "Not cookable"
+			item_state = S("Not cookable")
 		end
 	end
 
-	local active = "inactive "
+	local active = false
 	local result = false
 
 	-- Update node. Have a filled bin as long as there is input or output.
 	if not srclist[1]:is_empty() or not inv:get_list("dst")[1]:is_empty() then
-		active = "active "
+		active = true
 		formspec = active_formspec(item_percent)
 		swap_node(pos, "compostbin:wood_bin_full")
 		-- make sure timer restarts automatically
@@ -190,7 +190,12 @@ local function compost_node_timer(pos, elapsed)
 		-- stop timer on the inactive compost bin
 		minetest.get_node_timer(pos):stop()
 	end
-	local infotext = "Compost bin " .. active .. "(Item: " .. item_state .. ")"
+	local infotext
+	if active then
+		infotext = S("Compost bin active (Item: @1)", item_state)
+	else
+		infotext = S("Compost bin inactive (Item: @1)", item_state)
+	end
 	-- Set meta values
 	meta:set_float("src_time", src_time)
 	meta:set_string("formspec", formspec)
@@ -249,7 +254,7 @@ minetest.register_node("compostbin:wood_bin", {
 })
 
 minetest.register_node("compostbin:wood_bin_full", {
-	description = "Compost Bin",
+	description = S("Compost Bin"),
 	tiles = {
 		"default_wood.png^compostbin_compost_top.png",
 		"default_wood.png^compostbin_compost_top.png",
