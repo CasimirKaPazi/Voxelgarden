@@ -32,17 +32,18 @@ end
 
 default.leafdecay = function(p0)
 	--print("leafdecay ABM at "..p0.x..", "..p0.y..", "..p0.z..")")
-	local node = minetest.get_node(p0)
+	local n0 = minetest.get_node(p0)
 	local do_preserve = false
-	local def = minetest.registered_nodes[node.name]
+	local def = minetest.registered_nodes[n0.name]
 	local range = def.groups.leafdecay
+print("node "..n0.name..", param2:"..n0.param2)
 	if not range or range == 0 then return end
 	local trunk = def.trunk or "group:tree"
-	local n0 = minetest.get_node(p0)
 	if n0.param2 ~= 0 then
 		--print("param2 ~= 0")
 		return
 	end
+print("1")
 	local p0_hash = nil
 	if default.leafdecay_enable_cache then
 		p0_hash = minetest.hash_node_position(p0)
@@ -65,6 +66,7 @@ default.leafdecay = function(p0)
 	default.leafdecay_trunk_find_allow_accumulator =
 			default.leafdecay_trunk_find_allow_accumulator - 1
 	-- Assume ignore is a trunk, to make the thing work at the border of the active area
+print("2")
 	local p1 = minetest.find_node_near(p0, range, {"ignore", trunk})
 	if p1 then
 		do_preserve = true
@@ -78,6 +80,7 @@ default.leafdecay = function(p0)
 		-- Drop stuff other than the node itself
 		local itemstacks = minetest.get_node_drops(n0.name)
 		for _, itemname in ipairs(itemstacks) do
+			local do_drop = def.groups.leafdecay_drop
 			if itemname ~= n0.name then
 				local p_drop = {
 					x = math.floor(p0.x + 0.5),
@@ -86,6 +89,12 @@ default.leafdecay = function(p0)
 				}
 				minetest.set_node(p_drop, {name=itemname})
 				core.spawn_falling_node(p_drop)
+			elseif do_drop and do_drop ~= 0 then
+				minetest.add_item({
+					x = p0.x - 0.5 + math.random(),
+					y = p0.y - 0.5 + math.random(),
+					z = p0.z - 0.5 + math.random(),
+				}, itemname)
 			end
 		end
 		-- Remove node
