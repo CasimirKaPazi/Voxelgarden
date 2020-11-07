@@ -9,7 +9,7 @@ minetest.register_tool("nodetest:spearwood", {
 	tool_capabilities = {
 		full_punch_interval = 1,
 		groupcaps={
-			snappy={times={[2]=1.6, [3]=0.40}, uses=10, maxlevel=0},
+			snappy={times={[2]=1.6*3, [3]=0.40*3}, uses=10/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	}
@@ -23,7 +23,7 @@ minetest.register_tool("nodetest:spearstone", {
 	tool_capabilities = {
 		full_punch_interval = 1.2,
 		groupcaps={
-			snappy={times={[2]=1.4, [3]=0.30}, uses=20, maxlevel=0},
+			snappy={times={[2]=1.4*3, [3]=0.30*3}, uses=20/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	}

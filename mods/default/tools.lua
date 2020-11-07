@@ -2,9 +2,14 @@
 -- support for MT game translation.
 local S = default.get_translator
 
--- To stay simple tools don't use maxlevel.
--- The engine assumes maxlevel=1, so we have to specify 0
--- A bug adds + 1 to uses, so we subtract 1.
+-- To stay simple all tools use maxlevel 3.
+-- The engine assumes maxlevel=1, so we have to specify it.
+-- Uses are affected by level differnece of tool and node by a factor d^3.
+-- To get the uses we want, we divide by 3^3.
+-- A bug messes with the number of uses. For maxlevel=0 it's +1, for other values it's strange.
+-- Therefor we have to hold our noses and accept that we can't get a precice number of uses.
+
+-- Dig times are divided by leveldiff. Therefor we multiply everything by 3.
 
 --
 -- The Hand
@@ -18,9 +23,9 @@ minetest.register_item(":", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps = {
-			crumbly = {times={[2]=2.50, [3]=1.00}, uses=0, maxlevel=0},
-			snappy = {times={[3]=0.60}, uses=0, maxlevel=0},
-			oddly_breakable_by_hand = {times={[1]=1.80,[2]=1.20,[3]=0.40}, uses=0}
+			crumbly = {times={[2]=2.50*3, [3]=1.00*3}, uses=0, maxlevel=3},
+			snappy = {times={[3]=0.60*3}, uses=0, maxlevel=3},
+			oddly_breakable_by_hand = {times={[1]=1.80*3,[2]=1.20*3,[3]=0.40*3}, uses=0}
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -37,7 +42,7 @@ minetest.register_tool("default:pick_wood", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[3]=1.2}, uses=30-1, maxlevel=0},
+			cracky = {times={[3]=1.2*3}, uses=30/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -49,7 +54,7 @@ minetest.register_tool("default:pick_stone", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[3]=0.75}, uses=120-1, maxlevel=0},
+			cracky = {times={[3]=0.75*3}, uses=120/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -62,7 +67,7 @@ minetest.register_tool("default:pick_copper", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[2]=1.00, [3]=0.60}, uses=90-1, maxlevel=0},
+			cracky = {times={[2]=1.00*3, [3]=0.60*3}, uses=90/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -75,7 +80,7 @@ minetest.register_tool(":default:pick_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[2]=0.75, [3]=0.45}, uses=120-1, maxlevel=0},
+			cracky = {times={[2]=0.75*3, [3]=0.45*3}, uses=120/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -88,7 +93,7 @@ minetest.register_tool("default:pick_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[1]=1.50, [2]=0.60, [3]=0.30}, uses=180-1, maxlevel=0},
+			cracky = {times={[1]=1.50*3, [2]=0.60*3, [3]=0.30*3}, uses=180/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -101,10 +106,10 @@ minetest.register_tool("default:pick_mese", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[1]=1.0, [2]=0.40, [3]=0.20}, uses=45-1, maxlevel=0},
-			crumbly = {times={[1]=1.0, [2]=0.40, [3]=0.20}, uses=45-1, maxlevel=0},
-			snappy = {times={[1]=1.0, [2]=0.40, [3]=0.20}, uses=45-1, maxlevel=0},
-			choppy = {times={[1]=1.0, [2]=0.40, [3]=0.20}, uses=45-1, maxlevel=0}
+			cracky = {times={[1]=1.0*3, [2]=0.40*3, [3]=0.20*3}, uses=45/27, maxlevel=3},
+			crumbly = {times={[1]=1.0*3, [2]=0.40*3, [3]=0.20*3}, uses=45/27, maxlevel=3},
+			snappy = {times={[1]=1.0*3, [2]=0.40*3, [3]=0.20*3}, uses=45/27, maxlevel=3},
+			choppy = {times={[1]=1.0*3, [2]=0.40*3, [3]=0.20*3}, uses=45/27, maxlevel=3}
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -118,7 +123,7 @@ minetest.register_tool("default:shovel_wood", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[2]=1.50, [3]=0.60}, uses=30-1, maxlevel=0},
+			crumbly = {times={[2]=1.50*3, [3]=0.60*3}, uses=30/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -131,7 +136,7 @@ minetest.register_tool("default:shovel_stone", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[1]=1.20, [2]=0.80, [3]=0.40}, uses=120-1, maxlevel=0},
+			crumbly = {times={[1]=1.20*3, [2]=0.80*3, [3]=0.40*3}, uses=120/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -144,7 +149,7 @@ minetest.register_tool("default:shovel_copper", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[1]=0.80, [2]=0.70, [3]=0.30}, uses=90-1, maxlevel=0},
+			crumbly = {times={[1]=0.80*3, [2]=0.70*3, [3]=0.30*3}, uses=90/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -158,7 +163,7 @@ minetest.register_tool(":default:shovel_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[1]=0.70, [2]=0.60, [3]=0.25}, uses=120-1, maxlevel=0},
+			crumbly = {times={[1]=0.70*3, [2]=0.60*3, [3]=0.25*3}, uses=120/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -171,7 +176,7 @@ minetest.register_tool("default:shovel_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[1]=0.60, [2]=0.45, [3]=0.20}, uses=180-1, maxlevel=0},
+			crumbly = {times={[1]=0.60*3, [2]=0.45*3, [3]=0.20*3}, uses=180/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -185,7 +190,7 @@ minetest.register_tool("default:axe_wood", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy = {times={[2]=1.50, [3]=1.20}, uses=30-1, maxlevel=0},
+			choppy = {times={[2]=1.50*3, [3]=1.20*3}, uses=30/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -198,7 +203,7 @@ minetest.register_tool("default:axe_stone", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy={times={[1]=1.00, [2]=0.80, [3]=0.60}, uses=120-1, maxlevel=0},
+			choppy={times={[1]=1.00*3, [2]=0.80*3, [3]=0.60*3}, uses=120/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -211,7 +216,7 @@ minetest.register_tool("default:axe_copper", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy={times={[1]=0.80, [2]=0.60, [3]=0.40}, uses=90-1, maxlevel=0},
+			choppy={times={[1]=0.80*3, [2]=0.60*3, [3]=0.40*3}, uses=90/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -224,7 +229,7 @@ minetest.register_tool(":default:axe_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy={times={[1]=0.70, [2]=0.50, [3]=0.30}, uses=120-1, maxlevel=0},
+			choppy={times={[1]=0.70*3, [2]=0.50*3, [3]=0.30*3}, uses=120/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -237,7 +242,7 @@ minetest.register_tool("default:axe_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy={times={[1]=0.60, [2]=0.40, [3]=0.20}, uses=180-1, maxlevel=0},
+			choppy={times={[1]=0.60*3, [2]=0.40*3, [3]=0.20*3}, uses=180/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -252,7 +257,7 @@ minetest.register_tool("default:sword_wood", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[2]=2.8, [3]=0.60}, uses=90-1, maxlevel=0},
+			snappy={times={[2]=2.8*3, [3]=0.60*3}, uses=90/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=1},
 	},
@@ -266,7 +271,7 @@ minetest.register_tool("default:sword_stone", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[2]=1.20, [3]=0.50}, uses=360-1, maxlevel=0},
+			snappy={times={[2]=1.20*3, [3]=0.50*3}, uses=360/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -280,7 +285,7 @@ minetest.register_tool("default:sword_copper", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[1]=2.8, [2]=1.10, [3]=0.40}, uses=240-1, maxlevel=0},
+			snappy={times={[1]=2.8*3, [2]=1.10*3, [3]=0.40*3}, uses=240/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -294,8 +299,8 @@ minetest.register_tool("default:sword_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[1]=2.6, [2]=1.00, [3]=0.30}, uses=360
--1, maxlevel=0},
+			snappy={times={[1]=2.6*3, [2]=1.00*3, [3]=0.30*3}, uses=360
+/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -309,7 +314,7 @@ minetest.register_tool("default:sword_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			snappy={times={[1]=2.4, [2]=0.90, [3]=0.20}, uses=540-1, maxlevel=0},
+			snappy={times={[1]=2.4*3, [2]=0.90*3, [3]=0.20*3}, uses=540/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=4},
 	},
