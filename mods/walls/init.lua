@@ -3,7 +3,7 @@ local S = minetest.get_translator("walls")
 
 walls = {}
 
-walls.register = function(wall_name, wall_desc, wall_texture, wall_mat, wall_sounds)
+walls.register = function(wall_name, wall_desc, wall_texture, wall_mat, wall_sounds, wall_groups)
 	-- inventory node, and pole-type wall start item
 	minetest.register_node(wall_name, {
 		description = wall_desc,
@@ -22,7 +22,7 @@ walls.register = function(wall_name, wall_desc, wall_texture, wall_mat, wall_sou
 		is_ground_content = false,
 		tiles = { wall_texture, },
 		walkable = true,
-		groups = { cracky = 3, wall = 1, stone = 2 },
+		groups = wall_groups or {cracky = 3, wall = 1, stone = 2},
 		sounds = wall_sounds,
 	})
 
@@ -54,4 +54,7 @@ walls.register("walls:mossycobble", S("Mossy Cobblestone Wall"), "default_mossyc
 
 walls.register("walls:brick", S("Brick Wall"), "default_brick.png",
 		"default:brick", default.node_sound_stone_defaults())
+
+walls.register("walls:stonebrick", S("Stone Brick Wall"), "default_stone_brick.png",
+		"default:stonebrick", default.node_sound_stone_defaults(), {cracky = 2, wall = 1, stone = 2})
 
