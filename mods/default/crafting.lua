@@ -554,6 +554,14 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "default:meselamp",
+	recipe = {
+		{"default:glass"},
+		{"default:mese_crystal"},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:stonebrick',
 	recipe = {
 		{'default:stone', 'default:stone'},
