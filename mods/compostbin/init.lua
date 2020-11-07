@@ -190,6 +190,7 @@ local function compost_node_timer(pos, elapsed)
 		-- stop timer on the inactive compost bin
 		minetest.get_node_timer(pos):stop()
 	end
+	local infotext
 	if active then
 		infotext = S("Compost bin active (Item: @1)", item_state)
 	else
