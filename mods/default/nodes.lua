@@ -863,9 +863,12 @@ minetest.register_node("default:apple", {
 	is_ground_content = false,
 	buildable_to = true,
 	floodable = true,
+	-- Use static selection box for all cases
 	selection_box = {
-		type = "fixed",
-		fixed = {-0.2, -0.5, -0.2, 0.2, 0, 0.2}
+		type = "wallmounted",
+		wall_top = {-0.2, -0.5, -0.2, 0.2, 0, 0.2},
+		wall_bottom = {-0.2, -0.5, -0.2, 0.2, 0, 0.2},
+		wall_side = {-0.2, -0.5, -0.2, 0.2, 0, 0.2},
 	},
 	groups = {fleshy=3, dig_immediate=3, flammable=2, attached_node=1},
 	on_use = minetest.item_eat(2),
