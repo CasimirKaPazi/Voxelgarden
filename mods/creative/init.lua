@@ -15,7 +15,7 @@ if minetest.settings:get_bool("creative_mode") then
 				return 0
 			end,
 			allow_take = function(inv, listname, index, stack, player)
-					return -1
+				return -1
 			end,
 			on_move = function(inv, from_list, from_index, to_list, to_index, count, player)
 			end,
@@ -108,7 +108,7 @@ if minetest.settings:get_bool("creative_mode") then
 	end)
 	
 	local digtime = 0.15
-	local caps = {times = {digtime, digtime, digtime}, uses = 0, maxlevel = 0}
+	local caps = {times = {digtime, digtime, digtime}, uses = 0, maxlevel = 3}
 	minetest.register_item(":", {
 		type = "none",
 		wield_image = "wieldhand.png",

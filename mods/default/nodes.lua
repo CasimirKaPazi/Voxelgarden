@@ -552,17 +552,16 @@ minetest.register_node("default:river_water_source", {
 	groups = {water=3, liquid=3, not_in_creative_inventory=1},
 })
 
-if minetest.get_mapgen_params().mgname == "valleys" then
-	minetest.register_lbm({
-        label = "Replace river water",
-		name = "default:replace_river_water",
-		nodenames = {"default:river_water_source"},
-        run_at_every_load = true,
-		action = function(pos, node)
-			minetest.set_node(pos, {name = "default:water_source"})
-		end
-	})
-end
+-- Replace dummy node with real water
+minetest.register_lbm({
+	label = "Replace river water",
+	name = "default:replace_river_water",
+	nodenames = {"default:river_water_source"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		minetest.set_node(pos, {name = "default:water_source"})
+	end
+})
 
 minetest.register_node("default:lava_flowing", {
 	description = S("Flowing Lava"),

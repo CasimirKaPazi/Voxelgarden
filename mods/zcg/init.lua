@@ -42,7 +42,7 @@ zcg.add_craft = function(input, output, groups)
 	c.type = input.type
 	c.items = input.items
 	c.result = input.output
-	if not c.result then print("Nope") return end
+	if not c.result then return end
 	if c.items == nil then return end
 	for i, item in pairs(c.items) do
 		if item:sub(0,6) == "group:" then
