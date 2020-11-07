@@ -5,7 +5,9 @@ hunger = {}
 local player_is_active = {}
 local player_step = {}
 local player_bar = {}
+local player_heal_time = {}
 local base_interval = 5
+local heal_interval = 20
 
 -- no_hunger privilege
 minetest.register_privilege("no_hunger", {
@@ -80,16 +82,17 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	if not hp_change then return end
 	local full = player:get_attribute("hunger")
 	-- For each health, we add 2 full
-	if full + 2*hp_change > 20 then
+	if full + hp_change > 20 then
 		full = 20
 	else
-		full = full + 2*hp_change
+		full = full + hp_change
 	end
 	local headpos  = player:get_pos()
 	headpos.y = headpos.y + 1
 	minetest.sound_play("hunger_eating", {pos = headpos, gain = 1.0, max_hear_distance = 32})
 	hunger.update_bar(player, full)
 	player:set_attribute("hunger", full)
+	return itemstack
 end)
 
 -- Main function
@@ -101,13 +104,31 @@ minetest.register_globalstep(function(dtime)
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		local hp = player:get_hp()
-		local full = player:get_attribute("hunger")
+		local full = tonumber(player:get_attribute("hunger"))
+		if not full then full = 20 end
 		if minetest.get_player_privs(name)["no_hunger"] then
 			if player_bar[name] then
 				player:hud_remove(player_bar[name])
 			end
 			return
 		end
+		-- heal when hunger there is hunger
+		if player_heal_time[name] then
+			player_heal_time[name] = player_heal_time[name] + 1
+		else
+			player_heal_time[name] = 0
+		end
+		if player_heal_time[name] >= heal_interval / full then
+			player:set_hp(hp + 1)
+			heal_time = 0
+		end
+		-- hurt when no saturation is left
+		if full <= 0 then
+			player:set_hp(hp - 1)
+			local pos_sound  = player:get_pos()
+			minetest.chat_send_player(name, S("You are hungry."))
+		end
+		-- reduce saturation when player is active
 		if not player_is_active[name] then return end
 		-- The hunger interval for each player depends on the health
 		if not player_step[name] or player_step[name] >= 20 then
@@ -116,14 +137,7 @@ minetest.register_globalstep(function(dtime)
 		player_step[name] = player_step[name] + 1
 		if player_step[name] < hp then return end
 		player_step[name] = 0
-		if not full then full = 20 end
 		full = full - 1
-		if full <= 0 then
-			player:set_hp(hp - 1)
-			full = 20
-			local pos_sound  = player:get_pos()
-			minetest.chat_send_player(name, S("You are hungry."))
-		end
 		player_is_active[name] = false
 		hunger.update_bar(player, full)
 		player:set_attribute("hunger", full)
