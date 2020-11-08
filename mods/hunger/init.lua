@@ -92,6 +92,7 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	minetest.sound_play("hunger_eating", {pos = headpos, gain = 1.0, max_hear_distance = 32})
 	hunger.update_bar(player, full)
 	player:set_attribute("hunger", full)
+	itemstack:take_item()
 	return itemstack
 end)
 
