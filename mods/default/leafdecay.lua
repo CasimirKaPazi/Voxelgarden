@@ -36,14 +36,12 @@ default.leafdecay = function(p0)
 	local do_preserve = false
 	local def = minetest.registered_nodes[n0.name]
 	local range = def.groups.leafdecay
-print("node "..n0.name..", param2:"..n0.param2)
 	if not range or range == 0 then return end
 	local trunk = def.trunk or "group:tree"
 	if n0.param2 ~= 0 then
 		--print("param2 ~= 0")
 		return
 	end
-print("1")
 	local p0_hash = nil
 	if default.leafdecay_enable_cache then
 		p0_hash = minetest.hash_node_position(p0)
@@ -66,7 +64,6 @@ print("1")
 	default.leafdecay_trunk_find_allow_accumulator =
 			default.leafdecay_trunk_find_allow_accumulator - 1
 	-- Assume ignore is a trunk, to make the thing work at the border of the active area
-print("2")
 	local p1 = minetest.find_node_near(p0, range, {"ignore", trunk})
 	if p1 then
 		do_preserve = true
