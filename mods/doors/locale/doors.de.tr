@@ -1,9 +1,8 @@
 # textdomain: doors
-Hidden Door Segment=Verborgenes Türsegment
-Owned by @1=Eigentum von @1
-You do not own this locked door.=Diese abgeschlossene Tür gehört Ihnen nicht.
-a locked door=eine abgeschlossene Tür
 Wooden Door=Holztür
+Wooden Window=Holzfenster
 Steel Door=Stahltür
+Steel Bars=Stahlgitter
 Glass Door=Glastür
-Obsidian Glass Door=Obsidianglastür
+Wattle Door=Flechtwerktür
+Owned by @1=Eigentum von @1
