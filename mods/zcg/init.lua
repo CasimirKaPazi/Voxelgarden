@@ -45,7 +45,6 @@ zcg.add_craft = function(input, output, groups)
 	c.type = input.type
 	c.items = input.items
 	c.result = input.output
-	if not c.result then return end
 	if c.items == nil then return end
 	for i, item in pairs(c.items) do
 		if item:sub(0,6) == "group:" then
@@ -66,9 +65,11 @@ zcg.add_craft = function(input, output, groups)
 			end
 		end
 	end
-	local _ start = string.find(c.result, " ")
-	if start then
-		c.count = c.result:sub(start)
+	if c.result then
+		local _ start = string.find(c.result, " ")
+		if start then
+			c.count = c.result:sub(start)
+		end
 	end
 	if c.width == 0 then c.width = 3 end
 	table.insert(zcg.crafts[output],c)
