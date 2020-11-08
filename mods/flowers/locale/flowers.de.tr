@@ -1,12 +1,11 @@
 # textdomain: flowers
-Red Rose=Rote Rose
-Orange Tulip=Orange Tulpe
-Yellow Dandelion=Gelber Löwenzahn
-Green Chrysanthemum=Grüne Chrysantheme
-Blue Geranium=Blaue Geranie
-Viola=Veilchen
 White Dandelion=Weißer Löwenzahn
-Black Tulip=Schwarze Tulpe
-Red Mushroom=Roter Pilz
+Yellow Dandelion=Gelber Löwenzahn
+Blue Geranium=Blaue Geranie
+Rose=Rose
+Tulip=Tulpe
+Viola=Veilchen
 Brown Mushroom=Brauner Pilz
-Waterlily=Wasserlilie
+Brown Mushroom Spores=Braune Pilzsporen
+Red Mushroom=Roter Pilz
+Red Mushroom Spores=Rote Pilzsporen
