@@ -80,19 +80,49 @@ end)
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
 	if not player then return end
 	if not hp_change then return end
-	local full = player:get_attribute("hunger")
-	-- For each health, we add 2 full
-	if full + hp_change > 20 then
-		full = 20
+	if itemstack:take_item() == nil then return end
+	-- Restore default behaviour when player can feel no hunger
+	local name = player:get_player_name()
+	if minetest.get_player_privs(name)["no_hunger"] then
+		player:set_hp(player:get_hp() + hp_change)
 	else
-		full = full + hp_change
+		local full = player:get_attribute("hunger")
+		if full + hp_change > 20 then
+			full = 20
+		else
+			full = full + hp_change
+		end
+		hunger.update_bar(player, full)
+		player:set_attribute("hunger", full)
 	end
+
 	local headpos  = player:get_pos()
 	headpos.y = headpos.y + 1
-	minetest.sound_play("hunger_eating", {pos = headpos, gain = 1.0, max_hear_distance = 32})
-	hunger.update_bar(player, full)
-	player:set_attribute("hunger", full)
-	itemstack:take_item()
+	local sound = "hunger_eating"
+	if def and def.sound and def.sound.eat then
+		sound = def.sound.eat
+	end
+	core.sound_play(sound, {
+		pos = player:get_pos(),
+		max_hear_distance = 16
+	}, true)
+
+	if replace_with_item then
+		if itemstack:is_empty() then
+			itemstack:add_item(replace_with_item)
+		else
+			local inv = player:get_inventory()
+			-- Check if inv is null, since non-players don't have one
+			if inv and inv:room_for_item("main", {name=replace_with_item}) then
+				inv:add_item("main", replace_with_item)
+			else
+				local pos = player:get_pos()
+				pos.y = math.floor(pos.y + 0.5)
+				core.add_item(pos, replace_with_item)
+			end
+		end
+	end
+
 	return itemstack
 end)
 
