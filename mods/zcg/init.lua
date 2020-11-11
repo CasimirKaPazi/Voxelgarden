@@ -46,6 +46,12 @@ zcg.add_craft = function(input, output, groups)
 	c.items = input.items
 	c.result = input.output
 	if c.items == nil then return end
+	if c.result then
+		local _ start = string.find(c.result, " ")
+		if start then
+			c.count = c.result:sub(start)
+		end
+	end
 	for i, item in pairs(c.items) do
 		if item:sub(0,6) == "group:" then
 			local groupname = item:sub(7)
@@ -58,17 +64,12 @@ zcg.add_craft = function(input, output, groups)
 					zcg.add_craft({
 						width = c.width,
 						type = c.type,
-						items = table_copy(c.items)
+						items = table_copy(c.items),
+						output = c.result
 					}, output, g2) -- it is needed to copy the table, else groups won't work right
 				end
 				return
 			end
-		end
-	end
-	if c.result then
-		local _ start = string.find(c.result, " ")
-		if start then
-			c.count = c.result:sub(start)
 		end
 	end
 	if c.width == 0 then c.width = 3 end
