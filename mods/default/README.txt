@@ -204,3 +204,22 @@ n3b http://opengameart.org/users/n3b (CC BY)
 
 Tool breaking sounds
   default_tool_breaks - https://opengameart.org/content/35-wooden-crackshitsdestructions - CC0
+
+Chests sounds added by sofar, derived of several files mixed together:
+  default_chest_open.ogg
+  default_chest_close.ogg
+    - http://www.freesound.org/people/Sevin7/sounds/269722/ CC0
+    - http://www.freesound.org/people/Percy%20Duke/sounds/23448/ CC-BY-3.0
+    - http://www.freesound.org/people/kingsamas/sounds/135576/ CC-BY-3.0
+    - http://www.freesound.org/people/bulbastre/sounds/126887/ CC-BY-3.0
+    - http://www.freesound.org/people/Yoyodaman234/sounds/183541/ CC0
+
+Metal sounds:
+  default_dig_metal.ogg - yadronoff - CC-BY-3.0
+  - https://www.freesound.org/people/yadronoff/sounds/320397/
+  default_dug_metal.*.ogg - Iwan Gabovitch - qubodup - CC0
+  - http://opengameart.org/users/qubodup
+  default_metal_footstep.*.ogg - (CC0 1.0) - CC0 1.0
+  - https://freesound.org/people/mypantsfelldown/sounds/398937/
+  default_place_node_metal.*.ogg - Ogrebane - CC0
+  - http://opengameart.org/content/wood-and-metal-sound-effects-volume-2
