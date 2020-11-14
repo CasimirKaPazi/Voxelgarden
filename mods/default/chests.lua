@@ -137,11 +137,12 @@ function default.chest.register_chest(prefixed_name, d)
 						{ name = name .. "_open",
 						param2 = node.param2 })
 			end
-			minetest.after(0.2, minetest.show_formspec,
-					clicker:get_player_name(),
-					"default:chest", default.chest.get_chest_formspec(pos))
+			minetest.show_formspec(
+				clicker:get_player_name(),
+				"default:chest", default.chest.get_chest_formspec(pos)
+			)
 			default.chest.open_chests[clicker:get_player_name()] = { pos = pos,
-					sound = def.sound_close, swap = name }
+				sound = def.sound_close, swap = name }
 		end
 		def.on_blast = function() end
 		def.on_key_use = function(pos, player)
@@ -228,11 +229,12 @@ function default.chest.register_chest(prefixed_name, d)
 						name = name .. "_open",
 						param2 = node.param2 })
 			end
-			minetest.after(0.2, minetest.show_formspec,
-					clicker:get_player_name(),
-					"default:chest", default.chest.get_chest_formspec(pos))
+			minetest.show_formspec(
+				clicker:get_player_name(),
+				"default:chest", default.chest.get_chest_formspec(pos)
+			)
 			default.chest.open_chests[clicker:get_player_name()] = { pos = pos,
-					sound = def.sound_close, swap = name }
+				sound = def.sound_close, swap = name }
 		end
 		def.on_blast = function(pos)
 			local drops = {}
