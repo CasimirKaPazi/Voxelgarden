@@ -61,11 +61,11 @@ minetest.register_on_placenode(function(pos, node, player)
 end)
 
 minetest.register_on_joinplayer(function(player)
-	local name = player:get_player_name()
-	local full = player:get_attribute("hunger")
+	local meta = player:get_meta()
+	local full = meta:get_int("hunger")
 	if not full then
 		full = 20
-		player:set_attribute("hunger", full)
+		meta:set_int("hunger", full)
 	end
 	hunger.new_bar(player, full)
 end)
@@ -74,7 +74,7 @@ minetest.register_on_respawnplayer(function(player)
 	local name = player:get_player_name()
 	full = 20
 	hunger.update_bar(player, full)
-	player:set_attribute("hunger", full)
+	meta:set_int("hunger", full)
 end)
 
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
@@ -83,17 +83,18 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 	if itemstack:take_item() == nil then return end
 	-- Restore default behaviour when player can feel no hunger
 	local name = player:get_player_name()
+	local meta = player:get_meta()
 	if minetest.get_player_privs(name)["no_hunger"] then
 		player:set_hp(player:get_hp() + hp_change)
 	else
-		local full = player:get_attribute("hunger")
+		local full = meta:get_int("hunger")
 		if full + hp_change > 20 then
 			full = 20
 		else
 			full = full + hp_change
 		end
 		hunger.update_bar(player, full)
-		player:set_attribute("hunger", full)
+		meta:set_int("hunger", full)
 	end
 
 	local headpos  = player:get_pos()
@@ -135,7 +136,8 @@ minetest.register_globalstep(function(dtime)
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		local hp = player:get_hp()
-		local full = tonumber(player:get_attribute("hunger"))
+		local meta = player:get_meta()
+		local full = tonumber(meta:get_int("hunger"))
 		if not full then full = 20 end
 		if minetest.get_player_privs(name)["no_hunger"] then
 			if player_bar[name] then
@@ -171,7 +173,7 @@ minetest.register_globalstep(function(dtime)
 		full = full - 1
 		player_is_active[name] = false
 		hunger.update_bar(player, full)
-		player:set_attribute("hunger", full)
+		meta:set_int("hunger", full)
 	end
 end)
 
