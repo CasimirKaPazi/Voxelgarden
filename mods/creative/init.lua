@@ -46,7 +46,7 @@ if minetest.settings:get_bool("creative_mode") then
 	end)
 
 	-- Create the trash field
-	local trash = minetest.create_detached_inventory("creative_trash", {
+	local trash = minetest.create_detached_inventory("trash", {
 		-- Allow the stack to be placed and remove it in on_put()
 		-- This allows the creative inventory to restore the stack
 		allow_put = function(inv, listname, index, stack, player)
@@ -75,7 +75,7 @@ if minetest.settings:get_bool("creative_mode") then
 				"listring[current_player;main]"..
 				"listring[detached:creative;main]"..
 				"label[5,1.5;"..F(S("Trash:")).."]"..
-				"list[detached:creative_trash;main;5,2;1,1;]")
+				"list[detached:trash;main;5,2;1,1;]")
 	end
 
 	minetest.register_on_joinplayer(function(player)
