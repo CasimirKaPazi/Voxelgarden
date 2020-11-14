@@ -153,7 +153,7 @@ minetest.register_globalstep(function(dtime)
 		end
 		if player_heal_time[name] >= heal_interval / full then
 			player:set_hp(hp + 1)
-			heal_time = 0
+			player_heal_time[name] = 0
 		end
 		-- hurt when no saturation is left
 		if full <= 0 then
