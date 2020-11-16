@@ -72,6 +72,7 @@ end)
 
 minetest.register_on_respawnplayer(function(player)
 	local name = player:get_player_name()
+	local meta = player:get_meta()
 	full = 20
 	hunger.update_bar(player, full)
 	meta:set_int("hunger", full)
