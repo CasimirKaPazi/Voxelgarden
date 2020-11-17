@@ -78,6 +78,14 @@ minetest.register_on_respawnplayer(function(player)
 	meta:set_int("hunger", full)
 end)
 
+minetest.register_on_newplayer(function(player)
+	local meta = player:get_meta()
+	local full = meta:get_int("hunger")
+	full = 20
+	meta:set_int("hunger", full)
+	hunger.new_bar(player, full)
+end)
+
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
 	if not player then return end
 	if not hp_change then return end
