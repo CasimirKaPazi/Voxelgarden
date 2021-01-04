@@ -17,7 +17,7 @@ minetest.register_node("default:stone", {
 minetest.register_node("default:stone_crumbled", {
 	description = S("Crumbled Stone"),
 	tiles = {"default_stone_crumbled.png"},
-	groups = {cracky=3, oddly_breakable_by_hand=1},
+	groups = {cracky=3, oddly_breakable_by_hand=3},
 	sounds = default.node_sound_stone_defaults(),
 })
 
