@@ -68,6 +68,7 @@ function doors:register_door(name, def)
 		description = def.description,
 		inventory_image = def.inventory_image,
 		tiles = {tiles[1].."^[transformR180", tiles[1].."^[transformR180", tiles[1], tiles[1], tiles[1], tiles[1].."^[transformfx"},
+		use_texture_alpha = "clip",
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = name.."_1",
@@ -136,6 +137,7 @@ function doors:register_door(name, def)
 	-- Open door
 	minetest.register_node(":"..name.."_2", {
 		tiles = {tiles[1].."^[transformfy^[transformR270", tiles[1].."^[transformfy^[transformR90", tiles[1].."^[transformfx", tiles[1], tiles[1].."^[transformfx", tiles[1].."^[transformfx"},
+		use_texture_alpha = "clip",
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = name.."_1",

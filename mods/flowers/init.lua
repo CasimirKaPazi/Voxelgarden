@@ -46,6 +46,7 @@ for _, row in ipairs(flowers.flowers) do
 		description = desc,
 		drawtype = "torchlike",
 		tiles = {"flowers_"..name..".png"},
+		use_texture_alpha = "clip",
 		inventory_image = "flowers_"..name..".png",
 		wield_image = "flowers_"..name..".png",
 		sunlight_propagates = true,
@@ -88,6 +89,7 @@ for _, row in ipairs(flowers.mushrooms) do
 		description = desc,
 		drawtype = "plantlike",
 		tiles = {"flowers_"..name..".png"},
+		use_texture_alpha = "clip",
 		inventory_image = "flowers_"..name..".png",
 		wield_image = "flowers_"..name..".png",
 		sunlight_propagates = true,
@@ -127,6 +129,7 @@ for _, row in ipairs(flowers.mushrooms) do
 			fixed = {-0.5, -0.5, -0.5, 0.5, -0.5 + (1 / 16), 0.5}
 		},
 		tiles = {"flowers_"..name.."_spores.png"},
+		use_texture_alpha = "clip",
 		inventory_image = "flowers_"..name.."_spores.png",
 		paramtype = "light",
 		sunlight_propagates = true,

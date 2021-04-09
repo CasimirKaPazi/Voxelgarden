@@ -152,6 +152,7 @@ end
 xpanes.register_pane("pane", {
 	description = S("Glass Pane"),
 	textures = {"default_glass.png","xpanes_pane_half.png","xpanes_edge.png"},
+	use_texture_alpha = "clip",
 	inventory_image = "default_glass.png",
 	wield_image = "default_glass.png",
 	sounds = default.node_sound_glass_defaults(),
@@ -165,6 +166,7 @@ xpanes.register_pane("pane", {
 xpanes.register_pane("bar", {
 	description = S("Steel Bars"),
 	textures = {"xpanes_bar.png","xpanes_bar.png","xpanes_bar_top.png"},
+	use_texture_alpha = "clip",
 	inventory_image = "xpanes_bar.png",
 	wield_image = "xpanes_bar.png",
 	groups = {cracky=2},
@@ -178,6 +180,7 @@ xpanes.register_pane("bar", {
 xpanes.register_pane("pane_wattle", {
 	description = S("Wattle"),
 	textures = {"xpanes_wattle.png","xpanes_wattle.png","xpanes_wattle_top.png"},
+	use_texture_alpha = "clip",
 	inventory_image = "xpanes_wattle.png",
 	wield_image = "xpanes_wattle.png",
 	groups = {choppy=3, oddly_breakable_by_hand=3},

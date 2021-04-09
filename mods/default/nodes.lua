@@ -304,6 +304,7 @@ minetest.register_node("default:cactus", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	tiles = {"default_cactus_top.png", "default_cactus_top.png", "default_cactus_side.png"},
+	use_texture_alpha = "clip",
 	groups = {snappy=1, choppy=3, flammable=2},
 	node_box = {
 		type = "fixed",
@@ -387,6 +388,7 @@ minetest.register_node("default:glass", {
 	description = S("Glass"),
 	drawtype = "glasslike_framed_optional",
 	tiles = {"default_glass.png", "default_glass_detail.png"},
+	use_texture_alpha = "clip",
 	paramtype = "light",
 	sunlight_propagates = true,
 	is_ground_content = false,
