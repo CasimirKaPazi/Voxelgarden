@@ -125,6 +125,7 @@ if minetest.settings:get_bool("creative_mode") then
 				snappy = caps,
 				choppy = caps,
 				oddly_breakable_by_hand = caps,
+				dig_immediate = caps,
 			},
 			damage_groups = {fleshy=1},
 		},
