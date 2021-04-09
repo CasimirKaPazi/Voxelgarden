@@ -149,17 +149,22 @@ function bones.place_bones(player)
 			-- yet keeps the bones reachable
 			pos.y = pos.y+1
 		else
-			-- drop items instead of delete
-			for i=1,player_inv:get_size("main") do
-				minetest.add_item(pos, player_inv:get_stack("main", i))
+			local near = minetest.find_node_near(pos, 5, {"air", "group:liquid"})
+			if near then
+				pos = {x = near.x, y = near.y, z = near.z}
+			else
+				-- drop items instead of delete
+				for i=1,player_inv:get_size("main") do
+					minetest.add_item(pos, player_inv:get_stack("main", i))
+				end
+				for i=1,player_inv:get_size("craft") do
+					minetest.add_item(pos, player_inv:get_stack("craft", i))
+				end
+				-- empty lists main and craft
+				player_inv:set_list("main", {})
+				player_inv:set_list("craft", {})
+				return
 			end
-			for i=1,player_inv:get_size("craft") do
-				minetest.add_item(pos, player_inv:get_stack("craft", i))
-			end
-			-- empty lists main and craft
-			player_inv:set_list("main", {})
-			player_inv:set_list("craft", {})
-			return
 		end
 	end
 
