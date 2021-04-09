@@ -178,12 +178,16 @@ local function furnace_node_timer(pos, elapsed)
 	local formspec = inactive_formspec
 	local item_state
 	local item_percent = 0
+	local fuel_state = S("Empty")
+	local active = false
+	local result = false
 	if cookable then
 		item_percent = math.floor(src_time / cooked.time * 100)
 		if item_percent > 100 then
 			item_state = S("100% (output full)")
 		else
 			item_state = S("@1%", item_percent)
+			active = true
 		end
 	else
 		if srclist[1]:is_empty() then
@@ -193,12 +197,7 @@ local function furnace_node_timer(pos, elapsed)
 		end
 	end
 
-	local fuel_state = S("Empty")
-	local active = false
-	local result = false
-
 	if fuel_totaltime ~= 0 then
-		active = true
 		local fuel_percent = math.floor(fuel_time / fuel_totaltime * 100)
 		fuel_state = S("@1%", fuel_percent)
 		formspec = active_formspec(fuel_percent, item_percent)

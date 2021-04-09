@@ -157,6 +157,9 @@ local function compost_node_timer(pos, elapsed)
 	--
 	-- Update formspec, infotext and node
 	--
+	local active = false
+	local result = false
+
 	local formspec = inactive_formspec
 	local item_state
 	local item_percent = 0
@@ -167,20 +170,17 @@ local function compost_node_timer(pos, elapsed)
 		else
 			item_state = S("@1%", item_percent)
 		end
+		active = true
 	else
 		if srclist[1]:is_empty() then
 			item_state = S("Empty")
 		else
-			item_state = S("Not cookable")
+			item_state = S("Not compostable")
 		end
 	end
 
-	local active = false
-	local result = false
-
 	-- Update node. Have a filled bin as long as there is input or output.
 	if not srclist[1]:is_empty() or not inv:get_list("dst")[1]:is_empty() then
-		active = true
 		formspec = active_formspec(item_percent)
 		swap_node(pos, "compostbin:wood_bin_full")
 		-- make sure timer restarts automatically

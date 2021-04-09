@@ -1,3 +1,9 @@
 # textdomain: compostbin
+100% (output full)=
+@1%=
+Empty=
+Not compostable=
+Compost bin active (Item: @1)=
+Compost bin inactive (Item: @1)=
 Compost Bin=
 Compost=
