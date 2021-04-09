@@ -11,17 +11,12 @@ end
 
 local source_pos = {
 -- First check the node directely above for falling down.
-	{x = 0,  y = 0, z = 0},
+	{x = 0,  y = 1, z = 0},
 -- Then check sideways to flow downsteam.
-	{x = 1,  y = 0, z = 0},
-	{x = -1, y = 0, z = 0},
-	{x = 0,  y = 0, z = 1},
-	{x = 0,  y = 0, z = -1},
--- Check diagonal
-	{x = 1,  y = 0, z = 1},
-	{x = -1, y = 0, z = 1},
-	{x = 1,  y = 0, z = -1},
-	{x = -1, y = 0, z = -1},
+	{x = 1,  y = 1, z = 0},
+	{x = -1, y = 1, z = 0},
+	{x = 0,  y = 1, z = 1},
+	{x = 0,  y = 1, z = -1},
 }
 
 local function register_dynamic_liquid(source, flowing)
@@ -30,21 +25,21 @@ local function register_dynamic_liquid(source, flowing)
 		nodenames = {flowing},
 		neighbors = {source},
 		interval = 1,
-		chance = 5,
+		chance = 1,
 		catch_up = false,
 		action = function(pos, node)
-			-- What we check for can only be true for those two flowing types.
-			if node.param2 == 15 then
+			-- For param5 = 15 there is almost always a source to move,
+			-- we just need to find where it is.
+			if node.param2 == 15 or node.param2 == 7 then
 				-- Flowing down
-				local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 				for _, p in ipairs(source_pos) do
-					local s_pos = {x = above.x + p.x, y = above.y + p.y, z = above.z + p.z}
+					local s_pos = {x = pos.x + p.x, y = pos.y + p.y, z = pos.z + p.z}
 					local n_checked = minetest.get_node(s_pos)
 					if n_checked.name == source then
 						node.name = source
-						n_checked.name = flowing
-						minetest.set_node(s_pos, n_checked) -- Replace with flowing to avoid air under water
-						minetest.set_node(pos, node)
+						-- Replace with flowing to avoid air under water
+						minetest.set_node(s_pos, {name = "air"})
+						minetest.set_node(pos, {name = source})
 						return
 					end
 				end

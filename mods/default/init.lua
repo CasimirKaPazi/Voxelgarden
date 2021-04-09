@@ -20,7 +20,11 @@ if not stack then
 end
 minetest.nodedef_default.stack_max = stack
 minetest.craftitemdef_default.stack_max = stack
-minetest.nodedef_default.liquid_range = 2
+if minetest.settings:get_bool("physics_liquid_falling") then
+	minetest.nodedef_default.liquid_range = 1
+else
+	minetest.nodedef_default.liquid_range = 2
+end
 
 minetest.register_on_joinplayer(function(player)
 	local physics = player:get_physics_override()
