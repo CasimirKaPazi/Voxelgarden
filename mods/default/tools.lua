@@ -159,7 +159,6 @@ minetest.register_tool("default:shovel_copper", {
 minetest.register_tool(":default:shovel_bronze", {
 	description = S("Bronze Shovel"),
 	inventory_image = "default_tool_bronzeshovel.png",
-	wield_image = "default_tool_bronzeshovel.png^[transformR90",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={

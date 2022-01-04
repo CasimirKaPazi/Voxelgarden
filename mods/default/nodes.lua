@@ -940,7 +940,7 @@ minetest.register_node("default:fern_1", {
 	walkable = false,
 	buildable_to = true,
 	floodable = true,
-	groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1},
+	groups = {snappy = 3, flammable = 3, flora = 1, falling_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -970,7 +970,7 @@ for i = 2, 3 do
 		walkable = false,
 		buildable_to = true,
 		floodable = true,
-		groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1,
+		groups = {snappy = 3, flammable = 3, flora = 1, falling_node=1,
 			not_in_creative_inventory=1},
 		drop = "default:fern_1",
 		sounds = default.node_sound_leaves_defaults(),
