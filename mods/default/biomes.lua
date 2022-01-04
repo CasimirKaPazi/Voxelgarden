@@ -78,7 +78,7 @@ minetest.register_biome({
 	node_filler = "default:dirt",			depth_filler = 4,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
 	y_min = 1,					y_max = 32000,
-	heat_point = 100,				humidity_point = 70,
+	heat_point = 95,				humidity_point = 70,
 })
 
 minetest.register_biome({
@@ -87,7 +87,7 @@ minetest.register_biome({
 	node_filler = "default:desert_stone",		depth_filler = 8,
 	node_riverbed = "default:sand",	depth_riverbed = 2,
 	y_min = 1,					y_max = 32000,
-	heat_point = 120,				humidity_point = -45,
+	heat_point = 100,				humidity_point = -30,
 })
 
 -- Special Biomes
@@ -99,7 +99,7 @@ minetest.register_biome({
 	node_riverbed = "default:gravel",	depth_riverbed = 2,
 	node_river_water = "default:ice",
 	y_min = 1,					y_max = 32000,
-	heat_point = -20,				humidity_point = -30,
+	heat_point = -40,				humidity_point = -20,
 })
 
 minetest.register_biome({
@@ -119,7 +119,7 @@ minetest.register_biome({
 	node_filler = "default:desert_stone",		depth_filler = 3,
 	node_riverbed = "default:gravel",	depth_riverbed = 2,
 	y_min = 1,					y_max = 32000,
-	heat_point = 160,				humidity_point = -20,
+	heat_point = 160,				humidity_point = -30,
 })
 
 -- Decoration
@@ -129,11 +129,11 @@ minetest.register_decoration({
 	place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
-		offset = 0.00,
+		offset = 0.01,
 		scale = 0.020,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 153,
-		octaves = 3,
+		octaves = 2,
 		persist = 0.66
 	},
 	biomes = {"Conifer", "CT"},
@@ -148,11 +148,11 @@ minetest.register_decoration({
 	place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
-		offset = 0.00,
+		offset = 0.01,
 		scale = 0.010,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 154,
-		octaves = 3,
+		octaves = 2,
 		persist = 0.66
 	},
 	biomes = {"Conifer", "CT"},
@@ -167,11 +167,11 @@ minetest.register_decoration({
 	place_on = {"default:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
-		offset = 0.00,
+		offset = 0.02,
 		scale = 0.030,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 538,
-		octaves = 3,
+		octaves = 2,
 		persist = 0.66
 	},
 	biomes = {"Tree", "CT", "TJ"},
@@ -191,7 +191,7 @@ minetest.register_decoration({
 		scale = 0.020,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 539,
-		octaves = 3,
+		octaves = 2,
 		persist = 0.66
 	},
 	biomes = {"Tree", "CT", "TJ"},
@@ -207,11 +207,11 @@ minetest.register_decoration({
 	place_on = "default:dirt_with_grass",
 	sidelen = 16,
 	noise_params = {
-		offset = 0.00,
+		offset = 0.02,
 		scale = 0.030,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 680,
-		octaves = 3,
+		octaves = 2,
 		persist = 0.66
 	},
 	biomes = {"Jungle", "TJ"},
