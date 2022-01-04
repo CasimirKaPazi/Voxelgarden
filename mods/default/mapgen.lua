@@ -182,6 +182,17 @@ minetest.register_ore({
 
 minetest.register_ore({
 	ore_type       = "scatter",
+	ore            = "default:steelblock",
+	wherein        = "default:stone",
+	clust_scarcity = 27*27*27,
+	clust_num_ores = 20,
+	clust_size     = 6,
+	y_min     = -31000,
+	y_max     = -4096,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
 	ore            = "default:stone_with_mese",
 	wherein        = "default:stone",
 	clust_scarcity = 23*23*23,
@@ -266,6 +277,28 @@ minetest.register_ore({
 	clust_size     = 3,
 	y_min          = -31000,
 	y_max          = -1024,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "default:copperblock",
+	wherein        = "default:stone",
+	clust_scarcity = 16*16*16,
+	clust_num_ores = 5,
+	clust_size     = 3,
+	y_min     = -31000,
+	y_max     = -2048,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "default:tinblock",
+	wherein        = "default:stone",
+	clust_scarcity = 18*18*18,
+	clust_num_ores = 3,
+	clust_size     = 3,
+	y_min          = -31000,
+	y_max          = -2048,
 })
 
 -- Gold
@@ -353,8 +386,8 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "default:stone_crumbled",
 	wherein        = "default:stone",
-	clust_scarcity = 9*9*9,
-	clust_num_ores = 20,
+	clust_scarcity = 6*6*6,
+	clust_num_ores = 6,
 	clust_size     = 4,
 	y_min     = -31000,
 	y_max     = 1024,
