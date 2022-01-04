@@ -133,10 +133,10 @@ zcg.formspec = function(pn)
 				alt = #zcg.crafts[current_item]
 			end
 			if alt > 1 then
-				formspec = formspec .. "button[7,0;1,1;zcg_alt:"..(alt-1)..";^]"
+				formspec = formspec .. "image_button[7,0;1,1;zcg_up.png;zcg_alt:"..(alt-1)..";;false;false;zcg_up_press.png]"
 			end
 			if alt < #zcg.crafts[current_item] then
-				formspec = formspec .. "button[7,2;1,1;zcg_alt:"..(alt+1)..";v]"
+				formspec = formspec .. "image_button[7,2;1,1;zcg_down.png;zcg_alt:"..(alt+1)..";;false;false;zcg_down_press.png]"
 			end
 			local c = zcg.crafts[current_item][alt]
 			if c then
