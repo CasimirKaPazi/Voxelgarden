@@ -1,9 +1,3 @@
 # textdomain: screwdriver
-Change rotation, Don't change axisdir.=Rotation ändern, Achsenrichtung behalten.
-Keep choosen face in front then rotate it.=Gewählte Seite auf Vorderseite halten, dann rotieren.
-Change axis dir, Reset rotation.=Achsenrichtung ändern, Rotation zurücksetzen.
-Bring top in front then rotate it.=Oberseite nach vorne bringen, dann rotieren.
-Right click to change screwdriwer modes.=Rechtsklick, um Schraubendrehermodus zu ändern.
-Screwdriver mode: @1 - @2=Schraubendrehermodus: @1 – @2
 Screwdriver=Schraubendreher
-Screwdriver in Mode @1=Schraubendreher im Modus @1
+(left-click rotates face, right-click rotates axis)=(Linksklick dreht Seite, Rechtsklick dreht Achse)
