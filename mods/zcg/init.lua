@@ -76,11 +76,22 @@ zcg.add_craft = function(input, output, groups)
 	table.insert(zcg.crafts[output],c)
 end
 
+-- reversed ipairs function
+function rpairs(t)
+	return function(t, i)
+		i = i - 1
+		if i ~= 0 then
+			return i, t[i]
+		end
+	end, t, #t + 1
+end
+
 zcg.load_crafts = function(name)
 	zcg.crafts[name] = {}
 	local _recipes = minetest.get_all_craft_recipes(name)
 	if _recipes then
-		for i, recipe in ipairs(_recipes) do
+		-- add recipes in reversed order so more "basic" ones appear fist
+		for i, recipe in rpairs(_recipes) do
 			if (recipe and recipe.items and recipe.type) then
 				zcg.add_craft(recipe, name)
 			end
