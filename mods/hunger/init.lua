@@ -76,6 +76,12 @@ minetest.register_on_respawnplayer(function(player)
 	full = 20
 	hunger.update_bar(player, full)
 	meta:set_int("hunger", full)
+	meta:set_int("dead", 0)
+end)
+
+minetest.register_on_dieplayer(function(player)
+	local meta = player:get_meta()
+	meta:set_int("dead", 1)
 end)
 
 minetest.register_on_newplayer(function(player)
@@ -137,15 +143,12 @@ minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, 
 end)
 
 -- Main function
-local timer = 0
-minetest.register_globalstep(function(dtime)
-	timer = timer + dtime;
-	if timer < base_interval then return end
-	timer = 0
-	for _,player in ipairs(minetest.get_connected_players()) do
+function hunger.timer(player)
 		local name = player:get_player_name()
 		local hp = player:get_hp()
 		local meta = player:get_meta()
+		local dead = meta:get_int("dead")
+		if dead == 1 then return end
 		local full = tonumber(meta:get_int("hunger"))
 		if not full then full = 20 end
 		if minetest.get_player_privs(name)["no_hunger"] then
@@ -183,6 +186,15 @@ minetest.register_globalstep(function(dtime)
 		player_is_active[name] = false
 		hunger.update_bar(player, full)
 		meta:set_int("hunger", full)
+end
+
+local timer = 0
+minetest.register_globalstep(function(dtime)
+	timer = timer + dtime;
+	if timer < base_interval then return end
+	timer = 0
+	for _,player in ipairs(minetest.get_connected_players()) do
+		hunger.timer(player)
 	end
 end)
 
