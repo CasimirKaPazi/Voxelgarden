@@ -119,3 +119,37 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 		leafupdate(pos)
 	end
 end)
+
+--
+-- Functions to be compatible with MTG. Not used in this mod.
+--
+
+function default.register_leafdecay(def)
+	assert(def.leaves)
+	assert(def.trunks)
+	assert(def.radius)
+	for _, v in pairs(def.trunks) do
+		minetest.override_item(v, {
+			after_destruct = function(pos, oldnode)
+				leafdecay_after_destruct(pos, oldnode, def)
+			end,
+		})
+	end
+	for _, v in pairs(def.leaves) do
+	for _, w in pairs(def.trunks) do
+		minetest.override_item(v, {
+			trunk = w,
+		})
+	end
+	end
+end
+
+-- Prevent decay of placed leaves
+
+default.after_place_leaves = function(pos, placer, itemstack, pointed_thing)
+	if placer and placer:is_player() then
+		local node = minetest.get_node(pos)
+		node.param2 = 1
+		minetest.set_node(pos, node)
+	end
+end

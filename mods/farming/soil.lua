@@ -8,7 +8,7 @@ for _, f in ipairs(footsteps) do
 minetest.register_node("farming:soil"..f, {
 	tiles = {"default_dirt.png^farming_soil"..f..".png", "default_dirt.png"},
 	drop = "default:dirt",
-	groups = {crumbly=2, falling_node=1, soil=1, not_in_creative_inventory=1},
+	groups = {crumbly=2, falling_node=1, soil=2, not_in_creative_inventory=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -17,7 +17,7 @@ minetest.register_node("farming:soil"..f, {
 minetest.register_node("farming:soil_wet"..f, {
 	tiles = {"default_dirt.png^farming_soil_wet"..f..".png", "default_dirt.png^farming_soil_wet_side.png"},
 	drop = "default:dirt",
-	groups = {crumbly=2, falling_node=1, soil=1, not_in_creative_inventory=1},
+	groups = {crumbly=2, falling_node=1, soil=3, not_in_creative_inventory=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),

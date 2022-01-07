@@ -989,7 +989,7 @@ minetest.register_node("default:ice", {
 	sunlight_propagates = true,
 	groups = {cracky=3, slippery = 3, cools_lava = 1},
 	is_ground_content = false,
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.node_sound_ice_defaults(),
 })
 
 minetest.register_node("default:snow", {
