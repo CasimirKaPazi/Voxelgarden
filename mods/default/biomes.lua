@@ -187,6 +187,26 @@ minetest.register_decoration({
 	place_on = {"default:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
+		offset = 0.005,
+		scale = 0.030,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 570,
+		octaves = 2,
+		persist = 0.7
+	},
+	biomes = {"Tree"},
+	flags = "place_center_x, place_center_z",
+	schematic = minetest.get_modpath("default").."/schematics/aspen_tree.mts",
+	rotation = "random",
+	y_min = 0,
+	y_max = 32000,
+})
+
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 16,
+	noise_params = {
 		offset = -0.05,
 		scale = 0.020,
 		spread = {x = 250, y = 250, z = 250},

@@ -198,6 +198,23 @@ function default.grow_emergent_junglesapling(pos)
 		path, "random", nil, false)
 end
 
+function default.grow_aspen_tree_sapling(pos)
+	if not default.can_grow(pos) then return true end
+	if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
+		minetest.set_node(pos, {name="default:grass_"..math.random(1, 5)})
+		return
+	end
+	-- Restart the timer with a shorter timeout, as we just wait for enough light
+	if not default.enough_light(pos) then
+		minetest.get_node_timer(pos):start(math.random(30, 480))
+		return
+	end
+	local path = minetest.get_modpath("default") ..
+		"/schematics/aspen_tree.mts"
+	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
+		path, "0", nil, false)
+end
+
 minetest.register_lbm({
 	name = "default:convert_saplings_to_node_timer",
 	nodenames = {"default:sapling", "default:junglesapling"},

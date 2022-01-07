@@ -42,6 +42,22 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'nodetest:aspen_tree_horizontal 2',
+	recipe = {
+		{'', 'default:aspen_tree'},
+		{'default:aspen_tree', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:aspen_tree 2',
+	recipe = {
+		{'', 'nodetest:aspen_tree_horizontal'},
+		{'nodetest:aspen_tree_horizontal', ''},
+	}
+})
+
+minetest.register_craft({
 	output = 'nodetest:papyrus_roots',
 	recipe = {
 		{'default:papyrus', 'default:papyrus', 'default:papyrus'},

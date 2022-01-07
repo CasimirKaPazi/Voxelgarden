@@ -39,6 +39,24 @@ minetest.register_node("nodetest:tree_horizontal", {
 })
 minetest.register_alias("default:tree_horizontal", "nodetest:tree_horizontal")
 
+minetest.register_node("nodetest:aspen_tree_horizontal", {
+	description = S("Aspen Tree"),
+	tiles = {
+		"default_aspen_tree.png", 
+		"default_aspen_tree.png",
+		"default_aspen_tree.png^[transformR90", 
+		"default_aspen_tree.png^[transformR90", 
+		"default_aspen_tree_top.png", 
+		"default_aspen_tree_top.png" 
+	},
+	paramtype2 = "facedir",
+	groups = {tree_horizontal=1, choppy=2, flammable=1},
+	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
+})
+
 minetest.register_node("nodetest:jungletree_horizontal", {
 	description = S("Jungle Tree"),
 		tiles = {

@@ -267,28 +267,68 @@ minetest.register_node("default:emergent_jungle_sapling", {
 	end,
 	selection_box = {
 		type = "fixed",
-		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		falling_node = 1, sapling = 1},
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(3, 15))
+		minetest.get_node_timer(pos):start(math.random(300, 1500))
 	end,
---[[
-	on_place = function(itemstack, placer, pointed_thing)
-		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-			"default:emergent_jungle_sapling",
-			-- minp, maxp to be checked, relative to sapling pos
-			{x = -3, y = -5, z = -3},
-			{x = 3, y = 31, z = 3},
-			-- maximum interval of interior volume check
-			4)
+})
 
-		return itemstack
+minetest.register_node("default:aspen_tree", {
+	description = S("Aspen Tree"),
+	tiles = {"default_aspen_tree_top.png", "default_aspen_tree_top.png",
+		"default_aspen_tree.png"},
+	is_ground_content = false,
+	groups = {tree = 1, choppy = 3, flammable = 3},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node("default:aspen_leaves", {
+	description = S("Aspen Tree Leaves"),
+	drawtype = "allfaces_optional",
+	tiles = {"default_aspen_leaves.png"},
+	waving = 1,
+	paramtype = "light",
+	is_ground_content = false,
+	trunk = "default:aspen_tree",
+	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1},
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"default:aspen_sapling"}, rarity = 20},
+			{items = {"default:aspen_leaves"}}
+		}
+	},
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+minetest.register_node("default:aspen_sapling", {
+	description = S("Aspen Tree Sapling"),
+	drawtype = "plantlike",
+	tiles = {"default_aspen_sapling.png"},
+	inventory_image = "default_aspen_sapling.png",
+	wield_image = "default_aspen_sapling.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	on_timer = function(pos)
+		default.grow_aspen_tree_sapling(pos)
 	end,
---]]
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+	},
+	groups = {snappy = 2, dig_immediate = 3, flammable = 3,
+		falling_node = 1, sapling = 1},
+	sounds = default.node_sound_leaves_defaults(),
+
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(math.random(300, 1500))
+	end,
 })
 
 minetest.register_node("default:junglegrass", {

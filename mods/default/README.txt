@@ -131,6 +131,9 @@ Gambit (CC BY-SA 4.0)
   default_brick.png
   default_seaweed.png
   default_sandstone.png
+  default_aspen_tree.png
+  default_aspen_tree_top.png
+  default_aspen_leaves.png
 
 BlockMen (CC BY 3.0)
   default_water.png
@@ -192,6 +195,9 @@ Mossmanikin (CC BY-SA 3.0):
   default_gold_lump.png
   default_diamond.png
   default_diamond_block.png
+
+sofar (CC BY-SA 3.0):
+  default_aspen_sapling
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
