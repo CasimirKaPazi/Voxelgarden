@@ -169,7 +169,11 @@ end
 function default.grow_junglesapling(pos)
 	if not default.can_grow(pos) then return true end
 	if minetest.find_node_near(pos, 1, {"group:tree", "group:sapling"}) then
-		minetest.set_node(pos, {name="default:junglegrass"})
+		if math.random(1,10) == 1 then
+			minetest.set_node(pos, {name="default:emergent_jungle_sapling"})
+		else
+			minetest.set_node(pos, {name="default:junglegrass"})
+		end
 		return
 	end
 	if not default.enough_light(pos) then
@@ -177,6 +181,21 @@ function default.grow_junglesapling(pos)
 		return
 	end
 	default.grow_jungletree(pos)
+end
+
+function default.grow_emergent_junglesapling(pos)
+	if not default.can_grow(pos) then return true end
+	if minetest.find_node_near(pos, 3, {"group:tree"}) then
+		return
+	end
+	if not default.enough_light(pos) then
+		minetest.get_node_timer(pos):start(math.random(30, 480))
+		return
+	end
+	local path = minetest.get_modpath("default") ..
+		"/schematics/emergent_jungle_tree.mts"
+	minetest.place_schematic({x = pos.x - 3, y = pos.y - 5, z = pos.z - 3},
+		path, "random", nil, false)
 end
 
 minetest.register_lbm({

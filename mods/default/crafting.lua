@@ -600,6 +600,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "default:emergent_jungle_sapling",
+	recipe = {
+		{"default:junglesapling", "default:junglesapling", "default:junglesapling"},
+		{"default:junglesapling", "default:junglesapling", "default:junglesapling"},
+		{"default:junglesapling", "default:junglesapling", "default:junglesapling"},
+	}
+})
+
+minetest.register_craft({
 	type = "cooking",
 	output = "default:obsidian_glass",
 	recipe = "default:obsidian_shard",

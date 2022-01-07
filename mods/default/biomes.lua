@@ -222,6 +222,32 @@ minetest.register_decoration({
 	y_max = 32000,
 })
 
+	local chunksize = tonumber(minetest.get_mapgen_setting("chunksize"))
+	if chunksize >= 5 then
+		minetest.register_decoration({
+			name = "default:emergent_jungle_tree",
+			deco_type = "schematic",
+			place_on = {"default:dirt_with_grass"},
+			sidelen = 80,
+			noise_params = {
+				offset = 0.0,
+				scale = 0.0025,
+				spread = {x = 250, y = 250, z = 250},
+				seed = 690,
+				octaves = 3,
+				persist = 0.7
+			},
+	biomes = {"Jungle"},
+			y_max = 64,
+			y_min = 1,
+			schematic = minetest.get_modpath("default") ..
+					"/schematics/emergent_jungle_tree.mts",
+			flags = "place_center_x, place_center_z",
+			rotation = "random",
+			place_offset_y = -4,
+		})
+	end
+
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"default:dirt_with_grass", "default:cactus"},

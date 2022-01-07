@@ -251,6 +251,46 @@ minetest.register_node("default:junglesapling", {
 	end,
 })
 
+minetest.register_node("default:emergent_jungle_sapling", {
+	description = S("Emergent Jungle Tree Sapling"),
+	drawtype = "plantlike",
+	tiles = {"default_emergent_jungle_sapling.png"},
+	inventory_image = "default_emergent_jungle_sapling.png",
+	wield_image = "default_emergent_jungle_sapling.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	floodable = true,
+	on_timer = function(pos)
+		default.grow_emergent_junglesapling(pos)
+	end,
+	selection_box = {
+		type = "fixed",
+		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
+	},
+	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
+		falling_node = 1, sapling = 1},
+	sounds = default.node_sound_leaves_defaults(),
+
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(math.random(3, 15))
+	end,
+--[[
+	on_place = function(itemstack, placer, pointed_thing)
+		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
+			"default:emergent_jungle_sapling",
+			-- minp, maxp to be checked, relative to sapling pos
+			{x = -3, y = -5, z = -3},
+			{x = 3, y = 31, z = 3},
+			-- maximum interval of interior volume check
+			4)
+
+		return itemstack
+	end,
+--]]
+})
+
 minetest.register_node("default:junglegrass", {
 	description = S("Jungle Grass"),
 	drawtype = "plantlike",
