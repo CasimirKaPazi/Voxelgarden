@@ -2,4 +2,3 @@ mobs
 fire
 default
 flowers
-nodetest

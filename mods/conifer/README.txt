@@ -22,8 +22,8 @@ Authors of media files
 -----------------------
 
 Cisoun (CC BY-SA 4.0):
-  nodetest_coniferleaves_1.png
-  nodetest_coniferleaves_2.png
-  nodetest_conifersapling.png
-  nodetest_conifertree.png
-  nodetest_conifertree_top.png
+  conifer_leaves_1.png
+  conifer_leaves_2.png
+  conifer_sapling.png
+  conifer_tree.png
+  conifer_tree_top.png

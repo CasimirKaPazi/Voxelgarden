@@ -35,18 +35,12 @@ minetest.register_node("conifer:sapling", {
 	end,
 })
 
-minetest.register_alias("conifers:sapling", "conifer:sapling")
-minetest.register_alias("nodetest:conifersapling", "conifer:sapling")
-
 minetest.register_node("conifer:tree", {
 	description = S("Conifer Tree"),
 	tiles = {"conifer_tree_top.png", "conifer_tree_top.png", "conifer_tree.png"},
 	groups = {tree=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
-
-minetest.register_alias("conifers:trunk", "conifer:tree")
-minetest.register_alias("nodetest:conifertree", "conifer:tree")
 
 for i=1,2 do
 	minetest.register_node("conifer:leaves_"..i, {
@@ -80,7 +74,6 @@ for i=1,2 do
 		},
 		sounds = default.node_sound_leaves_defaults(),
 	})
-	minetest.register_alias("nodetest:coniferleaves_"..i, "conifer:leaves_"..i)
 end
 
 minetest.register_alias("conifers:leaves", "conifer:leaves_1")
@@ -104,9 +97,6 @@ minetest.register_node("conifer:tree_horizontal", {
 		default.rotate_horizontal(pos)
 	end,
 })
-
-minetest.register_alias("conifers:trunk_reversed", "conifer:tree_horizontal")
-minetest.register_alias("nodetest:conifertree_horizontal", "conifer:tree_horizontal")
 
 --
 -- Crafting definition

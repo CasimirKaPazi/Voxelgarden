@@ -14,6 +14,61 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:wood 2',
+	recipe = {
+		{'group:tree_horizontal'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:tree_horizontal 2',
+	recipe = {
+		{'', 'default:tree'},
+		{'default:tree', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:tree 2',
+	recipe = {
+		{'', 'default:tree_horizontal'},
+		{'default:tree_horizontal', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:jungletree_horizontal 2',
+	recipe = {
+		{'', 'default:jungletree'},
+		{'default:jungletree', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:jungletree 2',
+	recipe = {
+		{'', 'default:jungletree_horizontal'},
+		{'default:jungletree_horizontal', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:aspen_tree_horizontal 2',
+	recipe = {
+		{'', 'default:aspen_tree'},
+		{'default:aspen_tree', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:aspen_tree 2',
+	recipe = {
+		{'', 'default:aspen_tree_horizontal'},
+		{'default:aspen_tree_horizontal', ''},
+	}
+})
+
+minetest.register_craft({
 	output = 'default:stick 6',
 	recipe = {
 		{'group:leaves'},
@@ -278,6 +333,24 @@ minetest.register_craft({
 		{'default:steel_ingot'},
 		{'default:steel_ingot'},
 		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:spearwood',
+	recipe = {
+		{'', '', 'default:stick'},
+		{'', 'default:stick', ''},
+		{'default:stick', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:spearstone',
+	recipe = {
+		{'', '', 'group:stone'},
+		{'', 'default:stick', ''},
+		{'default:stick', '', ''},
 	}
 })
 
@@ -593,6 +666,22 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:papyrus_roots',
+	recipe = {
+		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
+		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
+		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:papyrus 9',
+	recipe = {
+		{'default:papyrus_roots'},
+	}
+})
+
+minetest.register_craft({
 	output = "default:sand_with_small_kelp 2",
 	recipe = {
 		{"default:sand_with_kelp"},
@@ -609,9 +698,17 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	type = "cooking",
-	output = "default:obsidian_glass",
-	recipe = "default:obsidian_shard",
+	type = "shapeless",
+	output = 'default:seedling 4',
+	recipe = {'group:sapling'},
+})
+
+minetest.register_craft({
+	output = "default:bonfire",
+	recipe = {
+		{"", "group:leaves", ""},
+		{"group:stick", "group:stick", "group:stick"},
+	}
 })
 
 
@@ -631,6 +728,12 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:glass",
 	recipe = "group:sand",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:obsidian_glass",
+	recipe = "default:obsidian_shard",
 })
 
 minetest.register_craft({
@@ -682,6 +785,12 @@ minetest.register_craft({
 	recipe = "group:tree",
 })
 
+minetest.register_craft({
+	type = "cooking",
+	output = "default:coal_lump",
+	recipe = "group:tree_horizontal",
+})
+
 --
 -- Fuels
 --
@@ -695,6 +804,12 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "group:tree",
+	burntime = 32,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "group:tree_horizontal",
 	burntime = 32,
 })
 
@@ -828,4 +943,22 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "default:molten_rock",
 	burntime = 32,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:seedling",
+	burntime = 1,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:bonfire",
+	burntime = 10,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:spearwood",
+	burntime = 6,
 })

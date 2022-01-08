@@ -319,3 +319,31 @@ minetest.register_tool("default:sword_steel", {
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
+
+minetest.register_tool("default:spearwood", {
+	description = S("Wooden Spear"),
+	inventory_image = "default_spearwood.png",
+	wield_image = "default_spearwood.png^[transformFX",
+	range = 5,
+	tool_capabilities = {
+		full_punch_interval = 1,
+		groupcaps={
+			snappy={times={[2]=1.6*3, [3]=0.40*3}, uses=10/27, maxlevel=3},
+		},
+		damage_groups = {fleshy=2},
+	}
+})
+
+minetest.register_tool("default:spearstone", {
+	description = S("Stone Spear"),
+	inventory_image = "default_spearstone.png",
+	wield_image = "default_spearstone.png^[transformFX",
+	range = 5,
+	tool_capabilities = {
+		full_punch_interval = 1.2,
+		groupcaps={
+			snappy={times={[2]=1.4*3, [3]=0.30*3}, uses=20/27, maxlevel=3},
+		},
+		damage_groups = {fleshy=3},
+	}
+})

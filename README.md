@@ -84,4 +84,4 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 For every mod applies the original license. See list below.
 All other media is licenced under Creative Commons BY-SA license.
 
-beds (LGPL), binoculars (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), dye (LGPL), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory\_plus (GPL), mobs (MIT), mobs\_flat (LGPL), nodetest (LGPL), physics (LGPL), player_api (LGPL), screwdriver (LGPL), stairs (LGPL), stairsplus (zlib/libpng), tnt (LGPL), walls (LGPL) wool (LGPL), xpanes (LGPL), zcg (LGPL)
+beds (LGPL), binoculars (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), dye (LGPL), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory\_plus (GPL), mobs (MIT), mobs\_flat (LGPL), physics (LGPL), player_api (LGPL), screwdriver (LGPL), stairs (LGPL), stairsplus (zlib/libpng), tnt (LGPL), walls (LGPL) wool (LGPL), xpanes (LGPL), zcg (LGPL)

@@ -35,7 +35,7 @@ mobs:register_mob("mobs_flat:dustdevil", {
 	view_range = 10,
 	jump = true,
 	drops = {
-		{name = "nodetest:spearwood", chance = 0.5, min = 0, max = 1},
+		{name = "default:spearwood", chance = 0.5, min = 0, max = 1},
 	},
 	water_damage = 1,
 	lava_damage = 4,
@@ -49,7 +49,7 @@ mobs:register_arrow("mobs_flat:spear", {
 	visual = "upright_sprite",
 	drawtype = "side",
 	visual_size = {x = 1, y = 1},
-	textures = {"nodetest_spearwood.png"},
+	textures = {"default_spearwood.png"},
 	velocity = 8,
 	expire = 0.1,
 	on_step = function(self)

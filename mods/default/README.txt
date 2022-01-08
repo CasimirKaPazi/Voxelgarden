@@ -107,6 +107,10 @@ Casimir (CC BY-SA 4.0)
   default_mineral_tin.png
   default_bronze_ingot.png
   default_stone_crumbled.png (based on work by Gambit)
+  default_bonfire.png (Based on Pixlebox)
+  default_bone.png
+  default_papyrus_roots.png
+  default_seedling
 
 Gambit (CC BY-SA 4.0)
   default_book.png
@@ -134,6 +138,7 @@ Gambit (CC BY-SA 4.0)
   default_aspen_tree.png
   default_aspen_tree_top.png
   default_aspen_leaves.png
+  default_bonfire_animated.png
 
 BlockMen (CC BY 3.0)
   default_water.png
@@ -188,6 +193,8 @@ Pithydon (CC BY-SA 3.0)
 
 Mossmanikin (CC BY-SA 3.0):
   default_fern_*.png
+  default_spearstone.png
+  default_spearwood.png
 
 “Faithful 1.11” by Vattic, xMrVizzy and contributers (MIT License)
   default_gold_ingot.png

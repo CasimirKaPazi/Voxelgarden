@@ -107,3 +107,8 @@ minetest.register_craftitem("default:obsidian_shard", {
 	description = S("Obsidian Shard"),
 	inventory_image = "default_obsidian_shard.png",
 })
+
+minetest.register_craftitem("default:bone", {
+	description = S("Bone"),
+	inventory_image = "default_bone.png",
+})

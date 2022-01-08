@@ -191,12 +191,48 @@ minetest.register_node("default:tree", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
+minetest.register_node("default:tree_horizontal", {
+	description = S("Tree"),
+	tiles = {
+		"default_tree.png", 
+		"default_tree.png",
+		"default_tree.png^[transformR90", 
+		"default_tree.png^[transformR90", 
+		"default_tree_top.png", 
+		"default_tree_top.png" 
+	},
+	paramtype2 = "facedir",
+	groups = {tree_horizontal=1, choppy=2, flammable=1},
+	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
+})
+
 minetest.register_node("default:jungletree", {
 	description = S("Jungle Tree"),
 	tiles = {"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
 	is_ground_content = false,
 	groups = {tree=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node("default:jungletree_horizontal", {
+	description = S("Jungle Tree"),
+		tiles = {
+		"default_jungletree.png", 
+		"default_jungletree.png",
+		"default_jungletree.png^[transformR90", 
+		"default_jungletree.png^[transformR90", 
+		"default_jungletree_top.png", 
+		"default_jungletree_top.png" 
+	},
+	paramtype2 = "facedir",
+	groups = {tree_horizontal=1, choppy=2, flammable=1},
+	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
 })
 
 minetest.register_node("default:jungleleaves", {
@@ -285,6 +321,24 @@ minetest.register_node("default:aspen_tree", {
 	is_ground_content = false,
 	groups = {tree = 1, choppy = 3, flammable = 3},
 	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node("default:aspen_tree_horizontal", {
+	description = S("Aspen Tree"),
+	tiles = {
+		"default_aspen_tree.png", 
+		"default_aspen_tree.png",
+		"default_aspen_tree.png^[transformR90", 
+		"default_aspen_tree.png^[transformR90", 
+		"default_aspen_tree_top.png", 
+		"default_aspen_tree_top.png" 
+	},
+	paramtype2 = "facedir",
+	groups = {tree_horizontal=1, choppy=2, flammable=1},
+	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		default.rotate_horizontal(pos)
+	end,
 })
 
 minetest.register_node("default:aspen_leaves", {
@@ -454,6 +508,20 @@ minetest.register_node("default:papyrus", {
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
 	end,
+})
+
+minetest.register_node("default:papyrus_roots", {
+	description = S("Papyrus Roots"),
+	tiles = {"default_papyrus_roots.png"},
+	paramtype = "light",
+	is_ground_content = true,
+	liquids_pointable = true,
+	after_dig_node = function(pos, node, metadata, digger)
+			node.name = "default:papyrus"
+			default.dig_up(pos, node, digger)
+		end,
+	groups = {snappy=3, flammable=2, oddly_breakable_by_hand=1, soil=1},
+	sounds = default.node_sound_leaves_defaults(),
 })
 
 minetest.register_node("default:bookshelf", {
@@ -1292,4 +1360,50 @@ minetest.register_node("default:obsidian_glass", {
 	sunlight_propagates = true,
 	sounds = default.node_sound_glass_defaults(),
 	groups = {cracky = 3},
+})
+
+minetest.register_node("default:seedling", {
+	description = S("Seedling"),
+	drawtype = "torchlike",
+	tiles = {"default_seedling.png"},
+	inventory_image = "default_seedling.png",
+	wield_image = "default_seedling.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	waving = 1,
+	walkable = false,
+	buildable_to = true,
+	floodable = true,
+	is_ground_content = true,
+	groups = {snappy=3, dig_immediate=3, flammable=3, attached_node=1},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 },
+	},
+})
+
+minetest.register_node("default:bonfire", {
+	description = S("Bonfire"),
+	drawtype = "plantlike",
+	visual_scale = 1.0,
+	tiles = {
+		{name="default_bonfire_animated.png",
+		animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}}
+	},
+	inventory_image = "default_bonfire.png",
+	wield_image = "default_bonfire.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	floodable = true,
+	drop = "",
+	damage_per_second = 1,
+	light_source = 12,
+	groups = {snappy=3, attached_node=1},
+	sounds = default.node_sound_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.375, -0.5, -0.375, 0.375, 0, 0.375},
+	},
 })

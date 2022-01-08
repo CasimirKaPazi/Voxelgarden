@@ -204,3 +204,18 @@ minetest.register_on_dieplayer(function(player)
 	end
 	bones.place_bones(player)
 end)
+
+minetest.register_craft({
+	type = "shapeless",
+	output = 'default:bone 9',
+	recipe = {'bones:bones'},
+})
+
+minetest.register_craft({
+	output = 'bones:bones',
+	recipe = {
+		{'default:bone', 'default:bone', 'default:bone'},
+		{'default:bone', 'default:bone', 'default:bone'},
+		{'default:bone', 'default:bone', 'default:bone'},
+	}
+})

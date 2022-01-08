@@ -59,6 +59,12 @@ minetest.register_craft({
 	recipe = {"default:copper_lump"},
 })
 
+minetest.register_craft({
+	type = "shapeless",
+	output = 'dye:white',
+	recipe = {'default:bone'},
+})
+
 -- Mix recipes
 -- Just mix everything to everything somehow sanely
 

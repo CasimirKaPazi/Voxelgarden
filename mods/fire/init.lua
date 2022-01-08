@@ -11,7 +11,6 @@ minetest.register_privilege("fire", {
 
 minetest.register_alias("flint:tinder", "fire:tinder")
 minetest.register_alias("flint:firestriker", "fire:flint_and_steel")
-minetest.register_alias("nodetest:rock", "default:gravel")
 minetest.register_alias("flint:silex_ore", "default:gravel")
 minetest.register_alias("flint:silex", "default:cobble")
 minetest.register_alias("fire", "fire:basic_flame")
