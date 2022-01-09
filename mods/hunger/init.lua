@@ -83,7 +83,6 @@ minetest.register_on_newplayer(function(player)
 	local full = meta:get_int("hunger")
 	full = 20
 	meta:set_int("hunger", full)
-	hunger.new_bar(player, full)
 end)
 
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
