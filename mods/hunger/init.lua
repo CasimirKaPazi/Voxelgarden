@@ -76,12 +76,6 @@ minetest.register_on_respawnplayer(function(player)
 	full = 20
 	hunger.update_bar(player, full)
 	meta:set_int("hunger", full)
-	meta:set_int("dead", 0)
-end)
-
-minetest.register_on_dieplayer(function(player)
-	local meta = player:get_meta()
-	meta:set_int("dead", 1)
 end)
 
 minetest.register_on_newplayer(function(player)
@@ -147,8 +141,7 @@ function hunger.timer(player)
 		local name = player:get_player_name()
 		local hp = player:get_hp()
 		local meta = player:get_meta()
-		local dead = meta:get_int("dead")
-		if dead == 1 then return end
+		if hp <= 0 then return end
 		local full = tonumber(meta:get_int("hunger"))
 		if not full then full = 20 end
 		if minetest.get_player_privs(name)["no_hunger"] then
