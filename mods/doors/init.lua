@@ -119,6 +119,13 @@ minetest.register_craft({
 	burntime = 3,
 })
 
+doors.register_fencegate("doors:gate_wood", {
+	description = S("Fence Gate"),
+	texture = "default_wood.png",
+	material = "default:wood",
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
+})
+
 minetest.register_alias("doors:door_wood", "doors:door_wood_1")
 minetest.register_alias("doors:door_wood_t_1", "doors:door_wood_window_1")
 minetest.register_alias("doors:door_wood_t_2", "doors:door_wood_window_2")

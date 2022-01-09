@@ -162,3 +162,103 @@ function doors:register_door(name, def)
 		end,
 	})	
 end
+
+
+----fence gate----
+
+local box_open = {
+	type = "fixed",
+	fixed = {
+	-- railings
+	{-14/16, 3/16, -1/16, -10/16, 5/16, 1/16},
+	{-14/16, -5/16, -1/16, -10/16, -3/16, 1/16},
+	{10/16, 3/16, -1/16, 14/16, 5/16, 1/16},
+	{10/16, -5/16, -1/16, 14/16, -3/16, 1/16},
+	-- door
+	{-9/16, -7/16, -10/16, -7/16, 7/16, 1/16},
+	{7/16, -7/16, -10/16, 9/16, 7/16, 1/16},
+	-- posts
+	{-10/16, -1/2, -1/8, -6/16, 1/2, 1/8},
+	{6/16, -1/2, -1/8, 10/16, 1/2, 1/8},
+	}
+}
+
+local box_closed = {
+	type = "fixed",
+	fixed = {
+	-- railings
+	{-14/16, 3/16, -1/16, -10/16, 5/16, 1/16},
+	{-14/16, -5/16, -1/16, -10/16, -3/16, 1/16},
+	{10/16, 3/16, -1/16, 14/16, 5/16, 1/16},
+	{10/16, -5/16, -1/16, 14/16, -3/16, 1/16},
+	-- door
+	{-6/16, -7/16, -1/16, -1/16, 7/16, 1/16},
+	{6/16, -7/16, -1/16, 1/16, 7/16, 1/16},
+	-- posts
+	{-10/16, -1/2, -1/8, -6/16, 1/2, 1/8},
+	{6/16, -1/2, -1/8, 10/16, 1/2, 1/8},
+	}
+}
+
+function doors.register_fencegate(name, def)
+	local fence = {
+		description = def.description,
+		drawtype = "nodebox",
+		node_box = {
+	type = "fixed",
+	fixed = node_box_open
+},
+		selection_box = {
+			type = "fixed",
+			fixed = {-0.5, -0.5, -1/8, 0.5, 0.5, 1/8}
+		},
+		tiles = {def.texture.."^[transformR90"},
+		paramtype = "light",
+		paramtype2 = "facedir",
+		sunlight_propagates = true,
+		is_ground_content = false,
+		drop = name .. "_closed",
+		connect_sides = {"left", "right"},
+		groups = def.groups,
+		sounds = def.sounds,
+		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+			local node_def = minetest.registered_nodes[node.name]
+			minetest.swap_node(pos, {name = node_def._gate, param2 = node.param2})
+			minetest.sound_play(node_def._gate_sound, {pos = pos, gain = 0.15,
+				max_hear_distance = 8}, true)
+			return itemstack
+		end,
+	}
+
+	if not fence.sounds then
+		fence.sounds = default.node_sound_wood_defaults()
+	end
+
+	fence.groups.fence = 1
+
+	local fence_closed = table.copy(fence)
+	fence_closed._gate = name .. "_open"
+	fence_closed._gate_sound = "doors_fencegate_open"
+	fence_closed.node_box = box_closed
+	fence_closed.collision_box = box_closed
+
+	local fence_open = table.copy(fence)
+	fence_open._gate = name .. "_closed"
+	fence_open._gate_sound = "doors_fencegate_close"
+	fence_open.groups.not_in_creative_inventory = 1
+	fence_open.node_box = box_open
+	fence_open.collision_box = box_open
+
+	minetest.register_node(":" .. name .. "_closed", fence_closed)
+	minetest.register_node(":" .. name .. "_open", fence_open)
+
+	if def.material then -- allow custom recipes
+		minetest.register_craft({
+			output = name .. "_closed",
+			recipe = {
+				{def.material, "group:stick", def.material},
+				{def.material, "group:stick", def.material}
+			}
+		})
+	end
+end
