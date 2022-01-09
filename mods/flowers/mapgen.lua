@@ -40,6 +40,29 @@ local function register_mgv6_mushroom(name, seed)
 	})
 end
 
+local function register_mgv6_waterlily()
+	minetest.register_decoration({
+		name = "flowers:waterlily",
+		deco_type = "simple",
+		place_on = {"default:dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.12,
+			scale = 0.3,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 33,
+			octaves = 3,
+			persist = 0.7
+		},
+		y_max = 0,
+		y_min = 0,
+		decoration = "flowers:waterlily_waving",
+		param2 = 0,
+		param2_max = 3,
+		place_offset_y = 1,
+	})
+end
+
 function flowers.register_mgv6_decorations()
 	register_mgv6_flower("rose", 1)
 	register_mgv6_flower("tulip", 2)
@@ -50,8 +73,8 @@ function flowers.register_mgv6_decorations()
 
 	register_mgv6_mushroom("mushroom_brown", 1)
 	register_mgv6_mushroom("mushroom_red", 2)
-	-- TODO: Add waterlily
---	register_mgv6_waterlily()
+
+	register_mgv6_waterlily()
 end
 
 

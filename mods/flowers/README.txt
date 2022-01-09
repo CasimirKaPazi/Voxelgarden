@@ -28,6 +28,7 @@ Gambit (CC BY-SA 4.0):
   flowers_tulip.png
   flowers_geranium.png
   flowers_viola.png
+  flowers_waterlily.png
 
 Casimir (CC BY-SA 4.0)
   flowers_mushroom_brown_spores.png
