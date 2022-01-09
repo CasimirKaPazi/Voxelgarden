@@ -49,28 +49,6 @@ Voxelgarden should be (in that order):
 a complete game >> easy to maintain >> compatible with minetest game
 
 
-Future plans
-------------
-
-The following are "nice to have". The goal is to add simple physics and interactions that allow for emergent features.
-
-* To split door in individual nodes made it possible to have various combinations of door of different height, but also to use them as hatches and windows. The turning of doors could be extended to other nodes.
-
-* Levers, turning axis and some standardized way to transmit physical force from node to node. As a basis for simple machines. i.e. Mesecons, but for mechanics and without being overpowered.
-
-* The pickup mod (already in prototype) would allow to carry filled chests from place to place or nodes that can be dug, but only carried (e.g. a kind of companion cube).
-
-* In the node focused style it should be possible to place more of the craftitems. Ideally with some uses to them.
-
-* Better finite liquid and a way to transport them (waterworks mod by FaceDeer).
-
-* Extend falling for nodes so that it can go in any direction and allow things to float up in liquids but fall down in air.
-
-* Edge mod (already in prototype) that creates a haze at the edges of the world. When player go into it, they come out at the other side of the world, or fall from the sky if they go past the bottom of the world. This eliminates hard map boundaries and turns the world in a 4 dimensional torus.
-
-* Plant domestication. Start with the wild variety of a crop, which drops wild seeds, but rarely seeds of a more domesticated variant. The new one yields more and grows faster. With about 2 to 4 iterations.
-
-
 License of source code:
 -----------------------
 
@@ -84,4 +62,7 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 For every mod applies the original license. See list below.
 All other media is licenced under Creative Commons BY-SA license.
 
-beds (LGPL), binoculars (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), dye (LGPL), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory\_plus (GPL), mobs (MIT), mobs\_flat (LGPL), physics (LGPL), player_api (LGPL), screwdriver (LGPL), stairs (LGPL), stairsplus (zlib/libpng), tnt (LGPL), walls (LGPL) wool (LGPL), xpanes (LGPL), zcg (LGPL)
+beds (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), dye (LGPL), game_commands(MIT), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory\_plus (GPL), mobs (MIT), mobs\_flat (LGPL), physics (LGPL), player_api (LGPL), stairs (LGPL), stairsplus (zlib/libpng), walls (LGPL) wool (LGPL), zcg (LGPL), xpanes (LGPL)
+
+Mods equivalent to and mirroring Minetest Game:
+binoculars (MIT), boats (MIT) (except burntime), carts (MIT), dungeon_loot (MIT), env_sounds (MIT), fireflies (MIT), map (MIT), screwdriver (LGPL) (except texture), tnt (MIT) (except textures), vessels (LGPL), weather (MIT)
