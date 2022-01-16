@@ -105,7 +105,8 @@ minetest.register_node("tnt:gunpowder_burning", {
 	groups = {
 		dig_immediate = 2,
 		attached_node = 1,
-		connect_to_raillike = minetest.raillike_group("gunpowder")
+		connect_to_raillike = minetest.raillike_group("gunpowder"),
+		not_in_creative_inventory = 1
 	},
 	sounds = default.node_sound_leaves_defaults(),
 	on_timer = function(pos, elapsed)
@@ -127,13 +128,14 @@ minetest.register_node("tnt:gunpowder_burning", {
 	-- unaffected by explosions
 	on_blast = function() end,
 	on_construct = function(pos)
-		minetest.sound_play("tnt_gunpowder_burning", {pos = pos, gain = 2})
+		minetest.sound_play("tnt_gunpowder_burning", {pos = pos,
+			gain = 2}, true)
 		minetest.get_node_timer(pos):start(1)
 	end,
 })
 
 minetest.register_craft({
-	output = "tnt:gunpowder 2",
+	output = "tnt:gunpowder 5",
 	type = "shapeless",
 	recipe = {"default:coal_lump", "default:gravel"}
 })
@@ -146,7 +148,7 @@ minetest.register_craftitem("tnt:tnt_stick", {
 
 if enable_tnt then
 	minetest.register_craft({
-		output = "tnt:tnt_stick 3",
+		output = "tnt:tnt_stick 2",
 		recipe = {
 			{"tnt:gunpowder", "", "tnt:gunpowder"},
 			{"tnt:gunpowder", "default:paper", "tnt:gunpowder"},
@@ -251,14 +253,14 @@ function tnt.register_tnt(def)
 		light_source = 5,
 		drop = "",
 		sounds = default.node_sound_wood_defaults(),
-		groups = {falling_node = 1},
+		groups = {falling_node = 1, not_in_creative_inventory = 1},
 		on_timer = function(pos, elapsed)
 			tnt.boom(pos, def)
 		end,
 		-- unaffected by explosions
 		on_blast = function() end,
 		on_construct = function(pos)
-			minetest.sound_play("tnt_ignite", {pos = pos})
+			minetest.sound_play("tnt_ignite", {pos = pos}, true)
 			minetest.get_node_timer(pos):start(4)
 			minetest.check_for_falling(pos)
 		end,
@@ -269,5 +271,4 @@ tnt.register_tnt({
 	name = "tnt:tnt",
 	description = S("TNT"),
 	radius = tnt_radius,
-	disable_drops = true,
 })
