@@ -608,7 +608,7 @@ minetest.register_node("default:water_flowing", {
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=0.8}
 		},
 	},
-	alpha = 160,
+	use_texture_alpha = 160,
 	is_ground_content = false,
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
@@ -641,7 +641,7 @@ minetest.register_node("default:water_source", {
 			backface_culling = false,
 		}
 	},
-	alpha = 160,
+	use_texture_alpha = 160,
 	paramtype = "light",
 	is_ground_content = false,
 	walkable = false,
@@ -665,7 +665,7 @@ minetest.register_node("default:river_water_source", {
 	description = S("River Water Dummy Node"),
 	drawtype = "liquid",
 	tiles = {"default_water.png"},
-	alpha = 160,
+	use_texture_alpha = 160,
 	paramtype = "light",
 	is_ground_content = false,
 	walkable = false,

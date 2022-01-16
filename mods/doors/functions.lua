@@ -205,9 +205,9 @@ function doors.register_fencegate(name, def)
 		description = def.description,
 		drawtype = "nodebox",
 		node_box = {
-	type = "fixed",
-	fixed = node_box_open
-},
+			type = "fixed",
+			fixed = box_open
+		},
 		selection_box = {
 			type = "fixed",
 			fixed = {-0.5, -0.5, -1/8, 0.5, 0.5, 1/8}
