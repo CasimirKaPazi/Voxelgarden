@@ -1,4 +1,0 @@
-mobs
-fire
-default
-flowers
