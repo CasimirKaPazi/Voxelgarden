@@ -139,6 +139,7 @@ Gambit (CC BY-SA 4.0)
   default_aspen_tree_top.png
   default_aspen_leaves.png
   default_bonfire_animated.png
+  default_flint.png
 
 BlockMen (CC BY 3.0)
   default_water.png
@@ -205,6 +206,12 @@ Mossmanikin (CC BY-SA 3.0):
 
 sofar (CC BY-SA 3.0):
   default_aspen_sapling
+
+paramat (CC BY-SA 3.0):
+  default_marram_grass_*.png -- Derived from textures by TumeniNodes (CC-BY-SA 3.0)
+  default_permafrost.png -- Derived from a texture by Neuromancer (CC BY-SA 3.0)
+  default_moss.png
+  default_moss_side.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/

@@ -45,7 +45,7 @@ minetest.register_tool("fire:flint_and_steel", {
 minetest.register_craft({
 	output = 'fire:flint_and_steel',
 	recipe = {
-		{'default:cobble', 'default:steel_ingot'},
+		{'default:flint', 'default:steel_ingot'},
 	}
 })
 

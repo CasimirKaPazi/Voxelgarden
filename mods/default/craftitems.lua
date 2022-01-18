@@ -112,3 +112,8 @@ minetest.register_craftitem("default:bone", {
 	description = S("Bone"),
 	inventory_image = "default_bone.png",
 })
+
+minetest.register_craftitem("default:flint", {
+	description = S("Flint"),
+	inventory_image = "default_flint.png"
+})

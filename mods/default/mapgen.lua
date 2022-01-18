@@ -610,6 +610,29 @@ function default.register_mgv6_decorations()
 		},
 		flags = "force_placement",
 	})
+
+	minetest.register_decoration({
+		name = "default:marram_grass",
+		deco_type = "simple",
+		place_on = {"default:sand"},
+		sidelen = 4,
+		noise_params = {
+			offset = -0.7,
+			scale = 4.0,
+			spread = {x = 16, y = 16, z = 16},
+			seed = 513337,
+			octaves = 1,
+			persist = 0.0,
+			flags = "absvalue, eased"
+		},
+		y_max = 6,
+		y_min = 4,
+		decoration = {
+			"default:marram_grass_1",
+			"default:marram_grass_2",
+			"default:marram_grass_3",
+		},
+	})
 end
 
 default.register_mgv6_decorations()

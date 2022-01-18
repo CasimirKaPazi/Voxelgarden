@@ -135,6 +135,33 @@ minetest.register_node("default:dirt", {
 	}),
 })
 
+minetest.register_node("default:permafrost", {
+	description = S("Permafrost"),
+	tiles = {"default_permafrost.png"},
+	groups = {cracky = 3},
+	sounds = default.node_sound_dirt_defaults(),
+})
+
+minetest.register_node("default:permafrost_with_stones", {
+	description = S("Permafrost with Stones"),
+	tiles = {"default_permafrost.png^default_stones.png",
+		"default_permafrost.png",
+		"default_permafrost.png^default_stones_side.png"},
+	groups = {cracky = 3},
+	sounds = default.node_sound_gravel_defaults(),
+})
+
+minetest.register_node("default:permafrost_with_moss", {
+	description = S("Permafrost with Moss"),
+	tiles = {"default_moss.png", "default_permafrost.png",
+		{name = "default_permafrost.png^default_moss_side.png",
+			tileable_vertical = false}},
+	groups = {cracky = 3},
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_grass_footstep", gain = 0.25},
+	}),
+})
+
 minetest.register_node("default:sand", {
 	description = S("Sand"),
 	tiles = {"default_sand.png"},
@@ -156,6 +183,13 @@ minetest.register_node("default:gravel", {
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_gravel_footstep", gain=0.3},
 	}),
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"default:flint"}, rarity = 16},
+			{items = {"default:gravel"}}
+		}
+	}
 })
 
 minetest.register_node("default:sandstone", {
@@ -608,7 +642,7 @@ minetest.register_node("default:water_flowing", {
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=0.8}
 		},
 	},
-	use_texture_alpha = 160,
+	use_texture_alpha = "blend",
 	is_ground_content = false,
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
@@ -641,7 +675,7 @@ minetest.register_node("default:water_source", {
 			backface_culling = false,
 		}
 	},
-	use_texture_alpha = 160,
+	use_texture_alpha = "blend",
 	paramtype = "light",
 	is_ground_content = false,
 	walkable = false,
@@ -665,7 +699,7 @@ minetest.register_node("default:river_water_source", {
 	description = S("River Water Dummy Node"),
 	drawtype = "liquid",
 	tiles = {"default_water.png"},
-	use_texture_alpha = 160,
+	use_texture_alpha = "blend",
 	paramtype = "light",
 	is_ground_content = false,
 	walkable = false,
@@ -1121,6 +1155,57 @@ for i = 2, 3 do
 		groups = {snappy = 3, flammable = 3, flora = 1, falling_node=1,
 			not_in_creative_inventory=1},
 		drop = "default:fern_1",
+		sounds = default.node_sound_leaves_defaults(),
+		selection_box = {
+			type = "fixed",
+			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -0.25, 6 / 16},
+		},
+	})
+end
+
+minetest.register_node("default:marram_grass_1", {
+	description = S("Marram Grass"),
+	drawtype = "plantlike",
+	waving = 1,
+	tiles = {"default_marram_grass_1.png"},
+	inventory_image = "default_marram_grass_1.png",
+	wield_image = "default_marram_grass_1.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, flora = 1, grass = 1, marram_grass = 1,
+		falling_node = 1},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -0.25, 6 / 16},
+	},
+
+	on_place = function(itemstack, placer, pointed_thing)
+		-- place a random marram grass node
+		local stack = ItemStack("default:marram_grass_" .. math.random(1, 3))
+		local ret = minetest.item_place(stack, placer, pointed_thing)
+		return ItemStack("default:marram_grass_1 " ..
+			itemstack:get_count() - (1 - ret:get_count()))
+	end,
+})
+
+for i = 2, 3 do
+	minetest.register_node("default:marram_grass_" .. i, {
+		description = S("Marram Grass"),
+		drawtype = "plantlike",
+		waving = 1,
+		tiles = {"default_marram_grass_" .. i .. ".png"},
+		inventory_image = "default_marram_grass_" .. i .. ".png",
+		wield_image = "default_marram_grass_" .. i .. ".png",
+		paramtype = "light",
+		sunlight_propagates = true,
+		walkable = false,
+		buildable_to = true,
+		groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1,
+			grass = 1, marram_grass = 1, not_in_creative_inventory = 1},
+		drop = "default:marram_grass_1",
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
