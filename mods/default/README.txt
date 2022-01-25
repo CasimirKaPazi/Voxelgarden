@@ -111,6 +111,8 @@ Casimir (CC BY-SA 4.0)
   default_bone.png
   default_papyrus_roots.png
   default_seedling
+  default_dry_grass_* (based on work by Gambit)
+  default_acacia_sapling.png
 
 Gambit (CC BY-SA 4.0)
   default_book.png
@@ -140,6 +142,9 @@ Gambit (CC BY-SA 4.0)
   default_aspen_leaves.png
   default_bonfire_animated.png
   default_flint.png
+  default_acacia_tree*
+  default_acacia_leaves.png
+  default_pine_needles.png
 
 BlockMen (CC BY 3.0)
   default_water.png
@@ -207,11 +212,27 @@ Mossmanikin (CC BY-SA 3.0):
 sofar (CC BY-SA 3.0):
   default_aspen_sapling
 
+Splizard (CC BY-SA 3.0):
+  default_pine_sapling.png
+  default_pine_needles.png
+
 paramat (CC BY-SA 3.0):
   default_marram_grass_*.png -- Derived from textures by TumeniNodes (CC-BY-SA 3.0)
   default_permafrost.png -- Derived from a texture by Neuromancer (CC BY-SA 3.0)
   default_moss.png
   default_moss_side.png
+  default_pinetree.png
+  default_pinetree_top.png
+
+Good Morning Craft (CC BY-SA 4.0)
+  default_dry_grass.png
+  default_dry_grass_side.png
+  default_rainforest_litter.png
+  default_rainforest_litter_side.png
+
+TumeniNodes (CC BY-SA 3.0):
+  default_coniferous_litter.png
+  default_coniferous_litter_side.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
@@ -243,3 +264,24 @@ Metal sounds:
   - https://freesound.org/people/mypantsfelldown/sounds/398937/
   default_place_node_metal.*.ogg - Ogrebane - CC0
   - http://opengameart.org/content/wood-and-metal-sound-effects-volume-2
+
+Schematics
+----------
+paramat (CC BY-SA 3.0):
+  acacia_tree.mts
+  aspen_tree.mts
+  emergent_jungle_tree.mts
+  pine_tree.mts
+
+TumeniNodes (CC BY-SA 3.0):
+  pine_bush.mts
+
+random-geek (CC BY-SA 3.0):
+  blueberry_bush.mts
+
+Casimir (CC BY-SA 3.0):
+  conifertree*
+  apple_tree*
+  jungletree*
+  tree*
+  papyrus_with_roots.mts

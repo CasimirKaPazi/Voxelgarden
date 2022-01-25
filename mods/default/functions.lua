@@ -139,17 +139,42 @@ minetest.register_abm({
 })
 
 minetest.register_abm({
-	label = "Grass new",
-	nodenames = {"group:flora"},
-	neighbors = {"default:dirt"},
-	interval = 2,
-	chance = 20,
+	label = "Grass spread",
+	nodenames = {"default:dirt"},
+	neighbors = {
+		"group:spreading_dirt_type",
+		"group:grass",
+		"group:dry_grass",
+		"default:snow",
+	},
+	interval = 7,
+	chance = 50,
 	catch_up = false,
 	action = function(pos, node)
-		local under = {x=pos.x, y=pos.y-1, z=pos.z}
-		local name = minetest.get_node(under).name
-		if name == "default:dirt" then
-			minetest.set_node(under, {name = "default:dirt_with_grass"})
+		-- Check for darkness: night, shadow or under a light-blocking node
+		-- Returns if ignore above
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+		if (minetest.get_node_light(above) or 0) < 10 then
+			return
+		end
+
+		-- Look for spreading dirt-type neighbours
+		local p2 = minetest.find_node_near(pos, 1, "group:spreading_dirt_type")
+		if p2 then
+			local n3 = minetest.get_node(p2)
+			minetest.set_node(pos, {name = n3.name})
+			return
+		end
+
+		-- Else, any seeding nodes on top?
+		local name = minetest.get_node(above).name
+		-- Snow check is cheapest, so comes first
+		if name == "default:snow" then
+			minetest.set_node(pos, {name = "default:dirt_with_snow"})
+		elseif minetest.get_item_group(name, "dry_grass") ~= 0 then
+			minetest.set_node(pos, {name = "default:dirt_with_dry_grass"})
+		elseif minetest.get_item_group(name, "flora") ~= 0 then
+			minetest.set_node(pos, {name = "default:dirt_with_grass"})
 		end
 	end
 })

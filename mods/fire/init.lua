@@ -24,8 +24,7 @@ end
 
 dofile(minetest.get_modpath("fire").."/flintandsteel.lua")
 
-minetest.register_node("fire:basic_flame", {
-	description = S("Fire"),
+local fire_node = {
 	drawtype = "firelike",
 	tiles = {{
 		name="fire_basic_flame_animated.png",
@@ -42,13 +41,27 @@ minetest.register_node("fire:basic_flame", {
 	floodable = true,
 	sunlight_propagates = true,
 	damage_per_second = 4,
-	on_timer = function(pos)
-		minetest.remove_node(pos)
-	end,
-	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(1, 10))
-	end,
-})
+}
+
+
+-- Basic flame node
+local flame_fire_node = table.copy(fire_node)
+flame_fire_node.description = S("Fire")
+flame_fire_node.groups.not_in_creative_inventory = 1
+flame_fire_node.on_timer = function(pos)
+	minetest.remove_node(pos)
+end
+flame_fire_node.on_construct = function(pos)
+	minetest.get_node_timer(pos):start(math.random(1, 10))
+end
+
+minetest.register_node("fire:basic_flame", flame_fire_node)
+
+-- Permanent flame node
+local permanent_fire_node = table.copy(fire_node)
+permanent_fire_node.description = S("Permanent Fire")
+
+minetest.register_node("fire:permanent_flame", permanent_fire_node)
 
 if not minetest.settings:get_bool("disable_fire") then
 

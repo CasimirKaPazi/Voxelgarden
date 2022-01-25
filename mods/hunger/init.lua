@@ -73,16 +73,13 @@ end)
 minetest.register_on_respawnplayer(function(player)
 	local name = player:get_player_name()
 	local meta = player:get_meta()
-	full = 20
-	hunger.update_bar(player, full)
-	meta:set_int("hunger", full)
+	hunger.update_bar(player, 20)
+	meta:set_int("hunger", 20)
 end)
 
 minetest.register_on_newplayer(function(player)
 	local meta = player:get_meta()
-	local full = meta:get_int("hunger")
-	full = 20
-	meta:set_int("hunger", full)
+	meta:set_int("hunger", 20)
 end)
 
 minetest.register_on_item_eat(function(hp_change, replace_with_item, itemstack, player, pointed_thing)
