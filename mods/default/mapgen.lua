@@ -144,7 +144,7 @@ minetest.register_ore({
 	clust_num_ores = 8,
 	clust_size     = 3,
 	y_min     = -31000,
-	y_max     = 64,
+	y_max     = 1024,
 })
 
 minetest.register_ore({
@@ -232,7 +232,7 @@ minetest.register_ore({
 	clust_num_ores = 3,
 	clust_size     = 3,
 	y_min     = -127,
-	y_max     = 16,
+	y_max     = 1024,
 })
 
 minetest.register_ore({
@@ -254,7 +254,7 @@ minetest.register_ore({
 	clust_num_ores = 3,
 	clust_size     = 3,
 	y_min          = -1023,
-	y_max          = 0,
+	y_max          = 1024,
 })
 
 minetest.register_ore({
@@ -350,13 +350,23 @@ minetest.register_ore({
 })
 
 minetest.register_ore({
-	ore_type       = "scatter",
+	ore_type       = "sheet",
 	ore            = "default:coalblock",
-	wherein        = "default:stone",
-	clust_scarcity = 16*16*16,
-	clust_num_ores = 32,
-	clust_size     = 4,
-	y_min     = -4096,
+	wherein        = {"default:stone"},
+	column_height_min = 5,
+	column_height_max = 10,
+	column_midpoint_factor = 0.3,
+	noise_params = {
+	    offset  = -1.3,
+	    scale   = 3,
+	    spread  = {x=100, y=100, z=100},
+	    seed    = 18953,
+	    octaves = 3,
+	    persist = 0.5,
+	    flags = "eased",
+	},
+	noise_threshold = 1.6,
+	y_min     = -31000,
 	y_max     = -2048,
 })
 
