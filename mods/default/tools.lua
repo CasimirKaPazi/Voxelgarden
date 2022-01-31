@@ -6,8 +6,6 @@ local S = default.get_translator
 -- The engine assumes maxlevel=1, so we have to specify it.
 -- Uses are affected by level differnece of tool and node by a factor d^3.
 -- To get the uses we want, we divide by 3^3.
--- A bug messes with the number of uses. For maxlevel=0 it's +1, for other values it's strange.
--- Therefor we have to hold our noses and accept that we can't get a precice number of uses.
 
 -- Dig times are divided by leveldiff. Therefor we multiply everything by 3.
 
@@ -80,7 +78,7 @@ minetest.register_tool(":default:pick_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[2]=0.75*3, [3]=0.45*3}, uses=120/27, maxlevel=3},
+			cracky = {times={[2]=0.75*3, [3]=0.45*3}, uses=180/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -93,7 +91,7 @@ minetest.register_tool("default:pick_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			cracky = {times={[1]=1.50*3, [2]=0.60*3, [3]=0.30*3}, uses=180/27, maxlevel=3},
+			cracky = {times={[1]=1.50*3, [2]=0.60*3, [3]=0.30*3}, uses=210/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -162,7 +160,7 @@ minetest.register_tool(":default:shovel_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[1]=0.70*3, [2]=0.60*3, [3]=0.25*3}, uses=120/27, maxlevel=3},
+			crumbly = {times={[1]=0.70*3, [2]=0.60*3, [3]=0.25*3}, uses=180/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -175,7 +173,7 @@ minetest.register_tool("default:shovel_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			crumbly = {times={[1]=0.60*3, [2]=0.45*3, [3]=0.20*3}, uses=180/27, maxlevel=3},
+			crumbly = {times={[1]=0.60*3, [2]=0.45*3, [3]=0.20*3}, uses=210/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -228,7 +226,7 @@ minetest.register_tool(":default:axe_bronze", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy={times={[1]=0.70*3, [2]=0.50*3, [3]=0.30*3}, uses=120/27, maxlevel=3},
+			choppy={times={[1]=0.70*3, [2]=0.50*3, [3]=0.30*3}, uses=180/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -241,7 +239,7 @@ minetest.register_tool("default:axe_steel", {
 	tool_capabilities = {
 		full_punch_interval = 0.5,
 		groupcaps={
-			choppy={times={[1]=0.60*3, [2]=0.40*3, [3]=0.20*3}, uses=180/27, maxlevel=3},
+			choppy={times={[1]=0.60*3, [2]=0.40*3, [3]=0.20*3}, uses=210/27, maxlevel=3},
 		},
 		damage_groups = {fleshy=3},
 	},
