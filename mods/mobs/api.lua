@@ -93,6 +93,7 @@ local mob_class = {
 	physical = true,
 	collisionbox = {-0.25, -0.25, -0.25, 0.25, 0.25, 0.25},
 	visual_size = {x = 1, y = 1},
+	spritediv =  {x = 1, y = 1},
 	texture_mods = "",
 	makes_footstep_sound = false,
 	view_range = 5,
@@ -148,7 +149,8 @@ local mob_class = {
 	attack_players = true,
 	attack_npcs = true,
 	facing_fence = false,
-	_cmi_is_mob = true
+	_cmi_is_mob = true,
+	on_activate = {}
 }
 
 local mob_class_meta = {__index = mob_class}
@@ -3495,6 +3497,7 @@ minetest.register_entity(name, setmetatable({
 	selectionbox = def.selectionbox or def.collisionbox,
 	visual = def.visual,
 	visual_size = def.visual_size,
+	spritediv = def.spritediv,
 	mesh = def.mesh,
 	makes_footstep_sound = def.makes_footstep_sound,
 	view_range = def.view_range,
@@ -3574,6 +3577,10 @@ minetest.register_entity(name, setmetatable({
 	on_grown = def.on_grown,
 
 	on_activate = function(self, staticdata, dtime)
+		if def.on_activate then
+			def.on_activate(self, staticdata, dtime)
+		end
+--		self.object:set_sprite({x=0, y=0}, 4, 0.2, false)
 		return self:mob_activate(staticdata, def, dtime)
 	end,
 

@@ -40,7 +40,7 @@ mobs:register_mob("mobs_flat:omsk", {
 mobs:spawn({
 	name = "mobs_flat:omsk",
 	nodes = {"default:stone", "default:cobble", "default:mossycobble"},
-	neighbors = {"default:stone_with_iron"},
+	neighbors = {"default:stone_with_iron", "default:mossycobble"},
 	chance = 7,
 	active_object_count = 1
 })

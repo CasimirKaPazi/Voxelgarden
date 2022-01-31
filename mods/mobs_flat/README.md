@@ -14,7 +14,7 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 
 License of media (textures and sounds)
 --------------------------------------
-Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)                                 
+Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Authors of media files
@@ -32,3 +32,6 @@ erlehmann (GPL version 2 or later and CC BY-SA version 3.0 or later)
 cisoun (WTFPL)
   mobs_flat_dm*
   mobs_flat_rat*
+
+Stephen "Redshrike" Challener, https://opengameart.org/users/redshrike (CC BY-SA):
+  mobs_flat_1hour*
