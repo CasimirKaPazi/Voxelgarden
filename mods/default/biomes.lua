@@ -4,6 +4,9 @@ minetest.register_biome({
 	name = "Sea_Dirt",
 	node_top = "default:dirt",			depth_top = 3,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = -32000,					y_max = 0,
 	heat_point = 30,				humidity_point = 40,
 })
@@ -12,6 +15,8 @@ minetest.register_biome({
 	name = "Sea_Sand",
 	node_top = "default:sand",			depth_top = 3,
 	node_riverbed = "default:sand",	depth_riverbed = 2,
+	node_dungeon = "default:sandstone",
+	node_dungeon_stair = "stairsplus:stair_sandstone",
 	y_min = -32000,					y_max = 5,
 	heat_point = 90,				humidity_point = 40,
 })
@@ -21,6 +26,8 @@ minetest.register_biome({
 	node_top = "default:desert_sand",		depth_top = 3,
 	node_filler = "default:desert_stone",	depth_filler = 3,
 	node_riverbed = "default:desert_sand",	depth_riverbed = 2,
+	node_dungeon = "default:sandstone",
+	node_dungeon_stair = "stairsplus:stair_sandstone",
 	y_min = -32000,					y_max = 5,
 	heat_point = 110,				humidity_point = -60,
 })
@@ -30,6 +37,9 @@ minetest.register_biome({
 	node_top = "default:gravel",		depth_top = 3,
 	node_filler = "default:stone",		depth_filler = 3,
 	node_riverbed = "default:gravel",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = -32000,					y_max = 5,
 	heat_point = 30,				humidity_point = -60,
 })
@@ -41,6 +51,9 @@ minetest.register_biome({
 	node_top = "default:dirt_with_snow",		depth_top = 1,
 	node_filler = "default:dirt",			depth_filler = 2,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = 00,				humidity_point = 70,
 })
@@ -50,6 +63,9 @@ minetest.register_biome({
 	node_top = "default:dirt_with_grass",		depth_top = 1,
 	node_filler = "default:dirt",			depth_filler = 2,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = 25,				humidity_point = 75,
 })
@@ -59,6 +75,9 @@ minetest.register_biome({
 	node_top = "default:dirt_with_grass",		depth_top = 1,
 	node_filler = "default:dirt",			depth_filler = 3,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = 50,				humidity_point = 80,
 })
@@ -68,6 +87,9 @@ minetest.register_biome({
 	node_top = "default:dirt_with_grass",		depth_top = 1,
 	node_filler = "default:dirt",			depth_filler = 4,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = 90,				humidity_point = 75,
 })
@@ -77,6 +99,8 @@ minetest.register_biome({
 	node_top = "default:dirt_with_grass",		depth_top = 1,
 	node_filler = "default:dirt",			depth_filler = 4,
 	node_riverbed = "default:dirt",	depth_riverbed = 2,
+	node_dungeon = "default:sandstone",
+	node_dungeon_stair = "stairsplus:stair_sandstone",
 	y_min = 1,					y_max = 32000,
 	heat_point = 95,				humidity_point = 70,
 })
@@ -86,6 +110,8 @@ minetest.register_biome({
 	node_top = "default:desert_sand",		depth_top = 3,
 	node_filler = "default:desert_stone",		depth_filler = 8,
 	node_riverbed = "default:sand",	depth_riverbed = 2,
+	node_dungeon = "default:sandstone",
+	node_dungeon_stair = "stairsplus:stair_sandstone",
 	y_min = 1,					y_max = 32000,
 	heat_point = 100,				humidity_point = -30,
 })
@@ -98,6 +124,9 @@ minetest.register_biome({
 	node_water_top = "default:ice",			depth_water_top = 3,
 	node_riverbed = "default:gravel",	depth_riverbed = 2,
 	node_river_water = "default:ice",
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = -40,				humidity_point = -20,
 })
@@ -109,6 +138,9 @@ minetest.register_biome({
 	node_water_top = "default:ice",			depth_water_top = 3,
 	node_riverbed = "default:gravel",	depth_riverbed = 2,
 	node_river_water = "default:ice",
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = -40,				humidity_point = -40,
 })
@@ -118,6 +150,9 @@ minetest.register_biome({
 	node_top = "default:gravel",			depth_top = 3,
 	node_filler = "default:desert_stone",		depth_filler = 3,
 	node_riverbed = "default:gravel",	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
 	y_min = 1,					y_max = 32000,
 	heat_point = 160,				humidity_point = -30,
 })
