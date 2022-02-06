@@ -45,7 +45,9 @@ minetest.register_privilege("no_hunger", {
 	give_to_singleplayer = false,
 	on_grant = function(name, revoker_name)
 		local player = minetest.get_player_by_name(name)
-		player:hud_remove(player_bar[name])
+		if player_bar[name] then
+			player:hud_remove(player_bar[name])
+		end
 	end,
 	on_revoke = function(name, revoker_name)
 		local player = minetest.get_player_by_name(name)
