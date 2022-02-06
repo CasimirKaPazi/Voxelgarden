@@ -16,4 +16,5 @@ Casimir (CC BY-SA 4.0)
 Trevor Lentz (CC BY-SA 3.0)
 https://opengameart.org/users/trevor-lentz
   theme.1.ogg (Deus Ex Tempus)
-  thmee.2.ogg (Pixel River)
+  theme.2.ogg (Pixel River)
+  theme.3.ogg (Melody Eternal)
