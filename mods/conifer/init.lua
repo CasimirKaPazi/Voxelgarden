@@ -38,6 +38,7 @@ minetest.register_node("conifer:sapling", {
 minetest.register_node("conifer:tree", {
 	description = S("Conifer Tree"),
 	tiles = {"conifer_tree_top.png", "conifer_tree_top.png", "conifer_tree.png"},
+	is_ground_content = false,
 	groups = {tree=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -49,6 +50,7 @@ for i=1,2 do
 		tiles = {"conifer_leaves_"..i..".png"},
 		paramtype = "light",
 		waving = 1,
+		is_ground_content = false,
 		trunk = "conifer:tree",
 		groups = {
 				snappy=3,
@@ -90,6 +92,7 @@ minetest.register_node("conifer:tree_horizontal", {
 		"conifer_tree_top.png" 
 	},
 	paramtype2 = "facedir",
+	is_ground_content = false,
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	melt = "default:coal_block",
 	sounds = default.node_sound_wood_defaults(),

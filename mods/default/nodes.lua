@@ -278,6 +278,7 @@ minetest.register_node("default:tree_horizontal", {
 		"default_tree_top.png" 
 	},
 	paramtype2 = "facedir",
+	is_ground_content = false,
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
@@ -304,6 +305,7 @@ minetest.register_node("default:jungletree_horizontal", {
 		"default_jungletree_top.png" 
 	},
 	paramtype2 = "facedir",
+	is_ground_content = false,
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
@@ -463,6 +465,7 @@ minetest.register_node("default:acacia_tree_horizontal", {
 		"default_acacia_tree_top.png" 
 	},
 	paramtype2 = "facedir",
+	is_ground_content = false,
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
@@ -534,6 +537,7 @@ minetest.register_node("default:aspen_tree_horizontal", {
 		"default_aspen_tree_top.png" 
 	},
 	paramtype2 = "facedir",
+	is_ground_content = false,
 	groups = {tree_horizontal=1, choppy=2, flammable=1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
@@ -714,7 +718,6 @@ minetest.register_node("default:papyrus_roots", {
 	description = S("Papyrus Roots"),
 	tiles = {"default_papyrus_roots.png"},
 	paramtype = "light",
-	is_ground_content = true,
 	liquids_pointable = true,
 	after_dig_node = function(pos, node, metadata, digger)
 			node.name = "default:papyrus"
