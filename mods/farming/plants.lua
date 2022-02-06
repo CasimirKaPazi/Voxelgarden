@@ -33,7 +33,7 @@ minetest.register_node("farming:weed", {
 })
 
 minetest.register_abm({
-	nodenames = {"farming:soil", "farming:soil_wet", "farming:soil_footsteps", "farming:soil_wet_footsteps"},
+	nodenames = {"farming:soil", "farming:soil_wet"},
 	interval = 23,
 	chance = 23,
 	action = function(pos, node)

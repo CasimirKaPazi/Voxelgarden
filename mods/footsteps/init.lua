@@ -60,16 +60,8 @@ minetest.register_globalstep(function(dtime)
 				or n_ground.name == "default:dirt_with_grass_footsteps" then
 				minetest.add_node(p_ground,{type="node",name="default:dirt_with_grass_footsteps"})
 				minetest.get_node_timer(p_ground):start(math.random(3, 48))
-			elseif n_ground.name == "farming:soil" then
-				minetest.add_node(p_ground,{type="node",name="farming:soil_footsteps"})
-				minetest.sound_play("default_dig_crumbly",
-					{pos = pos, max_hear_distance = 16, gain = 0.25})
-			elseif n_ground.name == "farming:soil_wet" then
-				minetest.add_node(p_ground,{type="node",name="farming:soil_wet_footsteps"})
-				minetest.sound_play("default_dig_crumbly",
-					{pos = pos, max_hear_distance = 16, gain = 0.25})
-			elseif n_ground.name == "farming:soil_footsteps"
-				or n_ground.name == "farming:soil_wet_footsteps" then
+			elseif n_ground.name == "farming:soil" 
+				or n_ground.name == "farming:soil_wet" then
 				minetest.add_node(p_ground,{type="node",name="default:dirt"})
 				minetest.sound_play("default_dig_crumbly",
 					{pos = pos, max_hear_distance = 16, gain = 0.25})

@@ -88,9 +88,8 @@ function farming.register_growing(max_stage, stages, interval, chance, lightleve
 		chance = chance,
 		action = function(pos, node)
 			pos.y = pos.y-1
-			if minetest.get_node(pos).name ~= "farming:soil_wet"
-			and minetest.get_node(pos).name ~= "farming:soil_wet" then
-				return
+			if minetest.get_item_group(minetest.get_node(pos).name, "soil") < math.random(1,3) then
+				return itemstack
 			end
 			pos.y = pos.y+1
 			if minetest.get_node_light(pos) < lightlevel then
@@ -107,7 +106,10 @@ function farming.register_growing(max_stage, stages, interval, chance, lightleve
 	})
 end
 
--- Functions to compatible with MTG. Not used in this mod.
+--
+-- Functions to be compatible with MTG. Not used in this mod.
+--
+
 farming.registered_plants = {}
 
 -- how often node timers for plants will tick, +/- some random value
