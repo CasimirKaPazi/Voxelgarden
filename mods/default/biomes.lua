@@ -202,7 +202,7 @@ minetest.register_decoration({
 	place_on = {"default:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
-		offset = 0.02,
+		offset = 0.018,
 		scale = 0.030,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 538,
@@ -222,7 +222,27 @@ minetest.register_decoration({
 	place_on = {"default:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
-		offset = 0.005,
+		offset = 0.00,
+		scale = 0.030,
+		spread = {x = 250, y = 250, z = 250},
+		seed = 539,
+		octaves = 2,
+		persist = 0.66
+	},
+	biomes = {"Tree", "CT", "TJ"},
+	flags = "place_center_x, place_center_z",
+	schematic = minetest.get_modpath("default").."/schematics/default_apple_tree.mts",
+	rotation = "random",
+	y_min = 0,
+	y_max = 32000,
+})
+
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0.003,
 		scale = 0.030,
 		spread = {x = 250, y = 250, z = 250},
 		seed = 570,

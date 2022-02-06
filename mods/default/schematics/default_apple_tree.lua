@@ -2,7 +2,7 @@ local _ = {name = "air", prob = 0}
 local L = {name = "default:leaves"}
 local T = {name = "default:tree", forceaplace = true}
 local t = {name = "default:tree", forceaplace = false}
-local A = {name = "default:apple", prob = 16}
+local A = {name = "default:apple", prob = 16, param2 = 1}
 
 return {
 	yslice_prob = {
