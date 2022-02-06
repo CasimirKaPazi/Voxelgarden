@@ -9,12 +9,6 @@ local player_heal_time = {}
 local base_interval = 5
 local heal_interval = 20
 
--- no_hunger privilege
-minetest.register_privilege("no_hunger", {
-	description = S("Player will feel no hunger."),
-	give_to_singleplayer = false
-})
-
 -- Hunger bar
 function hunger.new_bar(player, full)
 	local name = player:get_player_name()
@@ -44,6 +38,20 @@ function hunger.update_bar(player, full)
 		hunger.new_bar(player, full)
 	end
 end
+
+-- no_hunger privilege
+minetest.register_privilege("no_hunger", {
+	description = S("Player will feel no hunger."),
+	give_to_singleplayer = false,
+	on_grant = function(name, revoker_name)
+		local player = minetest.get_player_by_name(name)
+		player:hud_remove(player_bar[name])
+	end,
+	on_revoke = function(name, revoker_name)
+		local player = minetest.get_player_by_name(name)
+		hunger.new_bar(player, 20)
+	end
+})
 
 if minetest.settings:get_bool("enable_damage") == true then
 
@@ -140,12 +148,6 @@ function hunger.timer(player)
 		if hp <= 0 then return end
 		local full = tonumber(meta:get_int("hunger"))
 		if not full then full = 20 end
-		if minetest.get_player_privs(name)["no_hunger"] then
-			if player_bar[name] then
-				player:hud_remove(player_bar[name])
-			end
-			return
-		end
 		-- heal when hunger there is hunger
 		if player_heal_time[name] then
 			player_heal_time[name] = player_heal_time[name] + 1
