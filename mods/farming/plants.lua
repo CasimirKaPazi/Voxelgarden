@@ -17,9 +17,7 @@ minetest.register_node("farming:weed", {
 	inventory_image = "farming_weed.png",
 	selection_box = {
 		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.5+4/16, 0.5}
-		},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -0.25, 6 / 16},
 	},
 	drop = {
 		max_items = 1,
