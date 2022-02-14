@@ -77,7 +77,7 @@ minetest.register_abm({
 				fire.node_should_burn(pos) then
 			-- First remove node properly then create fire
 			local node = minetest.get_node(pos)
-			if minetest.get_item_group(node.name, leafdecay) > 0 then
+			if minetest.get_item_group(node.name, "leafdecay") > 0 then
 				default.leafdecay(pos)
 			else
 				minetest.dig_node(pos)

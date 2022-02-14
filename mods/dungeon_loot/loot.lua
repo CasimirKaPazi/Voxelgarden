@@ -18,7 +18,7 @@ dungeon_loot.registered_loot = {
 	-- tools
 	{name = "default:sword_stone", chance = 0.4},
 	{name = "default:sword_copper", chance = 0.2},
-	{name = "default:pick_steel", chance = 0.05},
+	{name = "default:pick_stone", chance = 0.05},
 	{name = "default:pick_copper", chance = 0.2},
 	{name = "default:pick_steel", chance = 0.05},
 	{name = "default:axe_stone", chance = 0.05},
@@ -38,7 +38,6 @@ dungeon_loot.registered_loot = {
 		types = {"normal", "sandstone", "desert"}},
 	{name = "default:obsidian", chance = 0.25, count = {1, 3}, y = {-32768, -512}},
 	{name = "default:mese", chance = 0.15, y = {-32768, -512}},
-	{name = "default:moltenrock", chance = 0.2, y = {-32768, -512}},
 }
 
 function dungeon_loot.register(t)

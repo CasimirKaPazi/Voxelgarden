@@ -191,6 +191,9 @@ minetest.register_abm({
 		if (minetest.get_node_light(above) or 0) < 10 then
 			return
 		end
+		if minetest.get_item_group(above, "liquid") > 0 then
+			return
+		end
 
 		-- Look for spreading dirt-type neighbours
 		local p2 = minetest.find_node_near(pos, 1, "group:spreading_dirt_type")
@@ -216,8 +219,7 @@ minetest.register_abm({
 minetest.register_abm({
 	label = "Grass covered",
 	nodenames = {
-		"default:dirt_with_grass",
-		"default:dirt_with_snow",
+		"group:spreading_dirt_type",
 	},
 	interval = 8,
 	chance = 100,
