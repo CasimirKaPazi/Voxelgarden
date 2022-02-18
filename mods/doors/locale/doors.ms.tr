@@ -1,9 +1,18 @@
 # textdomain: doors
-Hidden Door Segment=Segmen Pintu Tersembunyi
 Owned by @1=Milik @1
+Wooden Door=Pintu Kayu
+Wooden Window=
+Steel Door=Pintu Keluli
+Steel Bars=
+Glass Door=Pintu Kaca
+Wattle Door=
+Fence Gate=
+
+
+##### not used anymore #####
+
+# textdomain: doors
+Hidden Door Segment=Segmen Pintu Tersembunyi
 You do not own this locked door.=Anda bukan pemilik pintu berkunci ini.
 a locked door=pintu berkunci
-Wooden Door=Pintu Kayu
-Steel Door=Pintu Keluli
-Glass Door=Pintu Kaca
 Obsidian Glass Door=Pintu Kaca Obsidia

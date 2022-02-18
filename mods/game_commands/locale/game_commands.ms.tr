@@ -1,4 +1,11 @@
 # textdomain: game_commands
-Kill yourself to respawn=Bunuh diri anda untuk lahir semula
+Respawn=
 No static_spawnpoint defined=Tiada titik permulaan statik (tetapan static_spawnpoint) ditakrifkan
+You need to be online to respawn!=
+
+
+##### not used anymore #####
+
+# textdomain: game_commands
+Kill yourself to respawn=Bunuh diri anda untuk lahir semula
 You need to be online to be killed!=Anda mesti berada dalam talian untuk dibunuh!

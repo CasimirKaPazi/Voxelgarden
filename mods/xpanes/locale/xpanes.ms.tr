@@ -1,6 +1,11 @@
 # textdomain: xpanes
 Glass Pane=Kaca Tingkap
-Obsidian Glass Pane=Kaca Tingkap Obsidia
 Steel Bars=Jeriji Keluli
+Wattle=
+
+
+##### not used anymore #####
+
+Obsidian Glass Pane=Kaca Tingkap Obsidia
 Steel Bar Door=Pintu Jeriji Keluli
 Steel Bar Trapdoor=Pintu Kolong Jeriji Keluli

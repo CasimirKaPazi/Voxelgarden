@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=Secchio vuoto
+Your inventory is full.=
 Water Bucket=Secchio d'acqua
-River Water Bucket=Secchio d'acqua di fiume
 Lava Bucket=Secchio di lava
+
+
+##### not used anymore #####
+
+River Water Bucket=Secchio d'acqua di fiume

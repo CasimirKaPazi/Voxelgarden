@@ -1,9 +1,18 @@
 # textdomain: doors
-Hidden Door Segment=Dold dörrsegment
 Owned by @1=Ägd av @1
+Wooden Door=Trä Dörr
+Wooden Window=
+Steel Door=Stål Dörr
+Steel Bars=
+Glass Door=Glas Dörr
+Wattle Door=
+Fence Gate=
+
+
+##### not used anymore #####
+
+# textdomain: doors
+Hidden Door Segment=Dold dörrsegment
 You do not own this locked door.=Du äger inte denna låsta dörr.
 a locked door=en låst dörr
-Wooden Door=Trä Dörr
-Steel Door=Stål Dörr
-Glass Door=Glas Dörr
 Obsidian Glass Door=Obsidian Glas Dörr

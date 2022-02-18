@@ -1,6 +1,11 @@
 # textdomain: xpanes
 Glass Pane=Pannello di vetro
-Obsidian Glass Pane=Pannello di vetro d'ossidiana
 Steel Bars=Sbarre d'acciaio
+Wattle=
+
+
+##### not used anymore #####
+
+Obsidian Glass Pane=Pannello di vetro d'ossidiana
 Steel Bar Door=Porta con sbarre d'acciaio
 Steel Bar Trapdoor=Botola con sbarre d'acciaio

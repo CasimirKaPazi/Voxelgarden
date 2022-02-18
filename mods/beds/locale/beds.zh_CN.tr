@@ -1,4 +1,12 @@
 # textdomain: beds
+Bed=
+This bed is already occupied!=
+You have to stop moving before going to bed!=
+
+
+##### not used anymore #####
+
+# textdomain: beds
 Fancy Bed=花式床
 Simple Bed=简易床
 Leave Bed=离开床

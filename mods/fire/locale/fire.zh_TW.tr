@@ -1,4 +1,13 @@
 # textdomain: fire
-Permanent Fire=永久火焰
-Flint and Steel=火石和鋼
+You need the 'fire' privilege.=
+You need tinder right to the tool.=
+Tinder=
+Fire Striker=
+Player can set fire.=
 Fire=火焰
+Permanent Fire=永久火焰
+
+
+##### not used anymore #####
+
+Flint and Steel=火石和鋼

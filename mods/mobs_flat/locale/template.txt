@@ -1,0 +1,9 @@
+# textdomain: mobs_flat
+1hour=
+Dungeon Master=
+Dust Devil=
+Oerkki=
+Omsk=
+Rat=
+Dead Rat=
+Cooked Rat=

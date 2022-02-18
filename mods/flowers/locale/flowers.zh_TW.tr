@@ -1,12 +1,21 @@
 # textdomain: flowers
+White Dandelion=白蒲公英
+Yellow Dandelion=黃蒲公英
+Blue Geranium=藍天竺葵
+Rose=
+Tulip=
+Viola=三色堇
+Brown Mushroom=棕蘑菇
+Brown Mushroom Spores=
+Red Mushroom=紅蘑菇
+Red Mushroom Spores=
+Waterlily=睡蓮
+
+
+##### not used anymore #####
+
+# textdomain: flowers
 Red Rose=紅玫瑰
 Orange Tulip=橙鬱金香
-Yellow Dandelion=黃蒲公英
 Green Chrysanthemum=綠菊花
-Blue Geranium=藍天竺葵
-Viola=三色堇
-White Dandelion=白蒲公英
 Black Tulip=黑鬱金香
-Red Mushroom=紅蘑菇
-Brown Mushroom=棕蘑菇
-Waterlily=睡蓮

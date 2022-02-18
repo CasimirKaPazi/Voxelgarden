@@ -1,25 +1,35 @@
 # textdomain: farming
-Wooden Hoe=Träsko
+Seed=
+Wood Hoe=
 Stone Hoe=Stensko
-Steel Hoe=Stålsko
+Copper Hoe=
 Bronze Hoe=Bronssko
+Steel Hoe=Stålsko
 Mese Hoe=Mesesko
+Weed=
+Wheat=Vete
+Dough=
+Bread=Bröd
+Straw=Halm
+Cotton=Bomull
+String=Snöra
+
+
+##### not used anymore #####
+
+# textdomain: farming
+Wooden Hoe=Träsko
 Diamond Hoe=Diamantsko
 Wheat Seed=Vetefrö
 Flour=Mjöl
-Bread=Bröd
 Cotton Seed=Bollumsfrö
-String=Snöra
 Soil=Odlningsmark
 Wet Soil=Våt Odlningsmark
 Dry Soil=Torr Odlningsmark
 Wet Dry Soil=Våt Torr Odlningsmark
 Desert Sand Soil=Öken Sand Odlningsmark
 Wet Desert Sand Soil=Våt Öken Sand Odlningsmark
-Straw=Halm
 Straw Stair=Halmstrappa
 Inner Straw Stair=Inre Halmstrappa
 Outer Straw Stair=Yttre Halmstrappa
 Straw Slab=Halmplatta
-Wheat=Vete
-Cotton=Bomull

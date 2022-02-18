@@ -1,12 +1,21 @@
 # textdomain: flowers
+White Dandelion=Dente di leone bianco
+Yellow Dandelion=Dente di leone giallo
+Blue Geranium=Geranio blu
+Rose=
+Tulip=
+Viola=Viola
+Brown Mushroom=Fungo marrone
+Brown Mushroom Spores=
+Red Mushroom=Fungo rosso
+Red Mushroom Spores=
+Waterlily=Ninfea
+
+
+##### not used anymore #####
+
+# textdomain: flowers
 Red Rose=Rosa rossa
 Orange Tulip=Tulipano arancione
-Yellow Dandelion=Dente di leone giallo
 Green Chrysanthemum=Crisantemo verde
-Blue Geranium=Geranio blu
-Viola=Viola
-White Dandelion=Dente di leone bianco
 Black Tulip=Tulipano nero
-Red Mushroom=Fungo rosso
-Brown Mushroom=Fungo marrone
-Waterlily=Ninfea

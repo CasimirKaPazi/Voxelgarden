@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=Baldi Kosong
+Your inventory is full.=
 Water Bucket=Baldi Air
-River Water Bucket=Baldi Air Sungai
 Lava Bucket=Baldi Lava
+
+
+##### not used anymore #####
+
+River Water Bucket=Baldi Air Sungai

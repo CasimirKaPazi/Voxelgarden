@@ -1,25 +1,35 @@
 # textdomain: farming
-Wooden Hoe=Деревянная Мотыга
+Seed=
+Wood Hoe=
 Stone Hoe=Каменная Мотыга
-Steel Hoe=Стальная Мотыга
+Copper Hoe=
 Bronze Hoe=Бронзовая Мотыга
+Steel Hoe=Стальная Мотыга
 Mese Hoe=Месе Мотыга
+Weed=
+Wheat=Пшеница
+Dough=
+Bread=Хлеб
+Straw=Солома
+Cotton=Хлопок
+String=Нить
+
+
+##### not used anymore #####
+
+# textdomain: farming
+Wooden Hoe=Деревянная Мотыга
 Diamond Hoe=Алмазная Мотыга
 Wheat Seed=Семена Пшеницы
 Flour=Мука
-Bread=Хлеб
 Cotton Seed=Семена Хлопка
-String=Нить
 Soil=Почва
 Wet Soil=Влажная Почва
 Dry Soil=Сухая Почва
 Wet Dry Soil=Влажная Сухая Почва
 Desert Sand Soil=Пустынная Песчаная Почва
 Wet Desert Sand Soil=Влажная Пустынная Песчаная Почва
-Straw=Солома
 Straw Stair=Соломенная Ступень
 Inner Straw Stair=Угловая Соломенная Ступень (Внутренний Угол)
 Outer Straw Stair=Угловая Соломенная Ступень (Внешний Угол)
 Straw Slab=Соломенная Плита
-Wheat=Пшеница
-Cotton=Хлопок

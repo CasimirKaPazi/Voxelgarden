@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=空桶
+Your inventory is full.=
 Water Bucket=水桶
-River Water Bucket=河水桶
 Lava Bucket=岩浆桶
+
+
+##### not used anymore #####
+
+River Water Bucket=河水桶
