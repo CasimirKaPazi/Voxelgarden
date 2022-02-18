@@ -1,4 +1,4 @@
 # textdomain: beds
 Bed=Bett
-This bed is already occupied!=
-You have to stop moving before going to bed!=
+This bed is already occupied!=Dieses Bett ist bereits belegt!
+You have to stop moving before going to bed!=Sie müssen stehen bleiben, bevor sie zu Bett gehen können!
