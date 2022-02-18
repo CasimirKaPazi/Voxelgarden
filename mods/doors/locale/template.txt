@@ -1,9 +1,15 @@
 # textdomain: doors
-Hidden Door Segment=
 Owned by @1=
-You do not own this locked door.=
-a locked door=
 Wooden Door=
+Wooden Window=
 Steel Door=
+Steel Bars=
 Glass Door=
-Obsidian Glass Door=
+Wattle Door=
+Fence Gate=
+
+
+##### not used anymore #####
+
+# textdomain: doors
+Hidden Door Segment=

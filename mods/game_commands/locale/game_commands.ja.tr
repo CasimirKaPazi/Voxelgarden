@@ -1,4 +1,11 @@
 # textdomain: game_commands
-Kill yourself to respawn=リセットしてリスポーンします
+Respawn=
 No static_spawnpoint defined=static_spawnpoint が設定されていません
+You need to be online to respawn!=
+
+
+##### not used anymore #####
+
+# textdomain: game_commands
+Kill yourself to respawn=リセットしてリスポーンします
 You need to be online to be killed!=リセットするにはオンラインである必要があります

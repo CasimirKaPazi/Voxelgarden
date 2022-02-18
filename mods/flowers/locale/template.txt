@@ -1,12 +1,18 @@
 # textdomain: flowers
-Red Rose=
-Orange Tulip=
-Yellow Dandelion=
-Green Chrysanthemum=
-Blue Geranium=
-Viola=
 White Dandelion=
-Black Tulip=
-Red Mushroom=
+Yellow Dandelion=
+Blue Geranium=
+Rose=
+Tulip=
+Viola=
 Brown Mushroom=
+Brown Mushroom Spores=
+Red Mushroom=
+Red Mushroom Spores=
 Waterlily=
+
+
+##### not used anymore #####
+
+# textdomain: flowers
+Red Rose=

@@ -1,0 +1,3 @@
+# textdomain: hunger
+Player will feel no hunger.=
+You are hungry.=

@@ -1,12 +1,21 @@
 # textdomain: flowers
+White Dandelion=Dandelion Putih
+Yellow Dandelion=Dandelion Kuning
+Blue Geranium=Geranium Biru
+Rose=
+Tulip=
+Viola=Violet
+Brown Mushroom=Cendawan Perang
+Brown Mushroom Spores=
+Red Mushroom=Cendawan Merah
+Red Mushroom Spores=
+Waterlily=Teratai
+
+
+##### not used anymore #####
+
+# textdomain: flowers
 Red Rose=Ros Merah
 Orange Tulip=Tulip Jingga
-Yellow Dandelion=Dandelion Kuning
 Green Chrysanthemum=Kekwa Hijau
-Blue Geranium=Geranium Biru
-Viola=Violet
-White Dandelion=Dandelion Putih
 Black Tulip=Tulip Hitam
-Red Mushroom=Cendawan Merah
-Brown Mushroom=Cendawan Perang
-Waterlily=Teratai

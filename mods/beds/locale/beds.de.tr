@@ -1,2 +1,4 @@
 # textdomain: beds
 Bed=Bett
+This bed is already occupied!=
+You have to stop moving before going to bed!=

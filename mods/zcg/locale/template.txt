@@ -1,0 +1,4 @@
+# textdomain: zcg
+Back=
+Method: @1=
+Page @1/@2=

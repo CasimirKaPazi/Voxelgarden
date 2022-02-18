@@ -1,9 +1,18 @@
 # textdomain: doors
-Hidden Door Segment=隱藏門段
 Owned by @1=由@1擁有
+Wooden Door=木門
+Wooden Window=
+Steel Door=鐵門
+Steel Bars=
+Glass Door=玻璃門
+Wattle Door=
+Fence Gate=
+
+
+##### not used anymore #####
+
+# textdomain: doors
+Hidden Door Segment=隱藏門段
 You do not own this locked door.=這個門不屬於你所有。
 a locked door=一扇已上鎖的門
-Wooden Door=木門
-Steel Door=鐵門
-Glass Door=玻璃門
 Obsidian Glass Door=黑曜石玻璃門

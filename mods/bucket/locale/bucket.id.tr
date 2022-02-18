@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=Ember Kosong
+Your inventory is full.=
 Water Bucket=Ember Air
-River Water Bucket=Ember Air Sungai
 Lava Bucket=Ember Lava
+
+
+##### not used anymore #####
+
+River Water Bucket=Ember Air Sungai

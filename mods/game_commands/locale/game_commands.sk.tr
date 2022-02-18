@@ -1,4 +1,11 @@
 # textdomain: game_commands
-Kill yourself to respawn=Samovražda pre znovuzrodenie
+Respawn=
 No static_spawnpoint defined=Nie je definované stále miesto znovuzrodenia
+You need to be online to respawn!=
+
+
+##### not used anymore #####
+
+# textdomain: game_commands
+Kill yourself to respawn=Samovražda pre znovuzrodenie
 You need to be online to be killed!=Musíš byť online, aby si mohol byť zabitý!

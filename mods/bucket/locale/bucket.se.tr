@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=Tom hink
+Your inventory is full.=
 Water Bucket=Vatten hink
-River Water Bucket=Flodvatten hink
 Lava Bucket=Lava hink
+
+
+##### not used anymore #####
+
+River Water Bucket=Flodvatten hink

@@ -1,4 +1,11 @@
 # textdomain: game_commands
-Kill yourself to respawn=Selbstmord begehen, um zu Respawnen
+Respawn=
 No static_spawnpoint defined=Kein static_spawnpoint definiert
+You need to be online to respawn!=
+
+
+##### not used anymore #####
+
+# textdomain: game_commands
+Kill yourself to respawn=Selbstmord begehen, um zu Respawnen
 You need to be online to be killed!=Sie müssen online sein, um getötet zu werden!

@@ -1,4 +1,12 @@
 # textdomain: beds
+Bed=
+This bed is already occupied!=
+You have to stop moving before going to bed!=
+
+
+##### not used anymore #####
+
+# textdomain: beds
 Leave Bed=Tinggalkan Dipan
 Good morning.=Selamat pagi.
 @1 of @2 players are in bed=@1 dari @2 pemain sedang tidur

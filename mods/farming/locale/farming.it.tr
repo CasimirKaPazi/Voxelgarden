@@ -1,25 +1,35 @@
 # textdomain: farming
-Wooden Hoe=Zappa di legno
+Seed=
+Wood Hoe=
 Stone Hoe=Zappa di pietra
-Steel Hoe=Zappa d'acciaio
+Copper Hoe=
 Bronze Hoe=Zappa di bronzo
+Steel Hoe=Zappa d'acciaio
 Mese Hoe=Zappa di mese
+Weed=
+Wheat=Grano
+Dough=
+Bread=Pane
+Straw=Paglia
+Cotton=Cotone
+String=Filo
+
+
+##### not used anymore #####
+
+# textdomain: farming
+Wooden Hoe=Zappa di legno
 Diamond Hoe=Zappa di diamante
 Wheat Seed=Seme di grano
 Flour=Farina
-Bread=Pane
 Cotton Seed=Seme di cotone
-String=Filo
 Soil=Terreno
 Wet Soil=Terreno bagnato
 Dry Soil=Terreno asciutto
 Wet Dry Soil=Terreno asciutto bagnato
 Desert Sand Soil=Terreno di sabbia del deserto
 Wet Desert Sand Soil=Terreno bagnato di sabbia del deserto
-Straw=Paglia
 Straw Stair=Scala di paglia
 Inner Straw Stair=Scala di paglia interna
 Outer Straw Stair=Scala di paglia esterna
 Straw Slab=Lastra di paglia
-Wheat=Grano
-Cotton=Cotone

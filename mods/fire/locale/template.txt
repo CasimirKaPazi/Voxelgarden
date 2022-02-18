@@ -1,4 +1,8 @@
 # textdomain: fire
+You need the 'fire' privilege.=
+You need tinder right to the tool.=
+Tinder=
+Fire Striker=
+Player can set fire.=
 Fire=
 Permanent Fire=
-Flint and Steel=

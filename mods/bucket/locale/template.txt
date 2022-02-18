@@ -1,5 +1,5 @@
 # textdomain: bucket
 Empty Bucket=
+Your inventory is full.=
 Water Bucket=
-River Water Bucket=
 Lava Bucket=

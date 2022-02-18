@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=Cubo vacío
+Your inventory is full.=
 Water Bucket=Cubo con agua
-River Water Bucket=Cubo con agua de río
 Lava Bucket=Cubo con lava
+
+
+##### not used anymore #####
+
+River Water Bucket=Cubo con agua de río

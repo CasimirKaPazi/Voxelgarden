@@ -1,12 +1,21 @@
 # textdomain: flowers
+White Dandelion=Vit Maskros
+Yellow Dandelion=Gul Maskros
+Blue Geranium=Blå Geranium
+Rose=
+Tulip=
+Viola=Violett Viola
+Brown Mushroom=Brun Svamp
+Brown Mushroom Spores=
+Red Mushroom=Röd Svamp
+Red Mushroom Spores=
+Waterlily=Näckros
+
+
+##### not used anymore #####
+
+# textdomain: flowers
 Red Rose=Röd ros
 Orange Tulip=Orange Tulpan
-Yellow Dandelion=Gul Maskros
 Green Chrysanthemum=Grön Krysantemum
-Blue Geranium=Blå Geranium
-Viola=Violett Viola
-White Dandelion=Vit Maskros
 Black Tulip=Svart Tulpan
-Red Mushroom=Röd Svamp
-Brown Mushroom=Brun Svamp
-Waterlily=Näckros

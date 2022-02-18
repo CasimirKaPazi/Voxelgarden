@@ -1,5 +1,10 @@
 # textdomain: bucket
 Empty Bucket=Пустое Ведро
+Your inventory is full.=
 Water Bucket=Ведро с Водой
-River Water Bucket=Ведро с Речной Водой
 Lava Bucket=Ведро с Лавой
+
+
+##### not used anymore #####
+
+River Water Bucket=Ведро с Речной Водой

@@ -1,9 +1,18 @@
 # textdomain: doors
-Hidden Door Segment=Segment de porte cachée
 Owned by @1=Possédée par @1
+Wooden Door=Porte en bois
+Wooden Window=
+Steel Door=Porte en acier
+Steel Bars=
+Glass Door=Porte en verre
+Wattle Door=
+Fence Gate=
+
+
+##### not used anymore #####
+
+# textdomain: doors
+Hidden Door Segment=Segment de porte cachée
 You do not own this locked door.=Cette porte vérouillée ne vous appartient pas.
 a locked door=une porte verouillée
-Wooden Door=Porte en bois
-Steel Door=Porte en acier
-Glass Door=Porte en verre
 Obsidian Glass Door=Porte en verre d'obsidienne
