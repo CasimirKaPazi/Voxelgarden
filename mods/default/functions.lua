@@ -191,7 +191,7 @@ minetest.register_abm({
 		if (minetest.get_node_light(above) or 0) < 10 then
 			return
 		end
-		if minetest.get_item_group(above, "liquid") > 0 then
+		if minetest.get_item_group(minetest.get_node(above).name, "liquid") > 0 then
 			return
 		end
 
