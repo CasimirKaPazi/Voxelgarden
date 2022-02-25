@@ -233,6 +233,7 @@ Good Morning Craft (CC BY-SA 4.0)
 TumeniNodes (CC BY-SA 3.0):
   default_coniferous_litter.png
   default_coniferous_litter_side.png
+  default_dry_dirt.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/
@@ -272,6 +273,7 @@ paramat (CC BY-SA 3.0):
   aspen_tree.mts
   emergent_jungle_tree.mts
   pine_tree.mts
+  small_pine_tree.mts
 
 TumeniNodes (CC BY-SA 3.0):
   pine_bush.mts

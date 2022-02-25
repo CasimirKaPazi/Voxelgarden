@@ -158,11 +158,20 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 
 minetest.register_node("default:dry_dirt_with_dry_grass", {
 	description = S("Savanna Dirt with Savanna Grass"),
-	tiles = {"default_dry_grass.png", "default_dirt.png",
-		{name = "default_dirt.png^default_dry_grass_side.png",
+	tiles = {"default_dry_grass.png", "default_dry_dirt.png",
+		{name = "default_dry_dirt.png^default_dry_grass_side.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, falling_node=1, soil = 1, spreading_dirt_type = 1},
-	drop = "default:dirt",
+	drop = "default:dry_dirt",
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_grass_footstep", gain = 0.4},
+	}),
+})
+
+minetest.register_node("default:dry_dirt", {
+	description = S("Savanna Dirt"),
+	tiles = {"default_dry_dirt.png"},
+	groups = {crumbly = 3, falling_node=1, soil = 1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),

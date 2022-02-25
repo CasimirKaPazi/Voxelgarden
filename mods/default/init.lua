@@ -43,8 +43,11 @@ dofile(default_path.."/chests.lua")
 dofile(default_path.."/tools.lua")
 dofile(default_path.."/craftitems.lua")
 dofile(default_path.."/crafting.lua")
-if minetest.get_mapgen_setting("mg_name") ~= "v6" then
+if minetest.get_mapgen_setting("mg_name") == "v6" then
+	dofile(default_path.."/v6-decorations.lua")
+else
 	dofile(default_path.."/biomes.lua")
+	dofile(default_path.."/decorations.lua")
 end
 dofile(default_path.."/mapgen.lua")
 dofile(default_path.."/leafdecay.lua")
