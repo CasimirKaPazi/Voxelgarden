@@ -1,12 +1,12 @@
 # textdomain: doors
 Owned by @1=Владелец: @1
 Wooden Door=Деревянная Дверь
-Wooden Window=
+Wooden Window=Деревянное Окно
 Steel Door=Стальная Дверь
-Steel Bars=
+Steel Bars=Стальная Решетка
 Glass Door=Стеклянная Дверь
-Wattle Door=
-Fence Gate=
+Wattle Door=Плетеная Дверь
+Fence Gate=Калитка
 
 
 ##### not used anymore #####

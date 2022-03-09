@@ -1,7 +1,7 @@
 # textdomain: beds
-Bed=
-This bed is already occupied!=
-You have to stop moving before going to bed!=
+Bed=Кровать
+This bed is already occupied!=Эта кровать уже занята!
+You have to stop moving before going to bed!=Вам нужно остановиться прежде чем ложиться на кровать!
 
 
 ##### not used anymore #####

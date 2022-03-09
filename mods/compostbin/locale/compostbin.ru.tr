@@ -1,0 +1,9 @@
+# textdomain: compostbin
+100% (output full)=100% (вывод полон)
+@1%=@1%
+Empty=Пусто
+Not compostable=Не компостируемый
+Compost bin active (Item: @1)=Коспостер активен (Предмет: @1)
+Compost bin inactive (Item: @1)=Компостер неактивен (Предмет: @1)
+Compost Bin=Компостер
+Compost=Компост
