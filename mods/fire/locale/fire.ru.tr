@@ -1,11 +1,11 @@
 # textdomain: fire
-You need the 'fire' privilege.=
-You need tinder right to the tool.=
-Tinder=
-Fire Striker=
-Player can set fire.=
-Fire=
-Permanent Fire=
+You need the 'fire' privilege.=Вам нужна привилегия 'fire'.
+You need tinder right to the tool.=Трут должен быть рядом с инструментом.
+Tinder=Трут
+Fire Striker=Кресало
+Player can set fire.=Игрок может поджигать.
+Fire=Огонь
+Permanent Fire=Вечный Огонь
 
 
 ##### not used anymore #####

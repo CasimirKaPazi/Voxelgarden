@@ -1,11 +1,11 @@
 # textdomain: game_commands
-Respawn=
+Respawn=Возродиться
 No static_spawnpoint defined=static_spawnpoint не определён
-You need to be online to respawn!=
+You need to be online to respawn!=Вы должны быть онлайн чтобы возродиться!
 
 
 ##### not used anymore #####
 
 # textdomain: game_commands
 Kill yourself to respawn=Убейте себя, чтобы возродиться
-You need to be online to be killed!=Вы должны быть онлайн, чтобы убить себя!
+You need to be online to be killed!=Вы должны быть онлайн чтобы убить себя!
