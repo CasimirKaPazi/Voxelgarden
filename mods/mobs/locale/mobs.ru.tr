@@ -1,13 +1,13 @@
 # textdomain: mobs
 ** Peaceful Mode Active - No Monsters Will Spawn=** Мирный режим активирован - монстры не будут спавниться
 Active Mob Limit Reached!=Достигнут лимит активных мобов
-Mob has been protected!=Моб защищен!
-@1 (Tamed)=@1 (Прирученный)
-Not tamed!=Не прирученный
+Mob has been protected!=Моб защищён!
+@1 (Tamed)=@1 (Приручённый)
+Not tamed!=Не приручённый
 @1 is owner!=@1 владелец
 Missed!=Промазал!
-Already protected!=Уже защищен!
+Already protected!=Уже защищён!
 @1 at full health (@2)=@1 при полном здоровье (@2)
-@1 has been tamed!=@1 приручен
+@1 has been tamed!=@1 приручён
 Enter name:=Введите имя:
 Rename=Переименовать
