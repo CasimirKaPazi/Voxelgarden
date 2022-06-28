@@ -89,7 +89,7 @@ function farming.register_growing(max_stage, stages, interval, chance, lightleve
 		action = function(pos, node)
 			pos.y = pos.y-1
 			if minetest.get_item_group(minetest.get_node(pos).name, "soil") < math.random(1,3) then
-				return itemstack
+				return
 			end
 			pos.y = pos.y+1
 			if minetest.get_node_light(pos) < lightlevel then

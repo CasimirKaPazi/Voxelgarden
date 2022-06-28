@@ -29,7 +29,7 @@ end
 
 local table_copy = function(table)
 	local out = {}
-	for k,v in pairs(table) do
+	for k, v in pairs(table) do
 		out[k] = v
 	end
 	return out
@@ -47,7 +47,7 @@ zcg.add_craft = function(input, output, groups)
 	c.result = input.output
 	if c.items == nil then return end
 	if c.result then
-		local _ start = string.find(c.result, " ")
+		local _, start = string.find(c.result, " ")
 		if start then
 			c.count = c.result:sub(start)
 		end
