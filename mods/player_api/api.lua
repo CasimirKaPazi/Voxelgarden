@@ -70,7 +70,7 @@ function player_api.set_model(player, model_name)
 	player_data.model = model_name
 
 	local model = models[model_name]
-	if model then
+	if model and not minetest.settings:get_bool("player2d") then
 		player:set_properties({
 			mesh = model_name,
 			textures = player_data.textures or model.textures,
