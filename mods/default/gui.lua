@@ -5,6 +5,7 @@ local health_bar_definition =
 	position = { x=0.5, y=1 },
 	text = "heart.png",
 	number = 20,
+	item = 20,
 	direction = 0,
 	size = {x=16, y=16},
 	offset = {x=(-9*24)-12, y=-(48+24+8)},
