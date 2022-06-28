@@ -24,6 +24,46 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 4,
+	noise_params = {
+		offset = -1,
+		scale = 1.5,
+		spread = {x = 200, y = 200, z = 200},
+		seed = 329,
+		octaves = 4,
+		persist = 0.8
+	},
+	biomes = {"gs-blend"},
+	y_max = 31000,
+	y_min = 1,
+	decoration = "default:dry_dirt_with_dry_grass",
+	place_offset_y = -1,
+	flags = "force_placement",
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 4,
+	noise_params = {
+		offset = -1,
+		scale = 1.5,
+		spread = {x = 200, y = 200, z = 200},
+		seed = 329,
+		octaves = 4,
+		persist = 0.8
+	},
+	biomes = {"tc-blend"},
+	y_max = 31000,
+	y_min = 1,
+	decoration = "default:dirt_with_snow",
+	place_offset_y = -1,
+	flags = "force_placement",
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
 	place_on = {"default:dirt_with_grass", "default:dirt_with_snow"},
 	sidelen = 4,
 	noise_params = {
@@ -34,7 +74,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 2.00
 	},
-	biomes = {"conifer", "taiga"},
+	biomes = {"conifer", "taiga", "tc-blend"},
 	y_max = 31000,
 	y_min = 1,
 	decoration = "default:dirt_with_coniferous_litter",
@@ -96,7 +136,7 @@ for i = 1, 5 do
 			octaves = 3,
 			persist = 0.6
 		},
-		biomes = {"savanna"},
+		biomes = {"savanna", "gs-blend"},
 		y_max = 31000,
 		y_min = 1,
 		decoration = "default:dry_grass_" .. i,
@@ -115,7 +155,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 0.66
 	},
-	biomes = {"conifer"},
+	biomes = {"conifer", "tc-blend"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/conifer_conifertree_1.mts",
 	y_min = 1,
@@ -134,7 +174,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 0.66
 	},
-	biomes = {"conifer"},
+	biomes = {"conifer", "tc-blend"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/conifer_conifertree_2.mts",
 	y_min = 1,
@@ -153,7 +193,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 0.66
 	},
-	biomes = {"taiga"},
+	biomes = {"taiga", "tc-blend"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/pine_tree.mts",
 	y_min = 1,
@@ -172,7 +212,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 0.66
 	},
-	biomes = {"forest", "grassland"},
+	biomes = {"forest", "grassland", "gs-blend"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/default_tree.mts",
 	rotation = "random",
@@ -192,7 +232,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 0.66
 	},
-	biomes = {"forest", "grassland"},
+	biomes = {"forest", "grassland", "gs-blend"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/default_apple_tree.mts",
 	rotation = "random",
@@ -232,7 +272,7 @@ minetest.register_decoration({
 		octaves = 2,
 		persist = 0.7
 	},
-	biomes = {"savanna"},
+	biomes = {"savanna", "gs-blend"},
 	flags = "place_center_x, place_center_z",
 	schematic = minetest.get_modpath("default").."/schematics/acacia_tree.mts",
 	rotation = "random",
@@ -332,7 +372,7 @@ minetest.register_decoration({
 	},
 	y_min = 1,
 	y_max = 30000,
-	biomes = {"forest", "rainforest", "deep_rainforest", "grassland", "savanna"},
+	biomes = {"forest", "rainforest", "deep_rainforest", "grassland", "savanna", "gs-blend"},
 	decoration = "default:papyrus",
 	height = 3,
 	height_max = 5,
@@ -355,7 +395,7 @@ minetest.register_decoration({
 	},
 	y_min = 1,
 	y_max = 300,
-	biomes = {"sandstone_desert", "desert", "rocky_desert", "savanna", "sea_sand"},
+	biomes = {"sandstone_desert", "desert", "rocky_desert", "savanna", "sea_sand", "gs-blend"},
 	decoration = "default:cactus",
 	height = 3,
 	height_max = 5,

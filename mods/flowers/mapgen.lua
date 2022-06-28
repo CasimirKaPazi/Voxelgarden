@@ -63,6 +63,30 @@ local function register_mgv6_waterlily()
 	})
 end
 
+local function register_waterlily()
+	minetest.register_decoration({
+		name = "flowers:waterlily",
+		deco_type = "simple",
+		place_on = {"default:dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.12,
+			scale = 0.3,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 33,
+			octaves = 3,
+			persist = 0.7
+		},
+		y_max = 0,
+		y_min = 0,
+		biomes = {"sea_dirt"},
+		decoration = "flowers:waterlily_waving",
+		param2 = 0,
+		param2_max = 3,
+		place_offset_y = 1,
+	})
+end
+
 function flowers.register_mgv6_decorations()
 	register_mgv6_flower("rose", 1)
 	register_mgv6_flower("tulip", 2)
@@ -77,15 +101,28 @@ function flowers.register_mgv6_decorations()
 	register_mgv6_waterlily()
 end
 
+function flowers.register_decorations()
+	register_mgv6_flower("rose", 1)
+	register_mgv6_flower("tulip", 2)
+	register_mgv6_flower("dandelion_yellow", 3)
+	register_mgv6_flower("geranium", 4)
+	register_mgv6_flower("viola", 5)
+	register_mgv6_flower("dandelion_white", 6)
+
+	register_mgv6_mushroom("mushroom_brown", 1)
+	register_mgv6_mushroom("mushroom_red", 2)
+
+	register_waterlily()
+end
+
 
 --
 -- Detect mapgen to select functions
 --
 
--- TODO: Other mapgens
--- local mg_name = minetest.get_mapgen_setting("mg_name")
--- if mg_name == "v6" then
+local mg_name = minetest.get_mapgen_setting("mg_name")
+if mg_name == "v6" then
 	flowers.register_mgv6_decorations()
--- else
--- 	flowers.register_decorations()
--- end
+else
+	flowers.register_decorations()
+end

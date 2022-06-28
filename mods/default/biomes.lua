@@ -126,6 +126,23 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
+	name = "tc-blend",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 2,
+	node_riverbed = "default:dirt",
+	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
+	y_max = 31000,
+	y_min = 1,
+	heat_point = 10,
+	humidity_point = 50,
+})
+
+minetest.register_biome({
 	name = "conifer",
 	node_top = "default:dirt_with_grass",
 	depth_top = 1,
@@ -247,6 +264,23 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
+	name = "gs-blend",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 5,
+	node_riverbed = "default:dirt",
+	depth_riverbed = 2,
+	node_dungeon = "default:cobble",
+	node_dungeon_alt = "default:mossycobble",
+	node_dungeon_stair = "stairsplus:stair_cobble",
+	y_max = 31000,
+	y_min = 1,
+	heat_point = 70,
+	humidity_point = 20,
+})
+
+minetest.register_biome({
 	name = "savanna",
 	node_top = "default:dry_dirt_with_dry_grass",
 	depth_top = 1,
@@ -280,7 +314,7 @@ minetest.register_biome({
 	y_max = 31000,
 	y_min = 1,
 	heat_point = 5,
-	humidity_point = -20,
+	humidity_point = -10,
 })
 
 minetest.register_biome({
@@ -312,7 +346,7 @@ minetest.register_biome({
 	y_max = 31000,
 	y_min = 1,
 	heat_point = 50,
-	humidity_point = -20,
+	humidity_point = -10,
 })
 
 minetest.register_biome({
@@ -327,7 +361,7 @@ minetest.register_biome({
 	y_max = 31000,
 	y_min = 1,
 	heat_point = 75,
-	humidity_point = -20,
+	humidity_point = -10,
 })
 
 minetest.register_biome({
@@ -342,5 +376,5 @@ minetest.register_biome({
 	y_max = 31000,
 	y_min = 1,
 	heat_point = 95,
-	humidity_point = -20,
+	humidity_point = -10,
 })
