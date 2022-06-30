@@ -17,7 +17,7 @@ mobs:register_mob("mobs_flat:rat", {
 	drawtype = "side",
 	textures = {
 		"mobs_flat_rat.png",
-		"mobs_flat_rat.png",
+		"mobs_flat_rat.png^[transformFX",
 	},
 	makes_footstep_sound = false,
 	sounds = {
