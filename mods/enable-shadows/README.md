@@ -1,0 +1,2 @@
+# enable_shadows
+Since recent versions of Minetest 5.6.0-dev the dynamic shadow feature has been disabled by default, being required to enable by the game or modset you're using. This is a small mod that is compatible with any game and that can reenable shadows and control its intensity per-world.

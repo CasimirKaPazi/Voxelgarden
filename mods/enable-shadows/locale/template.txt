@@ -1,0 +1,6 @@
+# textdomain: enable_shadows
+
+Set shadow intensity for the current world.=
+Invalid intensity.=
+Set intensity to @1.=
+Set intensity to default value (@1).=

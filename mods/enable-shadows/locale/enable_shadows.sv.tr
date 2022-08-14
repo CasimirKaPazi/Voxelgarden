@@ -1,0 +1,6 @@
+# textdomain: enable_shadows
+
+Set shadow intensity for the current world.=Ställ in skuggintensitet för nuvarande värld.
+Invalid intensity.=Ogiltig intensitet
+Set intensity to @1.=Ställde intensiteten till @1.
+Set intensity to default value (@1).=Ställde intensiteten till standardvärde (@1).
