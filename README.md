@@ -46,7 +46,7 @@ What not to add:
 
 Voxelgarden should be (in that order):
 
-a complete game >> easy to maintain >> compatible with minetest game
+    a complete game >> easy to maintain >> compatible with minetest game
 
 
 License of source code:
@@ -62,7 +62,7 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 For every mod applies the original license. See list below.
 All other media is licenced under Creative Commons BY-SA license.
 
-beds (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), dye (LGPL), game_commands(MIT), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory\_plus (GPL), mobs (MIT), mobs\_flat (LGPL), physics (LGPL), player_api (LGPL), stairs (LGPL), stairsplus (zlib/libpng), walls (LGPL) wool (LGPL), zcg (LGPL), xpanes (LGPL)
+beds (LGPL), bones (LGPL), bucket (LGPL), conifer (LGPL), creative (LGPL), default (LGPL), doors (LGPL), dye (LGPL), game_commands(MIT), farming (LGPL), fire (LGPL), flowers (LGPL), footsteps (LGPL), hunger (LGPL), inventory\_plus (GPL), mobs (MIT), mobs\_flat (LGPL), physics (LGPL), player_api (LGPL), playerphysics (MIT), sprint (CC0), stairs (LGPL), stairsplus (zlib/libpng), walls (LGPL) wool (LGPL), zcg (LGPL), xpanes (LGPL)
 
 Mods equivalent to and mirroring Minetest Game:
 binoculars (MIT), boats (MIT) (except burntime), carts (MIT), dungeon_loot (MIT), env_sounds (MIT), fireflies (MIT), map (MIT), screwdriver (LGPL) (except texture), tnt (MIT) (except textures), vessels (LGPL), weather (MIT)

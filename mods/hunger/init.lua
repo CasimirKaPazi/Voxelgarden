@@ -39,6 +39,28 @@ function hunger.update_bar(player, full)
 	end
 end
 
+-- Allow mods to tell us that the player is active
+function hunger.active(player)
+	if not player then return end
+	local name = player:get_player_name()
+	player_is_active[name] = true
+end
+
+function hunger.get(player)
+	if not player then return end
+	local meta = player:get_meta()
+	local full = meta:get_int("hunger")
+	return full
+end
+
+function hunger.set(player, full)
+	if not player then return end
+	local name = player:get_player_name()
+	local meta = player:get_meta()
+	hunger.update_bar(player, full)
+	meta:set_int("hunger", full)
+end
+
 -- no_hunger privilege
 minetest.register_privilege("no_hunger", {
 	description = S("Player will feel no hunger."),
